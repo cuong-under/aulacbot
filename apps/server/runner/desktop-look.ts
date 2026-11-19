@@ -34,7 +34,7 @@ import { xmlEscape, xmlUnescape } from "./xml";
  */
 
 /** Bumped whenever what `lookFiles` writes changes. */
-export const LOOK_VERSION = 8;
+export const LOOK_VERSION = 9;
 
 /** Orchis's light theme (GTK and xfwm4), else GTK's Adwaita and xfwm4's Default. */
 export type LookTheme = "orchis" | "stock";
@@ -119,14 +119,14 @@ const WALLPAPER = Buffer.from(WALLPAPER_BASE64, "base64");
 const MARK = Buffer.from(MARK_BASE64, "base64");
 
 /** The ink of the sky's agents (the wallpaper's logo): the dock's lines and its window bars. */
-const INK = "4, 32, 63";
+const INK = "4, 17, 13";
 /** The dock's rounded ends; its frame is 1 px. */
 const DOCK_RADIUS = 16;
 /**
  * The dock's hairline as it shows on its glass, in one colour: the ink at 0.18 over white at 0.88. Where a ring
  * draws it on nothing (docklike's corners), it lands on the wallpaper in the same tone as the dock's own frame.
  */
-const HAIRLINE_ON_GLASS = "rgba(205, 210, 217, 0.9)";
+const HAIRLINE_ON_GLASS = "rgba(205, 207, 207, 0.9)";
 
 /** Browser, Files and Terminal, in the dock's and the menu's order. */
 interface DockApp {
@@ -436,7 +436,7 @@ const keeperAutostart = (home: string) =>
   [
     "[Desktop Entry]",
     "Type=Application",
-    "Name=agentes.chat",
+    "Name=AULACBOT",
     "Comment=Lists the windows open on this desktop, to open them again after its computer restarted or moved",
     `Exec=python3 -I ${execArg(`${home}/${KEEPER_FILE}`)} ${execArg(`${home}/${KEEPER_SETTINGS}`)}`,
     "NoDisplay=true",

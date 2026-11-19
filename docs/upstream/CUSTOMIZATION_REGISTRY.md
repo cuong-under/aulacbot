@@ -232,6 +232,24 @@ name its own client rejects and would break sign-in against every workspace alre
 | If upstream changes | Take upstream's sky engine, casts and scene numbers; re-apply only the tone tables, the accent tokens and the splash colours. Never copy upstream's blue back in |
 | Regression test | `bun test packages/ui/test/agent-engine.test.ts packages/ui/test/sky.test.tsx packages/ui/test/computer-portrait.test.tsx apps/web/test/computer-sky.test.tsx packages/tokens/test/tokens.test.ts apps/server/test/runner/start-page.test.ts` |
 
+### AULACBOT-CUSTOM-012 — The agent desktop's look ships the Cyber Lạc wallpaper and mark
+
+**Files:** `apps/server/runner/assets/desktop-mark.png.b64`,
+`apps/server/runner/assets/desktop-wallpaper.png.b64`, `apps/server/runner/desktop-look.ts`,
+`apps/server/test/runner/desktop-look.test.ts`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — upstream owns the runner and its look; AULACBOT owns the images |
+| Upstream behavior | The embedded base64 text was upstream's blue sky wallpaper with an `agentes.chat` wordmark and its navy pixel agent as the dock's mark; the dock's ink was upstream's navy `4, 32, 63` and the keeper's autostart entry said `Name=agentes.chat` |
+| AULACBOT behavior | The `.b64` text is regenerated from the committed jade wallpaper and Cyber Lạc mark (`docs/design/desktop/render.sh`), the dock ink is the wallpaper's own jade ink `4, 17, 13` (its hairline follows), and the keeper's entry reads `Name=AULACBOT`; `LOOK_VERSION` is 9 so a desktop that already has the old look is written again |
+| Why | These bytes are what an agent's XFCE desktop actually shows: the earlier pass replaced the PNGs but left the embedded base64, so every desktop still painted the blue sky and the old wordmark |
+| Commit | `pending` |
+| ADR | ADR-001 |
+| Sync risk | Low — the two `.b64` files are generated, not hand-edited; only `desktop-look.ts`'s ink constant and the keeper's `Name=` are hand-written |
+| If upstream changes | Take upstream's runner code and re-run `render.sh` over the AULACBOT images; never copy upstream's `.png`/`.b64` pair back in |
+| Regression test | `bun test apps/server/test/runner/desktop-look.test.ts` (the "images ship as committed" and `LOOK_VERSION` tests) |
+
 ## Entry template
 
 ```
