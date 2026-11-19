@@ -172,6 +172,15 @@ jobs:
       - name: Geometry check's own test
         if: success() || failure()
         run: bun test scripts/geometry/check.test.ts
+      # AULACBOT's identity: the palette, wordmark and font must not drift back to upstream's, and the
+      # base64 pictures the runner embeds must still decode to the shipped PNGs. Runs in this job so a
+      # docs-only change does not skip it — a brand asset is not a docs change.
+      - name: Brand identity
+        if: success() || failure()
+        run: |
+          bun test scripts/brand/brand.test.ts
+          bun run check:brand
+          bun run rebrand:check
       - name: Dependency licenses (no GPL, AGPL, source-available or unlicensed packages)
         if: success() || failure()
         run: |

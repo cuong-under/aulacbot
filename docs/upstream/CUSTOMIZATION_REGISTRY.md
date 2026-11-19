@@ -250,6 +250,24 @@ name its own client rejects and would break sign-in against every workspace alre
 | If upstream changes | Take upstream's runner code and re-run `render.sh` over the AULACBOT images; never copy upstream's `.png`/`.b64` pair back in |
 | Regression test | `bun test apps/server/test/runner/desktop-look.test.ts` (the "images ship as committed" and `LOOK_VERSION` tests) |
 
+### AULACBOT-CUSTOM-013 — The brand is checkable, so a sync cannot flatten it
+
+**Files:** `scripts/brand/{files,check,rebrand,generate-manifest}.ts`,
+`scripts/brand/brand.test.ts`, `scripts/brand/manifest.json`, `package.json` (six scripts),
+`.github/workflows/ci.yml`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — `scripts/**` and `.github/**` are upstream's; the additions are ours and nothing upstream imports them |
+| Upstream behavior | No such check exists. A rebrand is a one-off edit, and the next `git merge upstream/main` can quietly restore upstream's palette, wordmark or generated picture |
+| AULACBOT behavior | `check:brand` asserts the Cyber Lạc palette, the `--agent` tokens, Onest, the `AULACBOT` wordmark and the desktop's jade ink. `check:derived` asserts each `.b64` still decodes to its PNG. `rebrand:check` / `rebrand` re-apply `agentes.chat` → `AULACBOT` **only** to the 263 files where that substitution is the entire diff. `brand:drift` names the handcrafted files a merge touched. `brand:manifest` re-records the baseline |
+| Why | The identity pass is 726 changed files: 263 are pure renames a machine can redo, but 465 are hand-made, so a blanket search-and-replace would erase the look the owner approved. The `.b64` bug proved the reverse failure too — the picture was rebranded, the bytes the runner imports were not, and every agent desktop kept the old sky |
+| Commit | `pending` |
+| ADR | ADR-001 |
+| Sync risk | Low — nothing here is imported by application code; the steps run in `UPSTREAM_SYNC.md` §5 and in CI |
+| If upstream changes | `scripts/` and `.github/workflows/ci.yml` conflicts are resolved by keeping upstream's code and re-adding the `Brand identity` step. After the merge, `rebrand:check` names any file whose class changed; add new paths to `manifest.json` with `brand:manifest <upstream-sha>` |
+| Regression test | `bun test scripts/brand` (8 tests), `bun run check:brand`, `bun run rebrand:check`, `bun run brand:drift` |
+
 ## Entry template
 
 ```
