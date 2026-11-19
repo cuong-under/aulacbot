@@ -4,9 +4,9 @@ Every AULACBOT change to an upstream-owned file is recorded here, in the same co
 
 ## Status right now
 
-**Upstream files have been modified, uncommitted, since 2026-11-15.** Entries 006 onwards record the
-identity pass: product name, logo, icons, desktop/mobile metadata, email identity and the copy pass.
-Everything else in upstream remains as it arrived.
+**The identity pass is committed as `01c1e7a23` (2026-11-19).** Entries 006 onwards record it:
+product name, logo, icons, desktop/mobile metadata, email identity and the copy pass. Everything else
+in upstream remains as it arrived.
 
 ## Registry entries
 
@@ -129,7 +129,7 @@ name its own client rejects and would break sign-in against every workspace alre
 | Upstream behavior | Every sentence names the product `agentes.chat` |
 | AULACBOT behavior | Every prose reference names it `AULACBOT`; `https://agentes.chat/*` URLs, `*@agentes.chat` addresses, `agenteschat`/`agenteschat://` protocol keys, `AGENTES_*` env names, `~/.agentes`, user-agent strings, `SIGNATURE_MARK`, deep-link paths and the About attribution stay exactly as upstream |
 | Why | A public fork must present its own name; `TRADEMARKS.md` forbids presenting the fork as upstream |
-| Commit | uncommitted as of 2026-11-17 |
+| Commit | `01c1e7a23` |
 | ADR | ADR-001 |
 | Sync risk | **High** — 390 files carry copy, so any upstream copy change conflicts. Resolve by taking upstream's wording and re-applying only the name, never by reverting AULACBOT |
 | If upstream changes | Re-run the same name substitution over the changed files; keep URLs, attribution, protocol keys and the setup installer's own output on upstream's name |
@@ -145,7 +145,7 @@ name its own client rejects and would break sign-in against every workspace alre
 | Upstream behavior | `SENDER_NAME = "agentes.chat"` in both files, which their own comments require to match |
 | AULACBOT behavior | Both are `"AULACBOT"`, so a self-hosted server's default `From:` reads `AULACBOT <ping@host>`; the `ping@` mailbox stays |
 | Why | The sender line is the first thing a recipient reads; it must name the product |
-| Commit | uncommitted as of 2026-11-17 |
+| Commit | `01c1e7a23` |
 | ADR | ADR-001 |
 | Sync risk | Low — two constants, but they must change together or the setup's offered sender stops matching the engine's |
 | If upstream changes | Change both to AULACBOT again and update `packages/setup/test/lib.test.ts` plus the email snapshot |
@@ -161,7 +161,7 @@ name its own client rejects and would break sign-in against every workspace alre
 | Upstream behavior | Agents read `agentes.chat`, the computer it runs on is named after it, and GitHub signatures/PDF producers say `agentes.chat` |
 | AULACBOT behavior | Those sentences say `AULACBOT`; the computer's own name, e-mail trailers and `SIGNATURE_MARK` stay upstream (`<!-- agentes.chat -->`, `noreply@agentes.chat`) so older clients still recognise a signed body |
 | Why | An agent that names a different product than the one people use confuses both |
-| Commit | uncommitted as of 2026-11-17 |
+| Commit | `01c1e7a23` |
 | ADR | ADR-001 |
 | Sync risk | Medium — prompts are large and change often; a conflict here can silently reintroduce the old name |
 | If upstream changes | Re-apply the name to prose only; never touch `SIGNATURE_MARK`, `AGENT_CO_AUTHOR_EMAIL` or the signature regexes |
@@ -178,7 +178,7 @@ name its own client rejects and would break sign-in against every workspace alre
 | Upstream behavior | The logo is the pixel agent of `packages/ui/src/agent/engine.js` on a 12 × 12 grid, the wordmark reads `agentes` with `.chat` beside it, and every mark is drawn in the agent's sky blue |
 | AULACBOT behavior | The mark is the Cyber Lạc head (mint crest and head, jade visor, two eyes, gold bill) on the same 12 × 12 grid; the wordmark reads `AULACBOT` with `.app` muted on the baseline; the palette is jade `#0F7A66` for links and `#0F6A59` for the badge; the logo shows from 67 columns and both the TypeScript and the POSIX `sh` copy draw it escape for escape |
 | Why | An install is the first thing anyone sees; if it greets people with a different brand than the icon and the app, the fork reads as half-finished |
-| Commit | uncommitted as of 2026-11-17 |
+| Commit | `01c1e7a23` |
 | ADR | ADR-001 |
 | Sync risk | Medium — `term.ts` and `term-sh.ts` are a matched pair (one test compares them escape for escape), and the palette's tone numbers are shared between them |
 | If upstream changes | Re-apply the mark, the `aulacbot` glyphs and the jade tones to both files together; keep `AGENTES_FRAME`, the `agentes-log` temp name and upstream's `https://agentes.chat/install` URL |
@@ -201,7 +201,7 @@ name its own client rejects and would break sign-in against every workspace alre
 | Upstream behavior | The welcome illustration and desktop brand face use the blue agent avatar as the product logo |
 | AULACBOT behavior | Desktop and mobile brand positions use the shared sharp 12 × 12 Cyber Lạc pixel grid, including the native and animated mobile launch splash with an AULACBOT wordmark; the three small desktop faces and the hosting-scene cast remain agent avatars |
 | Why | The product logo must not be confused with the upstream agent avatar |
-| Commit | Uncommitted as of 2026-11-18 |
+| Commit | `01c1e7a23` |
 | ADR | ADR-001 |
 | Sync risk | Medium — shared UI components are reused across the desktop's first-run and popover windows |
 | If upstream changes | Preserve upstream agent avatars for agents; keep the AULACBOT brand mark on the shared 12 × 12 pixel grid |
@@ -226,7 +226,7 @@ name its own client rejects and would break sign-in against every workspace alre
 | Upstream behavior | The agents' world is upstream's blue: `#0063d1` accent, `SKY_TONES` from `#0a3f9c` to `#eef7ff`, navy pixel bodies, the boot sky `#0a3f9c` |
 | AULACBOT behavior | The same engine and the same components, in Cyber Lạc's jade: accent `#0f6a59` (`#6af2d2` in dark), `SKY_TONES` deep jade to `#e8fcf7`, pixel bodies `#03150f`, the boot/cover splash `#04110d`; the onboarding purpose scene casts gold, jade and mint agents over jade and mint horizons; the desktop cover's agent is the jade prime |
 | Why | The product's own identity must not be upstream's blue; the illustration keeps upstream's shapes, casts and motion |
-| Commit | Uncommitted as of 2026-11-18 |
+| Commit | `01c1e7a23` |
 | ADR | ADR-001 |
 | Sync risk | Medium — `SKY_TONES`, `AGENT_GRADIENTS.sky` and `spriteBody` are read by the web, the phone, the desktop cover, the terminal start page and the icon generator |
 | If upstream changes | Take upstream's sky engine, casts and scene numbers; re-apply only the tone tables, the accent tokens and the splash colours. Never copy upstream's blue back in |
