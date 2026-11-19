@@ -150,7 +150,7 @@ export function createAuth(deps: {
   };
 
   return betterAuth({
-    appName: "agentes.chat",
+    appName: "AULACBOT",
     baseURL: config.PUBLIC_URL,
     basePath: "/api/auth",
     // Over HTTP each would tell any session whether a password is right, with none of the limit `deletionProof` keeps:

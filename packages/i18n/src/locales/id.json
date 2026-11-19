@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "agentes",
-    "tabTitle": "agentes.chat · Timmu dan agenmu, dalam percakapan yang sama"
+    "name": "AULACBOT",
+    "tabTitle": "AULACBOT · Timmu dan agenmu, dalam percakapan yang sama"
   },
   "common": {
     "close": "Tutup",
@@ -28,7 +28,7 @@
     "overLimit": "Teks ini {{length}} karakter dan batasnya {{max}}. Persingkat teksnya.",
     "ourSide": "Ada yang salah di pihak kami. Coba lagi sebentar lagi.",
     "signedOut": "Sesimu berakhir. Masuk lagi untuk melanjutkan.",
-    "newVersion": "Versi baru agentes.chat sudah tersedia.",
+    "newVersion": "Versi baru AULACBOT sudah tersedia.",
     "reload": "Muat ulang",
     "copy": "Salin",
     "copied": "Disalin",
@@ -51,7 +51,7 @@
     "notAllowed": "Kamu tidak punya izin untuk ini.",
     "tooMany": "Terlalu banyak percobaan. Coba lagi nanti.",
     "offline": "Kamu sedang offline. Periksa koneksimu dan coba lagi.",
-    "unreachable": "agentes.chat tidak bisa dijangkau sekarang. Coba lagi sebentar lagi."
+    "unreachable": "AULACBOT tidak bisa dijangkau sekarang. Coba lagi sebentar lagi."
   },
   "roles": {
     "owner": "Pemilik",
@@ -523,7 +523,7 @@
     "recommended": "Disarankan",
     "free": "Gratis · sumber terbuka",
     "cloud": {
-      "name": "agentes.chat Cloud",
+      "name": "AULACBOT Cloud",
       "short": "Selalu menyala, tanpa perlu instal apa pun.",
       "on": "Komputer agen selalu menyala",
       "care": "Pembaruan dan cadangan kami yang urus",
@@ -543,7 +543,7 @@
       "address": "Alamat server",
       "connect": "Hubungkan",
       "invalid": "Itu bukan alamat. Tulis seperti di peramban, misalnya agentes.example.com.",
-      "unreachable": "Kami tidak menemukan agentes.chat di {{host}}. Periksa alamatnya dan pastikan servernya menyala.",
+      "unreachable": "Kami tidak menemukan AULACBOT di {{host}}. Periksa alamatnya dan pastikan servernya menyala.",
       "none": "Belum punya?",
       "noneLink": "Lihat cara punya sendiri, gratis"
     },
@@ -651,11 +651,11 @@
       "openMail": "Buka {{app}}",
       "ownerWaits": "Server ini menunggu pemiliknya.",
       "ownerWaitsLead": "Buka tautan pemilik server ini (berakhiran /owner#claim=…), di komputer ini atau di ponselmu.",
-      "noPassword": "Akun ini masuk dari aplikasi agentes.chat.",
+      "noPassword": "Akun ini masuk dari aplikasi AULACBOT.",
       "noPasswordLead": "Di komputer yang menjalankan server ini, buka aplikasinya lalu pilih Tambah kata sandi di Pengaturan › Akunmu.",
       "backToSignIn": "Kembali ke halaman masuk",
       "backToAccount": "Kembali ke {{name}}",
-      "toAuthorizeApp": "Untuk menghubungkan aplikasi ke agentes.chat."
+      "toAuthorizeApp": "Untuk menghubungkan aplikasi ke AULACBOT."
     },
     "desktop": {
       "browser": "Lanjutkan di browsermu",
@@ -666,11 +666,11 @@
       "otherServer": "Pakai server lain",
       "opening": "Membuka {{provider}}…",
       "confirm": "Apakah ini aplikasimu?",
-      "confirmLead": "Kode ini harus sama dengan yang ditampilkan aplikasi agentes.chat di komputermu.",
+      "confirmLead": "Kode ini harus sama dengan yang ditampilkan aplikasi AULACBOT di komputermu.",
       "confirmYes": "Ya, masukkan aplikasinya",
       "confirmNo": "Ini bukan aku",
       "done": "Beres.",
-      "doneLead": "Kamu sudah masuk di aplikasi agentes. Kamu bisa menutup tab ini.",
+      "doneLead": "Kamu sudah masuk di aplikasi AULACBOT. Kamu bisa menutup tab ini.",
       "expired": "Permintaan ini sudah kedaluwarsa.",
       "expiredLead": "Kembali ke aplikasi lalu pilih {{provider}} lagi.",
       "handover": "Masuk dengan akunmu dari perangkat lain…",
@@ -690,19 +690,19 @@
     },
     "desktopOwner": {
       "continue": "Lanjutkan di {{device}} ini",
-      "text": "Kamu memasang agentes.chat di {{device}} ini: tidak perlu kata sandi.",
+      "text": "Kamu memasang AULACBOT di {{device}} ini: tidak perlu kata sandi.",
       "gone": "Pemilik server ini menghapus akunnya, jadi Lanjutkan di {{device}} ini tidak bisa memasukkan siapa pun. Masuk dengan emailmu sendiri.",
-      "none": "Tidak ada akun yang tersisa di agentes.chat pada {{device}} ini. Buat pemilik barunya di jendela yang terbuka."
+      "none": "Tidak ada akun yang tersisa di AULACBOT pada {{device}} ini. Buat pemilik barunya di jendela yang terbuka."
     },
     "server": {
       "into": "Masuk ke <b>{{server}}</b>",
-      "intoHere": "Masuk ke agentes.chat <b>di {{device}} ini</b>",
-      "intoCloud": "Masuk ke <b>agentes.chat Cloud</b>",
+      "intoHere": "Masuk ke AULACBOT <b>di {{device}} ini</b>",
+      "intoCloud": "Masuk ke <b>AULACBOT Cloud</b>",
       "change": "Ganti server"
     },
     "forgotHere": {
       "ownerTitle": "Di sini kamu tidak perlu kata sandi.",
-      "ownerLead": "Kamu memasang agentes.chat di {{device}} ini. Masuk dari sini, lalu buat kata sandi baru.",
+      "ownerLead": "Kamu memasang AULACBOT di {{device}} ini. Masuk dari sini, lalu buat kata sandi baru.",
       "notOwner": "Bukan akun orang yang memasangnya? Minta tautan kata sandi baru kepada pemilik workspace kamu.",
       "title": "Server ini tidak mengirim email.",
       "lead": "Minta tautan kata sandi baru kepada pemilik workspace kamu. Ia membuatnya di Anggota, dan tautannya berlaku 1 jam.",
@@ -947,7 +947,7 @@
         "edit": "Ubah avatar",
         "upload": "Unggah foto",
         "area": "Kamu mengurus bidang apa?",
-        "areaHint": "Opsional. Hanya supaya kami tahu siapa yang memakai agentes.chat."
+        "areaHint": "Opsional. Hanya supaya kami tahu siapa yang memakai AULACBOT."
       },
       "area": {
         "options": {
@@ -1021,7 +1021,7 @@
         "asleep": "Tidur sampai ada paket",
         "price": "<b>Paket {{name}}</b> · {{price}} per bulan",
         "name": "<b>Paket {{name}}</b>",
-        "generic": "Paket agentes.chat",
+        "generic": "Paket AULACBOT",
         "cancel": "Batalkan kapan saja",
         "cta": "Nyalakan tim",
         "all": "Lihat semua paket",
@@ -1076,7 +1076,7 @@
     },
     "yourCompany": "perusahaanmu",
     "purpose": {
-      "title": "Untuk apa kamu akan memakai agentes.chat?",
+      "title": "Untuk apa kamu akan memakai AULACBOT?",
       "lead": "Bisa diubah nanti, tidak ada yang hilang.",
       "personal": "Untukku",
       "personalText": "Agen yang mengurus harimu.",
@@ -1159,7 +1159,7 @@
         "leadDots": "MCP memberi dot-mu akses ke ruang kerja ini lewat plugin yang kamu tambahkan di ChatGPT, jadi ia membuat agen di sini sendiri.",
         "howTo": "Cara menghubungkan, per aplikasi",
         "paste": "Tempel permintaan ini di aplikasi:",
-        "prompt": "Gunakan server MCP agentes.chat yang baru kamu hubungkan ({{url}}) untuk memindahkan yang kamu punya ke agentes.chat. Pertama panggil import_summary untuk melihat apa yang sudah ada di sana, agar tidak ada yang ganda. Lalu, untuk setiap agen, instruksi, skill, dan rutinitas yang kamu punya, buat padanannya dengan create_agent, create_skill, dan create_routine, dan simpan apa yang harus diingat setiap agen dengan add_memory.",
+        "prompt": "Gunakan server MCP AULACBOT yang baru kamu hubungkan ({{url}}) untuk memindahkan yang kamu punya ke AULACBOT. Pertama panggil import_summary untuk melihat apa yang sudah ada di sana, agar tidak ada yang ganda. Lalu, untuk setiap agen, instruksi, skill, dan rutinitas yang kamu punya, buat padanannya dengan create_agent, create_skill, dan create_routine, dan simpan apa yang harus diingat setiap agen dengan add_memory.",
         "promptLabel": "Permintaan untuk aplikasi AI-mu",
         "copy": "Salin permintaan",
         "copied": "Sekarang tempel di aplikasi AI-mu.",
@@ -1171,7 +1171,7 @@
         "paused": "Hubungkan dengan MCP nonaktif selama ruang kerja ini dijeda. Untuk sekarang, bawa agen lewat cara ini."
       },
       "otherName": "Aplikasi lain",
-      "agenteschatName": "agentes.chat",
+      "agenteschatName": "AULACBOT",
       "where": {
         "openbotrun": "Letakkan openbot-import.json (dari Migrator milik OpenBot) atau openbot-transfer.json (dari transfer instans), atau .zip tempat file itu berada.",
         "openmausbot": "Di OpenMausBot: klik kanan tim → Share team… → Save file.",
@@ -1412,8 +1412,8 @@
     "keyStep": {
       "title": "AI mana yang akan mereka pakai?",
       "lead": "Masuk dengan paket AI-mu: tidak perlu kunci API.",
-      "paid": "Paket agentes.chat-mu sudah aktif. Komputer mereka sedang disiapkan.",
-      "confirming": "Mengonfirmasi pembayaran untuk paket agentes.chat ruang kerja ini.",
+      "paid": "Paket AULACBOT-mu sudah aktif. Komputer mereka sedang disiapkan.",
+      "confirming": "Mengonfirmasi pembayaran untuk paket AULACBOT ruang kerja ini.",
       "leadNoComputer": "Agenmu berpikir dengan kunci API, atau dengan paket AI-mu di komputer yang kamu hubungkan."
     },
     "jev": {
@@ -1424,7 +1424,7 @@
       "title": "Batas pengeluaran per agen",
       "label": "Batas bulanan per agen, dalam dolar",
       "perMonth": "/bulan",
-      "noteKey": "Hanya untuk penggunaan API, ditagih oleh penyedia kunci, bukan oleh agentes.chat. Saat agen mencapainya, agen berhenti dan memberitahumu. Paket tidak dihitung di sini.",
+      "noteKey": "Hanya untuk penggunaan API, ditagih oleh penyedia kunci, bukan oleh AULACBOT. Saat agen mencapainya, agen berhenti dan memberitahumu. Paket tidak dihitung di sini.",
       "notePlatform": "Hanya untuk penggunaan API. Saat agen mencapainya, agen berhenti dan memberitahumu."
     },
     "keySite": "Buat kunci di {{site}}.",
@@ -1477,7 +1477,7 @@
     },
     "team": {
       "title": "Siapa lagi yang bekerja denganmu?",
-      "payment": "Kamu bisa mengundang timmu setelah memilih paket agentes.chat.",
+      "payment": "Kamu bisa mengundang timmu setelah memilih paket AULACBOT.",
       "lead": "Undang mereka lewat email, atau bagikan tautannya.",
       "leadLink": "Bagikan tautan undangan kepada mereka.",
       "emails": "Email",
@@ -1587,7 +1587,7 @@
     "reload": "Muat ulang",
     "search": "Cari atau tanya…",
     "look": "Klik kanan",
-    "lookOurs": "agentes.chat",
+    "lookOurs": "AULACBOT",
     "lookSystem": "Sistem",
     "markRead": "Tandai sudah dibaca",
     "muteChannel": "Bisukan saluran",
@@ -1612,8 +1612,8 @@
     "copied": "Disalin. Tempel di terminal.",
     "mac": {
       "why": "<b>Aplikasinya masih beta.</b> Jadi pada kali pertama, Mac-mu meminta konfirmasi:",
-      "drag": "Seret agentes.chat ke Aplikasi.",
-      "dragLong": "Buka file yang diunduh lalu seret agentes.chat ke Aplikasi.",
+      "drag": "Seret AULACBOT ke Aplikasi.",
+      "dragLong": "Buka file yang diunduh lalu seret AULACBOT ke Aplikasi.",
       "blocked": "Buka aplikasinya lalu klik Selesai.",
       "blockedSub": "Jangan klik Pindahkan ke Tong Sampah.",
       "settings": "Di Pengaturan › Privasi & Keamanan, klik Tetap Buka.",
@@ -1640,17 +1640,17 @@
       "why": "Untuk Ubuntu, Debian, dan sistem serupa (x64). Linux tidak meminta apa pun tambahan:",
       "apt": "Pasang .deb dengan klik dua kali, atau dari terminal.",
       "aptLong": "Klik dua kali file yang diunduh lalu klik Pasang, atau tempel ini di terminal:",
-      "open": "Buka agentes.chat dari daftar aplikasimu.",
+      "open": "Buka AULACBOT dari daftar aplikasimu.",
       "otherTitle": "Pakai Arch, Fedora, atau sistem lain yang tidak menerima .deb?",
       "otherText": "Unduh AppImage: berjalan di distribusi apa pun dan memperbarui dirinya sendiri. Lalu tempel ini di terminal, di folder tempat Anda menyimpannya:",
       "appImage": "Unduh AppImage"
     },
     "page": {
-      "docTitle": "Unduh aplikasinya · agentes.chat",
-      "title": "Unduh aplikasi agentes.chat",
+      "docTitle": "Unduh aplikasinya · AULACBOT",
+      "title": "Unduh aplikasi AULACBOT",
       "beta": "Beta",
       "text": "Workspace-mu di jendelanya sendiri, dengan notifikasi sistemmu. Dengan satu klik, agen bekerja di komputer ini, di folder mereka sendiri.",
-      "open": "Buka agentes.chat",
+      "open": "Buka AULACBOT",
       "version": "Versi {{version}}",
       "versionSize": "Versi {{version}} · {{size}}",
       "soon": "Belum ada versi untuk {{system}}.",
@@ -1660,7 +1660,7 @@
       "installOn": "Pasang di {{system}}",
       "system": "Sistem",
       "whyTitle": "Kenapa komputerku meminta konfirmasi?",
-      "whyText": "agentes.chat masih beta: versi Mac belum dinotarisasi oleh Apple, dan penginstal Windows belum membawa sertifikat Microsoft. Tanpa keduanya, komputermu bertanya sekali sebelum membuka aplikasi yang diunduh dari internet. Setelah itu, aplikasinya langsung terbuka dan memperbarui dirinya sendiri. Sebelum beta berakhir, langkah ini akan hilang.",
+      "whyText": "AULACBOT masih beta: versi Mac belum dinotarisasi oleh Apple, dan penginstal Windows belum membawa sertifikat Microsoft. Tanpa keduanya, komputermu bertanya sekali sebelum membuka aplikasi yang diunduh dari internet. Setelah itu, aplikasinya langsung terbuka dan memperbarui dirinya sendiri. Sebelum beta berakhir, langkah ini akan hilang.",
       "openSource": "Sumber terbuka",
       "onlyHere": "Hanya diterbitkan di sini dan di rilis proyek",
       "signedUpdates": "Pembaruan bertanda tangan"
@@ -1742,6 +1742,7 @@
       "angry": "Marah"
     },
     "names": {
+      "lac": "Cyber Lạc",
       "night": "Malam",
       "moon": "Bulan",
       "sky": "Langit",
@@ -1974,7 +1975,7 @@
     "addAccount": "Tambah akun",
     "addAccountHint": "Masuk ke akun lain tanpa keluar dari akun ini",
     "yourServer": "Servermu",
-    "serverHere": "agentes.chat di {{device}} ini",
+    "serverHere": "AULACBOT di {{device}} ini",
     "serverStopped": "berhenti",
     "serverOffline": "offline sejak {{time}}",
     "serverSignedOut": "belum masuk",
@@ -2118,9 +2119,9 @@
     "googlePlay": "Google Play"
   },
   "openOnPhone": {
-    "qr": "Kode QR untuk masuk ke aplikasi agentes",
+    "qr": "Kode QR untuk masuk ke aplikasi AULACBOT",
     "making": "Membuat kode…",
-    "stepApp": "Pasang aplikasi agentes di ponselmu.",
+    "stepApp": "Pasang aplikasi AULACBOT di ponselmu.",
     "stepTailscale": "Pasang Tailscale di ponselmu dan masuk dengan akun Tailscale yang sama dengan server ini.",
     "appStore": "App Store",
     "googlePlay": "Google Play",
@@ -2129,7 +2130,7 @@
     "private": "Siapa pun yang memindai kode ini akan masuk sebagai kamu.",
     "failed": "Kode tidak bisa dibuat.",
     "localOnly": "Server ini hanya terbuka di komputer tempat ia berjalan, jadi ponselmu tidak bisa menjangkaunya.",
-    "localOnlyHow": "Di aplikasi agentes.chat pada komputer itu, nyalakan Akses dari ponselmu dan rekan tim di Preferensi › Server. Lalu kembali ke sini.",
+    "localOnlyHow": "Di aplikasi AULACBOT pada komputer itu, nyalakan Akses dari ponselmu dan rekan tim di Preferensi › Server. Lalu kembali ke sini.",
     "localOnlyHere": "Nyalakan Akses dari ponselmu dan rekan tim. Lalu kembali ke sini."
   },
   "team": {
@@ -2554,8 +2555,8 @@
       "greetingPersonal": "Halo, saya {{name}}. Saya akan menyiapkan agen-agenmu bersama kamu.",
       "lead": "Saya membuat agen, menghubungkan aplikasi, dan mengundang orang. Tidak ada yang berubah tanpa permintaan Anda, dan saya hanya melakukan apa yang bisa Anda lakukan.",
       "leadPersonal": "Saya membuat agenmu dan menghubungkan aplikasimu. Tidak ada yang berubah tanpa permintaanmu.",
-      "heldLead": "Pilih bidang usahamu dan timnya muncul di sini. Agen mulai bekerja setelah workspace punya paket agentes.chat.",
-      "heldLeadPersonal": "Pilih hal yang ingin dibantu, lalu agenmu muncul di sini. Mereka mulai bekerja setelah kamu punya paket agentes.chat.",
+      "heldLead": "Pilih bidang usahamu dan timnya muncul di sini. Agen mulai bekerja setelah workspace punya paket AULACBOT.",
+      "heldLeadPersonal": "Pilih hal yang ingin dibantu, lalu agenmu muncul di sini. Mereka mulai bekerja setelah kamu punya paket AULACBOT.",
       "connect": {
         "title": "Hubungkan AI untuk tim",
         "titlePersonal": "Hubungkan AI untuk agenmu",
@@ -2990,7 +2991,7 @@
       "plans_not_yours": "{{plan}} di sini hanya milik {{owner}}. Hubungkan milikmu dan aku akan menjawab.",
       "plan_unattended": "{{name}} tidak menjawab: permintaannya tidak datang dari seseorang, dan paket workspace hanya menjawab pemiliknya.",
       "runner_outdated": "{{name}} belum bisa menjawab sekarang: program di komputer paket perlu diperbarui.",
-      "plan_tools": "{{name}} berhenti sebelum menjawab: AI paket di komputer itu tidak tetap memakai alat agentes.chat saja.",
+      "plan_tools": "{{name}} berhenti sebelum menjawab: AI paket di komputer itu tidak tetap memakai alat AULACBOT saja.",
       "model_limit": "{{name}} tidak bisa menjawab sekarang: {{model}} sudah mencapai batasnya sendiri di paket. Model lain di paket itu tetap berjalan.",
       "model_region": "{{name}} tidak bisa menjawab: {{model}} butuh wilayah Global dinyalakan di OpenCode (Settings › Privacy).",
       "model_off": "{{name}} tidak bisa menjawab: OpenCode menolak {{model}} dengan kunci ini. Aktifkan model atau akunnya di OpenCode, atau pilih model lain.",
@@ -3001,16 +3002,16 @@
     "kept": {
       "title": "Saya menyimpan pesanmu",
       "wait": {
-        "payment": "Saya akan menjawab di sini setelah workspace punya paket agentes.chat.",
-        "unpaid": "Saya akan menjawab di sini setelah pembayaran paket agentes.chat berhasil.",
-        "ended": "Saya akan menjawab di sini setelah workspace berlangganan agentes.chat lagi."
+        "payment": "Saya akan menjawab di sini setelah workspace punya paket AULACBOT.",
+        "unpaid": "Saya akan menjawab di sini setelah pembayaran paket AULACBOT berhasil.",
+        "ended": "Saya akan menjawab di sini setelah workspace berlangganan AULACBOT lagi."
       },
-      "askAdmin": "Saya akan menjawab di sini setelah admin membereskan paket agentes.chat.",
+      "askAdmin": "Saya akan menjawab di sini setelah admin membereskan paket AULACBOT.",
       "plan": "Paket ini membawa komputer agen, selalu menyala. AI-nya yang sudah kamu bayar: Claude, ChatGPT dan lainnya, atau kunci API.",
       "activeTitle": "Paket aktif",
       "activeLine": "Hubungkan AI dan {{name}} menjawab di sini.",
       "receipt": "Disimpan",
-      "channel": "Disimpan. Agen menjawab setelah workspace punya paket agentes.chat."
+      "channel": "Disimpan. Agen menjawab setelah workspace punya paket AULACBOT."
     },
     "receipt": "Tidak ada yang akan menjawab: belum ada AI yang terhubung",
     "notYours": {
@@ -3041,7 +3042,7 @@
       "gitMissing": "{{program}} butuh Git for Windows di {{computer}}.",
       "getGit": "Unduh Git for Windows",
       "cantStart": "{{program}} ada di {{computer}}, tetapi tidak mau berjalan: {{message}}",
-      "outdated": "Perbarui aplikasi agentes.chat di {{computer}} untuk memasang dari sini.",
+      "outdated": "Perbarui aplikasi AULACBOT di {{computer}} untuk memasang dari sini.",
       "asked": "Permintaan terkirim. {{name}} mendapat tombol untuk memasangnya."
     },
     "titleFor": "Hubungkan AI untuk {{name}}",
@@ -3107,8 +3108,8 @@
         "unshare": "Hanya untukku"
       }
     },
-    "billing": "Paket masuk di komputer workspace, dan komputer itu datang dengan paket agentes.chat yang aktif.",
-    "billingWeb": "Pilih satu di web, di agentes.chat.",
+    "billing": "Paket masuk di komputer workspace, dan komputer itu datang dengan paket AULACBOT yang aktif.",
+    "billingWeb": "Pilih satu di web, di AULACBOT.",
     "orPayGo": "Atau bayar sesuai pemakaian",
     "pay": {
       "label": "Bagaimana kamu membayar?",
@@ -3179,7 +3180,7 @@
       "untested": "Belum ada model {{name}} yang lolos uji.",
       "testModels": "Uji model",
       "savedUnchecked": "Tersimpan, tetapi {{provider}} tidak menjawab, jadi kunci tidak bisa diperiksa. Jika gagal, percakapan memberi tahu alasannya.",
-      "closed": "Kunci API terbuka bersama paket agentes.chat workspace.",
+      "closed": "Kunci API terbuka bersama paket AULACBOT workspace.",
       "notPlan": "Kunci paket coding dimasukkan di opsinya sendiri di atas.",
       "billing": "Aktifkan penagihan untuk proyek kunci ini. Tanpa penagihan, Google bisa memakai apa yang dikirim agenmu.",
       "privacy": "{{provider}} meneruskan apa yang dikirim agenmu ke perusahaan yang membuat atau menghosting model, sesuai ketentuan dan pengaturan privasi {{provider}}."
@@ -3877,7 +3878,7 @@
     "clearsAt": "Dihapus pukul {{time}}",
     "clearsOn": "Dihapus {{when}}",
     "help": {
-      "auto": "Online selama agentes.chat terbuka.",
+      "auto": "Online selama AULACBOT terbuka.",
       "away": "Pergi sebentar: orang tahu balasanmu mungkin butuh waktu.",
       "busy": "Semua orang tahu sebaiknya kamu tidak diganggu dulu.",
       "out": "Sedang tidak bekerja (liburan, cuti): semua orang melihatnya sampai statusmu hilang.",
@@ -4381,7 +4382,7 @@
       "removeText_other": "{{count}} item keluar dari Vault dan agenmu berhenti menggunakannya. Tidak ada yang berubah di {{name}}.",
       "removed": "{{name}} diputus",
       "listOf": "Koneksi ke {{name}}",
-      "note": "Agenmu membaca isinya saat perlu. Tidak ada yang disalin ke agentes.chat selain nama dan alamat.",
+      "note": "Agenmu membaca isinya saat perlu. Tidak ada yang disalin ke AULACBOT selain nama dan alamat.",
       "error": {
         "auth_failed": "Masuk ditolak",
         "locked": "Kata sandi salah",
@@ -5109,7 +5110,7 @@
       "eyebrow": "Permintaan persetujuan",
       "close": "Tutup",
       "exact": "Tindakan persisnya",
-      "builtIn": "Alat agentes.chat",
+      "builtIn": "Alat AULACBOT",
       "orgConnector": "Konektor ruang kerjamu",
       "bound": "Hanya untuk nilai ini: perubahan apa pun butuh persetujuan baru.",
       "why": "Alasan",
@@ -5198,7 +5199,7 @@
     "noInstructions": "{{name}} belum punya instruksi. Jelaskan bagaimana dia harus bekerja.",
     "noInstructions_female": "{{name}} belum punya instruksi. Jelaskan bagaimana dia harus bekerja.",
     "savedToast": "Perubahan {{name}} tersimpan.",
-    "builtinName": "agentes",
+    "builtinName": "AULACBOT",
     "builtinNote": "izin bawaan",
     "connectHint": "Hubungkan layanan",
     "subtitle": "{{role}} · milik <b>{{owner}}</b> · {{model}} {{key}}",
@@ -5541,11 +5542,11 @@
       "steps": {
         "title": "Tinggal satu langkah, di {{computer}} itu sendiri",
         "waiting": "Menunggu",
-        "one": "Klik ikon agentes.chat di dekat jam",
+        "one": "Klik ikon AULACBOT di dekat jam",
         "two": "Preferensi",
         "three": "Nyalakan Browser",
         "done": "Selesai. Halaman ini mendeteksinya sendiri, tidak perlu dimuat ulang.",
-        "menuOpen": "Buka agentes",
+        "menuOpen": "Buka AULACBOT",
         "menuPrefs": "Preferensi…",
         "menuPause": "Jeda",
         "menuQuit": "Keluar",
@@ -5720,7 +5721,7 @@
       "setAll": "Ubah semua",
       "connectors": "Konektor {{org}}",
       "connectorsPersonal": "Konektormu",
-      "builtin": "Bawaan agentes",
+      "builtin": "Bawaan AULACBOT",
       "noMatch": "Tidak ada yang cocok dengan “{{q}}”",
       "noneHere": "Tidak ada apa pun di filter ini",
       "library": "Pustaka skill",
@@ -6232,10 +6233,10 @@
       "afterPlanNext": "Ini langkah setelah paket.",
       "plan": {
         "todo": "Nyalakan timnya.",
-        "todoDesc": "Dengan paket agentes.chat, agen mulai bekerja.",
+        "todoDesc": "Dengan paket AULACBOT, agen mulai bekerja.",
         "action": "Lihat paket",
         "todoPersonal": "Nyalakan agenmu.",
-        "todoDescPersonal": "Dengan paket agentes.chat, agenmu mulai bekerja."
+        "todoDescPersonal": "Dengan paket AULACBOT, agenmu mulai bekerja."
       },
       "about": {
         "action": "Ceritakan",
@@ -7258,7 +7259,7 @@
     "crashTitle": "Ada yang salah",
     "crashText": "Muat ulang halaman untuk melanjutkan.",
     "crashCode": "Kalau kamu minta bantuan, sebutkan kode {{id}}.",
-    "unreachableTitle": "agentes.chat tidak bisa dijangkau",
+    "unreachableTitle": "AULACBOT tidak bisa dijangkau",
     "unreachableText": "Mungkin sedang dimulai ulang. Halaman ini terbuka sendiri begitu kembali normal.",
     "offlineTitle": "Kamu sedang offline",
     "offlineText": "Halaman ini terbuka sendiri saat kamu kembali online."
@@ -8252,7 +8253,7 @@
         "pr_opened": "PR dibuka di GitHub"
       },
       "issue": {
-        "created": "Tugas dibuat di agentes"
+        "created": "Tugas dibuat di AULACBOT"
       },
       "deploy": {
         "succeeded": "Deploy selesai"
@@ -8826,7 +8827,7 @@
       "title": "File misi",
       "folder": "folder",
       "tabs": "File",
-      "missionSub": "Rencana dan aturan · diperbarui oleh agentes.chat",
+      "missionSub": "Rencana dan aturan · diperbarui oleh AULACBOT",
       "decisionsSub": "Keputusan yang disetujui",
       "notesSub": "Catatan {{executor}}",
       "notesSub_female": "Catatan {{executor}}",
@@ -8902,7 +8903,7 @@
       "title": "Misi baru",
       "text": "Proyek panjang untuk agen. Agen mengusulkan rencana, bekerja di komputernya, dan meminta keputusan serta tinjauan di utas.",
       "goal": "Tujuan",
-      "goalPlaceholder": "Misalnya, bangun aplikasi seluler agentes.chat dengan Expo, berdasarkan aplikasi web saat ini.",
+      "goalPlaceholder": "Misalnya, bangun aplikasi seluler AULACBOT dengan Expo, berdasarkan aplikasi web saat ini.",
       "agent": "Agen",
       "computer": "Komputer",
       "noMachine": "Tidak ada yang terhubung",
@@ -9783,7 +9784,7 @@
   },
   "jev": {
     "title": "Jev",
-    "about": "Model cepat dari TypeSafe, dibuat untuk keputusan cepat. agentes.chat mengajukan pertanyaan kecil padanya, seperti siapa yang sebaiknya menjawab. Kamu membayar langsung ke TypeSafe.",
+    "about": "Model cepat dari TypeSafe, dibuat untuk keputusan cepat. AULACBOT mengajukan pertanyaan kecil padanya, seperti siapa yang sebaiknya menjawab. Kamu membayar langsung ke TypeSafe.",
     "lead": "Membantu agen-agenmu bekerja sebagai tim.",
     "how": "Cara kerja Jev",
     "why": {
@@ -9885,7 +9886,7 @@
       "antigravity": "Gemini",
       "opencode": "OpenCode",
       "needs": {
-        "keys": "Perbarui agentes di komputer untuk memakai kunci paket"
+        "keys": "Perbarui AULACBOT di komputer untuk memakai kunci paket"
       },
       "noComputer": "Akun disimpan di komputer yang terhubung. Hubungkan salah satu komputermu dulu.",
       "addComputer": "Hubungkan komputer",
@@ -9893,7 +9894,7 @@
         "online": "{{computer}} sedang memulai ulang atau menyambung lagi. Ini berubah sendiri begitu ia kembali.",
         "installing": "{{program}} sedang dipasang di {{computer}}. Ini berubah sendiri setelah selesai.",
         "updating": "{{program}} sedang diperbarui di {{computer}}. Ini berubah sendiri setelah selesai.",
-        "runnerOld": "Program agentes.chat di {{computer}} sudah usang dan pembaruannya sedang dalam perjalanan. Ini berubah sendiri setelah selesai.",
+        "runnerOld": "Program AULACBOT di {{computer}} sudah usang dan pembaruannya sedang dalam perjalanan. Ini berubah sendiri setelah selesai.",
         "execOff": "{{computer}} belum bisa menjalankan {{program}}. Kami sedang menanganinya, dan ini berubah sendiri.",
         "toolOff": "{{program}} belum diizinkan di {{computer}}. Itu urusan kami: coba lagi nanti.",
         "preparing": "{{computer}} sedang disiapkan. Ini berubah sendiri setelah selesai.",
@@ -9907,7 +9908,7 @@
     },
     "page": {
       "title": "Paketmu",
-      "hint": "Setiap paket tetap di komputer tempat ia dihubungkan, dan siapa pun yang mengelola komputer itu bisa mengaksesnya. agentes.chat hanya menyimpan nama, email, dan pemakaiannya.",
+      "hint": "Setiap paket tetap di komputer tempat ia dihubungkan, dan siapa pun yang mengelola komputer itu bisa mengaksesnya. AULACBOT hanya menyimpan nama, email, dan pemakaiannya.",
       "emptyTitle": "Pakai paket AI yang sudah kamu bayar",
       "emptyViewer": "Orang yang mengurus AI ruang kerja menghubungkan paket, lalu muncul di sini.",
       "connect": "Hubungkan AI",
@@ -11144,7 +11145,7 @@
     "reasons": {
       "no_computer": "Pilih komputer yang terhubung di Komputer untuk memakainya.",
       "exec_off": "Komputer ini terhubung tanpa izin menjalankan program.",
-      "runner_old": "Perbarui program agentes.chat di komputer untuk memakainya.",
+      "runner_old": "Perbarui program AULACBOT di komputer untuk memakainya.",
       "tool_offOne": "{{program}} mati di {{computer}}.",
       "not_installed": "{{program}} belum terpasang di {{computer}}.",
       "cant_start": "{{program}} ada di {{computer}}, tetapi tidak mau berjalan.",
@@ -11646,7 +11647,7 @@
   "storage": {
     "title": "Penyimpanan",
     "options": "Tempat menyimpan file",
-    "agentes": "Penyimpanan agentes.chat",
+    "agentes": "Penyimpanan AULACBOT",
     "agentesText": "Filemu disimpan di penyimpanan kami, terpisah untuk tiap ruang kerja.",
     "server": "Server ini",
     "serverText": {
@@ -11657,7 +11658,7 @@
     },
     "showFolder": "Tampilkan folder",
     "place": {
-      "agentes": "penyimpanan agentes.chat",
+      "agentes": "penyimpanan AULACBOT",
       "server": "server ini"
     },
     "s3": "Penyimpanan milikmu sendiri",
@@ -11769,7 +11770,7 @@
       "step": {
         "bucketTitle": "Buat bucket",
         "keyTitle": "Buat kunci akses",
-        "userTitle": "Buat pengguna khusus untuk agentes.chat",
+        "userTitle": "Buat pengguna khusus untuk AULACBOT",
         "r2Bucket": "Di dasbor Cloudflare, buka <b>R2</b> lalu klik <b>Create bucket</b>. Nama apa pun boleh.",
         "r2Key": "Di halaman R2, pada <b>API Tokens</b>, klik <b>Manage</b> lalu <b>Create API Token</b>. Pilih izin <b>Object Read & Write</b> dan bucket-mu. Di akhir, Cloudflare menampilkan tiga nilai di bawah ini hanya sekali.",
         "s3Bucket": "Di konsol AWS, buka <b>S3</b> lalu klik <b>Create bucket</b>. Catat wilayah yang kamu pilih.",
@@ -11847,11 +11848,11 @@
   },
   "githubApp": {
     "title": "Repositori GitHub",
-    "text": "Di tempat aplikasi agentes.chat terpasang, agen membuka pull request, issue, komentar, dan commit sebagai aplikasi itu, dengan nama agen dan orang yang meminta.",
-    "install": "Pasang aplikasi agentes.chat",
+    "text": "Di tempat aplikasi AULACBOT terpasang, agen membuka pull request, issue, komentar, dan commit sebagai aplikasi itu, dengan nama agen dan orang yang meminta.",
+    "install": "Pasang aplikasi AULACBOT",
     "installMore": "Pasang di akun lain",
     "none": "Belum ada akun GitHub.",
-    "usingAccount": "Saat ini agen muncul di GitHub sebagai {{account}}. Pasang aplikasinya agar mereka muncul sebagai aplikasi agentes.chat.",
+    "usingAccount": "Saat ini agen muncul di GitHub sebagai {{account}}. Pasang aplikasinya agar mereka muncul sebagai aplikasi AULACBOT.",
     "allRepos": "Semua repositori",
     "someRepos": "Repositori terpilih",
     "suspended": "Ditangguhkan di GitHub",
@@ -11860,27 +11861,27 @@
     "remove": "Hapus",
     "removeName": "Hapus {{account}}",
     "removeTitle": "Hapus aplikasi dari {{account}}?",
-    "removeText": "Aplikasi agentes.chat dicopot dari {{account}} di GitHub, dan agen berhenti memakai repositori akun itu lewat aplikasi ini.",
+    "removeText": "Aplikasi AULACBOT dicopot dari {{account}} di GitHub, dan agen berhenti memakai repositori akun itu lewat aplikasi ini.",
     "removeLast": "Ini yang terakhir, jadi agen kehilangan GitHub sampai seseorang memasang aplikasinya atau menghubungkan akun.",
     "removed": "Aplikasi dihapus dari {{account}} dan dicopot di GitHub.",
     "notUninstalled": "Aplikasi dihapus di sini, tapi GitHub belum mengonfirmasi pencopotan dari {{account}}. Copot di sana.",
     "openPage": "Buka",
-    "installed": "Aplikasi agentes.chat terpasang.",
+    "installed": "Aplikasi AULACBOT terpasang.",
     "requested": "Hanya pemilik akun GitHub itu yang bisa memasang aplikasinya. Minta dia memasangnya dari Konektor › GitHub di ruang kerja ini.",
     "notVisible": "Akun GitHub-mu tidak bisa melihat pemasangan itu. Pasang dengan akun yang punya akses ke sana.",
     "otherWorkspace": "Akun GitHub itu sudah terhubung ke ruang kerja lain. Hapus aplikasinya di sana sebelum memasangnya di sini.",
-    "installedOutside": "Aplikasinya dipasang di akun GitHub itu di luar agentes.chat. Hapus di GitHub, lalu pasang lagi dari Konektor › GitHub.",
+    "installedOutside": "Aplikasinya dipasang di akun GitHub itu di luar AULACBOT. Hapus di GitHub, lalu pasang lagi dari Konektor › GitHub.",
     "ownerUnknown": "GitHub tidak memberi tahu siapa pemilik organisasi itu. Pengelola server perlu menambahkan izin organisasi Members (hanya baca) ke aplikasi GitHub, lalu kamu pasang lagi.",
     "misconfigured": "Aplikasi GitHub di server memakai kunci rahasia yang salah, jadi pemasangan tidak bisa selesai. Pengelola server perlu mengganti kunci itu di pengaturan aplikasi.",
     "connectAccount": "Hubungkan akun GitHub",
     "ownerHint": "Pemilik server ini bisa membuat aplikasi GitHub di sini, di Konektor.",
-    "viaApp": "Lewat aplikasi agentes.chat di {{accounts}}",
-    "disconnectApp": "Aplikasi agentes.chat juga dicopot dari {{accounts}} di GitHub.",
-    "disconnectKeepsApp": "Agen tetap di GitHub lewat aplikasi agentes.chat di {{accounts}}.",
-    "keptApp": "Akun GitHub diputuskan. Agen tetap di GitHub lewat aplikasi agentes.chat.",
+    "viaApp": "Lewat aplikasi AULACBOT di {{accounts}}",
+    "disconnectApp": "Aplikasi AULACBOT juga dicopot dari {{accounts}} di GitHub.",
+    "disconnectKeepsApp": "Agen tetap di GitHub lewat aplikasi AULACBOT di {{accounts}}.",
+    "keptApp": "Akun GitHub diputuskan. Agen tetap di GitHub lewat aplikasi AULACBOT.",
     "signature": {
-      "forPerson": "{{agent}}, agen {{person}} di agentes.chat",
-      "alone": "{{agent}}, agen di agentes.chat"
+      "forPerson": "{{agent}}, agen {{person}} di AULACBOT",
+      "alone": "{{agent}}, agen di AULACBOT"
     },
     "manifestPage": {
       "title": "Membuat aplikasi GitHub",
@@ -13458,7 +13459,7 @@
     "continueInComposio": "Lanjutkan di Composio",
     "github": {
       "how": "Cara agen menjangkau GitHub",
-      "app": "Aplikasi agentes.chat",
+      "app": "Aplikasi AULACBOT",
       "recommended": "Disarankan",
       "appText": "Agen muncul sebagai aplikasi, dan kamu memilih repositorinya di GitHub.",
       "account": "Akun GitHub",
@@ -13480,7 +13481,7 @@
     "or": "atau",
     "withKey": "Hubungkan dengan kunci API",
     "needsKey": "Server ini tidak mendukung OAuth. Hubungkan dengan kunci API.",
-    "notApproved": "{{name}} hanya mengizinkan aplikasi yang sudah disetujuinya untuk masuk, dan agentes.chat belum disetujui. Kalau {{name}} memberimu kunci API, kamu bisa menghubungkan dengan kunci itu.",
+    "notApproved": "{{name}} hanya mengizinkan aplikasi yang sudah disetujuinya untuk masuk, dan AULACBOT belum disetujui. Kalau {{name}} memberimu kunci API, kamu bisa menghubungkan dengan kunci itu.",
     "serverSaid": "Jawaban server: {{detail}}",
     "nothingYet": "Belum ada yang tersedia untuk agen sampai langkah 3.",
     "allCanUse": "Setelah terhubung, semua agen bisa memakainya. Kamu bisa menyesuaikannya nanti.",
@@ -13730,7 +13731,7 @@
     "whatIsText": "Kata sandi khusus untuk agen. Kamu membuatnya di situs email-mu dan bisa menghapusnya kapan saja, tanpa mengubah kata sandimu sendiri.",
     "step": {
       "1": "Buka halaman keamanan akunmu.",
-      "2": "Buat kata sandi aplikasi bernama “agentes”.",
+      "2": "Buat kata sandi aplikasi bernama “AULACBOT”.",
       "3": "Salin kata sandinya lalu tempel di sini."
     },
     "openPage": "Buka halaman {{name}}",
@@ -14116,7 +14117,7 @@
       "generalKept": "#general tidak bisa dihapus.",
       "generalStays": "Semua orang tetap di #general.",
       "mcpUnreachable": "Tidak bisa terhubung ke server MCP. Periksa alamatnya dan coba lagi.",
-      "notApproved": "Layanan ini belum menyetujui agentes.chat.",
+      "notApproved": "Layanan ini belum menyetujui AULACBOT.",
       "alreadyInvited": "Orang ini sudah punya undangan.",
       "alreadyAsked": "Seseorang sudah meminta untuk orang ini.",
       "mailboxConnected": "Kotak surat ini sudah terhubung.",
@@ -14262,7 +14263,7 @@
       "noComputer": "Agen ini belum punya komputer untuk misi.",
       "computerOffline": "Komputer agen sedang offline.",
       "execDisabled": "Perintah dinonaktifkan di komputer itu.",
-      "runnerOutdated": "Program di komputer itu terlalu lama untuk misi: perbarui aplikasi agentes.chat di sana, atau jalankan lagi perintah pemasangannya.",
+      "runnerOutdated": "Program di komputer itu terlalu lama untuk misi: perbarui aplikasi AULACBOT di sana, atau jalankan lagi perintah pemasangannya.",
       "exists": "Utas ini sudah punya misi.",
       "closed": "Misi ini sudah ditutup.",
       "wrongStatus": "Status misi tidak memungkinkan hal ini.",
@@ -14365,7 +14366,7 @@
       "notOwner": "Hanya orang yang menghubungkan komputer ini yang menyalakan alatnya. Minta kepada orang itu.",
       "askSelf": "Ini komputermu: nyalakan dengan tombolnya.",
       "adminAskSelf": "Kamu bisa melakukannya sendiri di sini.",
-      "accountMethodUnsupported": "Komputer ini belum bisa menghubungkan Claude dengan cara ini. Perbarui program agentes.chat di komputer ini, atau pakai kunci API.",
+      "accountMethodUnsupported": "Komputer ini belum bisa menghubungkan Claude dengan cara ini. Perbarui program AULACBOT di komputer ini, atau pakai kunci API.",
       "offline": "{{name}} sedang offline. Coba lagi setelah ia kembali.",
       "paused": "{{name}} dijeda: tidak ada yang baru dimulai di sana sampai dilanjutkan.",
       "timeout": "Komputer tidak menjawab tepat waktu. Coba lagi."
@@ -14518,7 +14519,7 @@
       "ask": "Minta {{name}}",
       "asked": "Sudah diminta. {{name}} mendapat tombol untuk menyalakannya.",
       "done": "Menyala di {{machine}}.",
-      "outdated": "Perbarui aplikasi agentes.chat di {{machine}} untuk menyalakannya dari sini.",
+      "outdated": "Perbarui aplikasi AULACBOT di {{machine}} untuk menyalakannya dari sini.",
       "offline": "{{machine}} sedang offline. Begitu kembali, tombol ini menyalakan {{tool}}."
     },
     "remotePause": {
@@ -14532,7 +14533,7 @@
       "byYouUntil": "Dijeda olehmu sampai {{time}}.",
       "byName": "Dijeda oleh {{name}}.",
       "byNameUntil": "Dijeda oleh {{name}} sampai {{time}}.",
-      "outdated": "Perbarui aplikasi agentes.chat di komputer ini untuk menjedanya dari sini.",
+      "outdated": "Perbarui aplikasi AULACBOT di komputer ini untuk menjedanya dari sini.",
       "paused": "{{name}} dijeda",
       "resumed": "{{name}} kembali bekerja"
     },
@@ -14590,9 +14591,9 @@
     },
     "host": {
       "label": "Komputer server ini",
-      "desc": "Tempat agentes.chat terpasang.",
-      "descUsers": "Tempat agentes.chat terpasang, satu pengguna per agen.",
-      "descShared": "Komputer tempat agentes.chat terpasang. Agen bekerja sebagai orang yang memasangnya.",
+      "desc": "Tempat AULACBOT terpasang.",
+      "descUsers": "Tempat AULACBOT terpasang, satu pengguna per agen.",
+      "descShared": "Komputer tempat AULACBOT terpasang. Agen bekerja sebagai orang yang memasangnya.",
       "stop": "Berhenti memakainya di ruang kerja ini",
       "stopTitle": "Berhenti memakai komputer server ini?",
       "stopText": "Agen di ruang kerja ini berhenti memakai komputer ini sekarang. Kamu bisa memakainya lagi kapan saja.",
@@ -14603,7 +14604,7 @@
     },
     "download": {
       "title": "Hubungkan komputer lain",
-      "text": "Pasang aplikasi agentes.chat di komputer itu.",
+      "text": "Pasang aplikasi AULACBOT di komputer itu.",
       "mac": "Unduh aplikasi untuk {{system}}",
       "version": "Versi {{version}}",
       "versionSize": "Versi {{version}} · {{size}}",
@@ -14614,7 +14615,7 @@
       "unavailable": "Aplikasinya belum tersedia.",
       "unavailableCommand": "Aplikasinya belum tersedia. Untuk sementara, pakai perintah di bawah.",
       "firstTime": "Pertama kali",
-      "step1": "Buka file yang diunduh lalu seret agentes.chat ke Applications.",
+      "step1": "Buka file yang diunduh lalu seret AULACBOT ke Applications.",
       "step1Install": "Buka file yang diunduh untuk memasangnya.",
       "otherText": "Jalankan ini di terminal komputer itu, lalu konfirmasi kode yang ditampilkannya.",
       "waiting": "Menunggu komputer terhubung…"
@@ -14645,7 +14646,7 @@
       "ownFolder": "Folder tiap agen",
       "ownFolderText": "Selalu. Agen tidak bisa melihat folder agen lain.",
       "noFolders": "Tidak ada folder tambahan. Tiap agen hanya memakai foldernya sendiri.",
-      "noReport": "Komputer ini belum memberi tahu apa yang diizinkannya. Perbarui agentes.chat di sana.",
+      "noReport": "Komputer ini belum memberi tahu apa yang diizinkannya. Perbarui AULACBOT di sana.",
       "hidden": "Hanya admin dan orang yang menghubungkannya yang bisa melihat folder dan alat komputer ini.",
       "nobody": "Belum ada agen yang memakainya",
       "usedBy": "Siapa yang memakai {{folder}}",
@@ -14690,7 +14691,7 @@
       "disableText": "Agen berhenti memakai {{tool}} di komputer ini. Untuk menyalakannya lagi: di komputer itu sendiri, atau di sini oleh orang yang menghubungkannya.",
       "disabled": "{{tool}} dimatikan.",
       "grantTitle": "Untuk mengizinkan lebih banyak",
-      "grantText": "Izin diberikan di komputer itu sendiri: buka aplikasi agentes.chat di sana (Preferensi → Folder).",
+      "grantText": "Izin diberikan di komputer itu sendiri: buka aplikasi AULACBOT di sana (Preferensi → Folder).",
       "grantTextTerminal": "Izin diberikan di komputer itu sendiri, lewat Terminal-nya:",
       "grantTextAdmin": "Izin diberikan di komputer itu sendiri, lewat Terminal-nya, sebagai administrator:",
       "grantTerminal": "Tidak ada aplikasi? Di terminal komputer itu:",
@@ -14797,7 +14798,7 @@
       "forbidden": "Kamu tidak bisa melihat layar ini",
       "forbiddenText": "Pemiliknya yang memilih siapa yang boleh memakai {{name}}.",
       "outdated": "Aplikasi di {{host}} terlalu lama untuk ini",
-      "outdatedText": "Perbarui agentes.chat di {{host}}, lalu coba lagi.",
+      "outdatedText": "Perbarui AULACBOT di {{host}}, lalu coba lagi.",
       "unavailable": "Layar ini tidak bisa ditampilkan",
       "unavailableText": "Pastikan {{host}} sudah memasang adb atau Xcode, lalu coba lagi.",
       "needsHelper": "Selesaikan penyiapan iPhone di Mac untuk menambahkan helper pengujian yang dibutuhkan.",
@@ -14948,7 +14949,7 @@
       "thisMac": "Mac ini",
       "thisPc": "PC ini",
       "thisComputer": "Komputer ini",
-      "thisLine": "Lewat aplikasi agentes.chat",
+      "thisLine": "Lewat aplikasi AULACBOT",
       "openApp": "Buka aplikasinya",
       "server": "Server atau VPS",
       "serverLine": "Satu baris untuk ditempel di terminalnya",
@@ -14963,7 +14964,7 @@
     },
     "computer": {
       "title": "Hubungkan komputer lain",
-      "step1": "Pasang aplikasi agentes.chat di komputer itu:",
+      "step1": "Pasang aplikasi AULACBOT di komputer itu:",
       "step2": "Buka, lalu masuk dengan akun Anda sendiri.",
       "step3": "Klik Izinkan saat aplikasinya bertanya apakah agen {{org}} boleh memakainya.",
       "shows": "Komputer itu muncul di sini dengan sendirinya, hanya untuk Anda sampai Anda membagikannya.",
@@ -14973,11 +14974,11 @@
       "noApp": "Tidak bisa memasang aplikasinya di sana? Pakai satu baris di terminal"
     },
     "thisApp": {
-      "text": "Aplikasi agentes.chat menghubungkannya dengan satu klik, dan bertanya dulu kepada Anda.",
-      "open": "Buka aplikasi agentes.chat",
+      "text": "Aplikasi AULACBOT menghubungkannya dengan satu klik, dan bertanya dulu kepada Anda.",
+      "open": "Buka aplikasi AULACBOT",
       "browserAsks": "Browser akan bertanya apakah boleh membukanya: pilih Buka, dan Selalu izinkan jika ditawarkan.",
       "noApp": "Belum punya aplikasinya?",
-      "afterInstall": "Setelah terpasang, klik lagi Buka aplikasi agentes.chat. Tautan ini berlaku sekali, selama 10 menit.",
+      "afterInstall": "Setelah terpasang, klik lagi Buka aplikasi AULACBOT. Tautan ini berlaku sekali, selama 10 menit.",
       "waiting": "Menunggu aplikasi di komputer ini…",
       "expired": "Tautan ini sudah kedaluwarsa.",
       "again": "Buat tautan baru",
@@ -15054,7 +15055,7 @@
       },
       "qrLabel": "Kode QR yang membuka langkah-langkah ini di ponsel",
       "qrLine": "Lakukan dari ponselmu",
-      "qrCaption": "Pindai untuk membuka langkah-langkah ini di aplikasi agentes.chat, dengan tombol untuk setiap setelan.",
+      "qrCaption": "Pindai untuk membuka langkah-langkah ini di aplikasi AULACBOT, dengan tombol untuk setiap setelan.",
       "buildNumber": "Nomor build",
       "buildNumberSub": "BP2A.250605.031",
       "usbRow": "Proses debug USB",
@@ -15098,23 +15099,23 @@
       "qrCaption": "Kamera menawarkan jaringan Wi-Fi bernama agentes-…, yang tidak ada. Biarkan ponsel tetap di Wi-Fi komputer.",
       "fail": {
         "mdns_off": "{{computer}} tidak bisa mencari ponsel di Wi-Fi. Perbarui Android platform-tools di sana, atau pakai kabel.",
-        "mdns_offMac": "{{computer}} tidak bisa mencari ponsel di Wi-Fi. Di Mac itu, aktifkan agentes.chat di Pengaturan Sistem › Privasi & Keamanan › Jaringan Lokal, lalu coba lagi.",
+        "mdns_offMac": "{{computer}} tidak bisa mencari ponsel di Wi-Fi. Di Mac itu, aktifkan AULACBOT di Pengaturan Sistem › Privasi & Keamanan › Jaringan Lokal, lalu coba lagi.",
         "same_wifi": "Ponsel tidak bisa dijangkau. Ponsel tidak berada di jaringan yang sama dengan {{computer}}. Sambungkan ke Wi-Fi yang sama, lalu coba lagi.",
-        "same_wifiMac": "Ponsel tidak bisa dijangkau. Sambungkan ke Wi-Fi yang sama dengan {{computer}}. Di Mac itu, aktifkan juga agentes.chat di Pengaturan Sistem › Privasi & Keamanan › Jaringan Lokal.",
+        "same_wifiMac": "Ponsel tidak bisa dijangkau. Sambungkan ke Wi-Fi yang sama dengan {{computer}}. Di Mac itu, aktifkan juga AULACBOT di Pengaturan Sistem › Privasi & Keamanan › Jaringan Lokal.",
         "refused": "Ponsel menghentikan penyambungan. Biarkan layar penyambungannya terbuka, lalu coba lagi.",
         "refusedCode": "Ponsel tidak menerima kode itu. Periksa kode dan alamatnya, lalu sambungkan lagi.",
         "timed_out": "Tidak ada ponsel yang tersambung dalam 2 menit. Jika kamera memindai kode atau ponsel keluar dari Wi-Fi, sambungkan ke Wi-Fi yang sama dengan {{computer}} dan pindai dari Proses debug nirkabel.",
-        "timed_outMac": "Tidak ada ponsel yang tersambung dalam 2 menit. Jika kamera memindai kode atau ponsel keluar dari Wi-Fi, sambungkan ke Wi-Fi yang sama dengan {{computer}} dan pindai dari Proses debug nirkabel. Di Mac itu, aktifkan juga agentes.chat di Pengaturan Sistem › Privasi & Keamanan › Jaringan Lokal.",
+        "timed_outMac": "Tidak ada ponsel yang tersambung dalam 2 menit. Jika kamera memindai kode atau ponsel keluar dari Wi-Fi, sambungkan ke Wi-Fi yang sama dengan {{computer}} dan pindai dari Proses debug nirkabel. Di Mac itu, aktifkan juga AULACBOT di Pengaturan Sistem › Privasi & Keamanan › Jaringan Lokal.",
         "outdated": "Penyambungan lewat Wi-Fi butuh Android 14 atau lebih baru dengan pembaruan keamanan Mei 2026. Perbarui ponsel, atau pakai kabel.",
         "adb_missing": "{{computer}} tidak punya Android platform-tools. Instal Android Studio di sana, lalu coba lagi.",
-        "update": "Penyambungan lewat Wi-Fi butuh agentes.chat yang lebih baru di {{computer}}. Perbarui, lalu coba lagi.",
+        "update": "Penyambungan lewat Wi-Fi butuh AULACBOT yang lebih baru di {{computer}}. Perbarui, lalu coba lagi.",
         "canceled": "Penyambungan berhenti. Coba lagi.",
         "failed": "Penyambungan tidak berhasil. Coba lagi, atau pakai kabel."
       }
     },
     "iphone": {
       "title": "Hubungkan iPhone",
-      "lead": "iPhone terhubung lewat Mac, tempat aplikasi agentes.chat melakukan penyiapannya.",
+      "lead": "iPhone terhubung lewat Mac, tempat aplikasi AULACBOT melakukan penyiapannya.",
       "mac": "Mac",
       "noMac": "Agen hanya bisa memakai iPhone lewat Mac, dan belum ada Mac yang terhubung.",
       "noMacNote": "Tidak punya Mac? Minta rekan tim menghubungkan Mac-nya.",
@@ -15153,9 +15154,9 @@
         "failedAny": "Tidak bisa memperbaiki di {{mac}}.",
         "stillCommandLineTools": "Perbaikan sudah berjalan, tetapi Mac masih memakai Command Line Tools. Coba lagi, atau jalankan ini di Terminal, nanti diminta kata sandi Mac.",
         "stillLicense": "Perbaikan sudah berjalan, tetapi Xcode di {{mac}} masih menunggu lisensinya disetujui. Coba lagi, atau jalankan ini di Terminal, nanti diminta kata sandi Mac.",
-        "outdated": "Perbarui aplikasi agentes.chat di {{mac}} agar bisa diperbaiki dengan satu klik. Atau jalankan ini di Terminal-nya, ia meminta kata sandi Mac.",
+        "outdated": "Perbarui aplikasi AULACBOT di {{mac}} agar bisa diperbaiki dengan satu klik. Atau jalankan ini di Terminal-nya, ia meminta kata sandi Mac.",
         "follows": "Jendela ini lanjut sendiri setelah Mac selesai.",
-        "window": "agentes.chat ingin memakai Xcode untuk menghubungkan iPhone.",
+        "window": "AULACBOT ingin memakai Xcode untuk menghubungkan iPhone.",
         "ok": "OK"
       },
       "getXcode": "Dapatkan Xcode",
@@ -15181,7 +15182,7 @@
         "openXcode": "Buka Xcode",
         "opened": "Xcode terbuka di {{mac}}. Lihat lagi di Pengaturan iPhone, lalu tutup Xcode.",
         "unlock": "Sudah dinyalakan dan iPhone dimulai ulang? Buka kuncinya. Peringatan dengan Nyalakan baru muncul setelah itu.",
-        "outdated": "Aplikasi agentes.chat di {{mac}} sudah usang. Perbarui aplikasinya, atau jalankan ini di Terminal jika kamu memasangnya dari sana."
+        "outdated": "Aplikasi AULACBOT di {{mac}} sudah usang. Perbarui aplikasinya, atau jalankan ini di Terminal jika kamu memasangnya dari sana."
       },
       "uiAutomationText": "Di Pengaturan › Pengembang, setelah dimulai ulang.",
       "helperText": "Dibuat dan diperbarui oleh Mac setiap 7 hari. Apple Account gratis di Xcode sudah cukup.",
@@ -15386,7 +15387,7 @@
     "reconnectDoneText": "{{name}} kembali ke {{org}}.",
     "deniedTitle": "Tidak terhubung",
     "denied": "Komputer tidak dihubungkan. Kalau bukan kamu yang membukanya, tidak ada yang mendapat akses.",
-    "home": "Ke agentes"
+    "home": "Ke AULACBOT"
   },
   "apps": {
     "connect": "Hubungkan aplikasi",
@@ -15488,7 +15489,7 @@
       "claude": {
         "lead": "claude.ai, Claude Desktop, dan ponsel: satu konektor berfungsi di mana saja.",
         "step1": "Buka Customize › Connectors di claude.ai atau Claude Desktop.",
-        "step2": "Klik + Add, lalu Add custom connector, beri nama agentes.chat, tempel alamatnya, lalu klik Continue.",
+        "step2": "Klik + Add, lalu Add custom connector, beri nama AULACBOT, tempel alamatnya, lalu klik Continue.",
         "step3": "Pilih Sign in now, klik Add, lalu beri izin di halaman yang terbuka.",
         "phone": "Konektor muncul di ponselmu setelah ditambahkan di komputer.",
         "team": "Di paket Team dan Enterprise, Owner organisasi Claude menambahkan konektor di Organization settings › Connectors. Lalu setiap orang mengklik Connect di Customize › Connectors.",
@@ -15523,9 +15524,9 @@
         "open": "Buka {{place}}.",
         "click": "Klik {{button}}.",
         "clickThen": "Klik {{button}}, lalu {{next}}.",
-        "name": "Beri nama agentes.chat dan tempel alamatnya.",
-        "nameDescribe": "Beri nama agentes.chat dan tulis deskripsinya.",
-        "nameConnect": "Beri nama agentes.chat lalu klik {{button}}.",
+        "name": "Beri nama AULACBOT dan tempel alamatnya.",
+        "nameDescribe": "Beri nama AULACBOT dan tulis deskripsinya.",
+        "nameConnect": "Beri nama AULACBOT lalu klik {{button}}.",
         "paste": "Tempel alamatnya.",
         "pasteIn": "Tempel alamatnya di {{field}}.",
         "choosePaste": "Pilih {{option}} dan tempel alamatnya.",
@@ -15546,8 +15547,8 @@
         "reload": "Lalu ketik <code>{{command}}</code> di chat.",
         "loginRun": "Untuk masuk, jalankan <code>{{command}}</code>.",
         "loginType": "Untuk masuk, ketik <code>{{command}}</code> di aplikasi.",
-        "signIn": "Masuk dengan akun agentes.chat-mu di halaman yang terbuka.",
-        "signInManage": "Masuk dengan akun agentes.chat-mu di halaman yang terbuka, lalu pilih {{access}}.",
+        "signIn": "Masuk dengan akun AULACBOT-mu di halaman yang terbuka.",
+        "signInManage": "Masuk dengan akun AULACBOT-mu di halaman yang terbuka, lalu pilih {{access}}.",
         "mention": "Di chat, ketik <code>@</code> dan pilih <code>{{name}}</code>.",
         "signInFirst": "Aplikasi memintamu masuk saat pertama kali memakainya.",
         "token": "Buat token pribadi dan taruh di tempat {{placeholder}}.",
@@ -15600,7 +15601,7 @@
       "canRead": "Membaca balasan dan apa yang sedang dikerjakan agen.",
       "canManage": "Membuat dan mengedit agen, rutinitas, dan skill atas namamu. Kamu mendapat pemberitahuan tentang apa yang dibuatnya.",
       "never": "Tidak pernah",
-      "neverApprove": "Menyetujui tindakan agen. Persetujuan tetap di tangan orang di agentes.chat.",
+      "neverApprove": "Menyetujui tindakan agen. Persetujuan tetap di tangan orang di AULACBOT.",
       "neverSettings": "Mengubah pengaturan, anggota, atau izin.",
       "neverHidden": "Melihat yang tidak bisa kamu lihat.",
       "loopbackWarning": "Program apa pun di komputer ini bisa menerima akses ini. Lanjutkan hanya jika kamu baru saja memulainya di Claude Code atau aplikasi lain di komputer ini.",
@@ -15614,7 +15615,7 @@
       "done": "Kamu bisa kembali ke {{app}}.",
       "cancelledTitle": "Koneksi dibatalkan",
       "cancelled": "Tidak ada yang dibagikan.",
-      "goHome": "Ke agentes.chat",
+      "goHome": "Ke AULACBOT",
       "language": "Bahasa",
       "error": {
         "app_desconhecido": "Kami tidak mengenali aplikasi ini",
@@ -15845,7 +15846,7 @@
     "section": {
       "account": "Akunmu",
       "notifications": "Notifikasi",
-      "download": "Aplikasi agentes.chat",
+      "download": "Aplikasi AULACBOT",
       "general": "Umum",
       "right_hand": "Tangan kanan",
       "members": "Anggota",
@@ -15866,7 +15867,7 @@
       "voice": "Suara",
       "apps": "Aplikasi AI",
       "approvals": "Persetujuan",
-      "about": "Tentang agentes.chat",
+      "about": "Tentang AULACBOT",
       "generalPersonal": "Tentang kamu",
       "keysPersonal": "AI dan aplikasi",
       "membersPersonal": "Orang"
@@ -16006,11 +16007,11 @@
     },
     "telemetry": {
       "title": "Statistik pemakaian",
-      "label": "Kirim statistik pemakaian anonim ke agentes.chat",
+      "label": "Kirim statistik pemakaian anonim ke AULACBOT",
       "help": "Angka seperti jumlah orang, agen, ukuran mesin, token AI yang terpakai, dan berapa banyak data yang dikirim dan diterima browser agen. Tidak pernah pesan, file, nama, atau situs.",
       "envOff": "Dimatikan di pengaturan server ini (TELEMETRY=off).",
-      "envOffDesktop": "Dimatikan di aplikasi agentes.chat di komputer server ini (Preferensi › Server).",
-      "envOffHere": "Dimatikan di aplikasi agentes.chat di komputer ini.",
+      "envOffDesktop": "Dimatikan di aplikasi AULACBOT di komputer server ini (Preferensi › Server).",
+      "envOffHere": "Dimatikan di aplikasi AULACBOT di komputer ini.",
       "see": "Lihat apa yang dikirim",
       "dialogTitle": "Apa yang dikirim",
       "dialogText": "Sekali sehari. Ini laporan berikutnya, persis apa adanya."
@@ -16621,7 +16622,7 @@
         "comment": "{{who}} berkomentar di PR #{{number}} ({{repo}}) di GitHub",
         "commentIssue": "{{who}} berkomentar di issue #{{number}} ({{repo}}) di GitHub",
         "commentDiscussion": "{{who}} berkomentar di diskusi #{{number}} ({{repo}}) di GitHub",
-        "opened": "{{who}} memanggil aplikasi agentes.chat di #{{number}} ({{repo}}) di GitHub",
+        "opened": "{{who}} memanggil aplikasi AULACBOT di #{{number}} ({{repo}}) di GitHub",
         "reviewed": "{{who}} meninjau PR #{{number}} ({{repo}}) di GitHub",
         "approved": "{{who}} menyetujui PR #{{number}} ({{repo}}) di GitHub",
         "changes": "{{who}} meminta perubahan di PR #{{number}} ({{repo}}) di GitHub",
@@ -17043,14 +17044,14 @@
       "no_ai_plans_not_yours": "{{plan}} di sini hanya milik {{owner}}. Hubungkan milikmu dan aku akan menjawab.",
       "no_ai_plan_unattended": "Aku tidak menjawab: permintaannya tidak datang dari seseorang, dan paket workspace hanya menjawab pemiliknya.",
       "no_ai_runner_outdated": "Aku belum bisa menjawab sekarang: program di komputer paketku perlu diperbarui.",
-      "no_ai_plan_tools": "Aku berhenti sebelum menjawab: AI paketku di komputer itu tidak tetap memakai alat agentes.chat saja.",
+      "no_ai_plan_tools": "Aku berhenti sebelum menjawab: AI paketku di komputer itu tidak tetap memakai alat AULACBOT saja.",
       "no_ai_model_limit": "Aku tidak bisa menjawab sekarang: {{model}} sudah mencapai batasnya sendiri di paketku.",
       "no_ai_model_region": "Aku tidak bisa menjawab: {{model}} butuh wilayah Global dinyalakan di OpenCode (Settings › Privacy).",
       "no_ai_model_off": "Saya tidak bisa menjawab: OpenCode menolak {{model}} dengan kunci saya. Aktifkan model atau akunnya di OpenCode, atau ganti model saya.",
       "no_ai_plan_inactive": "Saya tidak bisa menjawab: OpenCode Go tidak aktif di akun OpenCode kunci saya. Periksa langganan Go di OpenCode, atau hubungkan kunci dari akun yang punya Go.",
       "no_ai_commands_off": "Aku tidak bisa menjawab sekarang: perintah dimatikan di komputer paketku.",
       "no_ai_cli_missing": "Aku belum bisa menjawab: program AI-ku tidak terpasang di komputerku.",
-      "no_ai_plan_hold": "Saya menyimpan pesanmu. Saya akan menjawab di sini setelah workspace punya paket agentes.chat dan AI yang terhubung.",
+      "no_ai_plan_hold": "Saya menyimpan pesanmu. Saya akan menjawab di sini setelah workspace punya paket AULACBOT dan AI yang terhubung.",
       "no_ai_no_computer": "Aku belum bisa menjawab: AI-ku butuh komputer dan aku tidak punya.",
       "redacted": "[dihapus: tampak seperti data masuk atau kunci]",
       "action_connect_ai": "Hubungkan AI",
@@ -17539,7 +17540,7 @@
     "machine": {
       "ready": "Siap",
       "off": "Mati",
-      "offHelp": "Orang yang menghubungkan komputer menyalakannya di sini atau di aplikasi agentes.chat di komputer itu: Preferensi → Alat.",
+      "offHelp": "Orang yang menghubungkan komputer menyalakannya di sini atau di aplikasi AULACBOT di komputer itu: Preferensi → Alat.",
       "needsCommand": "Butuh perintah",
       "notReady": "Belum siap",
       "turnOff": "Matikan",
@@ -17778,7 +17779,7 @@
     "paused": "Agen di ruang kerja ini dijeda untuk ditinjau.",
     "suspended": "Ruang kerja ini untuk sementara tidak tersedia.",
     "createRefused": "Kamu tidak bisa membuat ruang kerja sekarang.",
-    "createUnpaid": "Kamu sudah punya ruang kerja yang menunggu paket agentes.chat. Pilih paketnya sebelum membuat yang lain.",
+    "createUnpaid": "Kamu sudah punya ruang kerja yang menunggu paket AULACBOT. Pilih paketnya sebelum membuat yang lain.",
     "createUnpaidOpen": "Buka {{name}}",
     "createInactive": "Kamu sudah punya ruang kerja yang belum aktif, jadi untuk sementara kamu tidak bisa membuat yang lain.",
     "agentPaused": "Agen ini sedang dijeda.",
@@ -17799,25 +17800,25 @@
       "active": "Ruang kerja berfungsi lagi",
       "agentHold": "{{name}} dijeda",
       "billing": {
-        "payment": "Ruang kerja butuh paket agentes.chat",
-        "unpaid": "Pembayaran paket agentes.chat gagal",
-        "ended": "Paket agentes.chat ruang kerja telah berakhir"
+        "payment": "Ruang kerja butuh paket AULACBOT",
+        "unpaid": "Pembayaran paket AULACBOT gagal",
+        "ended": "Paket AULACBOT ruang kerja telah berakhir"
       }
     },
     "billing": {
-      "payment": "Ruang kerja ini belum punya paket agentes.chat. Agennya mulai bekerja setelah paketnya aktif.",
-      "unpaid": "Pembayaran paket agentes.chat ruang kerja ini gagal, dan agennya berhenti.",
-      "ended": "Paket agentes.chat ruang kerja ini telah berakhir, dan agennya berhenti. Percakapan dan filenya masih ada untuk dibaca dan diunduh.",
-      "sub": "Kamu tetap bisa membaca dan menulis di sini. Agen kembali setelah paket agentes.chat beres.",
+      "payment": "Ruang kerja ini belum punya paket AULACBOT. Agennya mulai bekerja setelah paketnya aktif.",
+      "unpaid": "Pembayaran paket AULACBOT ruang kerja ini gagal, dan agennya berhenti.",
+      "ended": "Paket AULACBOT ruang kerja ini telah berakhir, dan agennya berhenti. Percakapan dan filenya masih ada untuk dibaca dan diunduh.",
+      "sub": "Kamu tetap bisa membaca dan menulis di sini. Agen kembali setelah paket AULACBOT beres.",
       "cta": {
-        "payment": "Lihat paket agentes.chat",
+        "payment": "Lihat paket AULACBOT",
         "unpaid": "Perbarui pembayaran",
         "ended": "Berlangganan lagi"
       },
       "askAdmin": "Pengelola ruang kerja ini bisa menyelesaikannya.",
-      "paid": "Pembayaran diterima. Paket agentes.chat akan dimulai sebentar lagi.",
-      "teamReady": "Timmu sudah siap. Perlu paket agentes.chat untuk mulai.",
-      "invites": "Undangan terbuka bersama paket agentes.chat."
+      "paid": "Pembayaran diterima. Paket AULACBOT akan dimulai sebentar lagi.",
+      "teamReady": "Timmu sudah siap. Perlu paket AULACBOT untuk mulai.",
+      "invites": "Undangan terbuka bersama paket AULACBOT."
     },
     "cloud": {
       "review": "Dijeda untuk tinjauan keamanan, sampai tim kami memeriksanya. Pemeriksaan otomatis kami menandai aktivitas yang mungkin melanggar Ketentuan kami (bagian 5). Untuk mengajukan keberatan, tulis ke {{email}}.",
@@ -17947,7 +17948,7 @@
     "open": "Buka paket dan tagihan",
     "opening": "Membuka…",
     "failed": "Tidak bisa membukanya sekarang. Coba lagi sebentar lagi.",
-    "adminsOnly": "Hanya pemilik dan admin ruang kerja yang mengelola paket agentes.chat-nya.",
+    "adminsOnly": "Hanya pemilik dan admin ruang kerja yang mengelola paket AULACBOT-nya.",
     "seeOptions": "Lihat opsi",
     "people": "Orang",
     "files": "File",
@@ -17959,8 +17960,8 @@
   "limits": {
     "members": {
       "full": "Ruang kerja ini berisi {{members}} dari {{limit}} orang.",
-      "fullOne": "Paket agentes.chat ruang kerja ini hanya untuk 1 orang.",
-      "fullAdmin": "Untuk mengajak lebih banyak orang, lihat pilihan paket agentes.chat.",
+      "fullOne": "Paket AULACBOT ruang kerja ini hanya untuk 1 orang.",
+      "fullAdmin": "Untuk mengajak lebih banyak orang, lihat pilihan paket AULACBOT.",
       "fullMember": "Minta pengelola ruang kerja untuk memberi tempat.",
       "fullAddSeat": "Semua kursi berbayar sudah terisi. Tambahkan kursi di Paket dan tagihan.",
       "fullTop": "Paket ini tidak bisa menampung lebih banyak orang. Ganti paket di Paket dan tagihan.",
@@ -17976,7 +17977,7 @@
       "meter": "Kamu sudah memakai {{used}} dari {{limit}}.",
       "near": "Kamu sudah memakai {{used}} dari {{limit}}. Unggahan berhenti saat mencapai batas, dan tidak ada yang dihapus.",
       "full": "Unggahan berhenti di {{limit}}. Tidak ada yang dihapus.",
-      "fullAdmin": "Ganti paket agentes.chat, hapus file yang tidak lagi kamu pakai, atau hubungkan bucket milikmu.",
+      "fullAdmin": "Ganti paket AULACBOT, hapus file yang tidak lagi kamu pakai, atau hubungkan bucket milikmu.",
       "dailyFull": "Unggahan hari ini mencapai {{limit}}. Kamu bisa mengunggah lagi dalam beberapa jam.",
       "connectBucket": "Hubungkan bucket"
     }
@@ -18324,7 +18325,7 @@
       "screensOff": "Layar dimatikan di {{computer}}. Nyalakan di sana:",
       "screensOffOne": "Layar mati di {{computer}}.",
       "screensMissing": "{{computer}} belum bisa menampilkan layar. Di komputer itu:",
-      "outdated": "Perbarui agentes di {{computer}} untuk melihat layar {{name}}.",
+      "outdated": "Perbarui AULACBOT di {{computer}} untuk melihat layar {{name}}.",
       "noScreen": "{{name}} tidak punya layar untuk ditampilkan di sini",
       "noScreenHelp": "Izinkan layar atau browser di Alat dan akses.",
       "noComputer": "Pilih komputer untuk {{name}}.",
@@ -18459,7 +18460,7 @@
       "browser": "Browser",
       "screen": "Layar komputer",
       "terminal": "Terminal",
-      "agentes": "agentes",
+      "agentes": "AULACBOT",
       "thinking": "Berpikir",
       "inside": "{{program}} · {{detail}}"
     },
@@ -19204,7 +19205,7 @@
     },
     "action": {
       "signIn": "Masuk",
-      "open": "Buka agentes.chat",
+      "open": "Buka AULACBOT",
       "latest": "Buka versi terbaru",
       "file": "Buka file",
       "retry": "Coba lagi"
@@ -19441,7 +19442,7 @@
     "beta": {
       "word": "BETA",
       "title": "Kamu datang lebih awal. Senang kamu di sini.",
-      "text": "agentes.chat masih beta: kamu sudah bisa benar-benar bekerja dengannya, dan kami masih memolesnya.",
+      "text": "AULACBOT masih beta: kamu sudah bisa benar-benar bekerja dengannya, dan kami masih memolesnya.",
       "weekly": {
         "title": "Makin baik tiap minggu",
         "text": "Hal baru dan perbaikan terus keluar."
@@ -19477,7 +19478,7 @@
     "mark": "Beta",
     "open": "Kirim masukan",
     "ask": "Apa yang kurang, rusak, atau mengganggu?",
-    "goesCloud": "Yang kamu tulis dikirim lewat email ke tim agentes.chat.",
+    "goesCloud": "Yang kamu tulis dikirim lewat email ke tim AULACBOT.",
     "goesServer": "Yang kamu tulis dikirim lewat email ke pengelola server ini.",
     "placeholder": "Tulis dengan caramu",
     "report": "Laporkan masalah di sini",
@@ -19503,14 +19504,14 @@
     "offer": {
       "group": "Laporan tentang aplikasi",
       "ready": "<b>Laporan siap</b>: {{summary}}",
-      "goesCloud": "Dikirim atas namamu ke tim agentes.chat",
+      "goesCloud": "Dikirim atas namamu ke tim AULACBOT",
       "goesServer": "Dikirim atas namamu ke pengelola server ini",
       "see": "Lihat laporan",
       "hide": "Tutup laporan",
       "send": "Kirim",
       "notNow": "Nanti saja",
       "answer": "Jawabannya dikirim ke emailmu.",
-      "sentCloud": "<b>Laporan terkirim</b> ke tim agentes.chat",
+      "sentCloud": "<b>Laporan terkirim</b> ke tim AULACBOT",
       "sentServer": "<b>Laporan terkirim</b> ke pengelola server ini",
       "sentAuto": "<b>Laporan terkirim tanpa bertanya</b>: {{summary}}",
       "view": "Lihat",

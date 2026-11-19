@@ -231,7 +231,7 @@ export function WorkspacesPage() {
 
 /**
  * Adicionar workspace, a short sheet (the system's form sheet, sized to its rows): on a server of one's own, a new one
- * there first; a new one on agentes.chat, or the team's own server; one line under them says nothing is lost.
+ * there first; a new one on AULACBOT, or the team's own server; one line under them says nothing is lost.
  */
 export function AddWorkspacePage() {
   const { t } = useTranslation();
@@ -239,7 +239,7 @@ export function AddWorkspacePage() {
   const me = useMe().data;
   const create = () => {
     askNewWorkspace(CLOUD_SERVER);
-    // Signed in to agentes.chat already: its first run opens over the app; otherwise its sign-in comes first.
+    // Signed in to AULACBOT already: its first run opens over the app; otherwise its sign-in comes first.
     if (serverUrl() === CLOUD_SERVER) router.dismissTo("/");
     else void openWorkspace(CLOUD_SERVER, null);
   };
@@ -271,7 +271,7 @@ export function AddWorkspacePage() {
         <GroupedRow
           icon="person"
           label={t("mobile.me.addAccount")}
-          sub={t("mobile.me.addAccountSub", { host: server === CLOUD_SERVER ? "agentes.chat" : serverHost(server) })}
+          sub={t("mobile.me.addAccountSub", { host: server === CLOUD_SERVER ? "AULACBOT" : serverHost(server) })}
           chevron
           onPress={() => void addAccount(server)}
         />

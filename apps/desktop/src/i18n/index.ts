@@ -15,6 +15,7 @@ import { initReactI18next } from "react-i18next";
 import type { Platform } from "../control/platform";
 import { type DesktopTranslations, desktopEn } from "./keys.en";
 import { desktopPtBR } from "./keys.pt-BR";
+import { desktopVi } from "./keys.vi";
 import de from "./locales/de.json";
 import es from "./locales/es.json";
 import fr from "./locales/fr.json";
@@ -48,6 +49,7 @@ export const DESKTOP_STRINGS: Record<AppLocale, LocaleStrings> = {
   tr,
   pl,
   ru,
+  vi: desktopVi,
 };
 
 /** A language's desktop strings with English under every key it lacks (the cover page reads them without i18next). */
@@ -72,11 +74,19 @@ export function withDesktopKeys(resources: Record<string, Record<string, object>
 export const LOCALE_PREF = "locale";
 
 /** The languages people can pick, each by its own name. */
-export const locales = readyLocales().map((l) => ({ code: l.code, label: l.native }));
+export const locales = [
+  ...readyLocales().map((l) => ({ code: l.code, label: l.native })),
+  { code: "vi" as const, label: "Tiếng Việt" },
+];
 
-/** The system's languages (most preferred first) mapped to ours: "pt-PT" → pt-BR, "en-GB" → en, else English. */
+/**
+ * The system's languages (most preferred first) mapped to ours: "vi-VN" → vi, "pt-PT" → pt-BR. English is the
+ * source language, not this app's default: a computer set to English (or to a language we don't carry) opens in
+ * Vietnamese, and Preferences can still pick English or any other language.
+ */
 export function pickLocale(tags: readonly (string | null | undefined)[]): AppLocale {
-  return appLocale(tags) ?? DEFAULT_LOCALE;
+  if (tags.some((tag) => tag?.trim().toLowerCase().startsWith("vi"))) return "vi";
+  return appLocale(tags.filter((tag) => !tag?.trim().toLowerCase().startsWith("en"))) ?? "vi";
 }
 
 export function detectedLocale(): AppLocale {

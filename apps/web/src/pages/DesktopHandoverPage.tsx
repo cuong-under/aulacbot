@@ -5,6 +5,7 @@ import { useAuth } from "@/auth/context";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
 import { takeFragmentParam } from "@/lib/fragment";
+import { PRODUCT_LOOK } from "@/lib/look";
 import { STORAGE_KEYS, storage } from "@/lib/storage";
 import { notedSignInOnThisMac, takeReturnOnThisMac } from "@/lib/this-mac-proof";
 
@@ -43,7 +44,12 @@ export function DesktopHandoverPage({ to }: { to?: string }) {
     <AuthShell>
       <div className="auth__form">
         <header className="auth__ask">
-          <AgentAvatar name="agentes.chat" size="lg" state={failed ? undefined : "writing"} />
+          <AgentAvatar
+            name="AULACBOT"
+            size="lg"
+            appearance={PRODUCT_LOOK}
+            state={failed ? undefined : "writing"}
+          />
           <div className="auth__bubble" key={String(failed)} aria-live="polite">
             <h1 className="auth__title">{failed ? t("auth.desktop.handoverFailed") : t("auth.desktop.handover")}</h1>
             {failed && <p className="auth__lead">{t("auth.desktop.handoverFailedLead")}</p>}

@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "agentes",
-    "tabTitle": "agentes.chat · Dein Team und deine Agenten, in derselben Unterhaltung"
+    "name": "AULACBOT",
+    "tabTitle": "AULACBOT · Dein Team und deine Agenten, in derselben Unterhaltung"
   },
   "common": {
     "close": "Schließen",
@@ -28,7 +28,7 @@
     "overLimit": "Der Text hat {{length}} Zeichen, das Limit liegt bei {{max}}. Kürze ihn.",
     "ourSide": "Bei uns ist etwas schiefgelaufen. Versuch es gleich noch einmal.",
     "signedOut": "Deine Sitzung ist abgelaufen. Melde dich erneut an, um weiterzumachen.",
-    "newVersion": "Eine neue Version von agentes.chat ist da.",
+    "newVersion": "Eine neue Version von AULACBOT ist da.",
     "reload": "Neu laden",
     "copy": "Kopieren",
     "copied": "Kopiert",
@@ -51,7 +51,7 @@
     "notAllowed": "Dafür hast du keine Berechtigung.",
     "tooMany": "Zu viele Versuche. Versuch es später noch einmal.",
     "offline": "Du bist offline. Prüf deine Verbindung und versuch es noch einmal.",
-    "unreachable": "agentes.chat ist gerade nicht erreichbar. Versuch es gleich noch einmal."
+    "unreachable": "AULACBOT ist gerade nicht erreichbar. Versuch es gleich noch einmal."
   },
   "roles": {
     "owner": "Inhaber",
@@ -536,7 +536,7 @@
     "recommended": "Empfohlen",
     "free": "Kostenlos · Open Source",
     "cloud": {
-      "name": "agentes.chat Cloud",
+      "name": "AULACBOT Cloud",
       "short": "Immer an, nichts zu installieren.",
       "on": "Der Computer der Agenten ist immer an",
       "care": "Updates und Backups übernehmen wir",
@@ -556,7 +556,7 @@
       "address": "Serveradresse",
       "connect": "Verbinden",
       "invalid": "Das ist keine Adresse. Schreib sie wie im Browser, zum Beispiel agentes.example.com.",
-      "unreachable": "Wir haben agentes.chat unter {{host}} nicht gefunden. Prüf die Adresse und ob der Server an ist.",
+      "unreachable": "Wir haben AULACBOT unter {{host}} nicht gefunden. Prüf die Adresse und ob der Server an ist.",
       "none": "Noch keinen?",
       "noneLink": "So bekommst du deinen, kostenlos"
     },
@@ -665,11 +665,11 @@
       "openMail": "{{app}} öffnen",
       "ownerWaits": "Dieser Server wartet auf seinen Inhaber.",
       "ownerWaitsLead": "Öffne den Inhaber-Link dieses Servers (er endet auf /owner#claim=…), auf diesem Computer oder auf deinem Handy.",
-      "noPassword": "Dieses Konto meldet sich über die agentes.chat-App an.",
+      "noPassword": "Dieses Konto meldet sich über die AULACBOT-App an.",
       "noPasswordLead": "Öffne auf dem Computer, auf dem dieser Server läuft, die App und wähle Passwort hinzufügen unter Einstellungen › Dein Konto.",
       "backToSignIn": "Zurück zur Anmeldung",
       "backToAccount": "Zurück zu {{name}}",
-      "toAuthorizeApp": "Um eine App mit agentes.chat zu verbinden."
+      "toAuthorizeApp": "Um eine App mit AULACBOT zu verbinden."
     },
     "desktop": {
       "browser": "Mach in deinem Browser weiter",
@@ -680,11 +680,11 @@
       "otherServer": "Anderen Server verwenden",
       "opening": "{{provider}} wird geöffnet…",
       "confirm": "Ist das deine App?",
-      "confirmLead": "Dieser Code sollte mit dem übereinstimmen, den die agentes.chat-App auf deinem Computer zeigt.",
+      "confirmLead": "Dieser Code sollte mit dem übereinstimmen, den die AULACBOT-App auf deinem Computer zeigt.",
       "confirmYes": "Ja, App anmelden",
       "confirmNo": "Das war ich nicht",
       "done": "Alles bereit.",
-      "doneLead": "Du bist in der agentes-App angemeldet. Du kannst diesen Tab schließen.",
+      "doneLead": "Du bist in der AULACBOT-App angemeldet. Du kannst diesen Tab schließen.",
       "expired": "Diese Anfrage ist abgelaufen.",
       "expiredLead": "Geh zurück zur App und wähle noch einmal {{provider}}.",
       "handover": "Anmeldung mit deinem Konto vom anderen Gerät…",
@@ -704,19 +704,19 @@
     },
     "desktopOwner": {
       "continue": "Auf diesem {{device}} weitermachen",
-      "text": "Du hast agentes.chat auf diesem {{device}} eingerichtet: Kein Passwort nötig.",
+      "text": "Du hast AULACBOT auf diesem {{device}} eingerichtet: Kein Passwort nötig.",
       "gone": "Der Inhaber dieses Servers hat sein Konto gelöscht, daher kann „Auf diesem {{device}} weitermachen“ niemanden anmelden. Melde dich stattdessen mit deiner eigenen E-Mail an.",
-      "none": "Im agentes.chat auf diesem {{device}} ist kein Konto mehr übrig. Lege seinen neuen Inhaber im Fenster an, das sich geöffnet hat."
+      "none": "Im AULACBOT auf diesem {{device}} ist kein Konto mehr übrig. Lege seinen neuen Inhaber im Fenster an, das sich geöffnet hat."
     },
     "server": {
       "into": "Anmeldung bei <b>{{server}}</b>",
-      "intoHere": "Anmeldung bei agentes.chat <b>auf diesem {{device}}</b>",
-      "intoCloud": "Anmeldung bei <b>agentes.chat Cloud</b>",
+      "intoHere": "Anmeldung bei AULACBOT <b>auf diesem {{device}}</b>",
+      "intoCloud": "Anmeldung bei <b>AULACBOT Cloud</b>",
       "change": "Server wechseln"
     },
     "forgotHere": {
       "ownerTitle": "Hier brauchst du kein Passwort.",
-      "ownerLead": "Du hast agentes.chat auf diesem {{device}} installiert. Melde dich hier an und lege danach ein neues Passwort fest.",
+      "ownerLead": "Du hast AULACBOT auf diesem {{device}} installiert. Melde dich hier an und lege danach ein neues Passwort fest.",
       "notOwner": "Nicht das Konto der Person, die es installiert hat? Bitte einen Inhaber deines Workspace um einen Link für ein neues Passwort.",
       "title": "Dieser Server verschickt keine E-Mails.",
       "lead": "Bitte einen Inhaber deines Workspace um einen Link für ein neues Passwort. Er erstellt ihn unter Mitglieder, und der Link gilt 1 Stunde.",
@@ -966,7 +966,7 @@
         "edit": "Avatar bearbeiten",
         "upload": "Foto hochladen",
         "area": "Woran arbeitest du?",
-        "areaHint": "Optional. Nur damit wir wissen, wer agentes.chat nutzt."
+        "areaHint": "Optional. Nur damit wir wissen, wer AULACBOT nutzt."
       },
       "area": {
         "options": {
@@ -1042,7 +1042,7 @@
         "asleep": "Schläft bis zum Tarif",
         "price": "<b>Tarif {{name}}</b> · {{price}} pro Monat",
         "name": "<b>Tarif {{name}}</b>",
-        "generic": "Ein agentes.chat-Tarif",
+        "generic": "Ein AULACBOT-Tarif",
         "cancel": "Jederzeit kündbar",
         "cta": "Team einschalten",
         "all": "Alle Tarife ansehen",
@@ -1101,7 +1101,7 @@
     },
     "yourCompany": "deine Firma",
     "purpose": {
-      "title": "Wofür wirst du agentes.chat nutzen?",
+      "title": "Wofür wirst du AULACBOT nutzen?",
       "lead": "Du kannst das später ändern, nichts geht verloren.",
       "personal": "Für mich",
       "personalText": "Agenten für deinen Kalender, deine Rechnungen, dein Training und alles, worum du sonst bittest.",
@@ -1184,7 +1184,7 @@
         "leadDots": "MCP lässt deinen Dot über ein Plugin, das du in ChatGPT hinzufügst, auf diesen Workspace zugreifen, damit er die Agenten hier selbst anlegt.",
         "howTo": "So verbindest du jede App",
         "paste": "Füge diese Anfrage in die App ein:",
-        "prompt": "Nutze den MCP-Server von agentes.chat, den du gerade verbunden hast ({{url}}), um das, was du hast, zu agentes.chat zu übertragen. Rufe zuerst import_summary auf, um zu sehen, was dort schon existiert, damit nichts doppelt angelegt wird. Lege dann für jeden Agenten, jede Anweisung, jeden Skill und jede Routine, die du hast, das Gegenstück mit create_agent, create_skill und create_routine an, und speichere mit add_memory, was sich jeder Agent merken soll.",
+        "prompt": "Nutze den MCP-Server von AULACBOT, den du gerade verbunden hast ({{url}}), um das, was du hast, zu AULACBOT zu übertragen. Rufe zuerst import_summary auf, um zu sehen, was dort schon existiert, damit nichts doppelt angelegt wird. Lege dann für jeden Agenten, jede Anweisung, jeden Skill und jede Routine, die du hast, das Gegenstück mit create_agent, create_skill und create_routine an, und speichere mit add_memory, was sich jeder Agent merken soll.",
         "promptLabel": "Anfrage für deine KI-App",
         "copy": "Anfrage kopieren",
         "copied": "Füge sie jetzt in deine KI-App ein.",
@@ -1197,7 +1197,7 @@
         "paused": "Mit MCP verbinden ist aus, solange dieser Workspace pausiert ist. Hol die Agenten vorerst auf diesem Weg."
       },
       "otherName": "Andere App",
-      "agenteschatName": "agentes.chat",
+      "agenteschatName": "AULACBOT",
       "where": {
         "openbotrun": "Leg openbot-import.json (aus dem Migrator von OpenBot) oder openbot-transfer.json (aus dem Instanz-Transfer) hier ab, oder die .zip-Datei, in der sie kam.",
         "openmausbot": "In OpenMausBot: Rechtsklick auf das Team → Team teilen… → Datei speichern.",
@@ -1458,8 +1458,8 @@
     "keyStep": {
       "title": "Welche KI sollen sie nutzen?",
       "lead": "Melde dich mit deinem KI-Abo an: kein API-Schlüssel nötig.",
-      "paid": "Dein agentes.chat-Tarif ist aktiv. Ihr Computer ist unterwegs.",
-      "confirming": "Die Zahlung für den agentes.chat-Tarif dieses Workspace wird bestätigt.",
+      "paid": "Dein AULACBOT-Tarif ist aktiv. Ihr Computer ist unterwegs.",
+      "confirming": "Die Zahlung für den AULACBOT-Tarif dieses Workspace wird bestätigt.",
       "leadNoComputer": "Deine Agenten denken mit einem API-Schlüssel oder mit deinem KI-Abo auf einem Computer, den du verbindest."
     },
     "jev": {
@@ -1470,7 +1470,7 @@
       "title": "Ausgabenlimit pro Agent",
       "label": "Monatslimit pro Agent, in Dollar",
       "perMonth": "/Monat",
-      "noteKey": "Nur für API-Nutzung, abgerechnet vom Anbieter des Schlüssels, nicht von agentes.chat. Erreicht ein Agent das Limit, hält er an und sagt dir Bescheid. Abos zählen hier nicht.",
+      "noteKey": "Nur für API-Nutzung, abgerechnet vom Anbieter des Schlüssels, nicht von AULACBOT. Erreicht ein Agent das Limit, hält er an und sagt dir Bescheid. Abos zählen hier nicht.",
       "notePlatform": "Nur für API-Nutzung. Erreicht ein Agent das Limit, hält er an und sagt dir Bescheid."
     },
     "keySite": "Erstelle den Schlüssel auf {{site}}.",
@@ -1525,7 +1525,7 @@
     },
     "team": {
       "title": "Wer arbeitet noch mit dir?",
-      "payment": "Du kannst dein Team einladen, sobald du einen agentes.chat-Tarif wählst.",
+      "payment": "Du kannst dein Team einladen, sobald du einen AULACBOT-Tarif wählst.",
       "lead": "Lade sie per E-Mail ein oder teile den Link.",
       "leadLink": "Teile den Einladungslink mit ihnen.",
       "emails": "E-Mails",
@@ -1637,7 +1637,7 @@
     "reload": "Neu laden",
     "search": "Suchen oder fragen…",
     "look": "Rechtsklick",
-    "lookOurs": "agentes.chat",
+    "lookOurs": "AULACBOT",
     "lookSystem": "System",
     "markRead": "Als gelesen markieren",
     "muteChannel": "Kanal stummschalten",
@@ -1662,8 +1662,8 @@
     "copied": "Kopiert. Füge es im Terminal ein.",
     "mac": {
       "why": "<b>Die App ist in der Beta.</b> Deshalb bittet dein Mac beim ersten Mal um eine Bestätigung:",
-      "drag": "Zieh agentes.chat in den Ordner Programme.",
-      "dragLong": "Öffne die heruntergeladene Datei und zieh agentes.chat in den Ordner Programme.",
+      "drag": "Zieh AULACBOT in den Ordner Programme.",
+      "dragLong": "Öffne die heruntergeladene Datei und zieh AULACBOT in den Ordner Programme.",
       "blocked": "Öffne die App und klick auf Fertig.",
       "blockedSub": "Klick nicht auf In den Papierkorb legen.",
       "settings": "Klick unter Systemeinstellungen › Datenschutz & Sicherheit auf Dennoch öffnen.",
@@ -1690,17 +1690,17 @@
       "why": "Für Ubuntu, Debian und ähnliche Systeme (x64). Linux fragt nichts zusätzlich:",
       "apt": "Installier die .deb per Doppelklick oder über das Terminal.",
       "aptLong": "Doppelklick auf die heruntergeladene Datei und klick auf Installieren, oder füge das im Terminal ein:",
-      "open": "Öffne agentes.chat aus deinen Apps.",
+      "open": "Öffne AULACBOT aus deinen Apps.",
       "otherTitle": "Arch, Fedora oder ein anderes System, das kein .deb annimmt?",
       "otherText": "Lade das AppImage herunter: Es läuft auf jeder Distribution und aktualisiert sich selbst. Füge danach das hier im Terminal ein, in dem Ordner, in dem du es gespeichert hast:",
       "appImage": "AppImage herunterladen"
     },
     "page": {
-      "docTitle": "App herunterladen · agentes.chat",
-      "title": "Lade die agentes.chat-App herunter",
+      "docTitle": "App herunterladen · AULACBOT",
+      "title": "Lade die AULACBOT-App herunter",
       "beta": "Beta",
       "text": "Dein Workspace in einem eigenen Fenster, mit den Benachrichtigungen deines Systems. Mit einem Klick arbeiten Agenten auf diesem Computer, in eigenen Ordnern.",
-      "open": "agentes.chat öffnen",
+      "open": "AULACBOT öffnen",
       "version": "Version {{version}}",
       "versionSize": "Version {{version}} · {{size}}",
       "soon": "Für {{system}} gibt es noch keine Version.",
@@ -1710,7 +1710,7 @@
       "installOn": "Auf {{system}} installieren",
       "system": "System",
       "whyTitle": "Warum bittet mein Computer um eine Bestätigung?",
-      "whyText": "agentes.chat ist in der Beta: Die Mac-Version ist noch nicht von Apple notarisiert, und das Windows-Installationsprogramm trägt noch kein Microsoft-Zertifikat. Ohne sie fragt dein Computer einmal nach, bevor er eine aus dem Internet geladene App öffnet. Danach öffnet sie sich sofort und aktualisiert sich selbst. Vor dem Ende der Beta fällt dieser Schritt weg.",
+      "whyText": "AULACBOT ist in der Beta: Die Mac-Version ist noch nicht von Apple notarisiert, und das Windows-Installationsprogramm trägt noch kein Microsoft-Zertifikat. Ohne sie fragt dein Computer einmal nach, bevor er eine aus dem Internet geladene App öffnet. Danach öffnet sie sich sofort und aktualisiert sich selbst. Vor dem Ende der Beta fällt dieser Schritt weg.",
       "openSource": "Open Source",
       "onlyHere": "Nur hier und in den Releases des Projekts veröffentlicht",
       "signedUpdates": "Signierte Updates"
@@ -1792,6 +1792,7 @@
       "angry": "Wütend"
     },
     "names": {
+      "lac": "Cyber Lạc",
       "night": "Nacht",
       "moon": "Mond",
       "sky": "Himmel",
@@ -2024,7 +2025,7 @@
     "addAccount": "Konto hinzufügen",
     "addAccountHint": "Bei einem weiteren Konto anmelden, ohne dieses zu verlassen",
     "yourServer": "Dein Server",
-    "serverHere": "agentes.chat auf diesem {{device}}",
+    "serverHere": "AULACBOT auf diesem {{device}}",
     "serverStopped": "gestoppt",
     "serverOffline": "offline seit {{time}}",
     "serverSignedOut": "nicht angemeldet",
@@ -2180,9 +2181,9 @@
     "googlePlay": "Google Play"
   },
   "openOnPhone": {
-    "qr": "QR-Code zum Anmelden in der agentes-App",
+    "qr": "QR-Code zum Anmelden in der AULACBOT-App",
     "making": "Code wird erstellt…",
-    "stepApp": "Installiere die agentes-App auf deinem Handy.",
+    "stepApp": "Installiere die AULACBOT-App auf deinem Handy.",
     "stepTailscale": "Installiere Tailscale auf deinem Handy und melde dich mit demselben Tailscale-Konto an wie dieser Server.",
     "appStore": "App Store",
     "googlePlay": "Google Play",
@@ -2191,7 +2192,7 @@
     "private": "Wer diesen Code scannt, ist als du angemeldet.",
     "failed": "Der Code konnte nicht erstellt werden.",
     "localOnly": "Dieser Server öffnet sich nur auf dem Computer, auf dem er läuft, deshalb erreicht dein Handy ihn nicht.",
-    "localOnlyHow": "Schalte in der agentes.chat-App auf diesem Computer unter Einstellungen › Server die Option Von deinem Handy und deinem Team erreichbar ein. Komm dann hierher zurück.",
+    "localOnlyHow": "Schalte in der AULACBOT-App auf diesem Computer unter Einstellungen › Server die Option Von deinem Handy und deinem Team erreichbar ein. Komm dann hierher zurück.",
     "localOnlyHere": "Schalte Von deinem Handy und deinem Team erreichbar ein. Komm dann hierher zurück."
   },
   "team": {
@@ -2648,8 +2649,8 @@
       "greetingPersonal": "Hallo, ich bin {{name}}. Ich richte deine Agenten mit dir ein.",
       "lead": "Ich erstelle die Agenten, verbinde die Apps und lade die Leute ein. Nichts ändert sich, ohne dass du darum bittest, und ich tue nur, was du tun darfst.",
       "leadPersonal": "Ich erstelle deine Agenten und verbinde deine Apps. Nichts ändert sich, ohne dass du darum bittest.",
-      "heldLead": "Wähle, was dein Unternehmen macht, und das Team erscheint hier. Die Agenten beginnen zu arbeiten, sobald der Workspace einen agentes.chat-Tarif hat.",
-      "heldLeadPersonal": "Wähle, wobei du Hilfe möchtest, und deine Agenten erscheinen hier. Sie beginnen zu arbeiten, sobald du einen agentes.chat-Tarif hast.",
+      "heldLead": "Wähle, was dein Unternehmen macht, und das Team erscheint hier. Die Agenten beginnen zu arbeiten, sobald der Workspace einen AULACBOT-Tarif hat.",
+      "heldLeadPersonal": "Wähle, wobei du Hilfe möchtest, und deine Agenten erscheinen hier. Sie beginnen zu arbeiten, sobald du einen AULACBOT-Tarif hast.",
       "connect": {
         "title": "Eine KI für das Team verbinden",
         "titlePersonal": "Eine KI für deine Agenten verbinden",
@@ -3106,7 +3107,7 @@
       "plans_not_yours": "Das {{plan}} hier gehört nur {{owner}}. Verbinde deins, dann antworte ich.",
       "plan_unattended": "{{name}} hat nicht geantwortet: Die Anfrage kam nicht von einer Person, und das Abo des Workspace antwortet nur der Person, der es gehört.",
       "runner_outdated": "{{name}} kann gerade nicht antworten: Das Programm auf dem Computer des Abos braucht ein Update.",
-      "plan_tools": "{{name}} hat vor der Antwort gestoppt: Die KI des Abos ist auf diesem Computer nicht bei den Werkzeugen von agentes.chat geblieben.",
+      "plan_tools": "{{name}} hat vor der Antwort gestoppt: Die KI des Abos ist auf diesem Computer nicht bei den Werkzeugen von AULACBOT geblieben.",
       "model_limit": "{{name}} kann gerade nicht antworten: {{model}} hat sein eigenes Limit im Abo erreicht. Die anderen Modelle des Abos funktionieren weiter.",
       "model_region": "{{name}} kann nicht antworten: {{model}} braucht die Region Global, eingeschaltet in OpenCode (Settings › Privacy).",
       "model_off": "{{name}} kann nicht antworten: OpenCode hat {{model}} mit diesem Schlüssel abgelehnt. Schalte das Modell oder das Konto in OpenCode ein, oder wähle ein anderes Modell.",
@@ -3117,16 +3118,16 @@
     "kept": {
       "title": "Ich habe deine Nachricht aufgehoben",
       "wait": {
-        "payment": "Ich antworte hier, sobald der Workspace einen agentes.chat-Tarif hat.",
-        "unpaid": "Ich antworte hier, sobald die Zahlung für den agentes.chat-Tarif durchgeht.",
-        "ended": "Ich antworte hier, sobald der Workspace agentes.chat wieder abonniert."
+        "payment": "Ich antworte hier, sobald der Workspace einen AULACBOT-Tarif hat.",
+        "unpaid": "Ich antworte hier, sobald die Zahlung für den AULACBOT-Tarif durchgeht.",
+        "ended": "Ich antworte hier, sobald der Workspace AULACBOT wieder abonniert."
       },
-      "askAdmin": "Ich antworte hier, sobald ein Admin den agentes.chat-Tarif geklärt hat.",
+      "askAdmin": "Ich antworte hier, sobald ein Admin den AULACBOT-Tarif geklärt hat.",
       "plan": "Der Tarif bringt den Computer der Agenten, immer eingeschaltet. Die KI ist die, für die du schon zahlst: Claude, ChatGPT und andere oder ein API-Schlüssel.",
       "activeTitle": "Tarif aktiv",
       "activeLine": "Verbinde eine KI und {{name}} antwortet hier.",
       "receipt": "Aufgehoben",
-      "channel": "Aufgehoben. Die Agenten antworten, sobald der Workspace einen agentes.chat-Tarif hat."
+      "channel": "Aufgehoben. Die Agenten antworten, sobald der Workspace einen AULACBOT-Tarif hat."
     },
     "receipt": "Niemand wird antworten: keine KI verbunden",
     "notYours": {
@@ -3157,7 +3158,7 @@
       "gitMissing": "{{program}} braucht Git for Windows auf {{computer}}.",
       "getGit": "Git for Windows herunterladen",
       "cantStart": "{{program}} ist auf {{computer}}, startet aber nicht: {{message}}",
-      "outdated": "Aktualisiere die agentes.chat-App auf {{computer}}, um von hier zu installieren.",
+      "outdated": "Aktualisiere die AULACBOT-App auf {{computer}}, um von hier zu installieren.",
       "asked": "Anfrage gesendet. {{name}} bekommt einen Button zum Installieren."
     },
     "titleFor": "Eine KI für {{name}} verbinden",
@@ -3225,8 +3226,8 @@
         "unshare": "Nur für mich"
       }
     },
-    "billing": "Ein Abo meldet sich auf dem Computer des Workspace an, und den Computer gibt es mit einem aktiven agentes.chat-Abo.",
-    "billingWeb": "Wähle eines im Web, auf agentes.chat.",
+    "billing": "Ein Abo meldet sich auf dem Computer des Workspace an, und den Computer gibt es mit einem aktiven AULACBOT-Abo.",
+    "billingWeb": "Wähle eines im Web, auf AULACBOT.",
     "orPayGo": "Oder nach Verbrauch zahlen",
     "pay": {
       "label": "Wie zahlst du?",
@@ -3297,7 +3298,7 @@
       "untested": "Noch kein Modell von {{name}} hat einen Test bestanden.",
       "testModels": "Modelle testen",
       "savedUnchecked": "Gespeichert, aber {{provider}} hat nicht geantwortet, der Schlüssel konnte also nicht geprüft werden. Wenn er fehlschlägt, steht der Grund im Chat.",
-      "closed": "API-Schlüssel gibt es mit dem agentes.chat-Tarif des Workspace.",
+      "closed": "API-Schlüssel gibt es mit dem AULACBOT-Tarif des Workspace.",
       "notPlan": "Der Schlüssel eines Coding-Abos gehört in seine eigene Option oben.",
       "billing": "Aktiviere die Abrechnung für das Projekt des Schlüssels. Ohne Abrechnung darf Google nutzen, was deine Agenten senden.",
       "privacy": "{{provider}} leitet, was deine Agenten senden, an das Unternehmen weiter, das das Modell entwickelt oder hostet, gemäß den Datenschutzbedingungen und -einstellungen von {{provider}}."
@@ -4005,7 +4006,7 @@
     "clearsAt": "Wird um {{time}} gelöscht",
     "clearsOn": "Wird {{when}} gelöscht",
     "help": {
-      "auto": "Online, solange agentes.chat offen ist.",
+      "auto": "Online, solange AULACBOT offen ist.",
       "away": "Eine Weile weg: Alle wissen, dass Antworten dauern können.",
       "busy": "Alle sehen, dass du gerade lieber nicht gestört wirst.",
       "out": "Nicht bei der Arbeit (Urlaub, freier Tag): alle sehen es, bis dein Status verschwindet.",
@@ -4528,7 +4529,7 @@
       "removeText_other": "Seine {{count}} Einträge verlassen den Vault und deine Agenten verwenden sie nicht mehr. In {{name}} ändert sich nichts.",
       "removed": "{{name}} getrennt",
       "listOf": "Verbindungen zu {{name}}",
-      "note": "Deine Agenten lesen, was dort liegt, wenn sie es brauchen. In agentes.chat wird nichts kopiert außer Namen und Adressen.",
+      "note": "Deine Agenten lesen, was dort liegt, wenn sie es brauchen. In AULACBOT wird nichts kopiert außer Namen und Adressen.",
       "error": {
         "auth_failed": "Anmeldung abgelehnt",
         "locked": "Falsches Passwort",
@@ -5290,7 +5291,7 @@
       "eyebrow": "Freigabeanfrage",
       "close": "Schließen",
       "exact": "Die genaue Aktion",
-      "builtIn": "Tool von agentes.chat",
+      "builtIn": "Tool von AULACBOT",
       "orgConnector": "Konnektor deines Workspace",
       "bound": "Nur für diese Werte: Jede Änderung braucht eine neue Freigabe.",
       "why": "Warum",
@@ -5379,7 +5380,7 @@
     "noInstructions": "{{name}} hat noch keine Anweisungen. Sag, wie er arbeiten soll.",
     "noInstructions_female": "{{name}} hat noch keine Anweisungen. Sag, wie sie arbeiten soll.",
     "savedToast": "Änderungen an {{name}} gespeichert.",
-    "builtinName": "agentes",
+    "builtinName": "AULACBOT",
     "builtinNote": "integrierte Berechtigungen",
     "connectHint": "Dienste verbinden",
     "subtitle": "{{role}} · Inhaber <b>{{owner}}</b> · {{model}} {{key}}",
@@ -5730,11 +5731,11 @@
       "steps": {
         "title": "Noch ein Schritt, direkt auf {{computer}}",
         "waiting": "Warten",
-        "one": "Klicke auf das agentes.chat-Symbol neben der Uhr",
+        "one": "Klicke auf das AULACBOT-Symbol neben der Uhr",
         "two": "Einstellungen",
         "three": "Browser einschalten",
         "done": "Das war’s. Diese Seite merkt es von selbst, kein Neuladen nötig.",
-        "menuOpen": "agentes öffnen",
+        "menuOpen": "AULACBOT öffnen",
         "menuPrefs": "Einstellungen…",
         "menuPause": "Pausieren",
         "menuQuit": "Beenden",
@@ -5920,7 +5921,7 @@
       "setAll": "Alle ändern",
       "connectors": "Konnektoren von {{org}}",
       "connectorsPersonal": "Deine Konnektoren",
-      "builtin": "In agentes integriert",
+      "builtin": "In AULACBOT integriert",
       "noMatch": "Nichts zu „{{q}}“",
       "noneHere": "Nichts in diesem Filter",
       "library": "Skill-Bibliothek",
@@ -6451,10 +6452,10 @@
       "afterPlanNext": "Das ist der nächste Schritt nach dem Tarif.",
       "plan": {
         "todo": "Schalte das Team ein.",
-        "todoDesc": "Mit einem agentes.chat-Tarif legen die Agenten los.",
+        "todoDesc": "Mit einem AULACBOT-Tarif legen die Agenten los.",
         "action": "Tarife ansehen",
         "todoPersonal": "Schalte deine Agenten ein.",
-        "todoDescPersonal": "Mit einem agentes.chat-Tarif legen deine Agenten los."
+        "todoDescPersonal": "Mit einem AULACBOT-Tarif legen deine Agenten los."
       },
       "about": {
         "action": "Erzählen",
@@ -7509,7 +7510,7 @@
     "crashTitle": "Etwas ist schiefgelaufen",
     "crashText": "Lad die Seite neu, um weiterzumachen.",
     "crashCode": "Wenn du um Hilfe bittest, gib den Code {{id}} an.",
-    "unreachableTitle": "agentes.chat ist nicht erreichbar",
+    "unreachableTitle": "AULACBOT ist nicht erreichbar",
     "unreachableText": "Es startet vielleicht gerade neu. Diese Seite öffnet sich von selbst, sobald es wieder da ist.",
     "offlineTitle": "Du bist offline",
     "offlineText": "Diese Seite öffnet sich von selbst, sobald du wieder online bist."
@@ -8512,7 +8513,7 @@
         "pr_opened": "PR auf GitHub geöffnet"
       },
       "issue": {
-        "created": "Aufgabe in agentes erstellt"
+        "created": "Aufgabe in AULACBOT erstellt"
       },
       "deploy": {
         "succeeded": "Deploy abgeschlossen"
@@ -9136,7 +9137,7 @@
       "title": "Dateien der Mission",
       "folder": "Ordner",
       "tabs": "Datei",
-      "missionSub": "Plan und Regeln · von agentes.chat aktualisiert",
+      "missionSub": "Plan und Regeln · von AULACBOT aktualisiert",
       "decisionsSub": "Freigegebene Entscheidungen",
       "notesSub": "Notizen von {{executor}}",
       "notesSub_female": "Notizen von {{executor}}",
@@ -9214,7 +9215,7 @@
       "title": "Neue Mission",
       "text": "Ein langes Projekt für einen Agenten. Er schlägt einen Plan vor, arbeitet auf seinem Computer und bittet im Thread um Entscheidungen und Prüfungen.",
       "goal": "Ziel",
-      "goalPlaceholder": "Z. B. die Handy-App von agentes.chat in Expo bauen, auf Basis der aktuellen Web-App.",
+      "goalPlaceholder": "Z. B. die Handy-App von AULACBOT in Expo bauen, auf Basis der aktuellen Web-App.",
       "agent": "Agent",
       "computer": "Computer",
       "noMachine": "Keiner verbunden",
@@ -10138,7 +10139,7 @@
   },
   "jev": {
     "title": "Jev",
-    "about": "Ein schnelles Modell von TypeSafe, gemacht für schnelle Entscheidungen. agentes.chat stellt ihm kleine Fragen, etwa wer antworten soll. Du bezahlst TypeSafe direkt.",
+    "about": "Ein schnelles Modell von TypeSafe, gemacht für schnelle Entscheidungen. AULACBOT stellt ihm kleine Fragen, etwa wer antworten soll. Du bezahlst TypeSafe direkt.",
     "lead": "Hilft deinen Agenten, als Team zu arbeiten.",
     "how": "So funktioniert Jev",
     "why": {
@@ -10242,7 +10243,7 @@
       "antigravity": "Gemini",
       "opencode": "OpenCode",
       "needs": {
-        "keys": "Aktualisiere agentes auf dem Computer, um den Schlüssel eines Abos zu nutzen"
+        "keys": "Aktualisiere AULACBOT auf dem Computer, um den Schlüssel eines Abos zu nutzen"
       },
       "noComputer": "Konten bleiben auf einem verbundenen Computer. Verbinde zuerst einen deiner Computer.",
       "addComputer": "Computer verbinden",
@@ -10250,7 +10251,7 @@
         "online": "{{computer}} startet neu oder verbindet sich wieder. Das ändert sich von selbst, sobald er zurück ist.",
         "installing": "{{program}} wird auf {{computer}} installiert. Das ändert sich von selbst, wenn es fertig ist.",
         "updating": "{{program}} wird auf {{computer}} aktualisiert. Das ändert sich von selbst, wenn es fertig ist.",
-        "runnerOld": "Das agentes.chat-Programm auf {{computer}} ist veraltet und ein Update ist unterwegs. Das ändert sich von selbst, wenn es fertig ist.",
+        "runnerOld": "Das AULACBOT-Programm auf {{computer}} ist veraltet und ein Update ist unterwegs. Das ändert sich von selbst, wenn es fertig ist.",
         "execOff": "{{computer}} kann {{program}} noch nicht ausführen. Wir kümmern uns, und das ändert sich von selbst.",
         "toolOff": "{{program}} ist auf {{computer}} noch nicht freigegeben. Das liegt an uns: Versuch es später noch einmal.",
         "preparing": "{{computer}} wird gerade fertig. Das ändert sich von selbst, wenn es so weit ist.",
@@ -10264,7 +10265,7 @@
     },
     "page": {
       "title": "Deine Abos",
-      "hint": "Jedes Abo bleibt auf dem Computer, auf dem es verbunden wurde, und wer diesen Computer betreibt, kommt daran. agentes.chat speichert nur Name, E-Mail und Nutzung.",
+      "hint": "Jedes Abo bleibt auf dem Computer, auf dem es verbunden wurde, und wer diesen Computer betreibt, kommt daran. AULACBOT speichert nur Name, E-Mail und Nutzung.",
       "emptyTitle": "Nutze das KI-Abo, das du schon bezahlst",
       "emptyViewer": "Wer sich um die KI des Workspace kümmert, verbindet ein Abo, und es erscheint hier.",
       "connect": "KI verbinden",
@@ -11558,7 +11559,7 @@
     "reasons": {
       "no_computer": "Wähle unter Computer einen verbundenen Computer, um es zu nutzen.",
       "exec_off": "Der Computer wurde ohne die Berechtigung verbunden, Programme auszuführen.",
-      "runner_old": "Aktualisiere das agentes.chat-Programm auf dem Computer, um es zu nutzen.",
+      "runner_old": "Aktualisiere das AULACBOT-Programm auf dem Computer, um es zu nutzen.",
       "tool_offOne": "{{program}} ist auf {{computer}} ausgeschaltet.",
       "not_installed": "{{program}} ist auf {{computer}} nicht installiert.",
       "cant_start": "{{program}} ist auf {{computer}}, startet aber nicht.",
@@ -12087,7 +12088,7 @@
   "storage": {
     "title": "Speicher",
     "options": "Wo Dateien liegen",
-    "agentes": "agentes.chat-Speicher",
+    "agentes": "AULACBOT-Speicher",
     "agentesText": "Deine Dateien bleiben in unserem Speicher, pro Workspace getrennt.",
     "server": "Dieser Server",
     "serverText": {
@@ -12098,7 +12099,7 @@
     },
     "showFolder": "Ordner anzeigen",
     "place": {
-      "agentes": "agentes.chat-Speicher",
+      "agentes": "AULACBOT-Speicher",
       "server": "dieser Server"
     },
     "s3": "Dein eigener Speicher",
@@ -12210,7 +12211,7 @@
       "step": {
         "bucketTitle": "Erstelle einen Bucket",
         "keyTitle": "Erstelle den Zugriffsschlüssel",
-        "userTitle": "Erstelle einen Benutzer nur für agentes.chat",
+        "userTitle": "Erstelle einen Benutzer nur für AULACBOT",
         "r2Bucket": "Öffne im Cloudflare-Dashboard <b>R2</b> und klicke auf <b>Create bucket</b>. Der Name ist egal.",
         "r2Key": "Klicke auf der R2-Seite unter <b>API Tokens</b> auf <b>Manage</b> und dann auf <b>Create API Token</b>. Wähle die Berechtigung <b>Object Read & Write</b> und deinen Bucket. Am Ende zeigt Cloudflare die drei Werte unten nur ein einziges Mal an.",
         "s3Bucket": "Öffne in der AWS-Konsole <b>S3</b> und klicke auf <b>Create bucket</b>. Merk dir die Region, die du wählst.",
@@ -12288,11 +12289,11 @@
   },
   "githubApp": {
     "title": "GitHub-Repositories",
-    "text": "Wo die agentes.chat-App installiert ist, öffnen Agenten Pull Requests, Issues, Kommentare und Commits als die App, mit dem Namen des Agenten und der Person, die gefragt hat.",
-    "install": "agentes.chat-App installieren",
+    "text": "Wo die AULACBOT-App installiert ist, öffnen Agenten Pull Requests, Issues, Kommentare und Commits als die App, mit dem Namen des Agenten und der Person, die gefragt hat.",
+    "install": "AULACBOT-App installieren",
     "installMore": "Auf einem weiteren Konto installieren",
     "none": "Noch kein GitHub-Konto.",
-    "usingAccount": "Heute erscheinen Agenten auf GitHub als {{account}}. Installier die App, damit sie als die agentes.chat-App erscheinen.",
+    "usingAccount": "Heute erscheinen Agenten auf GitHub als {{account}}. Installier die App, damit sie als die AULACBOT-App erscheinen.",
     "allRepos": "Alle Repositories",
     "someRepos": "Ausgewählte Repositories",
     "suspended": "Auf GitHub gesperrt",
@@ -12301,27 +12302,27 @@
     "remove": "Entfernen",
     "removeName": "{{account}} entfernen",
     "removeTitle": "App von {{account}} entfernen?",
-    "removeText": "Die agentes.chat-App wird auf GitHub von {{account}} deinstalliert, und Agenten nutzen die Repositories dieses Kontos nicht mehr über sie.",
+    "removeText": "Die AULACBOT-App wird auf GitHub von {{account}} deinstalliert, und Agenten nutzen die Repositories dieses Kontos nicht mehr über sie.",
     "removeLast": "Es ist das letzte, daher verlieren Agenten GitHub, bis jemand die App installiert oder ein Konto verbindet.",
     "removed": "App von {{account}} entfernt und auf GitHub deinstalliert.",
     "notUninstalled": "App hier entfernt, aber GitHub hat die Deinstallation von {{account}} nicht bestätigt. Deinstallier sie dort.",
     "openPage": "Öffnen",
-    "installed": "agentes.chat-App installiert.",
+    "installed": "AULACBOT-App installiert.",
     "requested": "Nur die Inhaber des GitHub-Kontos können die App installieren. Bitte sie, die App in diesem Workspace über Konnektoren › GitHub zu installieren.",
     "notVisible": "Dein GitHub-Konto kann diese Installation nicht sehen. Installier sie mit einem Konto, das Zugriff darauf hat.",
     "otherWorkspace": "Dieses GitHub-Konto ist schon mit einem anderen Workspace verbunden. Entferne die App dort, bevor du sie hier installierst.",
-    "installedOutside": "Die App wurde auf diesem GitHub-Konto außerhalb von agentes.chat installiert. Entferne sie auf GitHub und installier sie noch einmal über Konnektoren › GitHub.",
+    "installedOutside": "Die App wurde auf diesem GitHub-Konto außerhalb von AULACBOT installiert. Entferne sie auf GitHub und installier sie noch einmal über Konnektoren › GitHub.",
     "ownerUnknown": "GitHub hat nicht gesagt, wem diese Organisation gehört. Die Person, die den Server betreibt, muss der GitHub-App die Organisationsberechtigung Members (nur Lesen) geben, danach installierst du sie noch einmal.",
     "misconfigured": "Die GitHub-App hat auf dem Server den falschen geheimen Schlüssel, deshalb kann die Installation nicht abgeschlossen werden. Die Person, die den Server betreibt, muss den Schlüssel in den Einstellungen der App ersetzen.",
     "connectAccount": "GitHub-Konto verbinden",
     "ownerHint": "Der Inhaber dieses Servers kann die GitHub-App hier unter Konnektoren erstellen.",
-    "viaApp": "Über die agentes.chat-App auf {{accounts}}",
-    "disconnectApp": "Die agentes.chat-App wird auf GitHub auch von {{accounts}} deinstalliert.",
-    "disconnectKeepsApp": "Agenten bleiben über die agentes.chat-App auf {{accounts}} mit GitHub verbunden.",
-    "keptApp": "GitHub-Konto getrennt. Agenten bleiben über die agentes.chat-App mit GitHub verbunden.",
+    "viaApp": "Über die AULACBOT-App auf {{accounts}}",
+    "disconnectApp": "Die AULACBOT-App wird auf GitHub auch von {{accounts}} deinstalliert.",
+    "disconnectKeepsApp": "Agenten bleiben über die AULACBOT-App auf {{accounts}} mit GitHub verbunden.",
+    "keptApp": "GitHub-Konto getrennt. Agenten bleiben über die AULACBOT-App mit GitHub verbunden.",
     "signature": {
-      "forPerson": "{{agent}}, Agent von {{person}} auf agentes.chat",
-      "alone": "{{agent}}, ein Agent auf agentes.chat"
+      "forPerson": "{{agent}}, Agent von {{person}} auf AULACBOT",
+      "alone": "{{agent}}, ein Agent auf AULACBOT"
     },
     "manifestPage": {
       "title": "GitHub-App wird erstellt",
@@ -13923,7 +13924,7 @@
     "continueInComposio": "Weiter bei Composio",
     "github": {
       "how": "Wie Agenten GitHub erreichen",
-      "app": "Die agentes.chat-App",
+      "app": "Die AULACBOT-App",
       "recommended": "Empfohlen",
       "appText": "Agenten erscheinen als die App, und du wählst die Repositories auf GitHub.",
       "account": "Ein GitHub-Konto",
@@ -13945,7 +13946,7 @@
     "or": "oder",
     "withKey": "Mit einem API-Schlüssel verbinden",
     "needsKey": "Dieser Server unterstützt kein OAuth. Verbinde ihn mit einem API-Schlüssel.",
-    "notApproved": "{{name}} lässt nur freigegebene Apps zur Anmeldung zu, und agentes.chat ist noch nicht freigegeben. Wenn du dort einen API-Schlüssel bekommst, kannst du dich damit verbinden.",
+    "notApproved": "{{name}} lässt nur freigegebene Apps zur Anmeldung zu, und AULACBOT ist noch nicht freigegeben. Wenn du dort einen API-Schlüssel bekommst, kannst du dich damit verbinden.",
     "serverSaid": "Der Server hat geantwortet: {{detail}}",
     "nothingYet": "Bis Schritt 3 ist nichts für Agenten verfügbar.",
     "allCanUse": "Nach dem Verbinden kann jeder Agent ihn nutzen. Das kannst du später anpassen.",
@@ -14205,7 +14206,7 @@
     "whatIsText": "Ein Passwort nur für die Agenten. Du erstellst es auf der Website deines E-Mail-Anbieters und kannst es jederzeit löschen, ohne dein eigenes Passwort zu ändern.",
     "step": {
       "1": "Öffne die Sicherheitsseite deines Kontos.",
-      "2": "Erstelle ein App-Passwort mit dem Namen „agentes“.",
+      "2": "Erstelle ein App-Passwort mit dem Namen „AULACBOT“.",
       "3": "Kopiere das Passwort und füge es hier ein."
     },
     "openPage": "Seite von {{name}} öffnen",
@@ -14598,7 +14599,7 @@
       "generalKept": "#general kann nicht gelöscht werden.",
       "generalStays": "Alle bleiben in #general.",
       "mcpUnreachable": "Keine Verbindung zum MCP-Server. Prüf seine Adresse und versuch es noch einmal.",
-      "notApproved": "Dieser Dienst hat agentes.chat noch nicht freigegeben.",
+      "notApproved": "Dieser Dienst hat AULACBOT noch nicht freigegeben.",
       "alreadyInvited": "Diese Person hat schon eine Einladung.",
       "alreadyAsked": "Jemand hat diese Person schon angefragt.",
       "mailboxConnected": "Dieses Postfach ist schon verbunden.",
@@ -14744,7 +14745,7 @@
       "noComputer": "Dieser Agent hat noch keinen Computer für Missionen.",
       "computerOffline": "Der Computer des Agenten ist offline.",
       "execDisabled": "Befehle sind auf diesem Computer ausgeschaltet.",
-      "runnerOutdated": "Das Programm auf dem Computer ist zu alt für Missionen: Aktualisiere dort die agentes.chat-App oder führ ihren Installationsbefehl erneut aus.",
+      "runnerOutdated": "Das Programm auf dem Computer ist zu alt für Missionen: Aktualisiere dort die AULACBOT-App oder führ ihren Installationsbefehl erneut aus.",
       "exists": "Dieser Thread hat schon eine Mission.",
       "closed": "Diese Mission ist abgeschlossen.",
       "wrongStatus": "Die Mission ist nicht in einem Zustand, der das erlaubt.",
@@ -14847,7 +14848,7 @@
       "notOwner": "Nur wer diesen Computer verbunden hat, schaltet seine Werkzeuge ein. Frag diese Person.",
       "askSelf": "Es ist dein Computer: schalte es mit dem Button ein.",
       "adminAskSelf": "Das kannst du hier selbst tun.",
-      "accountMethodUnsupported": "Dieser Computer kann Claude noch nicht auf diese Weise verbinden. Aktualisiere das agentes.chat-Programm darauf oder verwende einen API-Schlüssel.",
+      "accountMethodUnsupported": "Dieser Computer kann Claude noch nicht auf diese Weise verbinden. Aktualisiere das AULACBOT-Programm darauf oder verwende einen API-Schlüssel.",
       "offline": "{{name}} ist gerade offline. Versuch es noch einmal, sobald er wieder da ist.",
       "paused": "{{name}} ist pausiert: Darauf startet nichts Neues, bis er fortgesetzt wird.",
       "timeout": "Der Computer hat nicht rechtzeitig geantwortet. Versuch es noch einmal."
@@ -15001,7 +15002,7 @@
       "ask": "{{name}} fragen",
       "asked": "Gefragt. {{name}} bekommt einen Button zum Einschalten.",
       "done": "Eingeschaltet auf {{machine}}.",
-      "outdated": "Aktualisiere die agentes.chat-App auf {{machine}}, um es von hier einzuschalten.",
+      "outdated": "Aktualisiere die AULACBOT-App auf {{machine}}, um es von hier einzuschalten.",
       "offline": "{{machine}} ist offline. Sobald es zurück ist, schaltet der Button {{tool}} ein."
     },
     "remotePause": {
@@ -15015,7 +15016,7 @@
       "byYouUntil": "Von dir pausiert bis {{time}}.",
       "byName": "Von {{name}} pausiert.",
       "byNameUntil": "Von {{name}} pausiert bis {{time}}.",
-      "outdated": "Aktualisiere die agentes.chat-App auf diesem Computer, um ihn von hier zu pausieren.",
+      "outdated": "Aktualisiere die AULACBOT-App auf diesem Computer, um ihn von hier zu pausieren.",
       "paused": "{{name}} ist pausiert",
       "resumed": "{{name}} arbeitet wieder"
     },
@@ -15073,9 +15074,9 @@
     },
     "host": {
       "label": "Computer dieses Servers",
-      "desc": "Wo agentes.chat installiert ist.",
-      "descUsers": "Wo agentes.chat installiert ist, ein Benutzer pro Agent.",
-      "descShared": "Der Computer, auf dem agentes.chat installiert ist. Agenten arbeiten als die Person, die es installiert hat.",
+      "desc": "Wo AULACBOT installiert ist.",
+      "descUsers": "Wo AULACBOT installiert ist, ein Benutzer pro Agent.",
+      "descShared": "Der Computer, auf dem AULACBOT installiert ist. Agenten arbeiten als die Person, die es installiert hat.",
       "stop": "In diesem Workspace nicht mehr verwenden",
       "stopTitle": "Computer dieses Servers nicht mehr verwenden?",
       "stopText": "Die Agenten dieses Workspace nutzen diesen Computer ab sofort nicht mehr. Du kannst ihn jederzeit wieder verwenden.",
@@ -15086,7 +15087,7 @@
     },
     "download": {
       "title": "Weiteren Computer verbinden",
-      "text": "Installiere die agentes.chat-App auf dem Computer.",
+      "text": "Installiere die AULACBOT-App auf dem Computer.",
       "mac": "App für {{system}} herunterladen",
       "version": "Version {{version}}",
       "versionSize": "Version {{version}} · {{size}}",
@@ -15097,7 +15098,7 @@
       "unavailable": "Die App ist noch nicht verfügbar.",
       "unavailableCommand": "Die App ist noch nicht verfügbar. Nutze vorerst den Befehl unten.",
       "firstTime": "Beim ersten Mal",
-      "step1": "Öffne die heruntergeladene Datei und zieh agentes.chat in den Ordner Programme.",
+      "step1": "Öffne die heruntergeladene Datei und zieh AULACBOT in den Ordner Programme.",
       "step1Install": "Öffne die heruntergeladene Datei, um sie zu installieren.",
       "otherText": "Führe das im Terminal des Computers aus und bestätige dann den angezeigten Code.",
       "waiting": "Warte, bis sich der Computer verbindet…"
@@ -15128,7 +15129,7 @@
       "ownFolder": "Ordner jedes Agenten",
       "ownFolderText": "Immer. Ein Agent sieht den eines anderen nicht.",
       "noFolders": "Keine zusätzlichen Ordner. Jeder Agent nutzt nur seinen eigenen Ordner.",
-      "noReport": "Dieser Computer hat noch nicht gemeldet, was er erlaubt. Aktualisiere agentes.chat darauf.",
+      "noReport": "Dieser Computer hat noch nicht gemeldet, was er erlaubt. Aktualisiere AULACBOT darauf.",
       "hidden": "Nur Admins und die Person, die ihn verbunden hat, sehen die Ordner und Tools dieses Computers.",
       "nobody": "Noch kein Agent nutzt ihn",
       "usedBy": "Wer {{folder}} nutzt",
@@ -15173,7 +15174,7 @@
       "disableText": "Agenten nutzen {{tool}} auf diesem Computer nicht mehr. Wieder einschalten: am Computer selbst, oder hier durch die Person, die ihn verbunden hat.",
       "disabled": "{{tool}} ausgeschaltet.",
       "grantTitle": "Mehr erlauben",
-      "grantText": "Erlaubt wird auf dem Computer selbst: Öffne dort die agentes.chat-App (Einstellungen → Ordner).",
+      "grantText": "Erlaubt wird auf dem Computer selbst: Öffne dort die AULACBOT-App (Einstellungen → Ordner).",
       "grantTextTerminal": "Erlaubt wird auf dem Computer selbst, in seinem Terminal:",
       "grantTextAdmin": "Erlaubt wird auf dem Computer selbst, in seinem Terminal, als dessen Administrator:",
       "grantTerminal": "Keine App? Im Terminal des Computers:",
@@ -15281,7 +15282,7 @@
       "forbidden": "Du darfst diesen Bildschirm nicht sehen",
       "forbiddenText": "Der Besitzer legt fest, wer {{name}} nutzen darf.",
       "outdated": "Die App auf {{host}} ist dafür zu alt",
-      "outdatedText": "Aktualisiere agentes.chat auf {{host}} und versuch es dann noch mal.",
+      "outdatedText": "Aktualisiere AULACBOT auf {{host}} und versuch es dann noch mal.",
       "unavailable": "Dieser Bildschirm kann nicht angezeigt werden",
       "unavailableText": "Prüfe, ob auf {{host}} adb oder Xcode installiert ist, und versuch es dann noch mal.",
       "needsHelper": "Schließ die iPhone-Einrichtung auf dem Mac ab, damit die nötige Test-App dazukommt.",
@@ -15435,7 +15436,7 @@
       "thisMac": "Dieser Mac",
       "thisPc": "Dieser PC",
       "thisComputer": "Dieser Computer",
-      "thisLine": "Über die agentes.chat-App",
+      "thisLine": "Über die AULACBOT-App",
       "openApp": "App öffnen",
       "server": "Ein Server oder VPS",
       "serverLine": "Eine Zeile für sein Terminal",
@@ -15450,7 +15451,7 @@
     },
     "computer": {
       "title": "Einen anderen Computer verbinden",
-      "step1": "Hol dir die agentes.chat-App darauf:",
+      "step1": "Hol dir die AULACBOT-App darauf:",
       "step2": "Öffne sie und melde dich mit deinem eigenen Konto an.",
       "step3": "Klicke auf Erlauben, wenn sie fragt, ob die Agenten von {{org}} ihn nutzen dürfen.",
       "shows": "Er erscheint hier von selbst, nur für dich, bis du ihn teilst.",
@@ -15460,11 +15461,11 @@
       "noApp": "Kannst du die App dort nicht installieren? Nutze eine Terminal-Zeile"
     },
     "thisApp": {
-      "text": "Die agentes.chat-App verbindet ihn mit einem Klick und fragt dich vorher.",
-      "open": "agentes.chat-App öffnen",
+      "text": "Die AULACBOT-App verbindet ihn mit einem Klick und fragt dich vorher.",
+      "open": "AULACBOT-App öffnen",
       "browserAsks": "Dein Browser fragt, ob er sie öffnen darf: Wähle Öffnen und Immer erlauben, wenn er es anbietet.",
       "noApp": "Du hast die App noch nicht?",
-      "afterInstall": "Klicke nach der Installation noch einmal auf agentes.chat-App öffnen. Der Link funktioniert einmal, 10 Minuten lang.",
+      "afterInstall": "Klicke nach der Installation noch einmal auf AULACBOT-App öffnen. Der Link funktioniert einmal, 10 Minuten lang.",
       "waiting": "Warte auf die App auf diesem Computer…",
       "expired": "Dieser Link ist abgelaufen.",
       "again": "Neuen Link erstellen",
@@ -15541,7 +15542,7 @@
       },
       "qrLabel": "QR-Code, der diese Schritte auf dem Handy öffnet",
       "qrLine": "Mach es vom Handy aus",
-      "qrCaption": "Scanne ihn, um diese Schritte in der agentes.chat-App zu öffnen, mit einem Button für jede Einstellung.",
+      "qrCaption": "Scanne ihn, um diese Schritte in der AULACBOT-App zu öffnen, mit einem Button für jede Einstellung.",
       "buildNumber": "Build-Nummer",
       "buildNumberSub": "BP2A.250605.031",
       "usbRow": "USB-Debugging",
@@ -15585,23 +15586,23 @@
       "qrCaption": "Sie bietet ein WLAN namens agentes-… an, das es nicht gibt. Lass das Handy im WLAN des Computers.",
       "fail": {
         "mdns_off": "{{computer}} kann im WLAN nicht nach Handys suchen. Aktualisiere dort die Android platform-tools oder nutze ein Kabel.",
-        "mdns_offMac": "{{computer}} kann im WLAN nicht nach Handys suchen. Schalte auf diesem Mac agentes.chat unter Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk ein und versuch es erneut.",
+        "mdns_offMac": "{{computer}} kann im WLAN nicht nach Handys suchen. Schalte auf diesem Mac AULACBOT unter Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk ein und versuch es erneut.",
         "same_wifi": "Das Handy war nicht erreichbar. Es ist nicht im selben Netzwerk wie {{computer}}. Bring es ins selbe WLAN und versuch es erneut.",
-        "same_wifiMac": "Das Handy war nicht erreichbar. Bring es ins selbe WLAN wie {{computer}}. Schalte auf diesem Mac außerdem agentes.chat unter Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk ein.",
+        "same_wifiMac": "Das Handy war nicht erreichbar. Bring es ins selbe WLAN wie {{computer}}. Schalte auf diesem Mac außerdem AULACBOT unter Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk ein.",
         "refused": "Das Handy hat die Kopplung abgebrochen. Lass den Kopplungsbildschirm offen und versuch es erneut.",
         "refusedCode": "Das Handy hat diesen Code nicht angenommen. Prüf Code und Adresse und kopple erneut.",
         "timed_out": "In 2 Minuten hat sich kein Handy gekoppelt. Wenn die Kamera den Code gescannt hat oder das Handy das WLAN verlassen hat, bring es ins selbe WLAN wie {{computer}} und scanne in Debugging über WLAN.",
-        "timed_outMac": "In 2 Minuten hat sich kein Handy gekoppelt. Wenn die Kamera den Code gescannt hat oder das Handy das WLAN verlassen hat, bring es ins selbe WLAN wie {{computer}} und scanne in Debugging über WLAN. Schalte auf diesem Mac außerdem agentes.chat unter Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk ein.",
+        "timed_outMac": "In 2 Minuten hat sich kein Handy gekoppelt. Wenn die Kamera den Code gescannt hat oder das Handy das WLAN verlassen hat, bring es ins selbe WLAN wie {{computer}} und scanne in Debugging über WLAN. Schalte auf diesem Mac außerdem AULACBOT unter Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk ein.",
         "outdated": "Die Kopplung über WLAN braucht Android 14 oder neuer mit dem Sicherheitsupdate von Mai 2026. Aktualisiere das Handy oder nutze ein Kabel.",
         "adb_missing": "Auf {{computer}} fehlen die Android platform-tools. Installiere dort Android Studio und versuch es erneut.",
-        "update": "Die Kopplung über WLAN braucht ein neueres agentes.chat auf {{computer}}. Aktualisiere es und versuch es erneut.",
+        "update": "Die Kopplung über WLAN braucht ein neueres AULACBOT auf {{computer}}. Aktualisiere es und versuch es erneut.",
         "canceled": "Die Kopplung wurde beendet. Versuch es erneut.",
         "failed": "Die Kopplung hat nicht geklappt. Versuch es erneut oder nutze ein Kabel."
       }
     },
     "iphone": {
       "title": "iPhone verbinden",
-      "lead": "iPhones verbinden sich über einen Mac, auf dem die agentes.chat-App die Einrichtung übernimmt.",
+      "lead": "iPhones verbinden sich über einen Mac, auf dem die AULACBOT-App die Einrichtung übernimmt.",
       "mac": "Mac",
       "noMac": "Agenten können ein iPhone nur über einen Mac nutzen, und noch ist keiner verbunden.",
       "noMacNote": "Kein Mac? Bitte jemanden aus dem Team, seinen zu verbinden.",
@@ -15640,9 +15641,9 @@
         "failedAny": "Konnte auf {{mac}} nicht behoben werden.",
         "stillCommandLineTools": "Die Behebung ist durchgelaufen, aber der Mac nutzt noch die Command Line Tools. Versuche es erneut oder führe das hier im Terminal aus, es fragt nach dem Passwort des Macs.",
         "stillLicense": "Die Behebung ist durchgelaufen, aber Xcode auf {{mac}} wartet noch darauf, dass seine Lizenz akzeptiert wird. Versuche es erneut oder führe das hier im Terminal aus, es fragt nach dem Passwort des Macs.",
-        "outdated": "Aktualisiere die agentes.chat-App auf {{mac}}, um es mit einem Klick zu beheben. Oder führe das hier in seinem Terminal aus, es fragt nach dem Passwort des Macs.",
+        "outdated": "Aktualisiere die AULACBOT-App auf {{mac}}, um es mit einem Klick zu beheben. Oder führe das hier in seinem Terminal aus, es fragt nach dem Passwort des Macs.",
         "follows": "Dieses Fenster geht von selbst weiter, sobald der Mac fertig ist.",
-        "window": "agentes.chat möchte Xcode in Gebrauch nehmen, um iPhones zu verbinden.",
+        "window": "AULACBOT möchte Xcode in Gebrauch nehmen, um iPhones zu verbinden.",
         "ok": "OK"
       },
       "getXcode": "Xcode holen",
@@ -15668,7 +15669,7 @@
         "openXcode": "Xcode öffnen",
         "opened": "Xcode ist auf {{mac}} offen. Schau noch einmal in den Einstellungen des iPhones und schließ Xcode danach.",
         "unlock": "Eingeschaltet und das iPhone hat neu gestartet? Entsperre es. Die Abfrage mit Aktivieren erscheint erst danach.",
-        "outdated": "Die agentes.chat-App auf {{mac}} ist veraltet. Aktualisiere die App, oder führe das hier im Terminal aus, wenn du sie dort installiert hast."
+        "outdated": "Die AULACBOT-App auf {{mac}} ist veraltet. Aktualisiere die App, oder führe das hier im Terminal aus, wenn du sie dort installiert hast."
       },
       "uiAutomationText": "Unter Einstellungen › Entwickler, nach dem Neustart.",
       "helperText": "Wird vom Mac erstellt und alle 7 Tage erneuert. Ein kostenloser Apple Account in Xcode reicht.",
@@ -15882,7 +15883,7 @@
     "reconnectDoneText": "{{name}} ist wieder in {{org}}.",
     "deniedTitle": "Nicht verbunden",
     "denied": "Der Computer wurde nicht verbunden. Falls du ihn nicht geöffnet hast, hat niemand Zugriff erhalten.",
-    "home": "Zu agentes"
+    "home": "Zu AULACBOT"
   },
   "apps": {
     "connect": "App verbinden",
@@ -15989,7 +15990,7 @@
       "claude": {
         "lead": "claude.ai, Claude Desktop und Handy: Ein Konnektor funktioniert überall.",
         "step1": "Öffne Customize › Connectors auf claude.ai oder in Claude Desktop.",
-        "step2": "Klicke auf + Add, dann auf Add custom connector, nenne ihn agentes.chat, füge die Adresse ein und klicke auf Continue.",
+        "step2": "Klicke auf + Add, dann auf Add custom connector, nenne ihn AULACBOT, füge die Adresse ein und klicke auf Continue.",
         "step3": "Wähle Sign in now, klicke auf Add und bestätige auf der Seite, die sich öffnet.",
         "phone": "Er erscheint auf deinem Handy, sobald er am Computer hinzugefügt ist.",
         "team": "Bei Team- und Enterprise-Abos fügt der Owner der Claude-Organisation den Konnektor unter Organization settings › Connectors hinzu. Danach klickt jede Person unter Customize › Connectors auf Connect.",
@@ -16024,9 +16025,9 @@
         "open": "Öffne {{place}}.",
         "click": "Klicke auf {{button}}.",
         "clickThen": "Klicke auf {{button}} und dann auf {{next}}.",
-        "name": "Nenne ihn agentes.chat und füge die Adresse ein.",
-        "nameDescribe": "Nenne ihn agentes.chat und schreib eine Beschreibung.",
-        "nameConnect": "Nenne ihn agentes.chat und klicke auf {{button}}.",
+        "name": "Nenne ihn AULACBOT und füge die Adresse ein.",
+        "nameDescribe": "Nenne ihn AULACBOT und schreib eine Beschreibung.",
+        "nameConnect": "Nenne ihn AULACBOT und klicke auf {{button}}.",
         "paste": "Füge die Adresse ein.",
         "pasteIn": "Füge die Adresse in {{field}} ein.",
         "choosePaste": "Wähle {{option}} und füge die Adresse ein.",
@@ -16047,8 +16048,8 @@
         "reload": "Tippe dann <code>{{command}}</code> in den Chat.",
         "loginRun": "Zum Anmelden führe <code>{{command}}</code> aus.",
         "loginType": "Zum Anmelden gib in der App <code>{{command}}</code> ein.",
-        "signIn": "Melde dich auf der Seite, die sich öffnet, mit deinem agentes.chat-Konto an.",
-        "signInManage": "Melde dich auf der Seite, die sich öffnet, mit deinem agentes.chat-Konto an und wähle {{access}}.",
+        "signIn": "Melde dich auf der Seite, die sich öffnet, mit deinem AULACBOT-Konto an.",
+        "signInManage": "Melde dich auf der Seite, die sich öffnet, mit deinem AULACBOT-Konto an und wähle {{access}}.",
         "mention": "Tippe im Chat <code>@</code> und wähle <code>{{name}}</code>.",
         "signInFirst": "Die App bittet dich beim ersten Mal, dich anzumelden.",
         "token": "Erstelle einen persönlichen Token und setze ihn anstelle von {{placeholder}} ein.",
@@ -16101,7 +16102,7 @@
       "canRead": "Die Antworten lesen und sehen, was Agenten tun.",
       "canManage": "Agenten, Routinen und Skills in deinem Namen erstellen und bearbeiten. Du bekommst einen Hinweis, was erstellt wurde.",
       "never": "Niemals",
-      "neverApprove": "Aktionen von Agenten freigeben. Freigaben bleiben bei Personen in agentes.chat.",
+      "neverApprove": "Aktionen von Agenten freigeben. Freigaben bleiben bei Personen in AULACBOT.",
       "neverSettings": "Einstellungen, Mitglieder oder Berechtigungen ändern.",
       "neverHidden": "Sehen, was du nicht sehen kannst.",
       "loopbackWarning": "Jedes Programm auf diesem Computer kann diesen Zugriff erhalten. Mach nur weiter, wenn du das gerade in Claude Code oder einer anderen App auf diesem Computer gestartet hast.",
@@ -16115,7 +16116,7 @@
       "done": "Du kannst zu {{app}} zurückkehren.",
       "cancelledTitle": "Verbindung abgebrochen",
       "cancelled": "Es wurde nichts geteilt.",
-      "goHome": "Zu agentes.chat",
+      "goHome": "Zu AULACBOT",
       "language": "Sprache",
       "error": {
         "app_desconhecido": "Wir kennen diese App nicht",
@@ -16346,7 +16347,7 @@
     "section": {
       "account": "Dein Konto",
       "notifications": "Benachrichtigungen",
-      "download": "Apps von agentes.chat",
+      "download": "Apps von AULACBOT",
       "general": "Allgemein",
       "right_hand": "Rechte Hand",
       "members": "Mitglieder",
@@ -16367,7 +16368,7 @@
       "voice": "Sprachnachrichten",
       "apps": "KI-Apps",
       "approvals": "Freigaben",
-      "about": "Über agentes.chat",
+      "about": "Über AULACBOT",
       "generalPersonal": "Über dich",
       "keysPersonal": "KI und Apps",
       "membersPersonal": "Personen"
@@ -16507,11 +16508,11 @@
     },
     "telemetry": {
       "title": "Nutzungsstatistiken",
-      "label": "Anonyme Nutzungsstatistiken an agentes.chat senden",
+      "label": "Anonyme Nutzungsstatistiken an AULACBOT senden",
       "help": "Zahlen wie Personen, Agenten, Maschinengrößen, verbrauchte KI-Tokens und wie viele Daten die Browser der Agenten senden und empfangen. Nie Nachrichten, Dateien, Namen oder Websites.",
       "envOff": "In den Einstellungen dieses Servers ausgeschaltet (TELEMETRY=off).",
-      "envOffDesktop": "In der agentes.chat-App auf dem Computer dieses Servers ausgeschaltet (Einstellungen › Server).",
-      "envOffHere": "In der agentes.chat-App auf diesem Computer ausgeschaltet.",
+      "envOffDesktop": "In der AULACBOT-App auf dem Computer dieses Servers ausgeschaltet (Einstellungen › Server).",
+      "envOffHere": "In der AULACBOT-App auf diesem Computer ausgeschaltet.",
       "see": "Ansehen, was gesendet wird",
       "dialogTitle": "Was gesendet wird",
       "dialogText": "Einmal am Tag. Das ist genau der nächste Bericht."
@@ -17140,7 +17141,7 @@
         "comment": "{{who}} hat PR #{{number}} ({{repo}}) auf GitHub kommentiert",
         "commentIssue": "{{who}} hat Issue #{{number}} ({{repo}}) auf GitHub kommentiert",
         "commentDiscussion": "{{who}} hat Diskussion #{{number}} ({{repo}}) auf GitHub kommentiert",
-        "opened": "{{who}} hat die agentes.chat-App in #{{number}} ({{repo}}) auf GitHub gerufen",
+        "opened": "{{who}} hat die AULACBOT-App in #{{number}} ({{repo}}) auf GitHub gerufen",
         "reviewed": "{{who}} hat PR #{{number}} ({{repo}}) auf GitHub geprüft",
         "approved": "{{who}} hat PR #{{number}} ({{repo}}) auf GitHub freigegeben",
         "changes": "{{who}} hat Änderungen an PR #{{number}} ({{repo}}) auf GitHub angefragt",
@@ -17565,14 +17566,14 @@
       "no_ai_plans_not_yours": "Das {{plan}} hier gehört nur {{owner}}. Verbinde deins, dann antworte ich.",
       "no_ai_plan_unattended": "Ich habe nicht geantwortet: Die Anfrage kam nicht von einer Person, und das Abo des Workspace antwortet nur der Person, der es gehört.",
       "no_ai_runner_outdated": "Ich kann gerade nicht antworten: Das Programm auf dem Computer meines Abos braucht ein Update.",
-      "no_ai_plan_tools": "Ich habe vor der Antwort gestoppt: Die KI meines Abos ist auf diesem Computer nicht bei den Werkzeugen von agentes.chat geblieben.",
+      "no_ai_plan_tools": "Ich habe vor der Antwort gestoppt: Die KI meines Abos ist auf diesem Computer nicht bei den Werkzeugen von AULACBOT geblieben.",
       "no_ai_model_limit": "Ich kann gerade nicht antworten: {{model}} hat sein eigenes Limit in meinem Abo erreicht.",
       "no_ai_model_region": "Ich kann nicht antworten: {{model}} braucht die Region Global, eingeschaltet in OpenCode (Settings › Privacy).",
       "no_ai_model_off": "Ich kann nicht antworten: OpenCode hat {{model}} mit meinem Schlüssel abgelehnt. Schalte das Modell oder das Konto in OpenCode ein, oder wechsle mein Modell.",
       "no_ai_plan_inactive": "Ich kann nicht antworten: OpenCode Go ist im OpenCode-Konto meines Schlüssels nicht aktiv. Prüfe das Go-Abo in OpenCode, oder verbinde einen Schlüssel des Kontos, das Go hat.",
       "no_ai_commands_off": "Ich kann gerade nicht antworten: Auf dem Computer meines Abos sind Befehle ausgeschaltet.",
       "no_ai_cli_missing": "Ich kann noch nicht antworten: Das Programm meiner KI ist auf meinem Computer nicht installiert.",
-      "no_ai_plan_hold": "Ich habe deine Nachricht aufgehoben. Ich antworte hier, sobald der Workspace einen agentes.chat-Tarif und eine verbundene KI hat.",
+      "no_ai_plan_hold": "Ich habe deine Nachricht aufgehoben. Ich antworte hier, sobald der Workspace einen AULACBOT-Tarif und eine verbundene KI hat.",
       "no_ai_no_computer": "Ich kann noch nicht antworten: Meine KI braucht einen Computer, und ich habe keinen.",
       "redacted": "[entfernt: sah aus wie eine Anmeldung oder ein Schlüssel]",
       "action_connect_ai": "KI verbinden",
@@ -18067,7 +18068,7 @@
     "machine": {
       "ready": "Bereit",
       "off": "Aus",
-      "offHelp": "Wer den Computer verbunden hat, schaltet es hier ein oder in der agentes.chat-App dort: Einstellungen → Werkzeuge.",
+      "offHelp": "Wer den Computer verbunden hat, schaltet es hier ein oder in der AULACBOT-App dort: Einstellungen → Werkzeuge.",
       "needsCommand": "Braucht einen Befehl",
       "notReady": "Noch nicht bereit",
       "turnOff": "Ausschalten",
@@ -18307,7 +18308,7 @@
     "paused": "Die Agenten in diesem Workspace sind zur Prüfung pausiert.",
     "suspended": "Dieser Workspace ist vorerst nicht verfügbar.",
     "createRefused": "Du kannst gerade keinen Workspace erstellen.",
-    "createUnpaid": "Du hast schon einen Workspace, der auf einen agentes.chat-Tarif wartet. Wähle seinen Tarif, bevor du einen weiteren erstellst.",
+    "createUnpaid": "Du hast schon einen Workspace, der auf einen AULACBOT-Tarif wartet. Wähle seinen Tarif, bevor du einen weiteren erstellst.",
     "createUnpaidOpen": "{{name}} öffnen",
     "createInactive": "Du hast schon einen Workspace, der noch nicht aktiv ist, daher kannst du vorerst keinen weiteren erstellen.",
     "agentPaused": "Dieser Agent ist vorerst pausiert.",
@@ -18328,25 +18329,25 @@
       "active": "Der Workspace funktioniert wieder",
       "agentHold": "{{name}} ist pausiert",
       "billing": {
-        "payment": "Der Workspace braucht einen agentes.chat-Tarif",
-        "unpaid": "Die Zahlung für den agentes.chat-Tarif ist nicht durchgegangen",
-        "ended": "Der agentes.chat-Tarif des Workspace ist abgelaufen"
+        "payment": "Der Workspace braucht einen AULACBOT-Tarif",
+        "unpaid": "Die Zahlung für den AULACBOT-Tarif ist nicht durchgegangen",
+        "ended": "Der AULACBOT-Tarif des Workspace ist abgelaufen"
       }
     },
     "billing": {
-      "payment": "Dieser Workspace hat noch keinen agentes.chat-Tarif. Seine Agenten beginnen zu arbeiten, sobald er einen hat.",
-      "unpaid": "Die Zahlung für den agentes.chat-Tarif dieses Workspace ist nicht durchgegangen, und seine Agenten wurden gestoppt.",
-      "ended": "Der agentes.chat-Tarif dieses Workspace ist abgelaufen, und seine Agenten wurden gestoppt. Seine Unterhaltungen und Dateien sind weiterhin hier zum Lesen und Herunterladen.",
-      "sub": "Du kannst hier weiterhin lesen und schreiben. Die Agenten kommen zurück, sobald der agentes.chat-Tarif in Ordnung ist.",
+      "payment": "Dieser Workspace hat noch keinen AULACBOT-Tarif. Seine Agenten beginnen zu arbeiten, sobald er einen hat.",
+      "unpaid": "Die Zahlung für den AULACBOT-Tarif dieses Workspace ist nicht durchgegangen, und seine Agenten wurden gestoppt.",
+      "ended": "Der AULACBOT-Tarif dieses Workspace ist abgelaufen, und seine Agenten wurden gestoppt. Seine Unterhaltungen und Dateien sind weiterhin hier zum Lesen und Herunterladen.",
+      "sub": "Du kannst hier weiterhin lesen und schreiben. Die Agenten kommen zurück, sobald der AULACBOT-Tarif in Ordnung ist.",
       "cta": {
-        "payment": "agentes.chat-Tarife ansehen",
+        "payment": "AULACBOT-Tarife ansehen",
         "unpaid": "Zahlung aktualisieren",
         "ended": "Erneut abonnieren"
       },
       "askAdmin": "Wer diesen Workspace leitet, kann das klären.",
-      "paid": "Zahlung erhalten. Der agentes.chat-Tarif startet gleich.",
-      "teamReady": "Dein Team ist bereit. Zum Start fehlt ein agentes.chat-Tarif.",
-      "invites": "Einladungen gibt es mit dem agentes.chat-Tarif."
+      "paid": "Zahlung erhalten. Der AULACBOT-Tarif startet gleich.",
+      "teamReady": "Dein Team ist bereit. Zum Start fehlt ein AULACBOT-Tarif.",
+      "invites": "Einladungen gibt es mit dem AULACBOT-Tarif."
     },
     "cloud": {
       "review": "Für eine Sicherheitsprüfung pausiert, bis unser Team es sich ansieht. Unsere automatischen Prüfungen haben Aktivität erkannt, die gegen unsere Bedingungen verstoßen könnte (Abschnitt 5). Um Einspruch einzulegen, schreib an {{email}}.",
@@ -18479,7 +18480,7 @@
     "open": "Tarif und Abrechnung öffnen",
     "opening": "Wird geöffnet…",
     "failed": "Konnte gerade nicht geöffnet werden. Versuch es gleich noch einmal.",
-    "adminsOnly": "Nur Inhaber und Admins des Workspace verwalten seinen agentes.chat-Tarif.",
+    "adminsOnly": "Nur Inhaber und Admins des Workspace verwalten seinen AULACBOT-Tarif.",
     "seeOptions": "Optionen ansehen",
     "people": "Personen",
     "files": "Dateien",
@@ -18492,8 +18493,8 @@
   "limits": {
     "members": {
       "full": "Dieser Workspace hat {{members}} von {{limit}} Personen.",
-      "fullOne": "Der agentes.chat-Tarif dieses Workspace reicht für 1 Person.",
-      "fullAdmin": "Um mehr Personen dazuzuholen, sieh dir die Optionen des agentes.chat-Tarifs an.",
+      "fullOne": "Der AULACBOT-Tarif dieses Workspace reicht für 1 Person.",
+      "fullAdmin": "Um mehr Personen dazuzuholen, sieh dir die Optionen des AULACBOT-Tarifs an.",
       "fullMember": "Bitte die Person, die den Workspace verwaltet, Platz zu schaffen.",
       "fullAddSeat": "Alle bezahlten Plätze sind belegt. Füge unter Tarif und Abrechnung einen Platz hinzu.",
       "fullTop": "Dieser Tarif fasst keine weiteren Personen. Wechsle den Tarif unter Tarif und Abrechnung.",
@@ -18509,7 +18510,7 @@
       "meter": "Du hast {{used}} von {{limit}} genutzt.",
       "near": "Du hast {{used}} von {{limit}} genutzt. Uploads pausieren beim Limit, und nichts wird gelöscht.",
       "full": "Uploads bei {{limit}} pausiert. Nichts wurde gelöscht.",
-      "fullAdmin": "Ändere den agentes.chat-Tarif, lösche Dateien, die du nicht mehr brauchst, oder verbinde deinen eigenen Bucket.",
+      "fullAdmin": "Ändere den AULACBOT-Tarif, lösche Dateien, die du nicht mehr brauchst, oder verbinde deinen eigenen Bucket.",
       "dailyFull": "Die Uploads von heute haben {{limit}} erreicht. In ein paar Stunden kannst du wieder hochladen.",
       "connectBucket": "Bucket verbinden"
     }
@@ -18810,7 +18811,7 @@
       "screensOff": "Bildschirme sind auf {{computer}} aus. Schalte sie dort ein:",
       "screensOffOne": "Die Bildschirme sind auf {{computer}} ausgeschaltet.",
       "screensMissing": "{{computer}} kann noch keine Bildschirme zeigen. Dort:",
-      "outdated": "Aktualisiere agentes auf {{computer}}, um den Bildschirm von {{name}} zu sehen.",
+      "outdated": "Aktualisiere AULACBOT auf {{computer}}, um den Bildschirm von {{name}} zu sehen.",
       "noScreen": "{{name}} hat hier keinen Bildschirm zum Anzeigen",
       "noScreenHelp": "Erlaube den Bildschirm oder den Browser unter Tools und Zugriff.",
       "noComputer": "Wähle einen Computer für {{name}}.",
@@ -18956,7 +18957,7 @@
       "browser": "Browser",
       "screen": "Bildschirm des Computers",
       "terminal": "Terminal",
-      "agentes": "agentes",
+      "agentes": "AULACBOT",
       "thinking": "Denkt nach",
       "inside": "{{program}} · {{detail}}"
     },
@@ -19718,7 +19719,7 @@
     },
     "action": {
       "signIn": "Anmelden",
-      "open": "agentes.chat öffnen",
+      "open": "AULACBOT öffnen",
       "latest": "Neueste Version öffnen",
       "file": "Datei öffnen",
       "retry": "Noch einmal versuchen"
@@ -19955,7 +19956,7 @@
     "beta": {
       "word": "BETA",
       "title": "Du bist früh dran. Schön, dass du da bist.",
-      "text": "agentes.chat ist in der Beta: Du kannst schon richtig damit arbeiten, und wir feilen noch daran.",
+      "text": "AULACBOT ist in der Beta: Du kannst schon richtig damit arbeiten, und wir feilen noch daran.",
       "weekly": {
         "title": "Wird jede Woche besser",
         "text": "Neues und Korrekturen kommen laufend dazu."
@@ -19991,7 +19992,7 @@
     "mark": "Beta",
     "open": "Feedback senden",
     "ask": "Was hat gefehlt, ist kaputtgegangen oder hat gestört?",
-    "goesCloud": "Was du schreibst, geht per E-Mail an das Team von agentes.chat.",
+    "goesCloud": "Was du schreibst, geht per E-Mail an das Team von AULACBOT.",
     "goesServer": "Was du schreibst, geht per E-Mail an die Person, die diesen Server betreibt.",
     "placeholder": "Schreib es, wie du magst",
     "report": "Hier ein Problem melden",
@@ -20017,14 +20018,14 @@
     "offer": {
       "group": "Bericht über die App",
       "ready": "<b>Bericht bereit</b>: {{summary}}",
-      "goesCloud": "Geht in deinem Namen an das Team von agentes.chat",
+      "goesCloud": "Geht in deinem Namen an das Team von AULACBOT",
       "goesServer": "Geht in deinem Namen an die Person, die diesen Server betreibt",
       "see": "Bericht ansehen",
       "hide": "Bericht schließen",
       "send": "Senden",
       "notNow": "Jetzt nicht",
       "answer": "Die Antwort kommt an deine E-Mail-Adresse.",
-      "sentCloud": "<b>Bericht gesendet</b> an das Team von agentes.chat",
+      "sentCloud": "<b>Bericht gesendet</b> an das Team von AULACBOT",
       "sentServer": "<b>Bericht gesendet</b> an die Person, die diesen Server betreibt",
       "sentAuto": "<b>Bericht ohne Nachfrage gesendet</b>: {{summary}}",
       "view": "Ansehen",

@@ -66,6 +66,7 @@ export const HELP: Record<AppLocale, Partial<Record<HelpSlug, HelpDocument>>> = 
   tr: helpTr,
   pl: helpPl,
   ru: helpRu,
+  vi: {},
 };
 
 /** The page in `locale` ("pt-PT" reads pt-BR), or in English where that language has none. */

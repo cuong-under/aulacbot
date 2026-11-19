@@ -492,5 +492,5 @@ export function s3Missing(f: S3Form, keysSaved: boolean) {
 
 // ── Importar e exportar ─────────────────────────────────────────────────────
 
-/** The export's file name, as the web saves it: `agentes-chat-2026-10-28.json`. */
-export const exportFileName = (now: Date) => `agentes-chat-${now.toISOString().slice(0, 10)}.json`;
+/** The export's file name, as the web saves it: `aulacbot-2026-10-28.json`. */
+export const exportFileName = (now: Date) => `aulacbot-${now.toISOString().slice(0, 10)}.json`;

@@ -18,7 +18,7 @@ import { until } from "./until";
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
 const REACH_TEXT =
-  "With Tailscale, a private network for your devices: your phone and the people you invite join it, and nobody else can reach agentes.chat.";
+  "With Tailscale, a private network for your devices: your phone and the people you invite join it, and nobody else can reach AULACBOT.";
 const USAGE_TEXT =
   "Counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites.";
 
@@ -56,7 +56,7 @@ async function firstRun(
         </I18nextProvider>,
       ),
     );
-    // Whether this build runs agentes.chat here arrives from the host first.
+    // Whether this build runs AULACBOT here arrives from the host first.
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
     await check(screenOf(el, opened, tailscale, host));
   } finally {
@@ -100,7 +100,7 @@ function switchRows(el: HTMLElement) {
   });
 }
 
-describe("Run agentes.chat on this Mac", () => {
+describe("Run AULACBOT on this Mac", () => {
   test("the title, one sentence, the two fields alone, two one-line switches with their ⓘ, and Start", () =>
     firstRun("first", async ({ el, press, until, button }) => {
       await press("On this Mac");
@@ -138,8 +138,8 @@ describe("Run agentes.chat on this Mac", () => {
           line: null,
         },
         {
-          label: "Send anonymous usage statistics to agentes.chat",
-          about: "About Send anonymous usage statistics to agentes.chat",
+          label: "Send anonymous usage statistics to AULACBOT",
+          about: "About Send anonymous usage statistics to AULACBOT",
           hint: USAGE_TEXT,
           same: true,
           line: null,
@@ -242,7 +242,7 @@ describe("Run agentes.chat on this Mac", () => {
     firstRun("here", async ({ el, press, until }) => {
       await press("On this Mac");
       await press("Get this Mac ready");
-      await until(() => el.querySelector("h1")?.textContent === "agentes.chat already runs on this Mac");
+      await until(() => el.querySelector("h1")?.textContent === "AULACBOT already runs on this Mac");
       expect(el.querySelector(".dk-lead")?.textContent).toBe("This app runs it. Open it to sign in.");
     }));
 
@@ -369,6 +369,8 @@ describe("Where will your workspace live?", () => {
         expect(el.textContent).not.toContain("server");
         const place = () => el.querySelector(".ac-place")?.getAttribute("data-place");
         expect(place()).toBe("cloud");
+        expect(el.querySelector(".dk-choose__brand .dk-brandmark.ac-logo__mark")).not.toBeNull();
+        expect(el.querySelector(".ac-place__brand .ac-logo__mark")).not.toBeNull();
         await press("On this Mac");
         expect(place()).toBe("here");
         expect(el.querySelector(".ac-place canvas.ac-computer")?.getAttribute("data-kind")).toBe("mac");
@@ -377,7 +379,7 @@ describe("Where will your workspace live?", () => {
         expect(place()).toBe("box");
         expect(el.querySelector(".ac-place canvas.ac-computer")?.getAttribute("data-kind")).toBe("linux");
         expect(button("See how to install")).toBeDefined();
-        await press("In the agentes.chat cloud");
+        await press("In the AULACBOT cloud");
         await press("Continue in the cloud");
         expect(chosen).toEqual(["/login"]);
       },
@@ -522,11 +524,11 @@ describe("Setting it up here", () => {
       async (screen) => {
         const { el, until } = screen;
         await startSetup(screen);
-        await until(() => stepOf(el, "Turning agentes.chat on")?.dataset.state === "active");
+        await until(() => stepOf(el, "Turning AULACBOT on")?.dataset.state === "active");
         setSystemTime(new Date(Date.now() + 31_000));
         try {
-          await until(() => stepOf(el, "Turning agentes.chat on")?.querySelector(".dk-fr__steptime"));
-          const step = stepOf(el, "Turning agentes.chat on") as HTMLElement;
+          await until(() => stepOf(el, "Turning AULACBOT on")?.querySelector(".dk-fr__steptime"));
+          const step = stepOf(el, "Turning AULACBOT on") as HTMLElement;
           expect(step.querySelector(".dk-fr__steptime")?.textContent).toBe("0:31");
           expect(step.querySelector(".dk-fr__steptime")?.getAttribute("aria-hidden")).toBe("true");
           expect(step.querySelector(".dk-fr__stepline")?.textContent).toBe(
@@ -562,7 +564,7 @@ describe("Setting it up here", () => {
         async (screen) => {
           const { el, until } = screen;
           await startSetup(screen);
-          await until(() => stepOf(el, "Turning agentes.chat on")?.dataset.state === "active");
+          await until(() => stepOf(el, "Turning AULACBOT on")?.dataset.state === "active");
           const lead = () =>
             (el.querySelector(".dk-fr__setup") as HTMLElement).style.getPropertyValue("--dk-setup-lead");
           expect(lead()).toBe("94px");
@@ -570,7 +572,7 @@ describe("Setting it up here", () => {
           room = 82.6;
           setSystemTime(new Date(Date.now() + 31_000));
           try {
-            await until(() => stepOf(el, "Turning agentes.chat on")?.querySelector(".dk-fr__stepline"));
+            await until(() => stepOf(el, "Turning AULACBOT on")?.querySelector(".dk-fr__stepline"));
             expect(lead()).toBe("94px");
           } finally {
             setSystemTime();
@@ -759,11 +761,9 @@ describe("Setting it up here", () => {
         const { el, until, button, press } = screen;
         await startSetup(screen);
         await until(() => button("Try again"));
-        const step = stepOf(el, "Turning agentes.chat on") as HTMLElement;
+        const step = stepOf(el, "Turning AULACBOT on") as HTMLElement;
         expect(step.dataset.state).toBe("failed");
-        expect(step.querySelector(".dk-honest")?.textContent).toBe(
-          "agentes.chat didn't start on this Mac. Copy details",
-        );
+        expect(step.querySelector(".dk-honest")?.textContent).toBe("AULACBOT didn't start on this Mac. Copy details");
         expect(runButtons(el)).toEqual(["Cancel", "Try again"]);
         expect(document.activeElement).toBe(button("Try again") ?? null);
         // The computer dims.
@@ -857,7 +857,7 @@ describe("Setting it up here", () => {
 });
 
 describe("Add a workspace", () => {
-  /** The welcome window opened by the site's "Add workspace", with agentes.chat signed in here or not. */
+  /** The welcome window opened by the site's "Add workspace", with AULACBOT signed in here or not. */
   const adding = (cloud: boolean, chosen: (string | undefined)[]) => (host: FakeHost) => {
     host.welcomeMode = async () => "add";
     host.workspaces = async () => [{ server: "https://app.agentes.chat", signedIn: cloud, orgs: [] }];
@@ -867,7 +867,7 @@ describe("Add a workspace", () => {
     host.hideWindow = async () => {};
   };
 
-  test("not signed in to agentes.chat: signing in (the workspaces you have) is the big one, a new one the line", () => {
+  test("not signed in to AULACBOT: signing in (the workspaces you have) is the big one, a new one the line", () => {
     const chosen: (string | undefined)[] = [];
     return firstRun(
       "first",
@@ -882,14 +882,14 @@ describe("Add a workspace", () => {
     );
   });
 
-  test("signed in to agentes.chat here already: a new workspace is the big one", () => {
+  test("signed in to AULACBOT here already: a new workspace is the big one", () => {
     const chosen: (string | undefined)[] = [];
     return firstRun(
       "first",
       async ({ press, until, button }) => {
-        await until(() => button("Create a workspace on agentes.chat"));
+        await until(() => button("Create a workspace on AULACBOT"));
         expect(button("Create one")).toBeUndefined();
-        await press("Create a workspace on agentes.chat");
+        await press("Create a workspace on AULACBOT");
         expect(chosen).toEqual(["/onboarding"]);
       },
       { host: adding(true, chosen) },

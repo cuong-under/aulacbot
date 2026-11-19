@@ -4,8 +4,9 @@ Every AULACBOT change to an upstream-owned file is recorded here, in the same co
 
 ## Status right now
 
-**No upstream file has been modified.** The bootstrap commit adds new files only
-(`AGENTS.md` and `docs/**`). Every AULACBOT obligation so far is satisfiable by configuration.
+**Upstream files have been modified, uncommitted, since 2026-11-15.** Entries 006 onwards record the
+identity pass: product name, logo, icons, desktop/mobile metadata, email identity and the copy pass.
+Everything else in upstream remains as it arrived.
 
 ## Registry entries
 
@@ -67,32 +68,35 @@ Every AULACBOT change to an upstream-owned file is recorded here, in the same co
 **Decision needed:** whether AULACBOT sets `TELEMETRY=off`, `FEEDBACK_RELAY=false` and its own
 `DESKTOP_RELEASES_REPO`. This is an owner decision, not an agent one.
 
-### AULACBOT-CUSTOM-004 — Product identity (pending branding phase)
+### AULACBOT-CUSTOM-004 — Product identity (names and icons done; server identity still upstream)
 
 Verified while running the server: the product name is **hardcoded**, not configurable. `GET
-/api/instance` answered `{"name":"agentes.chat"}` even with AULACBOT's `SOURCE_URL` set.
+/api/instance` answered `{"name":"agentes.chat"}` even with AULACBOT's `SOURCE_URL` set. That is
+still true, on purpose: the app is a client of upstream servers, so the instance contract, the OAuth
+resource name and the client's accepted name stay `agentes.chat` until AULACBOT ships its own server
+software. Everything a person sees as the product's identity now says `AULACBOT`.
 
-**Files that would change:**
+| Done on 2026-11-17 | Now |
+| --- | --- |
+| `apps/desktop/src-tauri/tauri.conf.json` | `productName: "AULACBOT"`, `shortDescription: "AULACBOT"`, the three window titles `AULACBOT`; `identifier: chat.agentes.desktop`, the `agenteschat` scheme, the updater endpoint and `copyright` are **KEEP** |
+| `apps/mobile/app.config.ts` | `name: "AULACBOT"` (`AULACBOT <variant>` off production), `iosShareExtensionName` likewise; `slug: "agentes"`, `scheme: "agenteschat"` and the `chat.agentes.app*` bundle ids are **KEEP** |
+| `README.md` | AULACBOT's own front page (see `-005`) |
+| The mark, icons, palette and copy | `docs/branding/cyber-lac/REPLACEMENT-MAP.md` §1–§3; the entries `-006` to `-009` below |
 
-| File | Line | Hardcoded value |
-| --- | --- | --- |
-| `apps/server/src/routes/instance.ts` | 16 | `name: z.literal("agentes.chat")` |
-| `apps/server/src/routes/instance.ts` | 62 | `name: "agentes.chat" as const` |
-| `apps/server/src/auth.ts` | 153 | `appName: "agentes.chat"` |
-| `apps/server/src/oauth.ts` | 94 | `resource_name: "agentes.chat"` |
-| `apps/server/src/native.ts` | 401 | `description: "agentes.chat"` |
-| `apps/server/src/routes/desktop.ts` | 162 | `"user-agent": "agentes.chat"` |
-| `apps/desktop/src-tauri/tauri.conf.json` | — | `productName`, `identifier: chat.agentes.desktop`, window titles, updater endpoints |
-| `apps/mobile/app.config.ts` | — | `name: "agentes"`, `slug`, `scheme: agenteschat`, bundle ids `chat.agentes.app*` |
-| `README.md` | — | AULACBOT needs its own front page |
+**Still upstream, and why:** `apps/server/src/routes/instance.ts:16,62` (`z.literal("agentes.chat")`
+and the route's `name`), `apps/server/src/auth.ts:153` (`appName`), `apps/server/src/oauth.ts:94`
+(`resource_name`), `apps/server/src/native.ts:401` (`description`) and
+`apps/server/src/routes/desktop.ts:162` (the user agent). A fork that renamed these would answer a
+name its own client rejects and would break sign-in against every workspace already running.
 
 | Field | Value |
 | --- | --- |
 | Owner | Shared, and AULACBOT decides the values |
-| Status | **Not started.** Blocked on the owner's branding decision |
-| Why | A public fork needs its own name, logo, icons, bundle ids and store listing (`TRADEMARKS.md`); `z.literal("agentes.chat")` makes the client's instance contract reject any other name |
+| Status | **Partly done.** Names, icons, metadata and copy: done 2026-11-17. Server-side instance identity: open, waits for AULACBOT's own server release |
+| Why | A public fork needs its own name, logo, icons and store listing (`TRADEMARKS.md`); `z.literal("agentes.chat")` makes the client's instance contract reject any other name |
 | Sync risk | **High** — `instance.ts` is a contract file (client + OpenAPI + tests), `auth.ts` is auth |
-| Plan | One minimal edit per file, each its own commit and registry entry. Consider a single AULACBOT-owned constant module that these files import, so the diff stays one line per site |
+| If upstream changes | Take upstream's server files as they are. Change the instance name only together with the client's accepted names, the OAuth resource and the About/`z.literal` tests, never before |
+| Plan for the rest | Give the server its own constant module, one line per site, then widen `packages/client/src/lib/server.ts` to accept both names during the transition |
 | Regression test | `bun run typecheck` covers the `z.literal` contract; re-run `GET /api/instance` and check the About screen in all three apps |
 
 ### AULACBOT-CUSTOM-005 — Root README replaced with AULACBOT's own
@@ -110,6 +114,123 @@ Verified while running the server: the product name is **hardcoded**, not config
 | Sync risk | **Low** — upstream edits `README.md` often, but a conflict here is cheap and self-evident |
 | If upstream changes | Keep AULACBOT's text; cherry-pick only genuinely useful neutral content such as a corrected command |
 | Regression test | none; review by reading |
+
+### AULACBOT-CUSTOM-006 — Product name in UI copy (web, phone, desktop, engine, client, ui)
+
+**Files:** `packages/i18n/src/{en,pt-BR}.ts`, the 12 shared locale `.json`/`.source.json` pairs,
+`packages/i18n/src/help/pages.*.ts` (14 languages), `packages/engine/src/email/words/*.ts` and
+`packages/engine/src/push/messages/*.ts` (14 each), `apps/mobile/src/i18n/**` and
+`apps/mobile/src/features/i18n/**` (26 files each), and prose in `apps/web/src`, `apps/mobile/src`,
+`apps/desktop/src`, `packages/engine/src`, `packages/client/src` and `packages/ui/src`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — upstream owns the files, AULACBOT owns the name |
+| Upstream behavior | Every sentence names the product `agentes.chat` |
+| AULACBOT behavior | Every prose reference names it `AULACBOT`; `https://agentes.chat/*` URLs, `*@agentes.chat` addresses, `agenteschat`/`agenteschat://` protocol keys, `AGENTES_*` env names, `~/.agentes`, user-agent strings, `SIGNATURE_MARK`, deep-link paths and the About attribution stay exactly as upstream |
+| Why | A public fork must present its own name; `TRADEMARKS.md` forbids presenting the fork as upstream |
+| Commit | uncommitted as of 2026-11-17 |
+| ADR | ADR-001 |
+| Sync risk | **High** — 390 files carry copy, so any upstream copy change conflicts. Resolve by taking upstream's wording and re-applying only the name, never by reverting AULACBOT |
+| If upstream changes | Re-run the same name substitution over the changed files; keep URLs, attribution, protocol keys and the setup installer's own output on upstream's name |
+| Regression test | `bun run typecheck`; `bun test packages/i18n`; `bun test apps/mobile/test/i18n-guard.test.ts apps/mobile/test/i18n-keys.test.ts`; `bun test packages/engine/test/email.test.ts` (snapshot); `packages/i18n/test/glossary.test.ts` keeps `AULACBOT` and `agentes.chat` both in `keep` |
+
+### AULACBOT-CUSTOM-007 — Email sender name follows the product
+
+**Files:** `packages/engine/src/email.ts` (`SENDER_NAME`), `packages/setup/src/lib.ts` (`SENDER_NAME`)
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared |
+| Upstream behavior | `SENDER_NAME = "agentes.chat"` in both files, which their own comments require to match |
+| AULACBOT behavior | Both are `"AULACBOT"`, so a self-hosted server's default `From:` reads `AULACBOT <ping@host>`; the `ping@` mailbox stays |
+| Why | The sender line is the first thing a recipient reads; it must name the product |
+| Commit | uncommitted as of 2026-11-17 |
+| ADR | ADR-001 |
+| Sync risk | Low — two constants, but they must change together or the setup's offered sender stops matching the engine's |
+| If upstream changes | Change both to AULACBOT again and update `packages/setup/test/lib.test.ts` plus the email snapshot |
+| Regression test | `bun test packages/setup/test/lib.test.ts packages/engine/test/email.test.ts` |
+
+### AULACBOT-CUSTOM-008 — Product name in agent-facing text (engine prompts and tool replies)
+
+**Files:** `packages/engine/src/{capabilities,context,machines,machine-hub,machine-accounts,setup-tools,no-ai,credentials,feedback-tools,mission-sync,pdf,storage,runner-update}.ts`, `packages/engine/src/git/*`, `packages/engine/src/browser/*`, `packages/ui/src/components/HostingScene.tsx`, `packages/ui/src/sky/team.ts`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared |
+| Upstream behavior | Agents read `agentes.chat`, the computer it runs on is named after it, and GitHub signatures/PDF producers say `agentes.chat` |
+| AULACBOT behavior | Those sentences say `AULACBOT`; the computer's own name, e-mail trailers and `SIGNATURE_MARK` stay upstream (`<!-- agentes.chat -->`, `noreply@agentes.chat`) so older clients still recognise a signed body |
+| Why | An agent that names a different product than the one people use confuses both |
+| Commit | uncommitted as of 2026-11-17 |
+| ADR | ADR-001 |
+| Sync risk | Medium — prompts are large and change often; a conflict here can silently reintroduce the old name |
+| If upstream changes | Re-apply the name to prose only; never touch `SIGNATURE_MARK`, `AGENT_CO_AUTHOR_EMAIL` or the signature regexes |
+| Regression test | `bun test packages/engine/test` (the git, signature, machines, setup-tools and context suites cover it) |
+
+### AULACBOT-CUSTOM-009 — The terminal's logo is the Lạc bird, in the brand's jade palette
+
+**Files:** `packages/setup/src/term.ts` (`LOGO_MARK`, `GLYPHS`, `TONE_*`, `ACCENT`, `BADGE`, `logoLines`,
+`LOGO_WIDTH`), `packages/setup/src/term-sh.ts` (`t_logo`, `t_cell`, `t_tone`, `t_intro`), `packages/ui/test/logo-mark.test.ts`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — upstream owns the files, AULACBOT owns the mark |
+| Upstream behavior | The logo is the pixel agent of `packages/ui/src/agent/engine.js` on a 12 × 12 grid, the wordmark reads `agentes` with `.chat` beside it, and every mark is drawn in the agent's sky blue |
+| AULACBOT behavior | The mark is the Cyber Lạc head (mint crest and head, jade visor, two eyes, gold bill) on the same 12 × 12 grid; the wordmark reads `AULACBOT` with `.app` muted on the baseline; the palette is jade `#0F7A66` for links and `#0F6A59` for the badge; the logo shows from 67 columns and both the TypeScript and the POSIX `sh` copy draw it escape for escape |
+| Why | An install is the first thing anyone sees; if it greets people with a different brand than the icon and the app, the fork reads as half-finished |
+| Commit | uncommitted as of 2026-11-17 |
+| ADR | ADR-001 |
+| Sync risk | Medium — `term.ts` and `term-sh.ts` are a matched pair (one test compares them escape for escape), and the palette's tone numbers are shared between them |
+| If upstream changes | Re-apply the mark, the `aulacbot` glyphs and the jade tones to both files together; keep `AGENTES_FRAME`, the `agentes-log` temp name and upstream's `https://agentes.chat/install` URL |
+| Regression test | `bun test packages/setup/test/term.test.ts packages/ui/test/logo-mark.test.ts` |
+
+### AULACBOT-CUSTOM-010 — Desktop and mobile brand positions use the pixel Cyber Lạc mark
+
+**Files:** `packages/ui/src/brand/logo-mark.ts`, `packages/ui/src/components/Logo.tsx`,
+`packages/ui/src/components/HostingScene.tsx`, `packages/ui/src/styles/components.css`,
+`packages/ui/package.json`, `packages/ui/test/logo-mark.test.ts`, `packages/ui/test/components.test.tsx`,
+`apps/desktop/src/ui/bits.tsx`, `apps/desktop/src/styles.css`,
+`apps/desktop/test/first-run-here.test.tsx`, `apps/mobile/src/ui/LogoMark.tsx`,
+`apps/mobile/app/_layout.tsx`, `apps/mobile/src/features/launch/LaunchSplash.tsx`,
+`apps/mobile/src/features/launch/logic.ts`,
+`apps/mobile/test/features/launch.test.ts`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — upstream owns the UI files, AULACBOT owns its mark |
+| Upstream behavior | The welcome illustration and desktop brand face use the blue agent avatar as the product logo |
+| AULACBOT behavior | Desktop and mobile brand positions use the shared sharp 12 × 12 Cyber Lạc pixel grid, including the native and animated mobile launch splash with an AULACBOT wordmark; the three small desktop faces and the hosting-scene cast remain agent avatars |
+| Why | The product logo must not be confused with the upstream agent avatar |
+| Commit | Uncommitted as of 2026-11-18 |
+| ADR | ADR-001 |
+| Sync risk | Medium — shared UI components are reused across the desktop's first-run and popover windows |
+| If upstream changes | Preserve upstream agent avatars for agents; keep the AULACBOT brand mark on the shared 12 × 12 pixel grid |
+| Regression test | `bun test packages/ui/test/logo-mark.test.ts packages/ui/test/components.test.tsx apps/desktop/test/first-run-here.test.tsx` |
+
+### AULACBOT-CUSTOM-011 — The agents' sky, accent and splash use the Cyber Lạc palette
+
+**Files:** `packages/ui/src/sky/math.ts`, `packages/ui/src/sky/workspace.ts`,
+`packages/ui/src/sky/selection.ts`, `packages/ui/src/agent/engine.js`,
+`packages/ui/src/computer/portrait.js`, `packages/ui/src/components/SearchPixels.tsx`,
+`packages/ui/src/styles/tokens.css`, `docs/design/design-system/tokens.css`,
+`packages/tokens/src/index.ts`, `packages/client/src/lib/purpose-scene.ts`,
+`apps/web/src/layout.css`, `apps/web/src/components/welcome.css`, `apps/web/src/pages/onboarding.css`,
+`apps/web/src/pages/new-agent.css`, `apps/web/src/components/Sky.tsx`, `apps/web/index.html`,
+`apps/web/public/unavailable.html`, `apps/desktop/src/cover/cover.css`, `apps/desktop/src/cover/main.ts`,
+`apps/desktop/src-tauri/src/cover.rs`, `apps/mobile/src/ui/presence-badge.ts`,
+`apps/server/runner/assets/start/start.css.txt`
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — upstream owns the sky engine and tokens, AULACBOT owns its palette |
+| Upstream behavior | The agents' world is upstream's blue: `#0063d1` accent, `SKY_TONES` from `#0a3f9c` to `#eef7ff`, navy pixel bodies, the boot sky `#0a3f9c` |
+| AULACBOT behavior | The same engine and the same components, in Cyber Lạc's jade: accent `#0f6a59` (`#6af2d2` in dark), `SKY_TONES` deep jade to `#e8fcf7`, pixel bodies `#03150f`, the boot/cover splash `#04110d`; the onboarding purpose scene casts gold, jade and mint agents over jade and mint horizons; the desktop cover's agent is the jade prime |
+| Why | The product's own identity must not be upstream's blue; the illustration keeps upstream's shapes, casts and motion |
+| Commit | Uncommitted as of 2026-11-18 |
+| ADR | ADR-001 |
+| Sync risk | Medium — `SKY_TONES`, `AGENT_GRADIENTS.sky` and `spriteBody` are read by the web, the phone, the desktop cover, the terminal start page and the icon generator |
+| If upstream changes | Take upstream's sky engine, casts and scene numbers; re-apply only the tone tables, the accent tokens and the splash colours. Never copy upstream's blue back in |
+| Regression test | `bun test packages/ui/test/agent-engine.test.ts packages/ui/test/sky.test.tsx packages/ui/test/computer-portrait.test.tsx apps/web/test/computer-sky.test.tsx packages/tokens/test/tokens.test.ts apps/server/test/runner/start-page.test.ts` |
 
 ## Entry template
 

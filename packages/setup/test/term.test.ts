@@ -1,6 +1,9 @@
 import { describe, expect, test } from "bun:test";
 import { spawnSync } from "node:child_process";
 import { EventEmitter } from "node:events";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { sentence, tailscaleKeyProblem } from "../src/lib";
 import {
   createTerm,
@@ -14,6 +17,21 @@ import {
   wrap,
 } from "../src/term";
 import { TERM_SH } from "../src/term-sh";
+
+/**
+ * Runs a piece of the installer's shell with `sh`, from a file: a long `sh -c` string breaks on Windows (its command
+ * line has a limit, and msys mangles a multi-line one), while a file is read the same way everywhere.
+ */
+function runSh(script: string) {
+  const dir = mkdtempSync(join(tmpdir(), "aulacbot-sh-"));
+  try {
+    const file = join(dir, "run.sh");
+    writeFileSync(file, script);
+    return spawnSync("sh", [file], { encoding: "utf8" });
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
 
 /** Keys as a terminal sends them, after readline's keypress decoding. */
 class Keys extends EventEmitter {
@@ -122,7 +140,7 @@ describe("the look's pieces", () => {
     expect(unicodeTerminal({}, "win32")).toBe(false);
   });
 
-  test("the logo fits its 63 columns in every color depth, and the installers draw it the same, escape for escape", () => {
+  test("the logo fits its columns in every color depth, and the installers draw it the same, escape for escape", () => {
     for (const [depth, sh] of [
       [24, 24],
       [8, 256],
@@ -130,9 +148,7 @@ describe("the look's pieces", () => {
       [1, 0],
     ] as const) {
       for (const line of logoLines(depth)) expect(visible(line)).toBeLessThanOrEqual(LOGO_WIDTH);
-      const drawn = spawnSync("sh", ["-c", `${TERM_SH}\nt_init 1; T_DEPTH=${sh}; t_style; t_logo`], {
-        encoding: "utf8",
-      });
+      const drawn = runSh(`${TERM_SH}\nt_init 1; T_DEPTH=${sh}; t_style; t_logo`);
       expect(drawn.stderr).toBe("");
       expect(drawn.stdout).toBe(`\n${logoLines(depth).join("\n")}\n\n`);
     }
@@ -141,8 +157,8 @@ describe("the look's pieces", () => {
   test("links take the accent, without the sentence's period, and never half of a <placeholder> address", () => {
     const { term, text } = capture({ depth: 24 });
     term.text("Open https://agents.example.com. Or https://agentes.<your tailnet>.ts.net soon.");
-    expect(text()).toContain("\x1b[38;2;43;116;230mhttps://agents.example.com\x1b[39m.");
-    expect(text()).not.toContain("\x1b[38;2;43;116;230mhttps://agentes.");
+    expect(text()).toContain("\x1b[38;2;15;122;102mhttps://agents.example.com\x1b[39m.");
+    expect(text()).not.toContain("\x1b[38;2;15;122;102mhttps://agentes.");
   });
 
   test("widths in a terminal's columns: wide characters take two, combining marks none", () => {
@@ -157,10 +173,9 @@ describe("the look's pieces", () => {
   });
 
   test("the installers' end and title wrap beside their mark on a narrow terminal", () => {
-    const run = (call: string) =>
-      spawnSync("sh", ["-c", `${TERM_SH}\nt_init 1; T_FRAME=1 T_COLS=40 T_FOLD=1; ${call}`], { encoding: "utf8" });
+    const run = (call: string) => runSh(`${TERM_SH}\nt_init 1; T_FRAME=1 T_COLS=40 T_FOLD=1; ${call}`);
     const intro = run('t_intro "install plan (--plan: nothing runs)"');
-    expect(intro.stdout).toBe("┌  agentes.chat install plan (--plan:\n│  nothing runs)\n│\n");
+    expect(intro.stdout).toBe("┌  AULACBOT install plan (--plan:\n│  nothing runs)\n│\n");
     const said = "Nothing ran. For the setup's own plan, run its command above with --dry-run.";
     const end = run(`T_OPEN=1; t_style; t_end "${said}"`).stdout.trimEnd().split("\n");
     expect(end[0]).toStartWith("└  Nothing ran.");
@@ -171,7 +186,7 @@ describe("the look's pieces", () => {
 
   test("the installers' snippet is POSIX sh, and only defines functions", () => {
     expect(spawnSync("sh", ["-n"], { input: TERM_SH }).status).toBe(0);
-    const run = spawnSync("sh", ["-c", TERM_SH], { encoding: "utf8" });
+    const run = runSh(TERM_SH);
     expect(run.stdout).toBe("");
     expect(run.stderr).toBe("");
   });
@@ -195,16 +210,16 @@ describe("what each terminal gets", () => {
     term.stop();
   };
 
-  test("24-bit color: the logo, the badge on the agent blue, the line and the marks", () => {
+  test("24-bit color: the logo, the badge on the deep jade, the line and the marks", () => {
     const { term, screen, text } = capture({ depth: 24 });
     steps(term);
-    expect(text()).toContain("\x1b[48;2;0;99;209;97m agentes.chat \x1b[0m setup");
+    expect(text()).toContain("\x1b[48;2;15;106;89;97m AULACBOT \x1b[0m setup");
     expect(screen()).toBe(
       [
         "",
         ...logoLines(24).map((line) => line.replace(COLORS, "")),
         "",
-        "┌   agentes.chat  setup",
+        "┌   AULACBOT  setup",
         "│",
         "│  Setting up in /opt/agentes.",
         "◇  Docker 27.3.1",
@@ -228,8 +243,8 @@ describe("what each terminal gets", () => {
     steps(term);
     // Only the cursor moves a wait needs: no color, bold or dim.
     expect(text().match(COLORS)).toBeNull();
-    expect(text()).toContain("████ ██ ████");
-    expect(text()).toContain("┌  agentes.chat setup\n│\n");
+    expect(text()).toContain("██▀██▀███");
+    expect(text()).toContain("┌  AULACBOT setup\n│\n");
     expect(text()).toContain("◇  Docker 27.3.1");
   });
 
@@ -237,7 +252,7 @@ describe("what each terminal gets", () => {
     const { term, screen } = capture({ depth: 4, unicode: false });
     steps(term);
     expect(screen()).toStartWith(
-      "+   agentes.chat  setup\n|\n|  Setting up in /opt/agentes.\no  Docker 27.3.1\n|\n*  Create",
+      "+   AULACBOT  setup\n|\n|  Setting up in /opt/agentes.\no  Docker 27.3.1\n|\n*  Create",
     );
     expect(screen()).toContain("!  Agents' computer");
     expect(screen()).toContain("x  It failed.\n|  Fix it.\n+  Stopped");
@@ -248,7 +263,7 @@ describe("what each terminal gets", () => {
     steps(term);
     expect(text()).toBe(
       [
-        "agentes.chat setup",
+        "AULACBOT setup",
         "   Setting up in /opt/agentes.",
         "◇  Docker 27.3.1",
         "",
@@ -273,7 +288,7 @@ describe("what each terminal gets", () => {
     framed.term.refuse("Download failed: 404 https://x.test/runner/agentes-runner.mjs");
     framed.term.stop();
     expect(framed.screen()).toBe(
-      "┌   agentes.chat  update\n│\n■  Download failed: 404 https://x.test/runner/agentes-runner.mjs\n└  Stopped\n",
+      "┌   AULACBOT  update\n│\n■  Download failed: 404 https://x.test/runner/agentes-runner.mjs\n└  Stopped\n",
     );
     expect(framed.keys.raw).toBe(false);
     expect(framed.errors()).toBe("");
@@ -283,7 +298,7 @@ describe("what each terminal gets", () => {
     log.term.spin("Downloading the runner");
     log.term.refuse("Download failed: 404 https://x.test/runner/agentes-runner.mjs");
     log.term.stop();
-    expect(log.text()).toBe("agentes.chat update\n◒  Downloading the runner\n");
+    expect(log.text()).toBe("AULACBOT update\n◒  Downloading the runner\n");
     expect(log.errors()).toBe("■  Download failed: 404 https://x.test/runner/agentes-runner.mjs\n");
   });
 
@@ -292,7 +307,7 @@ describe("what each terminal gets", () => {
     term.intro("install plan (--plan: nothing runs)", false);
     term.end("Nothing ran. For the setup's own plan, run its command above with --dry-run.");
     const lines = screen().trimEnd().split("\n");
-    expect(lines.slice(0, 3)).toEqual(["┌  agentes.chat install plan (--plan:", "│  nothing runs)", "│"]);
+    expect(lines.slice(0, 3)).toEqual(["┌  AULACBOT install plan (--plan:", "│  nothing runs)", "│"]);
     expect(lines[3]).toStartWith("└  Nothing ran.");
     for (const line of lines.slice(4)) expect(line).toStartWith("   ");
     for (const line of lines) expect(visible(line)).toBeLessThanOrEqual(40);
@@ -300,7 +315,7 @@ describe("what each terminal gets", () => {
 
   test("a log keeps each line whole, for grep", () => {
     const { term, text } = capture({ tty: false });
-    const long = `Agents' computer: set up, but it hasn't answered agentes.chat yet. It keeps trying. Its log: ${"x".repeat(60)}`;
+    const long = `Agents' computer: set up, but it hasn't answered AULACBOT yet. It keeps trying. Its log: ${"x".repeat(60)}`;
     term.warn(long);
     term.info("Next", [long], "numbered");
     expect(text()).toBe(`▲  ${long}\n●  Next\n   1. ${long}\n`);
@@ -340,21 +355,21 @@ describe("what each terminal gets", () => {
 describe("waits", () => {
   test("a spinner turns with its time from 3 s on and its detail under it; what's said meanwhile goes above it", () => {
     const { term, wait, screen } = capture({ depth: 24 });
-    const s = term.spin("Starting agentes.chat (docker compose up -d)", "The first time downloads about 2 GB.");
-    expect(screen()).toBe("◒  Starting agentes.chat (docker compose up -d)\n│  The first time downloads about 2 GB.\n");
+    const s = term.spin("Starting AULACBOT (docker compose up -d)", "The first time downloads about 2 GB.");
+    expect(screen()).toBe("◒  Starting AULACBOT (docker compose up -d)\n│  The first time downloads about 2 GB.\n");
     wait(64);
     expect(screen()).toBe(
-      "◐  Starting agentes.chat (docker compose up -d)  1m 04s\n│  The first time downloads about 2 GB.\n",
+      "◐  Starting AULACBOT (docker compose up -d)  1m 04s\n│  The first time downloads about 2 GB.\n",
     );
     s.update(null, "Container agentes-agentes-1  Started");
     term.info("Approve this server in your tailnet");
     expect(screen()).toBe(
-      "●  Approve this server in your tailnet\n◐  Starting agentes.chat (docker compose up -d)  1m 04s\n│  Container agentes-agentes-1  Started\n",
+      "●  Approve this server in your tailnet\n◐  Starting AULACBOT (docker compose up -d)  1m 04s\n│  Container agentes-agentes-1  Started\n",
     );
-    s.done("agentes.chat 1.0.0 is up, on this server only");
-    expect(screen()).toBe("●  Approve this server in your tailnet\n◇  agentes.chat 1.0.0 is up, on this server only\n");
+    s.done("AULACBOT 1.0.0 is up, on this server only");
+    expect(screen()).toBe("●  Approve this server in your tailnet\n◇  AULACBOT 1.0.0 is up, on this server only\n");
     wait(1);
-    expect(screen()).toBe("●  Approve this server in your tailnet\n◇  agentes.chat 1.0.0 is up, on this server only\n");
+    expect(screen()).toBe("●  Approve this server in your tailnet\n◇  AULACBOT 1.0.0 is up, on this server only\n");
   });
 
   test("a long label is cut to one line, so the spinner redraws in place", () => {
@@ -570,5 +585,5 @@ test("every depth draws the same layout", () => {
   });
   // Only the badge differs: its own background takes a space on each side.
   for (const shape of shapes)
-    expect(shape.replace("┌   agentes.chat  setup", "┌  agentes.chat setup")).toBe(shapes[3] as string);
+    expect(shape.replace("┌   AULACBOT  setup", "┌  AULACBOT setup")).toBe(shapes[3] as string);
 });

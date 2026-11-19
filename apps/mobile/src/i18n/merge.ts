@@ -35,6 +35,7 @@ export const MOBILE: Record<AppLocale, LocaleStrings> = {
   tr,
   pl,
   ru,
+  vi: {},
 };
 
 type Strings = Record<string, unknown>;

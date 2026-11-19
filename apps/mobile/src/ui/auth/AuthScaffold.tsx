@@ -6,6 +6,7 @@ import { KeyboardAvoidingView, KeyboardToolbar } from "react-native-keyboard-con
 import Animated, { Easing, FadeIn } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AgentAvatar } from "@/agent/AgentAvatar";
+import { CyberLacAvatar } from "@/agent/CyberLacAvatar";
 import type { AgentLookInput } from "@/agent/looks";
 import type { AgentMode } from "@/agent/poses";
 import { Sky, WorkspaceSky } from "@/sky/Sky";
@@ -24,9 +25,6 @@ const AGENT = 96;
 const AGENT_OVERLAP = 8;
 /** The system bar over the keyboard (`KeyboardToolbar`), as tall as the library draws it. */
 const TOOLBAR = 42;
-
-/** The app's own agent, on the sky of every screen before the app. */
-const APP_AGENT: AgentLookInput = { color: "sky", eyes: "round", id: "agentes" };
 
 /** The text of the screens before the app: centered under the agent (fields and buttons keep the width). */
 export const CENTER = { textAlign: "center" } as const;
@@ -78,8 +76,8 @@ export interface AuthScaffoldProps {
 }
 
 /**
- * One calm question per screen: a low pixel sky with the agent on its edge, the question as the title, the answer
- * below, the keyboard open from start to end with its return key as the action. Margin 16, rhythm in 8.
+ * One calm question per screen: a low pixel sky with the Cyber Lạc King on its edge, the question as the title, the
+ * answer below, the keyboard open from start to end with its return key as the action. Margin 16, rhythm in 8.
  */
 export function AuthScaffold({
   title,
@@ -91,7 +89,7 @@ export function AuthScaffold({
   footer,
   stepKey,
   agentMode = "idle",
-  agent = APP_AGENT,
+  agent,
   expression,
   overlay,
   sky = "normal",
@@ -131,7 +129,12 @@ export function AuthScaffold({
               <Sky color="sky" depth={0.9} fade={0.55} style={skyStyle} />
             )}
             <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end", marginBottom: -AGENT_OVERLAP }}>
-              {hero ?? <AgentAvatar agent={agent} size={AGENT} mode={agentMode} expression={expression} />}
+              {hero ??
+                (agent ? (
+                  <AgentAvatar agent={agent} size={AGENT} mode={agentMode} expression={expression} />
+                ) : (
+                  <CyberLacAvatar index={1} size={AGENT} state={agentMode === "sleep" ? "sleeping" : "idle"} />
+                ))}
             </View>
             {onBack ? (
               <View style={{ position: "absolute", top: insets.top + 8, left: 16 }}>

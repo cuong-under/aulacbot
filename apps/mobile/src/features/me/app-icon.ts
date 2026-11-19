@@ -30,6 +30,10 @@ const NAMES = Platform.OS === "android" ? phoneIcons().map((icon) => nativeIconN
  * gives their ids, which React Native's and expo-image's views both take).
  */
 export const APP_ICON_PICTURES: Record<AppIconId, { light: number; dark: number }> = {
+  lac: {
+    light: require("../../../assets/app-icons/lac/preview.png"),
+    dark: require("../../../assets/app-icons/lac/preview-dark.png"),
+  },
   night: {
     light: require("../../../assets/app-icons/night/preview.png"),
     dark: require("../../../assets/app-icons/night/preview-dark.png"),

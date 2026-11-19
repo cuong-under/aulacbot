@@ -19,7 +19,8 @@ import { STORAGE_KEYS } from "../src/lib/storage";
 
 describe("the app icon in a browser (ADR 0179)", () => {
   test("the shipped icon is the favicon browsers ask for; the others have their own", () => {
-    expect(faviconOf("night")).toBe("/favicon.ico");
+    expect(faviconOf("lac")).toBe("/favicon.ico");
+    expect(faviconOf("night")).toBe("/app-icons/night.ico");
     expect(faviconOf("peekSky")).toBe("/app-icons/peekSky.ico");
     expect(APP_ICONS.map(appIconPicture)).toContain("/app-icons/moon.png");
     expect(picksAppIcon()).toBe(true);
@@ -34,9 +35,9 @@ describe("the app icon in a browser (ADR 0179)", () => {
     expect(document.querySelector('link[rel="icon"]')?.getAttribute("href")).toBe("/app-icons/moon.ico");
     expect(localStorage.getItem(STORAGE_KEYS.appIcon)).toBe("moon");
     expect(appIcon()).toBe("moon");
-    await setAppIcon("night");
+    await setAppIcon("lac");
     expect(document.querySelector('link[rel="icon"]')?.getAttribute("href")).toBe("/favicon.ico");
-    expect(changes).toEqual(["moon", "night"]);
+    expect(changes).toEqual(["moon", "lac"]);
     window.removeEventListener("agentes:app-icon", listen);
   });
 
@@ -48,8 +49,8 @@ describe("the app icon in a browser (ADR 0179)", () => {
     expect(parsePick(localStorage.getItem(STORAGE_KEYS.appIcon))).toEqual({ agent });
     // Without a canvas to draw on (the test's DOM), the tab keeps the shipped icon.
     expect(document.querySelector('link[rel="icon"]')?.getAttribute("href")).toBeTruthy();
-    expect(parsePick('{"agent":{"orgId":"../x","id":"a","name":"A","look":{}}}')).toBe("night");
-    expect(parsePick("{not json")).toBe("night");
+    expect(parsePick('{"agent":{"orgId":"../x","id":"a","name":"A","look":{}}}')).toBe("lac");
+    expect(parsePick("{not json")).toBe("lac");
     expect(parsePick("moon")).toBe("moon");
     expect(agentOf({ orgId: "o", id: "a", name: " ", look: {} })).toBeNull();
     expect(agentOf({ orgId: "o", id: "a", name: "A", look: { color: "nope" } })?.look.color).toBeUndefined();
@@ -64,6 +65,6 @@ describe("the app icon in a browser (ADR 0179)", () => {
     followPickedAgent("o-1", [{ id: "a_1", name: "Engenharia", appearance: { color: "violet" } }]);
     await Promise.resolve();
     expect(pickedAgent(appIcon())?.name).toBe("Engenharia");
-    await setAppIcon("night");
+    await setAppIcon("lac");
   });
 });

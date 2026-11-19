@@ -3,6 +3,7 @@ import { Button } from "@agenteschat/ui";
 import { useTranslation } from "react-i18next";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
+import { PRODUCT_LOOK } from "@/lib/look";
 
 /**
  * The sign-in popup while the computer looks up the provider's page: the opener sends it there (`sendPopup`), or closes
@@ -14,7 +15,7 @@ export function ConnectingPage({ kind }: { kind?: MachineAccountKind }) {
     <AuthShell>
       <div className="auth__form">
         <header className="auth__ask">
-          <AgentAvatar name="agentes.chat" size="lg" state="writing" />
+          <AgentAvatar name="AULACBOT" size="lg" appearance={PRODUCT_LOOK} state="writing" />
           <div className="auth__bubble" aria-live="polite">
             <h1 className="auth__title">
               {kind ? t("connectAi.popup.title", { name: t(`aiAccounts.connect.${kind}`) }) : t("connectAi.popup.any")}

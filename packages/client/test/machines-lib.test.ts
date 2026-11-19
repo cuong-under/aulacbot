@@ -638,7 +638,7 @@ describe("one click where a tool is off (ADR 0036 §8)", () => {
     ).toBe(true);
     expect(
       browserOffMessage(
-        "Browser is turned off on this computer (its owner can turn it on in the agentes app (Preferences > Tools))",
+        "Browser is turned off on this computer (its owner can turn it on in the AULACBOT app (Preferences > Tools))",
       ),
     ).toBe(true);
     expect(browserOffMessage("The browser is turned off on this computer")).toBe(true);

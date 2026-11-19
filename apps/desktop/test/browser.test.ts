@@ -76,7 +76,7 @@ describe("the agent's row", () => {
     );
     expect(siteLink("https://app.agentes.chat", "//evil.example/x", "home")).toBe("home");
     expect(siteLink("https://app.agentes.chat", "https://evil.example/org/x/", "home")).toBe("home");
-    expect(siteLink("http://agentes.chat", "/org/o1/c/c1", "home")).toBe("home");
+    expect(siteLink("http://AULACBOT", "/org/o1/c/c1", "home")).toBe("home");
     expect(siteLink(undefined, "/org/o1/c/c1", "home")).toBe("home");
   });
 });

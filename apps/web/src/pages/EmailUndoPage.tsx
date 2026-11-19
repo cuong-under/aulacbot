@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useApi } from "@/api/context";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
+import { PRODUCT_LOOK } from "@/lib/look";
 
 /**
  * “This wasn't me” (ADR 0088 §2, addendum 2026-11-13): where the notice to an account's old address lands, in the
@@ -46,8 +47,9 @@ export function EmailUndoPage({ token }: { token?: string }) {
       <form className="auth__form" onSubmit={submit} noValidate>
         <header className="auth__ask">
           <AgentAvatar
-            name="agentes.chat"
+            name="AULACBOT"
             size="lg"
+            appearance={PRODUCT_LOOK}
             state={undo.isPending ? "writing" : undefined}
             expression={back ? "happy" : undefined}
           />

@@ -1,9 +1,9 @@
 /**
- * The agentes.chat look in POSIX sh, for the two installers: install.sh carries this text between its
+ * The AULACBOT look in POSIX sh, for the two installers: install.sh carries this text between its
  * `# --- term.sh` lines, and the runner's installer (apps/server/runner/install-script.ts) inlines it. Tests keep
  * both copies equal, and its logo equal to term.ts's in every color depth.
  */
-export const TERM_SH = `# The agentes.chat look for the POSIX installers, as packages/setup/src/term.ts draws it: plain where a
+export const TERM_SH = `# The AULACBOT look for the POSIX installers, as packages/setup/src/term.ts draws it: plain where a
 # terminal can't take it (no color with NO_COLOR or TERM=dumb, ASCII marks and no logo on the Linux console), and
 # no line, logo or animation when the output isn't a terminal (cloud-init, CI, the setup reading it). Only
 # function definitions, so a download cut short runs nothing.
@@ -114,12 +114,12 @@ t_end() {
 # t_intro TITLE: the logo where it fits, then ┌ and the badge, and the line from here on. A log gets the title.
 t_intro() {
   if [ "$T_FRAME" = 0 ]; then
-    printf 'agentes.chat %s\\n' "$1" >&"$T_FD"
+    printf 'AULACBOT %s\\n' "$1" >&"$T_FD"
     return 0
   fi
-  if [ "$T_UNI" = 1 ] && [ "$T_COLS" -ge 64 ]; then t_logo; fi
-  t_b=agentes.chat
-  if [ "$T_DEPTH" != 0 ]; then t_b="$C_BADGE agentes.chat $C_OFF"; fi
+  if [ "$T_UNI" = 1 ] && [ "$T_COLS" -ge 67 ]; then t_logo; fi
+  t_b=AULACBOT
+  if [ "$T_DEPTH" != 0 ]; then t_b="$C_BADGE AULACBOT $C_OFF"; fi
   T_OPEN=1
   t_style
   # The title beside the badge's columns, its wrap under the line.
@@ -131,18 +131,18 @@ t_intro() {
   printf '%s\\n' "$T_B" >&"$T_FD"
 }
 
-# The logo. The mark: the agent of packages/ui/src/agent/engine.js on the 12×12 grid of the web's LogoMark,
-# rows of pixels where 0-4 are its body's tones (deep to light), w its eyes and . nothing. Beside it,
-# "agentes" in pixels after Funnel Display Light. Two rows of pixels make one line of ▀▄█.
+# The logo. The mark: the Cyber Lạc head of packages/ui/src/components/Logo.tsx on its 12×12 grid, rows of
+# pixels where 3 is the mint head, 4 its fin tips, 6 the gold crest and bill, 7 the bill's shade, 0 the jade
+# visor and edge, w the eyes and . nothing. Beside it, "AULACBOT" in pixels. Two rows make one line of ▀▄█.
 t_logo() {
   printf '\\n' >&"$T_FD"
   t_row=0
-  set -- ..43434343.. .3333333332. '                         ▄' \\
-    333333333233 232323232223 ' ▄▄▄   ▄▄▄▄  ▄▄▄  ▄ ▄▄  ▄█▄▄  ▄▄▄   ▄▄▄▄' \\
-    3232w23w3222 2222w22w2212 ' ▄▄▄█ █   █ █▄▄▄█ █▀  █  █   █▄▄▄█ ▀▄▄▄' \\
-    2222w22w2122 121212121112 '█   █ █   █ █     █   █  █   █         █' \\
-    212121212111 111111111101 ' ▀▀▀▀  ▀▀▀█  ▀▀▀▀ ▀   ▀   ▀▀  ▀▀▀▀ ▀▀▀▀' \\
-    11111111101. 0101010100.. '       ▀▀▀'
+  set -- ..4..66..4.. ..44.66.44.. '' \\
+    ...446644... ..33333333.. ' ▄▄▄  ▄   ▄ ▄      ▄▄▄   ▄▄▄▄ ▄▄▄▄   ▄▄▄  ▄▄▄▄▄' \\
+    ..33333333.. .3333333333. '█   █ █   █ █     █   █ █     █   █ █   █   █' \\
+    .3000000003. .300w00w003. '█▀▀▀█ █   █ █     █▀▀▀█ █     █▀▀▀▄ █   █   █' \\
+    .300w00w003. .3333333333. '█   █ ▀▄▄▄▀ █▄▄▄▄ █   █ ▀▄▄▄▄ █▄▄▄▀ ▀▄▄▄▀   █' \\
+    ..33666633.. ....3663.... ''
   while [ $# -ge 3 ]; do
     t_top=$1 t_bot=$2 t_word=$3
     shift 3
@@ -153,8 +153,14 @@ t_logo() {
       t_top=\${t_top#?} t_bot=\${t_bot#?}
     done
     t_row=$((t_row + 1))
-    if [ "$t_row" = 5 ]; then t_word="$t_word $C_DIM.chat$C_OFF"; fi
-    printf '  %s%s   %s\\n' "$t_line" "$C_OFF" "$t_word" >&"$T_FD"
+    if [ "$t_row" = 5 ]; then t_word="$t_word $C_DIM.app$C_OFF"; fi
+    # The mark's own blank columns at the end are not ink: the gap to the word is always the same three columns.
+    while [ "$t_line" != "\${t_line% }" ]; do t_line=\${t_line% }; done
+    if [ -n "$t_word" ]; then
+      printf '  %s%s   %s\\n' "$t_line" "$C_OFF" "$t_word" >&"$T_FD"
+    else
+      printf '  %s%s\\n' "$t_line" "$C_OFF" >&"$T_FD"
+    fi
   done
   printf '\\n' >&"$T_FD"
 }
@@ -164,9 +170,9 @@ t_cell() {
   if [ "$T_DEPTH" = 0 ]; then
     # One color: the body, its eyes left out (the mono logo).
     case $1$2 in
-      [0-4][0-4]) t_c='█' ;;
-      [0-4]?) t_c='▀' ;;
-      ?[0-4]) t_c='▄' ;;
+      [0-467][0-467]) t_c='█' ;;
+      [0-467]?) t_c='▀' ;;
+      ?[0-467]) t_c='▄' ;;
       *) t_c=' ' ;;
     esac
     return 0
@@ -194,19 +200,28 @@ t_tone() {
   case $T_DEPTH in
     24)
       case $2 in
-        0) t_n='0;61;130' ;; 1) t_n='0;99;209' ;; 2) t_n='70;147;232' ;; 3) t_n='140;195;255' ;;
-        4) t_n='198;225;255' ;; *) t_n='255;255;255' ;;
+        0) t_n='4;17;13' ;; 1) t_n='10;61;51' ;; 2) t_n='15;106;89' ;; 3) t_n='47;211;178' ;;
+        4) t_n='106;242;210' ;; 6) t_n='242;191;97' ;; 7) t_n='176;116;44' ;; *) t_n='255;255;255' ;;
       esac
       t_n="$1;2;$t_n"
       ;;
     256)
-      case $2 in 0) t_n=25 ;; 1) t_n=26 ;; 2) t_n=68 ;; 3) t_n=111 ;; 4) t_n=189 ;; *) t_n=231 ;; esac
+      case $2 in 0) t_n=16 ;; 1) t_n=22 ;; 2) t_n=29 ;; 3) t_n=43 ;; 4) t_n=86 ;; 6) t_n=221 ;;
+        7) t_n=172 ;; *) t_n=231 ;; esac
       t_n="$1;5;$t_n"
       ;;
     *)
-      # Blue for the deep tones, bright blue for the light ones, bright white for the eyes.
+      # Greens for the head, bright cyan for its tips, yellow for the gold, bright white for the eyes;
+      # the background is the same colour ten steps on.
       case $1$2 in
-        380 | 381) t_n=34 ;; 38w) t_n=97 ;; 38?) t_n=94 ;; 480 | 481) t_n=44 ;; 48w) t_n=107 ;; *) t_n=104 ;;
+        380) t_n=30 ;; 480) t_n=40 ;;
+        381) t_n=32 ;; 481) t_n=42 ;;
+        382) t_n=36 ;; 482) t_n=46 ;;
+        383 | 384) t_n=96 ;; 483 | 484) t_n=106 ;;
+        386) t_n=93 ;; 486) t_n=103 ;;
+        387) t_n=33 ;; 487) t_n=43 ;;
+        38w) t_n=97 ;; 48w) t_n=107 ;;
+        *) t_n=30 ;;
       esac
       ;;
   esac

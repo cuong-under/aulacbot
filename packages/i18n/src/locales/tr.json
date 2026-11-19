@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "agentes",
-    "tabTitle": "agentes.chat · Ekibin ve ajanların aynı sohbette"
+    "name": "AULACBOT",
+    "tabTitle": "AULACBOT · Ekibin ve ajanların aynı sohbette"
   },
   "common": {
     "close": "Kapat",
@@ -28,7 +28,7 @@
     "overLimit": "Metin {{length}} karakter, sınır ise {{max}}. Kısalt.",
     "ourSide": "Bizim tarafımızda bir şeyler ters gitti. Birazdan tekrar deneyin.",
     "signedOut": "Oturumunuz sona erdi. Devam etmek için tekrar giriş yapın.",
-    "newVersion": "agentes.chat'in yeni bir sürümü çıktı.",
+    "newVersion": "AULACBOT'in yeni bir sürümü çıktı.",
     "reload": "Yeniden yükle",
     "copy": "Kopyala",
     "copied": "Kopyalandı",
@@ -51,7 +51,7 @@
     "notAllowed": "Bunun için izniniz yok.",
     "tooMany": "Çok fazla deneme yapıldı. Daha sonra tekrar deneyin.",
     "offline": "Çevrimdışısınız. Bağlantınızı kontrol edip tekrar deneyin.",
-    "unreachable": "agentes.chat'e şu anda ulaşılamıyor. Birazdan tekrar deneyin."
+    "unreachable": "AULACBOT'e şu anda ulaşılamıyor. Birazdan tekrar deneyin."
   },
   "roles": {
     "owner": "Sahip",
@@ -536,7 +536,7 @@
     "recommended": "Önerilen",
     "free": "Ücretsiz · açık kaynak",
     "cloud": {
-      "name": "agentes.chat Cloud",
+      "name": "AULACBOT Cloud",
       "short": "Her zaman açık, kurulacak bir şey yok.",
       "on": "Ajanların bilgisayarı her zaman açık",
       "care": "Güncellemeler ve yedekler bizden",
@@ -556,7 +556,7 @@
       "address": "Sunucu adresi",
       "connect": "Bağlan",
       "invalid": "Bu bir adres değil. Tarayıcıdaki gibi yazın, örneğin agentes.example.com.",
-      "unreachable": "{{host}} adresinde agentes.chat bulunamadı. Adresi ve sunucunun açık olduğunu kontrol edin.",
+      "unreachable": "{{host}} adresinde AULACBOT bulunamadı. Adresi ve sunucunun açık olduğunu kontrol edin.",
       "none": "Henüz yok mu?",
       "noneLink": "Nasıl ücretsiz edineceğinizi görün"
     },
@@ -665,11 +665,11 @@
       "openMail": "{{app}} aç",
       "ownerWaits": "Bu sunucu sahibini bekliyor.",
       "ownerWaitsLead": "Bu sunucunun sahip bağlantısını (/owner#claim=… ile biter) bu bilgisayarda veya telefonunuzda açın.",
-      "noPassword": "Bu hesap agentes.chat uygulamasından giriş yapar.",
+      "noPassword": "Bu hesap AULACBOT uygulamasından giriş yapar.",
       "noPasswordLead": "Bu sunucuyu çalıştıran bilgisayarda uygulamayı açın ve Ayarlar › Hesabınız bölümünde Şifre ekle'yi seçin.",
       "backToSignIn": "Girişe dön",
       "backToAccount": "{{name}} hesabına dön",
-      "toAuthorizeApp": "agentes.chat'e bir uygulama bağlamak için."
+      "toAuthorizeApp": "AULACBOT'e bir uygulama bağlamak için."
     },
     "desktop": {
       "browser": "Tarayıcınızda devam edin",
@@ -680,11 +680,11 @@
       "otherServer": "Başka bir sunucu kullan",
       "opening": "{{provider}} açılıyor…",
       "confirm": "Bu sizin uygulamanız mı?",
-      "confirmLead": "Bu kod, bilgisayarınızdaki agentes.chat uygulamasının gösterdiği kodla aynı olmalı.",
+      "confirmLead": "Bu kod, bilgisayarınızdaki AULACBOT uygulamasının gösterdiği kodla aynı olmalı.",
       "confirmYes": "Evet, uygulamada giriş yap",
       "confirmNo": "Bu ben değildim",
       "done": "Her şey hazır.",
-      "doneLead": "agentes uygulamasında giriş yaptınız. Bu sekmeyi kapatabilirsiniz.",
+      "doneLead": "AULACBOT uygulamasında giriş yaptınız. Bu sekmeyi kapatabilirsiniz.",
       "expired": "Bu isteğin süresi doldu.",
       "expiredLead": "Uygulamaya dönüp yeniden {{provider}} seçin.",
       "handover": "Diğer cihazdaki hesabınızla giriş yapılıyor…",
@@ -704,19 +704,19 @@
     },
     "desktopOwner": {
       "continue": "Bu {{device}} üzerinde devam et",
-      "text": "agentes.chat'i bu {{device}} üzerinde kurdunuz: şifre gerekmez.",
+      "text": "AULACBOT'i bu {{device}} üzerinde kurdunuz: şifre gerekmez.",
       "gone": "Bu sunucunun sahibi hesabını sildi, bu yüzden Bu {{device}} üzerinde devam et kimsenin girişini yapamaz. Bunun yerine kendi e-postanızla giriş yapın.",
-      "none": "Bu {{device}} üzerindeki agentes.chat'te hiç hesap kalmadı. Yeni sahibini açılan pencerede oluşturun."
+      "none": "Bu {{device}} üzerindeki AULACBOT'te hiç hesap kalmadı. Yeni sahibini açılan pencerede oluşturun."
     },
     "server": {
       "into": "<b>{{server}}</b> sunucusuna giriş",
-      "intoHere": "Bu {{device}} üzerindeki <b>agentes.chat</b>'e giriş",
-      "intoCloud": "<b>agentes.chat Cloud</b> hesabına giriliyor",
+      "intoHere": "Bu {{device}} üzerindeki <b>AULACBOT</b>'e giriş",
+      "intoCloud": "<b>AULACBOT Cloud</b> hesabına giriliyor",
       "change": "Sunucuyu değiştir"
     },
     "forgotHere": {
       "ownerTitle": "Burada şifreye ihtiyacın yok.",
-      "ownerLead": "agentes.chat'i bu {{device}} üzerine sen kurdun. Buradan gir, ardından yeni bir şifre oluştur.",
+      "ownerLead": "AULACBOT'i bu {{device}} üzerine sen kurdun. Buradan gir, ardından yeni bir şifre oluştur.",
       "notOwner": "Kuran kişinin hesabı değil mi? Çalışma alanının bir sahibinden yeni şifre bağlantısı iste.",
       "title": "Bu sunucu e-posta göndermiyor.",
       "lead": "Çalışma alanının bir sahibinden yeni şifre bağlantısı iste. Üyeler bölümünde oluşturur ve bağlantı 1 saat geçerlidir.",
@@ -966,7 +966,7 @@
         "edit": "Avatarı düzenle",
         "upload": "Fotoğraf yükle",
         "area": "Ne iş yapıyorsun?",
-        "areaHint": "İsteğe bağlı. Sadece agentes.chat'i kimlerin kullandığını anlamak için."
+        "areaHint": "İsteğe bağlı. Sadece AULACBOT'i kimlerin kullandığını anlamak için."
       },
       "area": {
         "options": {
@@ -1042,7 +1042,7 @@
         "asleep": "Plana kadar uykuda",
         "price": "<b>{{name}} planı</b> · ayda {{price}}",
         "name": "<b>{{name}} planı</b>",
-        "generic": "Bir agentes.chat planı",
+        "generic": "Bir AULACBOT planı",
         "cancel": "İstediğin zaman iptal et",
         "cta": "Ekibi başlat",
         "all": "Tüm planları gör",
@@ -1101,7 +1101,7 @@
     },
     "yourCompany": "şirketiniz",
     "purpose": {
-      "title": "agentes.chat'i ne için kullanacaksınız?",
+      "title": "AULACBOT'i ne için kullanacaksınız?",
       "lead": "Bunu sonra değiştirebilirsiniz, hiçbir şey kaybolmaz.",
       "personal": "Kendim için",
       "personalText": "Gününü düzenleyen ajanlar.",
@@ -1184,7 +1184,7 @@
         "leadDots": "MCP, dot'unuzun ChatGPT'de eklediğiniz bir eklenti üzerinden bu çalışma alanına erişmesini sağlar, böylece ajanları burada kendisi oluşturur.",
         "howTo": "Uygulama uygulama nasıl bağlanır",
         "paste": "Bu isteği uygulamaya yapıştırın:",
-        "prompt": "Az önce bağladığın agentes.chat MCP sunucusunu ({{url}}) kullanarak sahip olduklarını agentes.chat'e taşı. Önce orada zaten ne olduğunu görmek ve hiçbir şeyi çoğaltmamak için import_summary'yi çağır. Sonra sahip olduğun her ajan, talimat, beceri ve rutin için create_agent, create_skill ve create_routine ile karşılığını oluştur ve her ajanın hatırlaması gerekenleri add_memory ile kaydet.",
+        "prompt": "Az önce bağladığın AULACBOT MCP sunucusunu ({{url}}) kullanarak sahip olduklarını AULACBOT'e taşı. Önce orada zaten ne olduğunu görmek ve hiçbir şeyi çoğaltmamak için import_summary'yi çağır. Sonra sahip olduğun her ajan, talimat, beceri ve rutin için create_agent, create_skill ve create_routine ile karşılığını oluştur ve her ajanın hatırlaması gerekenleri add_memory ile kaydet.",
         "promptLabel": "Yapay zeka uygulamanız için istek",
         "copy": "İsteği kopyala",
         "copied": "Şimdi yapay zeka uygulamanıza yapıştırın.",
@@ -1197,7 +1197,7 @@
         "paused": "Bu çalışma alanı duraklatıldığı sürece MCP ile bağlan kapalı. Şimdilik ajanları bu yolla getirin."
       },
       "otherName": "Başka bir uygulama",
-      "agenteschatName": "agentes.chat",
+      "agenteschatName": "AULACBOT",
       "where": {
         "openbotrun": "openbot-import.json (OpenBot'un Migrator aracından) veya openbot-transfer.json (örnek aktarımından) dosyasını ya da geldiği .zip dosyasını bırakın.",
         "openmausbot": "OpenMausBot'ta: ekibe sağ tıklayın → Ekibi paylaş… → Dosyayı kaydet.",
@@ -1458,8 +1458,8 @@
     "keyStep": {
       "title": "Hangi yapay zekayı kullanacaklar?",
       "lead": "Yapay zeka planınızla giriş yapın: API anahtarı gerekmez.",
-      "paid": "agentes.chat planınız etkin. Bilgisayarları yolda.",
-      "confirming": "Bu çalışma alanının agentes.chat planı için ödeme onaylanıyor.",
+      "paid": "AULACBOT planınız etkin. Bilgisayarları yolda.",
+      "confirming": "Bu çalışma alanının AULACBOT planı için ödeme onaylanıyor.",
       "leadNoComputer": "Ajanlarınız bir API anahtarıyla ya da bağladığınız bir bilgisayarda yapay zeka planınızla düşünür."
     },
     "jev": {
@@ -1470,7 +1470,7 @@
       "title": "Ajan başına harcama sınırı",
       "label": "Ajan başına aylık sınır, dolar olarak",
       "perMonth": "/ay",
-      "noteKey": "Yalnızca API kullanımı için, agentes.chat değil anahtarın sağlayıcısı ücretlendirir. Bir ajan sınıra ulaşınca durur ve size haber verir. Planlar burada sayılmaz.",
+      "noteKey": "Yalnızca API kullanımı için, AULACBOT değil anahtarın sağlayıcısı ücretlendirir. Bir ajan sınıra ulaşınca durur ve size haber verir. Planlar burada sayılmaz.",
       "notePlatform": "Yalnızca API kullanımı için. Bir ajan sınıra ulaşınca durur ve size haber verir."
     },
     "keySite": "Anahtarı {{site}} üzerinde oluşturun.",
@@ -1525,7 +1525,7 @@
     },
     "team": {
       "title": "Sizinle başka kim çalışıyor?",
-      "payment": "Bir agentes.chat planı seçtiğinizde ekibinizi davet edebilirsiniz.",
+      "payment": "Bir AULACBOT planı seçtiğinizde ekibinizi davet edebilirsiniz.",
       "lead": "E-postayla davet edin ya da bağlantıyı paylaşın.",
       "leadLink": "Davet bağlantısını onlarla paylaşın.",
       "emails": "E-postalar",
@@ -1637,7 +1637,7 @@
     "reload": "Yeniden yükle",
     "search": "Arayın veya sorun…",
     "look": "Sağ tık",
-    "lookOurs": "agentes.chat",
+    "lookOurs": "AULACBOT",
     "lookSystem": "Sistem",
     "markRead": "Okundu olarak işaretle",
     "muteChannel": "Kanalı sessize al",
@@ -1662,8 +1662,8 @@
     "copied": "Kopyalandı. Terminale yapıştırın.",
     "mac": {
       "why": "<b>Uygulama beta aşamasında.</b> Bu yüzden ilk seferde Mac'iniz onay ister:",
-      "drag": "agentes.chat'i Uygulamalar'a sürükleyin.",
-      "dragLong": "İndirilen dosyayı açın ve agentes.chat'i Uygulamalar'a sürükleyin.",
+      "drag": "AULACBOT'i Uygulamalar'a sürükleyin.",
+      "dragLong": "İndirilen dosyayı açın ve AULACBOT'i Uygulamalar'a sürükleyin.",
       "blocked": "Uygulamayı açın ve Bitti'ye tıklayın.",
       "blockedSub": "Çöp Sepeti'ne Taşı'ya tıklamayın.",
       "settings": "Ayarlar › Gizlilik ve Güvenlik bölümünde Yine de Aç'a tıklayın.",
@@ -1690,17 +1690,17 @@
       "why": "Ubuntu, Debian ve benzeri sistemler için (x64). Linux fazladan bir şey sormaz:",
       "apt": ".deb dosyasını çift tıklayarak ya da terminalden kurun.",
       "aptLong": "İndirilen dosyaya çift tıklayıp Yükle'ye tıklayın ya da bunu terminale yapıştırın:",
-      "open": "agentes.chat'i uygulamalarınızdan açın.",
+      "open": "AULACBOT'i uygulamalarınızdan açın.",
       "otherTitle": "Arch, Fedora veya .deb kabul etmeyen başka bir sistem mi kullanıyorsunuz?",
       "otherText": "AppImage'ı indirin: her dağıtımda çalışır ve kendini günceller. Ardından bunu, kaydettiğiniz klasörde terminale yapıştırın:",
       "appImage": "AppImage'ı indir"
     },
     "page": {
-      "docTitle": "Uygulamayı indirin · agentes.chat",
-      "title": "agentes.chat uygulamasını indirin",
+      "docTitle": "Uygulamayı indirin · AULACBOT",
+      "title": "AULACBOT uygulamasını indirin",
       "beta": "Beta",
       "text": "Workspace'iniz kendi penceresinde, sisteminizin bildirimleriyle. Tek tıkla ajanlar bu bilgisayarda, kendilerine ait klasörlerde çalışır.",
-      "open": "agentes.chat'i aç",
+      "open": "AULACBOT'i aç",
       "version": "Sürüm {{version}}",
       "versionSize": "Sürüm {{version}} · {{size}}",
       "soon": "{{system}} için henüz bir sürüm yok.",
@@ -1710,7 +1710,7 @@
       "installOn": "{{system}} için kur",
       "system": "Sistem",
       "whyTitle": "Bilgisayarım neden onay istiyor?",
-      "whyText": "agentes.chat beta aşamasında: Mac sürümü henüz Apple tarafından onaylanmadı (notarize edilmedi) ve Windows yükleyicisi henüz bir Microsoft sertifikası taşımıyor. Bunlar olmadan bilgisayarınız, internetten indirilen bir uygulamayı açmadan önce bir kez sorar. Sonrasında doğrudan açılır ve kendini günceller. Beta bitmeden bu adım kalkacak.",
+      "whyText": "AULACBOT beta aşamasında: Mac sürümü henüz Apple tarafından onaylanmadı (notarize edilmedi) ve Windows yükleyicisi henüz bir Microsoft sertifikası taşımıyor. Bunlar olmadan bilgisayarınız, internetten indirilen bir uygulamayı açmadan önce bir kez sorar. Sonrasında doğrudan açılır ve kendini günceller. Beta bitmeden bu adım kalkacak.",
       "openSource": "Açık kaynak",
       "onlyHere": "Yalnızca burada ve projenin sürümlerinde yayımlanır",
       "signedUpdates": "İmzalı güncellemeler"
@@ -1792,6 +1792,7 @@
       "angry": "Kızgın"
     },
     "names": {
+      "lac": "Cyber Lạc",
       "night": "Gece",
       "moon": "Ay",
       "sky": "Gökyüzü",
@@ -2024,7 +2025,7 @@
     "addAccount": "Hesap ekle",
     "addAccountHint": "Bu hesaptan çıkmadan başka bir hesapla giriş yapın",
     "yourServer": "Sunucunuz",
-    "serverHere": "Bu {{device}} üzerindeki agentes.chat",
+    "serverHere": "Bu {{device}} üzerindeki AULACBOT",
     "serverStopped": "durduruldu",
     "serverOffline": "{{time}} saatinden beri çevrim dışı",
     "serverSignedOut": "giriş yapılmadı",
@@ -2180,9 +2181,9 @@
     "googlePlay": "Google Play"
   },
   "openOnPhone": {
-    "qr": "agentes uygulamasına giriş yapmak için QR kodu",
+    "qr": "AULACBOT uygulamasına giriş yapmak için QR kodu",
     "making": "Kod oluşturuluyor…",
-    "stepApp": "agentes uygulamasını telefonunuza yükleyin.",
+    "stepApp": "AULACBOT uygulamasını telefonunuza yükleyin.",
     "stepTailscale": "Telefonunuza Tailscale'i kurun ve bu sunucuyla aynı Tailscale hesabıyla giriş yapın.",
     "appStore": "App Store",
     "googlePlay": "Google Play",
@@ -2191,7 +2192,7 @@
     "private": "Bu kodu tarayan herkes sizin adınıza giriş yapar.",
     "failed": "Kod oluşturulamadı.",
     "localOnly": "Bu sunucu yalnızca çalıştığı bilgisayarda açılıyor, bu yüzden telefonunuz ona ulaşamıyor.",
-    "localOnlyHow": "O bilgisayardaki agentes.chat uygulamasında Tercihler › Sunucular bölümünden Telefonunuzdan ve ekip arkadaşlarınızdan erişin seçeneğini açın. Sonra buraya dönün.",
+    "localOnlyHow": "O bilgisayardaki AULACBOT uygulamasında Tercihler › Sunucular bölümünden Telefonunuzdan ve ekip arkadaşlarınızdan erişin seçeneğini açın. Sonra buraya dönün.",
     "localOnlyHere": "Telefonunuzdan ve ekip arkadaşlarınızdan erişin seçeneğini açın. Sonra buraya dönün."
   },
   "team": {
@@ -2644,8 +2645,8 @@
       "greetingPersonal": "Merhaba, ben {{name}}. Ajanlarını seninle birlikte kuruyorum.",
       "lead": "Ajanları oluşturur, uygulamaları bağlar ve kişileri davet ederim. Sen istemeden hiçbir şey değişmez ve yalnızca senin yapabildiklerini yaparım.",
       "leadPersonal": "Ajanlarını oluşturur, uygulamalarını bağlarım. Sen istemeden hiçbir şey değişmez.",
-      "heldLead": "İşletmenin ne yaptığını seç, ekip burada belirsin. Çalışma alanının agentes.chat planı olunca ajanlar çalışmaya başlar.",
-      "heldLeadPersonal": "Neyle ilgili yardım istediğini seç, ajanların burada belirsin. agentes.chat planın olunca çalışmaya başlarlar.",
+      "heldLead": "İşletmenin ne yaptığını seç, ekip burada belirsin. Çalışma alanının AULACBOT planı olunca ajanlar çalışmaya başlar.",
+      "heldLeadPersonal": "Neyle ilgili yardım istediğini seç, ajanların burada belirsin. AULACBOT planın olunca çalışmaya başlarlar.",
       "connect": {
         "title": "Ekip için bir yapay zeka bağla",
         "titlePersonal": "Ajanların için bir yapay zeka bağla",
@@ -3096,7 +3097,7 @@
       "plans_not_yours": "Buradaki {{plan}} yalnızca {{owner}} için. Kendininkini bağla, yanıt vereyim.",
       "plan_unattended": "{{name}} yanıt vermedi: istek bir kişiden gelmedi ve çalışma alanının planı yalnızca sahibine yanıt verir.",
       "runner_outdated": "{{name}} şu an yanıt veremiyor: planın bilgisayarındaki programın güncellenmesi gerekiyor.",
-      "plan_tools": "{{name}} yanıt vermeden durdu: o bilgisayardaki planın yapay zekâsı agentes.chat araçlarıyla sınırlı kalmadı.",
+      "plan_tools": "{{name}} yanıt vermeden durdu: o bilgisayardaki planın yapay zekâsı AULACBOT araçlarıyla sınırlı kalmadı.",
       "model_limit": "{{name}} şu an yanıt veremiyor: {{model}} plandaki kendi sınırına ulaştı. Planın diğer modelleri çalışmaya devam ediyor.",
       "model_region": "{{name}} yanıt veremiyor: {{model}} için OpenCode'da Global bölgesinin açık olması gerekiyor (Settings › Privacy).",
       "model_off": "{{name}} yanıt veremiyor: OpenCode bu anahtarla {{model}} modelini reddetti. Modeli ya da hesabı OpenCode'da açın veya başka bir model seçin.",
@@ -3107,16 +3108,16 @@
     "kept": {
       "title": "Mesajını sakladım",
       "wait": {
-        "payment": "Çalışma alanının agentes.chat planı olunca burada yanıtlayacağım.",
-        "unpaid": "agentes.chat planının ödemesi geçince burada yanıtlayacağım.",
-        "ended": "Çalışma alanı agentes.chat'e yeniden abone olunca burada yanıtlayacağım."
+        "payment": "Çalışma alanının AULACBOT planı olunca burada yanıtlayacağım.",
+        "unpaid": "AULACBOT planının ödemesi geçince burada yanıtlayacağım.",
+        "ended": "Çalışma alanı AULACBOT'e yeniden abone olunca burada yanıtlayacağım."
       },
-      "askAdmin": "Bir yönetici agentes.chat planını çözünce burada yanıtlayacağım.",
+      "askAdmin": "Bir yönetici AULACBOT planını çözünce burada yanıtlayacağım.",
       "plan": "Plan, ajanların her zaman açık bilgisayarını getirir. Yapay zeka zaten ödediğindir: Claude, ChatGPT ve diğerleri ya da bir API anahtarı.",
       "activeTitle": "Plan etkin",
       "activeLine": "Bir yapay zeka bağla, {{name}} burada yanıtlasın.",
       "receipt": "Saklandı",
-      "channel": "Saklandı. Çalışma alanının agentes.chat planı olunca ajanlar yanıtlar."
+      "channel": "Saklandı. Çalışma alanının AULACBOT planı olunca ajanlar yanıtlar."
     },
     "receipt": "Kimse yanıt vermeyecek: bağlı yapay zeka yok",
     "notYours": {
@@ -3147,7 +3148,7 @@
       "gitMissing": "{{program}}, {{computer}} üzerinde Git for Windows gerektirir.",
       "getGit": "Git for Windows'u indir",
       "cantStart": "{{program}}, {{computer}} üzerinde var ama açılmıyor: {{message}}",
-      "outdated": "Buradan kurmak için {{computer}} üzerindeki agentes.chat uygulamasını güncelleyin.",
+      "outdated": "Buradan kurmak için {{computer}} üzerindeki AULACBOT uygulamasını güncelleyin.",
       "asked": "İstek gönderildi. {{name}} kurmak için bir düğme alır."
     },
     "titleFor": "{{name}} için bir yapay zeka bağlayın",
@@ -3214,8 +3215,8 @@
         "unshare": "Yalnızca ben"
       }
     },
-    "billing": "Plan, çalışma alanının bilgisayarında oturum açar ve bilgisayar etkin bir agentes.chat planıyla gelir.",
-    "billingWeb": "Web'de, agentes.chat'te bir plan seç.",
+    "billing": "Plan, çalışma alanının bilgisayarında oturum açar ve bilgisayar etkin bir AULACBOT planıyla gelir.",
+    "billingWeb": "Web'de, AULACBOT'te bir plan seç.",
     "orPayGo": "Ya da kullandıkça ödeyin",
     "pay": {
       "label": "Nasıl ödersiniz?",
@@ -3286,7 +3287,7 @@
       "untested": "{{name}} modellerinden hiçbiri henüz testi geçmedi.",
       "testModels": "Modelleri test et",
       "savedUnchecked": "Kaydedildi, ama {{provider}} yanıt vermedi, bu yüzden anahtar kontrol edilemedi. Başarısız olursa nedenini sohbet söyler.",
-      "closed": "API anahtarları çalışma alanının agentes.chat planıyla açılır.",
+      "closed": "API anahtarları çalışma alanının AULACBOT planıyla açılır.",
       "notPlan": "Bir kodlama planının anahtarı yukarıdaki kendi seçeneğine girilir.",
       "billing": "Anahtarın projesi için faturalandırmayı açın. Faturalandırma olmadan Google, ajanlarınızın gönderdiklerini kullanabilir.",
       "privacy": "{{provider}}, ajanlarınızın gönderdiklerini modeli yapan veya barındıran şirkete iletir. Bu, {{provider}} gizlilik koşullarına ve ayarlarına göre olur."
@@ -3991,7 +3992,7 @@
     "clearsAt": "{{time}} saatinde temizlenir",
     "clearsOn": "{{when}} temizlenir",
     "help": {
-      "auto": "agentes.chat açıkken çevrimiçi.",
+      "auto": "AULACBOT açıkken çevrimiçi.",
       "away": "Bir süreliğine dışarıdasınız: kişiler yanıtların gecikebileceğini bilir.",
       "busy": "Herkes şu anda rahatsız etmemenin daha iyi olduğunu görür.",
       "out": "İşten uzakta (tatil, izin günü): durumun kaybolana kadar herkes görür.",
@@ -4514,7 +4515,7 @@
       "removeText_other": "{{count}} öğesi Vault'tan çıkar ve ajanlarınız onları kullanmayı bırakır. {{name}} içinde hiçbir şey değişmez.",
       "removed": "{{name}} bağlantısı kesildi",
       "listOf": "{{name}} bağlantıları",
-      "note": "Ajanlarınız ihtiyaç duyduklarında oradakileri okur. agentes.chat'e adlar ve adresler dışında hiçbir şey kopyalanmaz.",
+      "note": "Ajanlarınız ihtiyaç duyduklarında oradakileri okur. AULACBOT'e adlar ve adresler dışında hiçbir şey kopyalanmaz.",
       "error": {
         "auth_failed": "Giriş reddedildi",
         "locked": "Yanlış şifre",
@@ -5273,7 +5274,7 @@
       "eyebrow": "Onay isteği",
       "close": "Kapat",
       "exact": "Tam olarak yapılacak işlem",
-      "builtIn": "agentes.chat aracı",
+      "builtIn": "AULACBOT aracı",
       "orgConnector": "Çalışma alanınızın bağlayıcısı",
       "bound": "Yalnızca bu değerler için: her değişiklik yeni bir onay gerektirir.",
       "why": "Neden",
@@ -5362,7 +5363,7 @@
     "noInstructions": "{{name}} için henüz talimat yok. Nasıl çalışması gerektiğini yazın.",
     "noInstructions_female": "{{name}} için henüz talimat yok. Nasıl çalışması gerektiğini yazın.",
     "savedToast": "{{name}} için yapılan değişiklikler kaydedildi.",
-    "builtinName": "agentes",
+    "builtinName": "AULACBOT",
     "builtinNote": "yerleşik izinler",
     "connectHint": "Hizmetleri bağla",
     "subtitle": "{{role}} · sahibi <b>{{owner}}</b> · {{model}} {{key}}",
@@ -5713,11 +5714,11 @@
       "steps": {
         "title": "Bir adım kaldı, {{computer}} bilgisayarının kendisinde",
         "waiting": "Bekleniyor",
-        "one": "Saatin yanındaki agentes.chat simgesine tıklayın",
+        "one": "Saatin yanındaki AULACBOT simgesine tıklayın",
         "two": "Tercihler",
         "three": "Tarayıcıyı açın",
         "done": "Hepsi bu. Bu sayfa bunu kendisi fark eder, yenilemeye gerek yok.",
-        "menuOpen": "agentes'i aç",
+        "menuOpen": "AULACBOT'ı aç",
         "menuPrefs": "Tercihler…",
         "menuPause": "Duraklat",
         "menuQuit": "Çık",
@@ -5903,7 +5904,7 @@
       "setAll": "Tümünü değiştir",
       "connectors": "{{org}} bağlayıcıları",
       "connectorsPersonal": "Bağlayıcılarınız",
-      "builtin": "agentes içinde yerleşik",
+      "builtin": "AULACBOT içinde yerleşik",
       "noMatch": "“{{q}}” ile eşleşen bir şey yok",
       "noneHere": "Bu filtrede bir şey yok",
       "library": "Beceri kütüphanesi",
@@ -6422,10 +6423,10 @@
       "afterPlanNext": "Plandan sonraki adım bu.",
       "plan": {
         "todo": "Ekibi başlat.",
-        "todoDesc": "Bir agentes.chat planıyla ajanlar çalışmaya başlar.",
+        "todoDesc": "Bir AULACBOT planıyla ajanlar çalışmaya başlar.",
         "action": "Planları gör",
         "todoPersonal": "Ajanlarını başlat.",
-        "todoDescPersonal": "Bir agentes.chat planıyla ajanların çalışmaya başlar."
+        "todoDescPersonal": "Bir AULACBOT planıyla ajanların çalışmaya başlar."
       },
       "about": {
         "action": "Anlat",
@@ -7469,7 +7470,7 @@
     "crashTitle": "Bir şeyler ters gitti",
     "crashText": "Devam etmek için sayfayı yeniden yükleyin.",
     "crashCode": "Yardım isterseniz {{id}} kodunu verin.",
-    "unreachableTitle": "agentes.chat'e ulaşılamıyor",
+    "unreachableTitle": "AULACBOT'e ulaşılamıyor",
     "unreachableText": "Yeniden başlatılıyor olabilir. Geri döner dönmez bu sayfa kendiliğinden açılır.",
     "offlineTitle": "Çevrimdışısınız",
     "offlineText": "Yeniden çevrimiçi olduğunuzda bu sayfa kendiliğinden açılır."
@@ -8469,7 +8470,7 @@
         "pr_opened": "GitHub'da PR açıldı"
       },
       "issue": {
-        "created": "agentes'te görev oluşturuldu"
+        "created": "AULACBOT'ta görev oluşturuldu"
       },
       "deploy": {
         "succeeded": "Dağıtım tamamlandı"
@@ -9089,7 +9090,7 @@
       "title": "Misyon dosyaları",
       "folder": "klasör",
       "tabs": "Dosya",
-      "missionSub": "Plan ve kurallar · agentes.chat günceller",
+      "missionSub": "Plan ve kurallar · AULACBOT günceller",
       "decisionsSub": "Onaylanan kararlar",
       "notesSub": "{{executor}} notları",
       "synced": "eşitlendi: {{when}}",
@@ -9164,7 +9165,7 @@
       "title": "Yeni misyon",
       "text": "Bir ajan için uzun bir proje. Ajan bir plan önerir, kendi bilgisayarında çalışır ve ileti dizisinde karar ve inceleme ister.",
       "goal": "Hedef",
-      "goalPlaceholder": "Örn. mevcut web uygulamasını temel alarak Expo ile agentes.chat mobil uygulamasını geliştir.",
+      "goalPlaceholder": "Örn. mevcut web uygulamasını temel alarak Expo ile AULACBOT mobil uygulamasını geliştir.",
       "agent": "Ajan",
       "computer": "Bilgisayar",
       "noMachine": "Bağlı bilgisayar yok",
@@ -10083,7 +10084,7 @@
   },
   "jev": {
     "title": "Jev",
-    "about": "TypeSafe'in hızlı kararlar için yaptığı hızlı bir model. agentes.chat ona kimin yanıt vereceği gibi küçük sorular sorar. Ücreti doğrudan TypeSafe'e ödersiniz.",
+    "about": "TypeSafe'in hızlı kararlar için yaptığı hızlı bir model. AULACBOT ona kimin yanıt vereceği gibi küçük sorular sorar. Ücreti doğrudan TypeSafe'e ödersiniz.",
     "lead": "Ajanlarınızın ekip olarak çalışmasına yardım eder.",
     "how": "Jev nasıl çalışır",
     "why": {
@@ -10186,7 +10187,7 @@
       "antigravity": "Gemini",
       "opencode": "OpenCode",
       "needs": {
-        "keys": "Plan anahtarı kullanmak için bilgisayardaki agentes uygulamasını güncelleyin"
+        "keys": "Plan anahtarı kullanmak için bilgisayardaki AULACBOT uygulamasını güncelleyin"
       },
       "noComputer": "Hesaplar bağlı bir bilgisayarda kalır. Önce kendi bilgisayarlarınızdan birini bağlayın.",
       "addComputer": "Bilgisayar bağla",
@@ -10194,7 +10195,7 @@
         "online": "{{computer}} yeniden başlıyor ya da yeniden bağlanıyor. Geri döndüğünde bu kendiliğinden değişir.",
         "installing": "{{program}}, {{computer}} üzerine kuruluyor. Bittiğinde bu kendiliğinden değişir.",
         "updating": "{{program}}, {{computer}} üzerinde güncelleniyor. Bittiğinde bu kendiliğinden değişir.",
-        "runnerOld": "{{computer}} üzerindeki agentes.chat programı eski ve güncelleme yolda. Bittiğinde bu kendiliğinden değişir.",
+        "runnerOld": "{{computer}} üzerindeki AULACBOT programı eski ve güncelleme yolda. Bittiğinde bu kendiliğinden değişir.",
         "execOff": "{{computer}} henüz {{program}} çalıştıramıyor. İlgileniyoruz, bu kendiliğinden değişir.",
         "toolOff": "{{program}}, {{computer}} üzerinde henüz izinli değil. Bu bizim tarafımızda: daha sonra yeniden dene.",
         "preparing": "{{computer}} hazırlanıyor. Bittiğinde bu kendiliğinden değişir.",
@@ -10208,7 +10209,7 @@
     },
     "page": {
       "title": "Planlarınız",
-      "hint": "Her plan bağlandığı bilgisayarda kalır ve o bilgisayarı kullanan kişi ona erişebilir. agentes.chat yalnızca adını, e-postasını ve kullanımını saklar.",
+      "hint": "Her plan bağlandığı bilgisayarda kalır ve o bilgisayarı kullanan kişi ona erişebilir. AULACBOT yalnızca adını, e-postasını ve kullanımını saklar.",
       "emptyTitle": "Zaten ödediğiniz yapay zeka planını kullanın",
       "emptyViewer": "Çalışma alanının yapay zekasıyla ilgilenen kişi bir plan bağlar ve burada görünür.",
       "connect": "Yapay zeka bağla",
@@ -11499,7 +11500,7 @@
     "reasons": {
       "no_computer": "Kullanmak için Bilgisayar bölümünden bağlı bir bilgisayar seçin.",
       "exec_off": "Bilgisayar, program çalıştırma izni olmadan bağlandı.",
-      "runner_old": "Kullanmak için bilgisayardaki agentes.chat programını güncelleyin.",
+      "runner_old": "Kullanmak için bilgisayardaki AULACBOT programını güncelleyin.",
       "tool_offOne": "{{program}}, {{computer}} üzerinde kapalı.",
       "not_installed": "{{program}}, {{computer}} üzerinde yüklü değil.",
       "cant_start": "{{program}}, {{computer}} üzerinde var ama açılmıyor.",
@@ -12028,7 +12029,7 @@
   "storage": {
     "title": "Depolama",
     "options": "Dosyalar nerede saklansın",
-    "agentes": "agentes.chat depolama alanı",
+    "agentes": "AULACBOT depolama alanı",
     "agentesText": "Dosyalarınız, her çalışma alanı için ayrı tutularak bizim depolama alanımızda kalır.",
     "server": "Bu sunucu",
     "serverText": {
@@ -12039,7 +12040,7 @@
     },
     "showFolder": "Klasörü göster",
     "place": {
-      "agentes": "agentes.chat depolama alanı",
+      "agentes": "AULACBOT depolama alanı",
       "server": "bu sunucu"
     },
     "s3": "Kendi depolama alanınız",
@@ -12151,7 +12152,7 @@
       "step": {
         "bucketTitle": "Bir bucket oluşturun",
         "keyTitle": "Erişim anahtarını oluşturun",
-        "userTitle": "Sadece agentes.chat için bir kullanıcı oluşturun",
+        "userTitle": "Sadece AULACBOT için bir kullanıcı oluşturun",
         "r2Bucket": "Cloudflare panelinde <b>R2</b> bölümünü açın ve <b>Create bucket</b> düğmesine tıklayın. Herhangi bir ad olur.",
         "r2Key": "R2 sayfasında, <b>API Tokens</b> altında <b>Manage</b>, ardından <b>Create API Token</b> düğmesine tıklayın. <b>Object Read & Write</b> iznini ve bucket'ınızı seçin. Sonunda Cloudflare aşağıdaki üç değeri yalnızca bir kez gösterir.",
         "s3Bucket": "AWS konsolunda <b>S3</b> hizmetini açın ve <b>Create bucket</b> düğmesine tıklayın. Seçtiğiniz bölgeyi not edin.",
@@ -12229,11 +12230,11 @@
   },
   "githubApp": {
     "title": "GitHub depoları",
-    "text": "agentes.chat uygulamasının yüklü olduğu yerlerde ajanlar çekme isteklerini, sorun kayıtlarını, yorumları ve commit'leri uygulama olarak açar, ajanın adı ve isteyen kişiyle birlikte.",
-    "install": "agentes.chat uygulamasını yükle",
+    "text": "AULACBOT uygulamasının yüklü olduğu yerlerde ajanlar çekme isteklerini, sorun kayıtlarını, yorumları ve commit'leri uygulama olarak açar, ajanın adı ve isteyen kişiyle birlikte.",
+    "install": "AULACBOT uygulamasını yükle",
     "installMore": "Başka bir hesaba yükle",
     "none": "Henüz GitHub hesabı yok.",
-    "usingAccount": "Şu anda ajanlar GitHub'da {{account}} olarak görünüyor. Uygulamayı yükleyin, ajanlar agentes.chat uygulaması olarak görünsün.",
+    "usingAccount": "Şu anda ajanlar GitHub'da {{account}} olarak görünüyor. Uygulamayı yükleyin, ajanlar AULACBOT uygulaması olarak görünsün.",
     "allRepos": "Tüm depolar",
     "someRepos": "Seçilen depolar",
     "suspended": "GitHub'da askıya alındı",
@@ -12242,27 +12243,27 @@
     "remove": "Kaldır",
     "removeName": "Kaldır: {{account}}",
     "removeTitle": "Uygulama {{account}} hesabından kaldırılsın mı?",
-    "removeText": "agentes.chat uygulaması GitHub'da {{account}} hesabından kaldırılır ve ajanlar bu hesabın depolarını onun üzerinden kullanmayı bırakır.",
+    "removeText": "AULACBOT uygulaması GitHub'da {{account}} hesabından kaldırılır ve ajanlar bu hesabın depolarını onun üzerinden kullanmayı bırakır.",
     "removeLast": "Bu sonuncusu, bu yüzden biri uygulamayı yükleyene ya da bir hesap bağlayana kadar ajanlar GitHub'ı kullanamaz.",
     "removed": "Uygulama {{account}} hesabından kaldırıldı ve GitHub'da da kaldırıldı.",
     "notUninstalled": "Uygulama burada kaldırıldı ama GitHub, {{account}} hesabından kaldırmayı onaylamadı. Oradan kaldırın.",
     "openPage": "Aç",
-    "installed": "agentes.chat uygulaması yüklendi.",
+    "installed": "AULACBOT uygulaması yüklendi.",
     "requested": "Uygulamayı yalnızca GitHub hesabının sahibi yükleyebilir. Bu çalışma alanında Bağlayıcılar › GitHub bölümünden yüklemesini isteyin.",
     "notVisible": "GitHub hesabınız o kurulumu göremiyor. Ona erişimi olan bir hesapla yükleyin.",
     "otherWorkspace": "Bu GitHub hesabı zaten başka bir çalışma alanına bağlı. Buraya yüklemeden önce uygulamayı oradan kaldırın.",
-    "installedOutside": "Uygulama bu GitHub hesabına agentes.chat dışında yüklendi. GitHub'da kaldırın ve Bağlayıcılar › GitHub bölümünden yeniden yükleyin.",
+    "installedOutside": "Uygulama bu GitHub hesabına AULACBOT dışında yüklendi. GitHub'da kaldırın ve Bağlayıcılar › GitHub bölümünden yeniden yükleyin.",
     "ownerUnknown": "GitHub bu kuruluşun sahibinin kim olduğunu söylemedi. Sunucuyu yöneten kişinin GitHub uygulamasına Members (salt okunur) kuruluş iznini eklemesi gerekiyor, ardından uygulamayı yeniden yükleyin.",
     "misconfigured": "Sunucudaki GitHub uygulamasının gizli anahtarı yanlış, bu yüzden yükleme tamamlanamıyor. Sunucuyu yöneten kişinin anahtarı uygulamanın ayarlarında değiştirmesi gerekiyor.",
     "connectAccount": "GitHub hesabı bağla",
     "ownerHint": "Bu sunucunun sahibi GitHub uygulamasını burada, Bağlayıcılar bölümünde oluşturabilir.",
-    "viaApp": "{{accounts}} üzerindeki agentes.chat uygulamasıyla",
-    "disconnectApp": "agentes.chat uygulaması GitHub'da {{accounts}} hesaplarından da kaldırılır.",
-    "disconnectKeepsApp": "Ajanlar {{accounts}} üzerindeki agentes.chat uygulamasıyla GitHub'da kalır.",
-    "keptApp": "GitHub hesabının bağlantısı kesildi. Ajanlar agentes.chat uygulamasıyla GitHub'da kalır.",
+    "viaApp": "{{accounts}} üzerindeki AULACBOT uygulamasıyla",
+    "disconnectApp": "AULACBOT uygulaması GitHub'da {{accounts}} hesaplarından da kaldırılır.",
+    "disconnectKeepsApp": "Ajanlar {{accounts}} üzerindeki AULACBOT uygulamasıyla GitHub'da kalır.",
+    "keptApp": "GitHub hesabının bağlantısı kesildi. Ajanlar AULACBOT uygulamasıyla GitHub'da kalır.",
     "signature": {
-      "forPerson": "{{agent}}, agentes.chat üzerinde {{person}} için çalışan ajan",
-      "alone": "{{agent}}, agentes.chat üzerinde bir ajan"
+      "forPerson": "{{agent}}, AULACBOT üzerinde {{person}} için çalışan ajan",
+      "alone": "{{agent}}, AULACBOT üzerinde bir ajan"
     },
     "manifestPage": {
       "title": "GitHub uygulaması oluşturuluyor",
@@ -13860,7 +13861,7 @@
     "continueInComposio": "Composio ile devam et",
     "github": {
       "how": "Ajanlar GitHub'a nasıl erişir",
-      "app": "agentes.chat uygulaması",
+      "app": "AULACBOT uygulaması",
       "recommended": "Önerilen",
       "appText": "Ajanlar uygulama olarak görünür ve depoları GitHub'da siz seçersiniz.",
       "account": "Bir GitHub hesabı",
@@ -13882,7 +13883,7 @@
     "or": "veya",
     "withKey": "API anahtarıyla bağla",
     "needsKey": "Bu sunucu OAuth desteklemiyor. API anahtarıyla bağlayın.",
-    "notApproved": "{{name}} yalnızca onayladığı uygulamaların giriş yapmasına izin veriyor ve agentes.chat henüz onaylanmadı. Size bir API anahtarı veriyorsa onunla bağlanabilirsiniz.",
+    "notApproved": "{{name}} yalnızca onayladığı uygulamaların giriş yapmasına izin veriyor ve AULACBOT henüz onaylanmadı. Size bir API anahtarı veriyorsa onunla bağlanabilirsiniz.",
     "serverSaid": "Sunucunun yanıtı: {{detail}}",
     "nothingYet": "3. adıma kadar ajanlar hiçbir şey kullanamaz.",
     "allCanUse": "Bağlandıktan sonra her ajan kullanabilir. Bunu daha sonra ayarlayabilirsiniz.",
@@ -14142,7 +14143,7 @@
     "whatIsText": "Yalnızca ajanlar için bir şifre. E-postanızın sitesinde oluşturursunuz ve kendi şifrenizi değiştirmeden istediğiniz zaman silebilirsiniz.",
     "step": {
       "1": "Hesabınızın güvenlik sayfasını açın.",
-      "2": "“agentes” adında bir uygulama şifresi oluşturun.",
+      "2": "“AULACBOT” adında bir uygulama şifresi oluşturun.",
       "3": "Şifreyi kopyalayıp buraya yapıştırın."
     },
     "openPage": "{{name}} sayfasını aç",
@@ -14535,7 +14536,7 @@
       "generalKept": "#general silinemez.",
       "generalStays": "Herkes #general kanalında kalır.",
       "mcpUnreachable": "MCP sunucusuna bağlanılamadı. Adresini kontrol edip tekrar deneyin.",
-      "notApproved": "Bu hizmet henüz agentes.chat için onay vermedi.",
+      "notApproved": "Bu hizmet henüz AULACBOT için onay vermedi.",
       "alreadyInvited": "Bu kişinin zaten bir daveti var.",
       "alreadyAsked": "Bu kişi için zaten biri istekte bulundu.",
       "mailboxConnected": "Bu posta kutusu zaten bağlı.",
@@ -14681,7 +14682,7 @@
       "noComputer": "Bu ajanın henüz misyonlar için bir bilgisayarı yok.",
       "computerOffline": "Ajanın bilgisayarı çevrimdışı.",
       "execDisabled": "O bilgisayarda komutlar kapalı.",
-      "runnerOutdated": "Bilgisayardaki program misyonlar için çok eski: oradaki agentes.chat uygulamasını güncelleyin ya da kurulum komutunu yeniden çalıştırın.",
+      "runnerOutdated": "Bilgisayardaki program misyonlar için çok eski: oradaki AULACBOT uygulamasını güncelleyin ya da kurulum komutunu yeniden çalıştırın.",
       "exists": "Bu ileti dizisinin zaten bir misyonu var.",
       "closed": "Bu misyon kapandı.",
       "wrongStatus": "Misyon buna izin veren bir durumda değil.",
@@ -14784,7 +14785,7 @@
       "notOwner": "Bu bilgisayarın araçlarını yalnızca onu bağlayan kişi açar. O kişiden isteyin.",
       "askSelf": "Bu sizin bilgisayarınız: düğmeyle açın.",
       "adminAskSelf": "Bunu burada kendiniz yapabilirsiniz.",
-      "accountMethodUnsupported": "Bu bilgisayar Claude'u henüz bu şekilde bağlayamıyor. Üzerindeki agentes.chat programını güncelleyin ya da bir API anahtarı kullanın.",
+      "accountMethodUnsupported": "Bu bilgisayar Claude'u henüz bu şekilde bağlayamıyor. Üzerindeki AULACBOT programını güncelleyin ya da bir API anahtarı kullanın.",
       "offline": "{{name}} şu an çevrimdışı. Geri geldiğinde tekrar deneyin.",
       "paused": "{{name}} duraklatıldı: devam ettirilene kadar üzerinde yeni bir şey başlamaz.",
       "timeout": "Bilgisayar zamanında yanıt vermedi. Tekrar deneyin."
@@ -14938,7 +14939,7 @@
       "ask": "{{name}} kişisinden iste",
       "asked": "İstendi. {{name}} açmak için bir düğme alır.",
       "done": "{{machine}} üzerinde açık.",
-      "outdated": "Buradan açmak için {{machine}} üzerindeki agentes.chat uygulamasını güncelleyin.",
+      "outdated": "Buradan açmak için {{machine}} üzerindeki AULACBOT uygulamasını güncelleyin.",
       "offline": "{{machine}} çevrimdışı. Geri geldiğinde düğme {{tool}} açar."
     },
     "remotePause": {
@@ -14952,7 +14953,7 @@
       "byYouUntil": "Senin tarafından {{time}} saatine kadar duraklatıldı.",
       "byName": "{{name}} tarafından duraklatıldı.",
       "byNameUntil": "{{name}} tarafından {{time}} saatine kadar duraklatıldı.",
-      "outdated": "Buradan duraklatmak için bu bilgisayardaki agentes.chat uygulamasını güncelle.",
+      "outdated": "Buradan duraklatmak için bu bilgisayardaki AULACBOT uygulamasını güncelle.",
       "paused": "{{name}} duraklatıldı",
       "resumed": "{{name}} yeniden çalışıyor"
     },
@@ -15010,9 +15011,9 @@
     },
     "host": {
       "label": "Bu sunucunun bilgisayarı",
-      "desc": "agentes.chat'in kurulu olduğu yer.",
-      "descUsers": "agentes.chat'in kurulu olduğu yer, her ajan için bir kullanıcı.",
-      "descShared": "agentes.chat'in kurulu olduğu bilgisayar. Ajanlar onu kuran kişi olarak çalışır.",
+      "desc": "AULACBOT'in kurulu olduğu yer.",
+      "descUsers": "AULACBOT'in kurulu olduğu yer, her ajan için bir kullanıcı.",
+      "descShared": "AULACBOT'in kurulu olduğu bilgisayar. Ajanlar onu kuran kişi olarak çalışır.",
       "stop": "Bu çalışma alanında kullanmayı bırak",
       "stopTitle": "Bu sunucunun bilgisayarını kullanmayı bırakalım mı?",
       "stopText": "Bu çalışma alanının ajanları bu bilgisayarı artık kullanmaz. İstediğiniz zaman tekrar kullanabilirsiniz.",
@@ -15023,7 +15024,7 @@
     },
     "download": {
       "title": "Başka bir bilgisayar bağla",
-      "text": "agentes.chat uygulamasını bilgisayara kurun.",
+      "text": "AULACBOT uygulamasını bilgisayara kurun.",
       "mac": "{{system}} için uygulamayı indir",
       "version": "Sürüm {{version}}",
       "versionSize": "Sürüm {{version}} · {{size}}",
@@ -15034,7 +15035,7 @@
       "unavailable": "Uygulama henüz kullanılamıyor.",
       "unavailableCommand": "Uygulama henüz kullanılamıyor. Şimdilik aşağıdaki komutu kullanın.",
       "firstTime": "İlk seferde",
-      "step1": "İndirilen dosyayı açın ve agentes.chat'i Uygulamalar klasörüne sürükleyin.",
+      "step1": "İndirilen dosyayı açın ve AULACBOT'i Uygulamalar klasörüne sürükleyin.",
       "step1Install": "Kurmak için indirilen dosyayı açın.",
       "otherText": "Bunu bilgisayarın terminalinde çalıştırın, sonra gösterdiği kodu onaylayın.",
       "waiting": "Bilgisayarın bağlanması bekleniyor…"
@@ -15065,7 +15066,7 @@
       "ownFolder": "Her ajanın klasörü",
       "ownFolderText": "Her zaman. Bir ajan başkasınınkini görmez.",
       "noFolders": "Ek klasör yok. Her ajan yalnızca kendi klasörünü kullanır.",
-      "noReport": "Bu bilgisayar neye izin verdiğini henüz bildirmedi. Üzerindeki agentes.chat'i güncelleyin.",
+      "noReport": "Bu bilgisayar neye izin verdiğini henüz bildirmedi. Üzerindeki AULACBOT'i güncelleyin.",
       "hidden": "Bu bilgisayarın klasörlerini ve araçlarını yalnızca yöneticiler ve onu bağlayan kişi görür.",
       "nobody": "Henüz hiçbir ajan kullanmıyor",
       "usedBy": "{{folder}} klasörünü kim kullanıyor",
@@ -15110,7 +15111,7 @@
       "disableText": "Ajanlar bu bilgisayarda {{tool}} kullanmayı bırakır. Yeniden açmak için: bilgisayarın kendisinde, ya da burada onu bağlayan kişi tarafından.",
       "disabled": "{{tool}} kapatıldı.",
       "grantTitle": "Daha fazlasına izin vermek için",
-      "grantText": "İzin vermek bilgisayarın kendisinde yapılır: oradaki agentes.chat uygulamasını açın (Tercihler → Klasörler).",
+      "grantText": "İzin vermek bilgisayarın kendisinde yapılır: oradaki AULACBOT uygulamasını açın (Tercihler → Klasörler).",
       "grantTextTerminal": "İzin vermek bilgisayarın kendisinde, Terminal'inde yapılır:",
       "grantTextAdmin": "İzin vermek bilgisayarın kendisinde, Terminal'inde, yöneticisi olarak yapılır:",
       "grantTerminal": "Uygulama yok mu? Bilgisayarın terminalinde:",
@@ -15218,7 +15219,7 @@
       "forbidden": "Bu ekranı göremezsiniz",
       "forbiddenText": "{{name}} cihazını kimin kullanabileceğini sahibi seçer.",
       "outdated": "{{host}} üzerindeki uygulama bunun için çok eski",
-      "outdatedText": "{{host}} üzerinde agentes.chat'i güncelleyin, sonra tekrar deneyin.",
+      "outdatedText": "{{host}} üzerinde AULACBOT'i güncelleyin, sonra tekrar deneyin.",
       "unavailable": "Bu ekran gösterilemiyor",
       "unavailableText": "{{host}} üzerinde adb veya Xcode kurulu mu kontrol edin, sonra tekrar deneyin.",
       "needsHelper": "Gereken test yardımcısını eklemek için Mac'te iPhone kurulumunu tamamlayın.",
@@ -15372,7 +15373,7 @@
       "thisMac": "Bu Mac",
       "thisPc": "Bu PC",
       "thisComputer": "Bu bilgisayar",
-      "thisLine": "agentes.chat uygulamasıyla",
+      "thisLine": "AULACBOT uygulamasıyla",
       "openApp": "Uygulamayı aç",
       "server": "Bir sunucu ya da VPS",
       "serverLine": "Terminaline yapıştırılacak tek satır",
@@ -15387,7 +15388,7 @@
     },
     "computer": {
       "title": "Başka bir bilgisayar bağlayın",
-      "step1": "agentes.chat uygulamasını ona yükleyin:",
+      "step1": "AULACBOT uygulamasını ona yükleyin:",
       "step2": "Açın ve kendi hesabınızla oturum açın.",
       "step3": "{{org}} ajanlarının onu kullanıp kullanamayacağını sorduğunda İzin ver'e tıklayın.",
       "shows": "Burada kendiliğinden görünür, paylaşana kadar yalnızca sizin içindir.",
@@ -15397,11 +15398,11 @@
       "noApp": "Uygulamayı ona yükleyemiyor musunuz? Terminalde bir satır kullanın"
     },
     "thisApp": {
-      "text": "agentes.chat uygulaması onu tek tıkla bağlar ve önce size sorar.",
-      "open": "agentes.chat uygulamasını aç",
+      "text": "AULACBOT uygulaması onu tek tıkla bağlar ve önce size sorar.",
+      "open": "AULACBOT uygulamasını aç",
       "browserAsks": "Tarayıcınız açmak için izin ister: Aç'ı seçin, sunarsa Her zaman izin ver'i de seçin.",
       "noApp": "Uygulama sizde yok mu?",
-      "afterInstall": "Yükledikten sonra agentes.chat uygulamasını aç düğmesine yeniden basın. Bağlantı bir kez, 10 dakika boyunca çalışır.",
+      "afterInstall": "Yükledikten sonra AULACBOT uygulamasını aç düğmesine yeniden basın. Bağlantı bir kez, 10 dakika boyunca çalışır.",
       "waiting": "Bu bilgisayardaki uygulama bekleniyor…",
       "expired": "Bu bağlantının süresi doldu.",
       "again": "Yeni bağlantı oluştur",
@@ -15478,7 +15479,7 @@
       },
       "qrLabel": "Bu adımları telefonda açan QR kodu",
       "qrLine": "Telefonunuzdan yapın",
-      "qrCaption": "Bu adımları, her ayar için düğmeleriyle agentes.chat uygulamasında açmak için tarayın.",
+      "qrCaption": "Bu adımları, her ayar için düğmeleriyle AULACBOT uygulamasında açmak için tarayın.",
       "buildNumber": "Derleme numarası",
       "buildNumberSub": "BP2A.250605.031",
       "usbRow": "USB hata ayıklama",
@@ -15522,23 +15523,23 @@
       "qrCaption": "Kamera agentes-… adlı bir Wi-Fi ağı önerir, ama böyle bir ağ yok. Telefonu bilgisayarın Wi-Fi ağında tutun.",
       "fail": {
         "mdns_off": "{{computer}}, Wi-Fi ağında telefon arayamıyor. Orada Android platform-tools'u güncelleyin ya da kablo kullanın.",
-        "mdns_offMac": "{{computer}}, Wi-Fi ağında telefon arayamıyor. O Mac'te Sistem Ayarları › Gizlilik ve Güvenlik › Yerel Ağ bölümünden agentes.chat'i açıp tekrar deneyin.",
+        "mdns_offMac": "{{computer}}, Wi-Fi ağında telefon arayamıyor. O Mac'te Sistem Ayarları › Gizlilik ve Güvenlik › Yerel Ağ bölümünden AULACBOT'i açıp tekrar deneyin.",
         "same_wifi": "Telefona ulaşılamadı. {{computer}} ile aynı ağda değil. Onu aynı Wi-Fi ağına bağlayıp tekrar deneyin.",
-        "same_wifiMac": "Telefona ulaşılamadı. Onu {{computer}} ile aynı Wi-Fi ağına bağlayın. O Mac'te Sistem Ayarları › Gizlilik ve Güvenlik › Yerel Ağ bölümünden agentes.chat'i de açın.",
+        "same_wifiMac": "Telefona ulaşılamadı. Onu {{computer}} ile aynı Wi-Fi ağına bağlayın. O Mac'te Sistem Ayarları › Gizlilik ve Güvenlik › Yerel Ağ bölümünden AULACBOT'i de açın.",
         "refused": "Telefon eşlemeyi durdurdu. Eşleme ekranını açık tutup tekrar deneyin.",
         "refusedCode": "Telefon bu kodu kabul etmedi. Kodu ve adresi kontrol edip yeniden eşleyin.",
         "timed_out": "2 dakika içinde hiçbir telefon eşlenmedi. Kodu kamera taradıysa ya da telefon Wi-Fi ağından çıktıysa, onu {{computer}} ile aynı Wi-Fi ağına bağlayın ve Kablosuz hata ayıklama ekranından tarayın.",
-        "timed_outMac": "2 dakika içinde hiçbir telefon eşlenmedi. Kodu kamera taradıysa ya da telefon Wi-Fi ağından çıktıysa, onu {{computer}} ile aynı Wi-Fi ağına bağlayın ve Kablosuz hata ayıklama ekranından tarayın. O Mac'te Sistem Ayarları › Gizlilik ve Güvenlik › Yerel Ağ bölümünden agentes.chat'i de açın.",
+        "timed_outMac": "2 dakika içinde hiçbir telefon eşlenmedi. Kodu kamera taradıysa ya da telefon Wi-Fi ağından çıktıysa, onu {{computer}} ile aynı Wi-Fi ağına bağlayın ve Kablosuz hata ayıklama ekranından tarayın. O Mac'te Sistem Ayarları › Gizlilik ve Güvenlik › Yerel Ağ bölümünden AULACBOT'i de açın.",
         "outdated": "Wi-Fi ile eşleme için Mayıs 2026 güvenlik güncellemesine sahip Android 14 veya üstü gerekir. Telefonu güncelleyin ya da kablo kullanın.",
         "adb_missing": "{{computer}} üzerinde Android platform-tools yok. Oraya Android Studio'yu kurup tekrar deneyin.",
-        "update": "Wi-Fi ile eşleme için {{computer}} üzerinde daha yeni bir agentes.chat gerekir. Güncelleyip tekrar deneyin.",
+        "update": "Wi-Fi ile eşleme için {{computer}} üzerinde daha yeni bir AULACBOT gerekir. Güncelleyip tekrar deneyin.",
         "canceled": "Eşleme durdu. Tekrar deneyin.",
         "failed": "Eşleme olmadı. Tekrar deneyin ya da kablo kullanın."
       }
     },
     "iphone": {
       "title": "iPhone bağlayın",
-      "lead": "iPhone'lar bir Mac üzerinden bağlanır, kurulumu oradaki agentes.chat uygulaması yapar.",
+      "lead": "iPhone'lar bir Mac üzerinden bağlanır, kurulumu oradaki AULACBOT uygulaması yapar.",
       "mac": "Mac",
       "noMac": "Ajanlar bir iPhone'u yalnızca bir Mac üzerinden kullanabilir ve henüz bağlı Mac yok.",
       "noMacNote": "Mac'iniz yok mu? Bir ekip arkadaşınızdan kendi Mac'ini bağlamasını isteyin.",
@@ -15577,9 +15578,9 @@
         "failedAny": "{{mac}} üzerinde düzeltilemedi.",
         "stillCommandLineTools": "Düzeltme tamamlandı ama Mac hâlâ Command Line Tools'u kullanıyor. Yeniden deneyin ya da bunu Terminal'de çalıştırın, Mac'in parolasını soracak.",
         "stillLicense": "Düzeltme tamamlandı ama {{mac}} üzerindeki Xcode hâlâ lisansının kabul edilmesini bekliyor. Yeniden deneyin ya da bunu Terminal'de çalıştırın, Mac'in parolasını soracak.",
-        "outdated": "Tek tıkla düzeltmek için {{mac}} üzerindeki agentes.chat uygulamasını güncelleyin. Ya da bunu onun Terminal'inde çalıştırın, Mac'in parolasını ister.",
+        "outdated": "Tek tıkla düzeltmek için {{mac}} üzerindeki AULACBOT uygulamasını güncelleyin. Ya da bunu onun Terminal'inde çalıştırın, Mac'in parolasını ister.",
         "follows": "Mac bitirdiğinde bu pencere kendiliğinden devam eder.",
-        "window": "agentes.chat, iPhone'ları bağlamak için Xcode'u kullanıma almak istiyor.",
+        "window": "AULACBOT, iPhone'ları bağlamak için Xcode'u kullanıma almak istiyor.",
         "ok": "Tamam"
       },
       "getXcode": "Xcode'u edinin",
@@ -15605,7 +15606,7 @@
         "openXcode": "Xcode'u aç",
         "opened": "Xcode {{mac}} üzerinde açıldı. iPhone'un Ayarlar'ına yeniden bakın, sonra Xcode'u kapatın.",
         "unlock": "Açtınız ve iPhone yeniden başladı mı? Kilidini açın. Aç düğmeli uyarı ancak bundan sonra çıkar.",
-        "outdated": "{{mac}} üzerindeki agentes.chat uygulaması eski. Uygulamayı güncelleyin ya da oradan kurduysanız bunu Terminal'de çalıştırın."
+        "outdated": "{{mac}} üzerindeki AULACBOT uygulaması eski. Uygulamayı güncelleyin ya da oradan kurduysanız bunu Terminal'de çalıştırın."
       },
       "uiAutomationText": "Yeniden başladıktan sonra Ayarlar › Geliştirici bölümünde.",
       "helperText": "Mac onu her 7 günde bir oluşturur ve yeniler. Xcode'da ücretsiz bir Apple Account yeterlidir.",
@@ -15819,7 +15820,7 @@
     "reconnectDoneText": "{{name}}, {{org}} çalışma alanına geri döndü.",
     "deniedTitle": "Bağlanmadı",
     "denied": "Bilgisayar bağlanmadı. Onu açan siz değilseniz kimse erişim almadı.",
-    "home": "agentes'e git"
+    "home": "AULACBOT'a git"
   },
   "apps": {
     "connect": "Uygulama bağla",
@@ -15926,7 +15927,7 @@
       "claude": {
         "lead": "claude.ai, Claude Desktop ve telefon: tek bağlayıcı her yerde çalışır.",
         "step1": "claude.ai veya Claude Desktop'ta Customize › Connectors bölümünü açın.",
-        "step2": "+ Add'e, ardından Add custom connector'a tıklayın, adını agentes.chat koyun, adresi yapıştırın ve Continue'ya tıklayın.",
+        "step2": "+ Add'e, ardından Add custom connector'a tıklayın, adını AULACBOT koyun, adresi yapıştırın ve Continue'ya tıklayın.",
         "step3": "Sign in now'ı seçin, Add'e tıklayın ve açılan sayfada yetki verin.",
         "phone": "Bilgisayarda eklendikten sonra telefonunuzda da görünür.",
         "team": "Team ve Enterprise planlarında bağlayıcıyı Claude organizasyonunun Owner'ı Organization settings › Connectors bölümünden ekler. Ardından her kişi Customize › Connectors bölümünde Connect'e tıklar.",
@@ -15961,9 +15962,9 @@
         "open": "{{place}} bölümünü açın.",
         "click": "{{button}} düğmesine tıklayın.",
         "clickThen": "{{button}} düğmesine, ardından {{next}} düğmesine tıklayın.",
-        "name": "Adını agentes.chat koyup adresi yapıştırın.",
-        "nameDescribe": "Adını agentes.chat koyup bir açıklama yazın.",
-        "nameConnect": "Adını agentes.chat koyup {{button}} düğmesine tıklayın.",
+        "name": "Adını AULACBOT koyup adresi yapıştırın.",
+        "nameDescribe": "Adını AULACBOT koyup bir açıklama yazın.",
+        "nameConnect": "Adını AULACBOT koyup {{button}} düğmesine tıklayın.",
         "paste": "Adresi yapıştırın.",
         "pasteIn": "Adresi {{field}} alanına yapıştırın.",
         "choosePaste": "{{option}} seçeneğini seçip adresi yapıştırın.",
@@ -15984,8 +15985,8 @@
         "reload": "Sonra sohbete <code>{{command}}</code> yazın.",
         "loginRun": "Giriş yapmak için <code>{{command}}</code> komutunu çalıştırın.",
         "loginType": "Giriş yapmak için uygulamada <code>{{command}}</code> yazın.",
-        "signIn": "Açılan sayfada agentes.chat hesabınızla giriş yapın.",
-        "signInManage": "Açılan sayfada agentes.chat hesabınızla giriş yapın ve {{access}} seçeneğini seçin.",
+        "signIn": "Açılan sayfada AULACBOT hesabınızla giriş yapın.",
+        "signInManage": "Açılan sayfada AULACBOT hesabınızla giriş yapın ve {{access}} seçeneğini seçin.",
         "mention": "Sohbette <code>@</code> yazın ve <code>{{name}}</code> seçeneğini seçin.",
         "signInFirst": "Uygulama, ilk kullandığınızda giriş yapmanızı ister.",
         "token": "Kişisel bir token oluşturup {{placeholder}} yerine koyun.",
@@ -16038,7 +16039,7 @@
       "canRead": "Yanıtları ve ajanların ne yaptığını okuma.",
       "canManage": "Sizin adınıza ajan, rutin ve beceri oluşturma ve düzenleme. Oluşturduğu her şey için bildirim alırsınız.",
       "never": "Asla",
-      "neverApprove": "Ajanların işlemlerini onaylamaz. Onaylar agentes.chat içinde kişilerde kalır.",
+      "neverApprove": "Ajanların işlemlerini onaylamaz. Onaylar AULACBOT içinde kişilerde kalır.",
       "neverSettings": "Ayarları, üyeleri veya izinleri değiştirmez.",
       "neverHidden": "Sizin göremediğinizi göremez.",
       "loopbackWarning": "Bu bilgisayardaki herhangi bir program bu erişimi alabilir. Yalnızca bunu az önce bu bilgisayarda Claude Code'da veya başka bir uygulamada başlattıysanız devam edin.",
@@ -16052,7 +16053,7 @@
       "done": "{{app}} uygulamasına geri dönebilirsiniz.",
       "cancelledTitle": "Bağlantı iptal edildi",
       "cancelled": "Hiçbir şey paylaşılmadı.",
-      "goHome": "agentes.chat'e git",
+      "goHome": "AULACBOT'e git",
       "language": "Dil",
       "error": {
         "app_desconhecido": "Bu uygulamayı tanımıyoruz",
@@ -16283,7 +16284,7 @@
     "section": {
       "account": "Hesabınız",
       "notifications": "Bildirimler",
-      "download": "agentes.chat uygulamaları",
+      "download": "AULACBOT uygulamaları",
       "general": "Genel",
       "right_hand": "Sağ kol",
       "members": "Üyeler",
@@ -16304,7 +16305,7 @@
       "voice": "Ses",
       "apps": "Yapay zeka uygulamaları",
       "approvals": "Onaylar",
-      "about": "agentes.chat hakkında",
+      "about": "AULACBOT hakkında",
       "generalPersonal": "Hakkınızda",
       "keysPersonal": "Yapay zeka ve uygulamalar",
       "membersPersonal": "Kişiler"
@@ -16444,11 +16445,11 @@
     },
     "telemetry": {
       "title": "Kullanım istatistikleri",
-      "label": "agentes.chat'e anonim kullanım istatistikleri gönder",
+      "label": "AULACBOT'e anonim kullanım istatistikleri gönder",
       "help": "Kişi ve ajan sayısı, makine boyutları, kullanılan yapay zeka token'ları ve ajanların tarayıcılarının ne kadar veri gönderip aldığı gibi sayılar. Asla mesajlar, dosyalar, adlar ya da siteler değil.",
       "envOff": "Bu sunucunun ayarlarında kapatıldı (TELEMETRY=off).",
-      "envOffDesktop": "Bu sunucunun bilgisayarındaki agentes.chat uygulamasında kapatıldı (Tercihler › Sunucular).",
-      "envOffHere": "Bu bilgisayardaki agentes.chat uygulamasında kapatıldı.",
+      "envOffDesktop": "Bu sunucunun bilgisayarındaki AULACBOT uygulamasında kapatıldı (Tercihler › Sunucular).",
+      "envOffHere": "Bu bilgisayardaki AULACBOT uygulamasında kapatıldı.",
       "see": "Neyin gönderildiğini gör",
       "dialogTitle": "Ne gönderiliyor",
       "dialogText": "Günde bir kez. Bir sonraki rapor tam olarak bu."
@@ -17071,7 +17072,7 @@
         "comment": "{{who}}, GitHub'da bir PR'a yorum yaptı: #{{number}} ({{repo}})",
         "commentIssue": "{{who}}, GitHub'da bir sorun kaydına yorum yaptı: #{{number}} ({{repo}})",
         "commentDiscussion": "{{who}}, GitHub'da bir tartışmaya yorum yaptı: #{{number}} ({{repo}})",
-        "opened": "{{who}}, GitHub'da agentes.chat uygulamasını çağırdı: #{{number}} ({{repo}})",
+        "opened": "{{who}}, GitHub'da AULACBOT uygulamasını çağırdı: #{{number}} ({{repo}})",
         "reviewed": "{{who}}, GitHub'da bir PR'ı inceledi: #{{number}} ({{repo}})",
         "approved": "{{who}}, GitHub'da bir PR'ı onayladı: #{{number}} ({{repo}})",
         "changes": "{{who}}, GitHub'da bir PR'da değişiklik istedi: #{{number}} ({{repo}})",
@@ -17496,14 +17497,14 @@
       "no_ai_plans_not_yours": "Buradaki {{plan}} yalnızca {{owner}} için. Kendininkini bağla, yanıt vereyim.",
       "no_ai_plan_unattended": "Yanıt vermedim: istek bir kişiden gelmedi ve çalışma alanının planı yalnızca sahibine yanıt verir.",
       "no_ai_runner_outdated": "Şu an yanıt veremiyorum: planımın bilgisayarındaki programın güncellenmesi gerekiyor.",
-      "no_ai_plan_tools": "Yanıt vermeden durdum: o bilgisayardaki planımın yapay zekâsı agentes.chat araçlarıyla sınırlı kalmadı.",
+      "no_ai_plan_tools": "Yanıt vermeden durdum: o bilgisayardaki planımın yapay zekâsı AULACBOT araçlarıyla sınırlı kalmadı.",
       "no_ai_model_limit": "Şu an yanıt veremiyorum: {{model}} planımdaki kendi sınırına ulaştı.",
       "no_ai_model_region": "Yanıt veremiyorum: {{model}} için OpenCode'da Global bölgesinin açık olması gerekiyor (Settings › Privacy).",
       "no_ai_model_off": "Yanıt veremiyorum: OpenCode benim anahtarımla {{model}} modelini reddetti. Modeli ya da hesabı OpenCode'da açın veya modelimi değiştirin.",
       "no_ai_plan_inactive": "Yanıt veremiyorum: OpenCode Go benim anahtarımın OpenCode hesabında etkin değil. Go aboneliğini OpenCode'da kontrol edin veya Go'su olan hesabın anahtarını bağlayın.",
       "no_ai_commands_off": "Şu an yanıt veremiyorum: planımın bilgisayarında komutlar kapalı.",
       "no_ai_cli_missing": "Henüz yanıt veremiyorum: yapay zekamın programı bilgisayarımda kurulu değil.",
-      "no_ai_plan_hold": "Mesajını sakladım. Çalışma alanının agentes.chat planı ve bağlı bir yapay zekası olunca burada yanıtlayacağım.",
+      "no_ai_plan_hold": "Mesajını sakladım. Çalışma alanının AULACBOT planı ve bağlı bir yapay zekası olunca burada yanıtlayacağım.",
       "no_ai_no_computer": "Henüz yanıt veremiyorum: yapay zekamın bir bilgisayara ihtiyacı var ve hiç bilgisayarım yok.",
       "redacted": "[kaldırıldı: bir oturum açma bilgisi ya da anahtar gibi görünüyordu]",
       "action_connect_ai": "Yapay zeka bağla",
@@ -17998,7 +17999,7 @@
     "machine": {
       "ready": "Hazır",
       "off": "Kapalı",
-      "offHelp": "Bilgisayarı bağlayan kişi burada ya da oradaki agentes.chat uygulamasında açar: Tercihler → Araçlar.",
+      "offHelp": "Bilgisayarı bağlayan kişi burada ya da oradaki AULACBOT uygulamasında açar: Tercihler → Araçlar.",
       "needsCommand": "Bir komut gerekiyor",
       "notReady": "Henüz hazır değil",
       "turnOff": "Kapat",
@@ -18238,7 +18239,7 @@
     "paused": "Bu çalışma alanındaki ajanlar inceleme için duraklatıldı.",
     "suspended": "Bu çalışma alanı şimdilik kullanılamıyor.",
     "createRefused": "Şu anda çalışma alanı oluşturamazsınız.",
-    "createUnpaid": "agentes.chat planı bekleyen bir çalışma alanınız zaten var. Başka bir tane oluşturmadan önce onun planını seçin.",
+    "createUnpaid": "AULACBOT planı bekleyen bir çalışma alanınız zaten var. Başka bir tane oluşturmadan önce onun planını seçin.",
     "createUnpaidOpen": "{{name}} çalışma alanını aç",
     "createInactive": "Henüz etkin olmayan bir çalışma alanınız zaten var, bu yüzden şimdilik başka bir tane oluşturamazsınız.",
     "agentPaused": "Bu ajan şimdilik duraklatıldı.",
@@ -18259,25 +18260,25 @@
       "active": "Çalışma alanı yeniden çalışıyor",
       "agentHold": "{{name}} duraklatıldı",
       "billing": {
-        "payment": "Çalışma alanının bir agentes.chat planına ihtiyacı var",
-        "unpaid": "agentes.chat planının ödemesi gerçekleşmedi",
-        "ended": "Çalışma alanının agentes.chat planı sona erdi"
+        "payment": "Çalışma alanının bir AULACBOT planına ihtiyacı var",
+        "unpaid": "AULACBOT planının ödemesi gerçekleşmedi",
+        "ended": "Çalışma alanının AULACBOT planı sona erdi"
       }
     },
     "billing": {
-      "payment": "Bu çalışma alanının henüz bir agentes.chat planı yok. Plan olunca ajanları çalışmaya başlar.",
-      "unpaid": "Bu çalışma alanının agentes.chat planının ödemesi gerçekleşmedi ve ajanları durdu.",
-      "ended": "Bu çalışma alanının agentes.chat planı sona erdi ve ajanları durdu. Konuşmaları ve dosyaları okumak ve indirmek için hâlâ burada.",
-      "sub": "Burada yine okuyup yazabilirsiniz. agentes.chat planı düzene girince ajanlar geri gelir.",
+      "payment": "Bu çalışma alanının henüz bir AULACBOT planı yok. Plan olunca ajanları çalışmaya başlar.",
+      "unpaid": "Bu çalışma alanının AULACBOT planının ödemesi gerçekleşmedi ve ajanları durdu.",
+      "ended": "Bu çalışma alanının AULACBOT planı sona erdi ve ajanları durdu. Konuşmaları ve dosyaları okumak ve indirmek için hâlâ burada.",
+      "sub": "Burada yine okuyup yazabilirsiniz. AULACBOT planı düzene girince ajanlar geri gelir.",
       "cta": {
-        "payment": "agentes.chat planlarını gör",
+        "payment": "AULACBOT planlarını gör",
         "unpaid": "Ödemeyi güncelle",
         "ended": "Yeniden abone ol"
       },
       "askAdmin": "Bu çalışma alanını yöneten kişi bunu çözebilir.",
-      "paid": "Ödeme alındı. agentes.chat planı birazdan başlıyor.",
-      "teamReady": "Ekibin hazır. Başlamak için bir agentes.chat planı gerekiyor.",
-      "invites": "Davetler agentes.chat planıyla açılır."
+      "paid": "Ödeme alındı. AULACBOT planı birazdan başlıyor.",
+      "teamReady": "Ekibin hazır. Başlamak için bir AULACBOT planı gerekiyor.",
+      "invites": "Davetler AULACBOT planıyla açılır."
     },
     "cloud": {
       "review": "Ekibimiz inceleyene kadar güvenlik incelemesi için duraklatıldı. Otomatik kontrollerimiz Koşullarımızı (bölüm 5) ihlal edebilecek bir etkinlik saptadı. İtiraz etmek için {{email}} adresine yazın.",
@@ -18410,7 +18411,7 @@
     "open": "Plan ve faturalandırmayı aç",
     "opening": "Açılıyor…",
     "failed": "Şu anda açılamadı. Birazdan tekrar deneyin.",
-    "adminsOnly": "Çalışma alanının agentes.chat planını yalnızca sahipleri ve yöneticileri yönetir.",
+    "adminsOnly": "Çalışma alanının AULACBOT planını yalnızca sahipleri ve yöneticileri yönetir.",
     "seeOptions": "Seçenekleri gör",
     "people": "Kişiler",
     "files": "Dosyalar",
@@ -18423,8 +18424,8 @@
   "limits": {
     "members": {
       "full": "Bu çalışma alanında {{limit}} kişiden {{members}} kişi var.",
-      "fullOne": "Bu çalışma alanının agentes.chat planı 1 kişiliktir.",
-      "fullAdmin": "Daha fazla kişi eklemek için agentes.chat planının seçeneklerine bakın.",
+      "fullOne": "Bu çalışma alanının AULACBOT planı 1 kişiliktir.",
+      "fullAdmin": "Daha fazla kişi eklemek için AULACBOT planının seçeneklerine bakın.",
       "fullMember": "Yer açması için çalışma alanını yöneten kişiye sorun.",
       "fullAddSeat": "Ücreti ödenmiş tüm yerler dolu. Plan ve faturalandırma bölümünden bir yer ekleyin.",
       "fullTop": "Bu plan daha fazla kişi alamıyor. Plan ve faturalandırma bölümünden planı değiştirin.",
@@ -18440,7 +18441,7 @@
       "meter": "{{limit}} alanın {{used}} kadarını kullandınız.",
       "near": "{{limit}} alanın {{used}} kadarını kullandınız. Sınıra gelince yüklemeler durur, hiçbir şey silinmez.",
       "full": "Yüklemeler {{limit}} sınırında durdu. Hiçbir şey silinmedi.",
-      "fullAdmin": "agentes.chat planını değiştirin, artık kullanmadığınız dosyaları silin ya da kendi bucket'ınızı bağlayın.",
+      "fullAdmin": "AULACBOT planını değiştirin, artık kullanmadığınız dosyaları silin ya da kendi bucket'ınızı bağlayın.",
       "dailyFull": "Bugünkü yüklemeler {{limit}} sınırına ulaştı. Birkaç saat sonra tekrar yükleyebilirsiniz.",
       "connectBucket": "Bucket bağla"
     }
@@ -18741,7 +18742,7 @@
       "screensOff": "{{computer}} üzerinde ekranlar kapalı. Oradan açın:",
       "screensOffOne": "Ekranlar {{computer}} üzerinde kapalı.",
       "screensMissing": "{{computer}} henüz ekran gösteremiyor. İlgileniyoruz:",
-      "outdated": "{{name}} ajanının ekranını görmek için {{computer}} üzerindeki agentes uygulamasını güncelleyin.",
+      "outdated": "{{name}} ajanının ekranını görmek için {{computer}} üzerindeki AULACBOT uygulamasını güncelleyin.",
       "noScreen": "{{name}} ajanının burada gösterilecek bir ekranı yok",
       "noScreenHelp": "Araçlar ve erişim bölümünden ekrana veya tarayıcıya izin verin.",
       "noComputer": "{{name}} için bir bilgisayar seçin.",
@@ -18887,7 +18888,7 @@
       "browser": "Tarayıcı",
       "screen": "Bilgisayar ekranı",
       "terminal": "Terminal",
-      "agentes": "agentes",
+      "agentes": "AULACBOT",
       "thinking": "Düşünüyor",
       "inside": "{{program}} · {{detail}}"
     },
@@ -19649,7 +19650,7 @@
     },
     "action": {
       "signIn": "Giriş yap",
-      "open": "agentes.chat'i aç",
+      "open": "AULACBOT'i aç",
       "latest": "En yeni sürümü aç",
       "file": "Dosyayı aç",
       "retry": "Yeniden dene"
@@ -19886,7 +19887,7 @@
     "beta": {
       "word": "BETA",
       "title": "Erken geldiniz. Çok sevindik.",
-      "text": "agentes.chat beta aşamasında: onunla şimdiden gerçek iş yapabilirsiniz, biz de hâlâ cilalıyoruz.",
+      "text": "AULACBOT beta aşamasında: onunla şimdiden gerçek iş yapabilirsiniz, biz de hâlâ cilalıyoruz.",
       "weekly": {
         "title": "Her hafta daha iyi oluyor",
         "text": "Yenilikler ve düzeltmeler sürekli çıkıyor."
@@ -19922,7 +19923,7 @@
     "mark": "Beta",
     "open": "Geri bildirim gönder",
     "ask": "Ne eksikti, ne bozuldu ya da ne rahatsız etti?",
-    "goesCloud": "Yazdıklarınız e-postayla agentes.chat ekibine gider.",
+    "goesCloud": "Yazdıklarınız e-postayla AULACBOT ekibine gider.",
     "goesServer": "Yazdıklarınız e-postayla bu sunucuyu yöneten kişiye gider.",
     "placeholder": "İçinizden geldiği gibi yazın",
     "report": "Burada bir sorun bildir",
@@ -19948,14 +19949,14 @@
     "offer": {
       "group": "Uygulama hakkında bildirim",
       "ready": "<b>Bildirim hazır</b>: {{summary}}",
-      "goesCloud": "Adınıza agentes.chat ekibine gider",
+      "goesCloud": "Adınıza AULACBOT ekibine gider",
       "goesServer": "Adınıza bu sunucuyu yöneten kişiye gider",
       "see": "Bildirimi gör",
       "hide": "Bildirimi kapat",
       "send": "Gönder",
       "notNow": "Şimdi değil",
       "answer": "Yanıt e-posta adresinize gelir.",
-      "sentCloud": "agentes.chat ekibine <b>bildirim gönderildi</b>",
+      "sentCloud": "AULACBOT ekibine <b>bildirim gönderildi</b>",
       "sentServer": "Bu sunucuyu yöneten kişiye <b>bildirim gönderildi</b>",
       "sentAuto": "<b>Bildirim sormadan gönderildi</b>: {{summary}}",
       "view": "Gör",

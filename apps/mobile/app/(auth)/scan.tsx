@@ -14,7 +14,7 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { AgentAvatar } from "@/agent/AgentAvatar";
+import { CyberLacAvatar } from "@/agent/CyberLacAvatar";
 import { ALLOW_HTTP } from "@/lib/server";
 import { AuthScaffold } from "@/ui/auth/AuthScaffold";
 import { Button } from "@/ui/Button";
@@ -155,7 +155,7 @@ export default function Scan() {
           accessibilityLiveRegion="polite"
         >
           <Glass style={styles.cardGlass}>
-            <AgentAvatar agent={{ color: "sky", eyes: "round", id: "agentes" }} size={36} mode="run" />
+            <CyberLacAvatar index={2} size={36} />
             <View style={styles.cardText}>
               <Text variant="body" numberOfLines={1} ellipsizeMode="middle" style={styles.bold}>
                 {host}

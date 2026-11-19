@@ -618,7 +618,7 @@ get_bun() {
 }
 
 # --- term.sh: packages/setup/src/term-sh.ts, kept equal by a test ---
-# The agentes.chat look for the POSIX installers, as packages/setup/src/term.ts draws it: plain where a
+# The AULACBOT look for the POSIX installers, as packages/setup/src/term.ts draws it: plain where a
 # terminal can't take it (no color with NO_COLOR or TERM=dumb, ASCII marks and no logo on the Linux console), and
 # no line, logo or animation when the output isn't a terminal (cloud-init, CI, the setup reading it). Only
 # function definitions, so a download cut short runs nothing.
@@ -729,12 +729,12 @@ t_end() {
 # t_intro TITLE: the logo where it fits, then ┌ and the badge, and the line from here on. A log gets the title.
 t_intro() {
   if [ "$T_FRAME" = 0 ]; then
-    printf 'agentes.chat %s\n' "$1" >&"$T_FD"
+    printf 'AULACBOT %s\n' "$1" >&"$T_FD"
     return 0
   fi
   if [ "$T_UNI" = 1 ] && [ "$T_COLS" -ge 64 ]; then t_logo; fi
-  t_b=agentes.chat
-  if [ "$T_DEPTH" != 0 ]; then t_b="$C_BADGE agentes.chat $C_OFF"; fi
+  t_b=AULACBOT
+  if [ "$T_DEPTH" != 0 ]; then t_b="$C_BADGE AULACBOT $C_OFF"; fi
   T_OPEN=1
   t_style
   # The title beside the badge's columns, its wrap under the line.

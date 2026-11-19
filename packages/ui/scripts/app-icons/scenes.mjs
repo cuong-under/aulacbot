@@ -20,9 +20,10 @@ import {
   inBody,
   toneAt,
 } from "../../src/agent/engine.js";
+import { LAC } from "./cyber-lac.mjs";
 
 /** The ids, in the order the pickers show them; the first is the icon the apps ship with. */
-export const APP_ICON_IDS = ["night", "moon", "sky", "peekNight", "peekSky"];
+export const APP_ICON_IDS = ["lac", "night", "moon", "sky", "peekNight", "peekSky"];
 
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16);
 const by = (x, y) => BAYER[(x & 3) + (y & 3) * 4];
@@ -350,6 +351,8 @@ const skyTile32 = (x, y) => pick(DAY, Math.floor(((Math.floor(y) + 0.5) / 32) * 
 /* ---------- The icons ---------- */
 
 export const SCENES = {
+  /** Cyber Lạc: the chosen brand mark, the mint Lạc head front on over a jade sky (docs/branding/cyber-lac). */
+  lac: LAC,
   /** Noite: the night sky, a glow in dither around the agent (the landing's giant), loose stars. */
   night: {
     light: () => [grid(32, nightAt(true)), cells(32, STARS), ...agent({ ...AG, tones: SKY_T })],

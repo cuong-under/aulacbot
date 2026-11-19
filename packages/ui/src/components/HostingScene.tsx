@@ -1,8 +1,8 @@
 import { type CSSProperties, useMemo } from "react";
+import { CyberLacAvatar, CyberLacGlyph } from "../brand/cyber-lac-squad";
 import { cx } from "../cx";
 import { useDawn } from "../hooks/useDawn";
 import { HOSTING_CAST, type Hosting, teamSky } from "../sky/team";
-import { Avatar } from "./Avatar";
 import { ComputerPortrait } from "./Computer";
 import { PixelSky } from "./PixelSky";
 
@@ -25,15 +25,7 @@ export function HostingScene({ hosting, shape = "band" }: { hosting: Hosting; sh
         <span className="ac-hosting__cast" data-awake={cloud ? "" : undefined}>
           {HOSTING_CAST.map((a, i) => (
             <span key={a.name} className="ac-hosting__agent" style={{ "--i": i } as CSSProperties}>
-              <Avatar
-                kind="agent"
-                name={a.name}
-                appearance={a.look}
-                size="lg"
-                framed={false}
-                state={cloud ? "idle" : "sleeping"}
-                expression={cloud ? "happy" : undefined}
-              />
+              <CyberLacAvatar index={i as 0 | 1 | 2} state={cloud ? "idle" : "sleeping"} />
             </span>
           ))}
         </span>
@@ -106,15 +98,7 @@ export function PlaceScene({
         <span className="ac-hosting__cast" data-awake="">
           {HOSTING_CAST.map((a, i) => (
             <span key={a.name} className="ac-hosting__agent" style={{ "--i": i } as CSSProperties}>
-              <Avatar
-                kind="agent"
-                name={a.name}
-                appearance={a.look}
-                size="lg"
-                framed={false}
-                state="idle"
-                expression={i === 1 ? "happy" : undefined}
-              />
+              <CyberLacAvatar index={i as 0 | 1 | 2} />
             </span>
           ))}
         </span>
@@ -126,15 +110,7 @@ export function PlaceScene({
         <span className="ac-place__subject" key={place}>
           {place === "cloud" ? (
             <span className="ac-place__brand">
-              <Avatar
-                kind="agent"
-                name="agentes.chat"
-                appearance={{ color: "sky", eyes: "round" }}
-                size="xl"
-                framed={false}
-                state="idle"
-                expression="happy"
-              />
+              <CyberLacGlyph index={1} className="ac-place__mark ac-logo__mark" />
               <PixelCloud />
             </span>
           ) : (

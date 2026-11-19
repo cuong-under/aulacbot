@@ -9,6 +9,7 @@ import { useAuth } from "@/auth/context";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
 import { prepareBurst } from "@/components/Sky";
+import { PRODUCT_LOOK } from "@/lib/look";
 import { NameHint, PasswordHelp } from "@/pages/AuthPage";
 
 type Problem = "noLink" | "wrongLink" | "taken";
@@ -64,7 +65,12 @@ export function OwnerPage({ claim }: { claim: string | null }) {
     <AuthShell>
       <form className="auth__form" onSubmit={submit} noValidate>
         <header className="auth__ask" ref={header} data-burst>
-          <AgentAvatar name="agentes.chat" size="lg" state={pending ? "writing" : undefined} />
+          <AgentAvatar
+            name="AULACBOT"
+            size="lg"
+            appearance={PRODUCT_LOOK}
+            state={pending ? "writing" : undefined}
+          />
           <div className="auth__bubble" key={problem ?? "form"} aria-live="polite">
             <h1 className="auth__title">{title}</h1>
             <p className="auth__lead">{lead}</p>

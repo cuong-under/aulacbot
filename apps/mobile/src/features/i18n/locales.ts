@@ -31,4 +31,5 @@ export const FEATURES: Record<AppLocale, LocaleStrings> = {
   tr,
   pl,
   ru,
+  vi: {},
 };

@@ -119,9 +119,7 @@ describe("the rules every agent reads", () => {
     const team = await ask();
     expect(team.personal).toBe(false);
     const teamText = systemText(team.system);
-    expect(teamText).toContain(
-      'You work in "Acme" on agentes.chat, a workspace where people and AI agents work together.',
-    );
+    expect(teamText).toContain('You work in "Acme" on AULACBOT, a workspace where people and AI agents work together.');
     expect(teamText).toContain("# About the organization\nAcme builds rockets.");
     expect(teamText).toContain("an AI agent of this organization.");
     expect(teamText).toContain("Write like a colleague texting the team");
@@ -130,9 +128,7 @@ describe("the rules every agent reads", () => {
     const personal = await ask();
     expect(personal.personal).toBe(true);
     const text = systemText(personal.system);
-    expect(text).toContain(
-      'You work in "Acme" on agentes.chat, a personal workspace: one person, and maybe their family',
-    );
+    expect(text).toContain('You work in "Acme" on AULACBOT, a personal workspace: one person, and maybe their family');
     expect(text).toContain("# About the person\nAcme builds rockets.");
     expect(text).toContain("one of this person's AI agents.");
     expect(text).toContain("Write like a trusted assistant texting the person");

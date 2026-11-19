@@ -1,7 +1,7 @@
 /**
  * The welcome window: how the app finds its server. "Onde fica o seu workspace?" first, the Cloud chosen and one's
  * own server beside it; one's own server leads to Connect (an address, or one found on this computer or the Tailscale
- * network, and the one-command setup for a server that has none yet) or to running agentes.chat on this
+ * network, and the one-command setup for a server that has none yet) or to running AULACBOT on this
  * computer. A connect link (`agenteschat://connect`) opens here
  * too: the server in large type, nothing changes before Connect. Choosing a server opens the main window there
  * and closes this one. A pair link (`agenteschat://pair`) asks to connect this computer instead (`PairLinkSheet`).
@@ -80,7 +80,7 @@ export function FirstRun() {
   const [screen, setScreen] = useState<FirstScreen>("choose");
   // Opened by the site's "Add a workspace" (ADR 0154): its first screen says so.
   const [adding, setAdding] = useState(false);
-  // Adding a workspace with agentes.chat already signed in here: making one is the big button, not signing in.
+  // Adding a workspace with AULACBOT already signed in here: making one is the big button, not signing in.
   const [cloudSignedIn, setCloudSignedIn] = useState(false);
   const [trail, setTrail] = useState<FirstScreen[]>([]);
   // `typed`: the sheet confirms an address typed or picked in Connect, so Cancel goes back there with it.
@@ -89,7 +89,7 @@ export function FirstRun() {
   );
   // This build carries the server: "On this computer" is offered.
   const [canRunHere, setCanRunHere] = useState(false);
-  // The agentes.chat this computer runs (the app's, or one from the terminal): named as such, never by its address,
+  // The AULACBOT this computer runs (the app's, or one from the terminal): named as such, never by its address,
   // and its owner page opened directly while it waits for one.
   const [local, setLocal] = useState<LocalServerStatus | null>(null);
   // Connect's address: it stays when a sheet about it is cancelled (the screen comes back new).
@@ -316,11 +316,11 @@ export function FirstRun() {
 
 /**
  * "Onde seu workspace vai ficar?" (ADR 0066 §1, amended 2026-11-14): the drawing on the left follows the place picked on
- * the right: the Cloud (recommended, the agentes.chat agent on a cloud), this computer (where the build carries the
+ * the right: the Cloud (recommended, the AULACBOT agent on a cloud), this computer (where the build carries the
  * server: the agents work while the app is open) or a computer that's always on (the one-command install). Each says
  * what happens to the agents, never "server". One button goes on with the pick, and a line under it signs in to one
  * that exists already. `adding` (the site's "Add a workspace", ADR 0154): its own title, the Cloud's button signs in to
- * the workspaces an account has (a new workspace the line under it); with agentes.chat already signed in here, making
+ * the workspaces an account has (a new workspace the line under it); with AULACBOT already signed in here, making
  * one is the button.
  */
 function Choose({
@@ -352,15 +352,18 @@ function Choose({
     onCloud(makeFirst ? "/onboarding" : "/login");
   };
   return (
-    <div className="dk-choose">
+    <div className="dk-choose" data-place={pick}>
       <div className="dk-choose__sky">
         <PlaceScene place={pick} computer={host.platform} shape="tall" />
         <span className="dk-choose__brand" aria-hidden="true">
           <BrandFace size="sm" />
-          agentes.chat
+          AULACBOT
         </span>
       </div>
       <div className="dk-choose__main">
+        <span className="dk-choose__eyebrow" aria-hidden="true">
+          CYBER LẠC
+        </span>
         <h1>{t(adding ? "desktop.first.addTitle" : "desktop.place.title")}</h1>
         <p className="dk-lead">{t(adding ? "desktop.first.addLead" : "desktop.place.lead")}</p>
         <OptionList<Place>
@@ -532,7 +535,7 @@ function Connect({
   onBack: () => void;
   /** "Don't have one yet?": the always-on install. */
   onInstall: () => void;
-  /** The agentes.chat this computer runs or has from the terminal (its owner claim, while it waits for one). */
+  /** The AULACBOT this computer runs or has from the terminal (its owner claim, while it waits for one). */
   local: LocalServerStatus | null;
   /** Its addresses (`ownAddresses`). */
   own: readonly string[];
@@ -734,7 +737,7 @@ function Connect({
 }
 
 /**
- * agentes.chat on this computer, inside the app: the owner's name and email (until the owner exists), reach
+ * AULACBOT on this computer, inside the app: the owner's name and email (until the owner exists), reach
  * through Tailscale (off), usage statistics (on; as they were, for one that ran here before), then Start, and the
  * steps as the app runs them, each problem on its own step. One installed from the terminal already runs here:
  * Use it (its owner page while it waits for one); installed but not running: it starts there. The app runs it
@@ -979,8 +982,8 @@ function RunHere({
         <p className="dk-fr__rest">
           <Avatar
             kind="agent"
-            name="agentes.chat"
-            appearance={{ color: "sky" }}
+            name="AULACBOT"
+            appearance={{ color: "#0f6a59", eyes: "happy", accessory: "headset" }}
             size="md"
             framed={false}
             state="sleeping"
@@ -1169,7 +1172,7 @@ function HereSetup({
 }
 
 /**
- * L: a server in large type, asked about before anything changes. The agentes.chat this computer runs reads as such
+ * L: a server in large type, asked about before anything changes. The AULACBOT this computer runs reads as such
  * (at its local or its Tailscale address alike), never as an address; one on a Tailscale network says what that means.
  */
 function LinkSheet({

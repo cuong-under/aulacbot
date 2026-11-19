@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <title>AULACBOT</title>
+  <rect width="32" height="32" fill="#08251C"/>
+  <path d="M7.1 4 10.2 4.2 6.2 27.2 2.4 27.2Z" fill="#E6B04A"/>
+  <path d="M10 4.2 13.2 3.3 25 27.2 21 27.2Z" fill="#E6B04A"/>
+  <path d="M1.2 19.6 7.1 17.9 19.7 16.5 23.1 16 20.8 18.8 4 21.5Z" fill="#F2C96B"/>
+  <path d="M10 4.8 6.2 1.2 4.8 1.6Z" fill="#FAE9BF"/>
+  <circle cx="11.2" cy="7.1" r="3.4" fill="#E6B04A"/>
+  <path d="M14 6.2 14.2 8.4 29.4 8.1 29.4 7.1Z" fill="#F2C96B"/>
+  <circle cx="12.2" cy="6.9" r="1.05" fill="#08251C"/>
+</svg>

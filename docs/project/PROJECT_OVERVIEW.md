@@ -8,6 +8,8 @@
 | Display name | Âu Lạc Bot |
 | Repository | `aulacbot` |
 | Description | Personal AI Assistant & Team AI Workspace |
+| Domain | `aulac.app` (owned by the project; deployment follows the setup phase) |
+| Brand | Cyber Lạc: the Lạc head, front on and with no neck, in jade, mint and gold; `AULACBOT` in Onest 700; see `docs/branding/cyber-lac/` |
 | Upstream | [agentes-chat/agentes-chat](https://github.com/agentes-chat/agentes-chat) |
 | Upstream owner | Codari Global, LLC |
 | Upstream license | AGPL-3.0-only, with an attribution term (`NOTICE`) and a trademark policy (`TRADEMARKS.md`) |
@@ -53,7 +55,8 @@ None of these exist yet. Do not add them without an explicit task.
 
 - No rewrite of upstream source.
 - No new product features.
-- No UI redesign and no logo work.
+- No UI redesign. The owner has approved a level-2 identity pass: logo, app icons and product
+  metadata only, with no layout changes.
 - No dependency upgrades beyond what upstream ships.
 - No repository-level decisions (owner, visibility, license) taken by an agent.
 

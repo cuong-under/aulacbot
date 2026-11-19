@@ -25,6 +25,8 @@ export const boxShadow = (layers: readonly ShadowLayer[]) =>
 export const fonts = {
   /** Funnel Display Light: large titles. */
   display: "FunnelDisplay-Light",
+  /** Onest Bold 700: the AULACBOT wordmark, as on every other surface. */
+  brand: "Onest-Bold",
   /** Doto, ROND 100 instance (weight 600): only a rare large hero number (`Count hero`). */
   dot: "Doto",
   /** Code only. */

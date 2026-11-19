@@ -9,7 +9,7 @@
  *   (`.AppIcon<Id>`, only the shipped one on), each with its adaptive icon (back, front and one-color layers, and a
  *   PNG for Android 7); the app turns the picked one on and the others off.
  *
- * Besides those five, the icons a person makes (a sky, a color and a face or an accessory, or the agent leaning in
+ * Besides those six, the icons a person makes (a sky, a color and a face or an accessory, or the agent leaning in
  * with a face: `MADE`, 496 of them). A
  * phone takes only icons its build carries, so every combination is one more icon of the same two kinds. Their files
  * are not in the repository: packages/ui/scripts/app-icons/made-files.mjs draws them here, once per version of those
@@ -22,7 +22,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { IOSConfig, withAndroidManifest, withDangerousMod, withXcodeProject } = require("expo/config-plugins");
 
-const ICONS = ["night", "moon", "sky", "peekNight", "peekSky"];
+const ICONS = ["lac", "night", "moon", "sky", "peekNight", "peekSky"];
 /** The shipped icon is the app's own (`AppIcon`, `ic_launcher`); these are the others. */
 const OTHERS = ICONS.slice(1);
 const ASSETS = "assets/app-icons";

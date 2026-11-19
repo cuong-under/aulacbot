@@ -115,6 +115,13 @@ export const START_WORDS: Record<AppLocale, StartWords> = {
     hint: "Адрес, который видят сайты",
     tip: "Введите адрес в строке выше",
   },
+  vi: {
+    title: "Tab mới",
+    eyebrow: "MÁY CỦA AGENT",
+    exitIp: "IP ra",
+    hint: "Địa chỉ mà trang web thấy",
+    tip: "Nhập địa chỉ vào thanh phía trên",
+  },
 };
 
 export interface CrashWords {
@@ -190,22 +197,28 @@ export const CRASH_WORDS: Record<AppLocale, CrashWords> = {
     memory: "Странице не хватило памяти",
     told: "Агенту сообщат.",
   },
+  vi: {
+    stopped: "Trang đã ngừng hoạt động",
+    memory: "Trang hết bộ nhớ",
+    told: "Agent sẽ được báo.",
+  },
 };
 
 /** The line macOS's password window shows when the Mac sets up Xcode for an iPhone. */
 export const XCODE_PROMPT: Record<AppLocale, string> = {
-  en: "agentes.chat wants to put Xcode in use to connect iPhones.",
-  "pt-BR": "O agentes.chat quer colocar o Xcode em uso para conectar iPhones.",
-  es: "agentes.chat quiere usar Xcode para conectar iPhones.",
-  fr: "agentes.chat veut utiliser Xcode pour connecter des iPhone.",
-  de: "agentes.chat möchte Xcode verwenden, um iPhones zu verbinden.",
-  it: "agentes.chat vuole usare Xcode per collegare gli iPhone.",
-  nl: "agentes.chat wil Xcode gebruiken om iPhones te verbinden.",
-  ja: "agentes.chat が iPhone を接続するために Xcode を使おうとしています。",
-  ko: "agentes.chat에서 iPhone을 연결하기 위해 Xcode를 사용하려고 해요.",
-  "zh-Hans": "agentes.chat 想要使用 Xcode 来连接 iPhone。",
-  id: "agentes.chat ingin memakai Xcode untuk menghubungkan iPhone.",
-  tr: "agentes.chat, iPhone'ları bağlamak için Xcode'u kullanmak istiyor.",
-  pl: "agentes.chat chce użyć Xcode, aby połączyć iPhone'y.",
-  ru: "agentes.chat хочет использовать Xcode, чтобы подключать iPhone.",
+  en: "AULACBOT wants to put Xcode in use to connect iPhones.",
+  "pt-BR": "O AULACBOT quer colocar o Xcode em uso para conectar iPhones.",
+  es: "AULACBOT quiere poner Xcode en uso para conectar iPhones.",
+  fr: "AULACBOT veut mettre Xcode en service pour connecter des iPhone.",
+  de: "AULACBOT möchte Xcode in Gebrauch nehmen, um iPhones zu verbinden.",
+  it: "AULACBOT vuole mettere in uso Xcode per collegare gli iPhone.",
+  nl: "AULACBOT wil Xcode in gebruik nemen om iPhones te verbinden.",
+  ja: "AULACBOTがiPhoneを接続するためにXcodeを使用しようとしています。",
+  ko: "AULACBOT이 iPhone을 연결하려고 Xcode를 사용하려고 합니다.",
+  "zh-Hans": "AULACBOT 想启用 Xcode 来连接 iPhone。",
+  id: "AULACBOT ingin memakai Xcode untuk menghubungkan iPhone.",
+  tr: "AULACBOT, iPhone'ları bağlamak için Xcode'u kullanıma almak istiyor.",
+  pl: "AULACBOT chce użyć Xcode, aby połączyć iPhone'y.",
+  ru: "AULACBOT хочет задействовать Xcode, чтобы подключать iPhone.",
+  vi: "AULACBOT muốn dùng Xcode để kết nối iPhone.",
 };

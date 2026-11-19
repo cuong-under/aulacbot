@@ -1,57 +1,39 @@
-import { type CSSProperties, useId } from "react";
-import { bodyPath, eyeShapes } from "../agent/engine.js";
+import type { CSSProperties } from "react";
 import { cx } from "../cx";
-import { ditherUrl } from "../sky/dither";
+import { CYBER_LAC_PIXEL_MARK } from "../brand/logo-mark";
 
-/** The domain in the expanded logo: a brand name, never translated. */
-const TLD = ".chat";
-
-/** The mark is the agent from the engine: body at (2, 2), side 28, and its eyes. */
-const BODY = bodyPath(2, 2, 28);
-const EYES = eyeShapes("round").map((e) => ({ x: 2 + e.x * 28, y: 2 + e.y * 28, w: e.w * 28, h: e.h * 28 }));
+/** The wordmark and the domain in the expanded logo: brand names, never translated. */
+const NAME = "AULACBOT";
+const TLD = ".app";
 
 /**
- * The agent mark: the square with the cut corner in the sky's dither (solid
- * `agent` under it, and alone in the mono logo) and the engine's white eyes.
+ * The workspace's 12 × 12 Cyber Lạc pixel mark, shared with the terminal logo. Mono uses the same pixel grid and
+ * cuts the bird out of the tile.
  */
 export function LogoMark({ size, className, label }: { size?: number; className?: string; label?: string }) {
-  const clip = `ac-logo-${useId().replace(/[^\w-]/g, "")}`;
   return (
     <svg
-      viewBox="0 0 32 32"
+      viewBox="0 0 12 12"
+      shapeRendering="crispEdges"
       className={cx("ac-logo__mark", className)}
       style={size ? { width: size, height: size } : undefined}
       role={label ? "img" : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
     >
-      <defs>
-        <clipPath id={clip}>
-          <path d={BODY} />
-        </clipPath>
-      </defs>
-      <path className="ac-logo__body" d={BODY} />
-      <image
-        className="ac-logo__dither"
-        href={ditherUrl("sky", 12)}
-        x="2"
-        y="2"
-        width="28"
-        height="28"
-        preserveAspectRatio="none"
-        clipPath={`url(#${clip})`}
-      />
-      <g className="ac-logo__eyes">
-        {EYES.map((e) => (
-          <rect key={e.x} x={e.x} y={e.y} width={e.w} height={e.h} rx={e.w / 2} />
-        ))}
-      </g>
+      {CYBER_LAC_PIXEL_MARK.flatMap((row, y) =>
+        [...row].map((pixel, x) => {
+          if (pixel === ".") return null;
+          const className = pixel === "w" ? "ac-logo__eyes" : pixel === "0" ? "ac-logo__visor" : `ac-logo__tone-${pixel}`;
+          return <rect key={`${x}-${y}`} className={className} x={x} y={y} width="1" height="1" />;
+        }),
+      )}
     </svg>
   );
 }
 
 export interface LogoProps {
-  /** `main` (app) or `expanded` (+ ".chat" in dot matrix, where the domain matters). */
+  /** `main` (app) or `expanded` (+ ".app", where the domain matters). */
   variant?: "main" | "expanded";
   /** One-color version. */
   mono?: boolean;
@@ -61,7 +43,7 @@ export interface LogoProps {
   style?: CSSProperties;
 }
 
-/** "agentes" logo: mark + wordmark in Funnel Display light (".chat" in Doto). Accessible name "agentes" (or "agentes.chat" expanded). */
+/** "AULACBOT": the mark + the wordmark in Onest 700 (".app" smaller and quieter when expanded). */
 export function Logo({ variant = "main", mono, size = 24, className, style }: LogoProps) {
   const expanded = variant === "expanded";
   return (
@@ -69,16 +51,16 @@ export function Logo({ variant = "main", mono, size = 24, className, style }: Lo
       className={cx("ac-logo", mono && "ac-logo--mono", className)}
       style={{ fontSize: size, ...style }}
       role="img"
-      aria-label={expanded ? "agentes.chat" : "agentes"}
+      aria-label={expanded ? `${NAME}${TLD}` : NAME}
     >
       <LogoMark />
       {expanded ? (
         <span className="ac-logo__word" aria-hidden="true">
-          <span>agentes</span>
-          <span className="ac-logo__chat">{TLD}</span>
+          <span>{NAME}</span>
+          <span className="ac-logo__tld">{TLD}</span>
         </span>
       ) : (
-        <span aria-hidden="true">agentes</span>
+        <span aria-hidden="true">{NAME}</span>
       )}
     </span>
   );

@@ -5,7 +5,7 @@ import { AGENT_ACCESSORIES, AGENT_COLORS, AGENT_EYES } from "@agenteschat/tokens
  * ship with. Their files come from `packages/ui/scripts/app-icons.mjs` (the same ids, a test keeps them equal); the
  * phone's native side and the desktop app list the same ids too.
  */
-export const APP_ICONS = ["night", "moon", "sky", "peekNight", "peekSky"] as const;
+export const APP_ICONS = ["lac", "night", "moon", "sky", "peekNight", "peekSky"] as const;
 
 export type AppIconId = (typeof APP_ICONS)[number];
 
@@ -52,7 +52,7 @@ export interface MadeIcon {
   pose: MadeIconPose;
 }
 
-/** The made icon a new pick starts from: the shipped icon's sky, color and face. */
+/** The made icon a new pick starts from: the Night sky, the sky color and the plain face. */
 export const DEFAULT_MADE_ICON: MadeIcon = { sky: "night", color: "sky", look: "round", pose: "front" };
 
 const within = <T extends string>(list: readonly T[], value: string | undefined): T | undefined =>

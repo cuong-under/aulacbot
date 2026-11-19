@@ -9,7 +9,8 @@
  */
 
 import { CLOUD_SERVER, isTailnet, serverHost } from "@agenteschat/client/lib/server";
-import { drawAgent, idlePose } from "@agenteschat/ui/agent/engine";
+import { idlePose } from "@agenteschat/ui/agent/engine";
+import { CYBER_LAC_COLORS, CYBER_LAC_EYES, CYBER_LAC_SQUAD } from "@agenteschat/ui/brand/cyber-lac";
 import { startSky } from "@agenteschat/ui/sky/engine";
 import { SKY_TONES } from "@agenteschat/ui/sky/math";
 import { invoke } from "@tauri-apps/api/core";
@@ -87,20 +88,43 @@ if (agent) {
   agent.width = agent.height = Math.round(size * dpr);
   const ctx = agent.getContext("2d");
   const seed = Math.random() * 9;
+  const king = CYBER_LAC_SQUAD[1];
   // With reduced motion the agent is drawn still (the sky does the same, packages/ui sky engine).
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const frame = (now: number) => {
     if (ctx) {
       const s = agent.width;
-      const inner = s * 0.84;
       ctx.clearRect(0, 0, s, s);
-      const pose = idlePose(now / 1000, seed, { every: 10 });
-      drawAgent(ctx, (s - inner) / 2, s - inner + s * 0.04, inner, {
-        color: "sky",
-        eyes: "round",
-        cells: 12,
-        pose: unreachable ? { ...pose, blink: false, expression: "closed" } : pose,
+      // Whole pixels only: the King is the same 16 × 16 grid the scenes use, one cell at a time.
+      const cell = Math.max(1, Math.floor(s / 18));
+      const box = cell * 16;
+      const left = Math.floor((s - box) / 2);
+      const top = Math.floor((s - box) / 2) + (still ? 0 : Math.round(Math.sin(now / 900)));
+      const blink = unreachable || idlePose(now / 1000, seed, { every: 10 }).blink;
+      king.rows.forEach((row, y) => {
+        [...row].forEach((pixel, x) => {
+          if (pixel === "." || (blink && pixel === "w")) return;
+          ctx.fillStyle = CYBER_LAC_COLORS[pixel] ?? "transparent";
+          ctx.fillRect(left + x * cell, top + y * cell, cell, cell);
+        });
       });
+      if (blink) {
+        ctx.fillStyle = CYBER_LAC_COLORS.n ?? "#6af2d2";
+        for (const eye of CYBER_LAC_EYES[1] ?? []) {
+          ctx.fillRect(left + eye.x * cell, top + eye.y * cell, eye.width * cell, cell);
+        }
+      }
+      if (unreachable) {
+        ctx.fillStyle = CYBER_LAC_COLORS.n ?? "#6af2d2";
+        for (const [x, y, w] of [
+          [13, 0, 3],
+          [15, 1, 1],
+          [14, 2, 1],
+          [13, 3, 3],
+        ] as const) {
+          ctx.fillRect(left + x * cell, top + y * cell, w * cell, cell);
+        }
+      }
     }
     if (!still) requestAnimationFrame(frame);
   };
@@ -171,7 +195,7 @@ const w = window as { __coverShown?: () => void; __coverFade?: () => void };
 w.__coverShown = shown;
 w.__coverFade = fade;
 
-/** The server the main window opens (servers.json, through Rust); agentes.chat before one is chosen. */
+/** The server the main window opens (servers.json, through Rust); AULACBOT before one is chosen. */
 const currentServer = () =>
   invoke<string | null>("cover_server").then(
     (s) => s ?? SITE_URL,
@@ -216,7 +240,7 @@ async function otherServer(status: LocalServerStatus | null): Promise<string | n
   if (!list) return null;
   return list.servers.find((s) => s !== list.current && !(status && isHereServer(status, s))) ?? null;
 }
-const serverName = (server: string) => (server === CLOUD_SERVER ? "agentes.chat" : serverHost(server));
+const serverName = (server: string) => (server === CLOUD_SERVER ? "AULACBOT" : serverHost(server));
 const openServer = (server: string) => void invoke("server_choose", { server }).catch(() => {});
 
 /** "Use only on this Mac": reach off, said while it takes and when it didn't work. */

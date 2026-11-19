@@ -144,7 +144,7 @@ describe("Workspaces", () => {
       ],
       failed: false,
     });
-    expect(here.host).toBe("agentes.chat");
+    expect(here.host).toBe("AULACBOT");
     expect(here.orgs.map((o) => [o.id, o.unread])).toEqual([
       ["a", 2],
       ["n", 3],

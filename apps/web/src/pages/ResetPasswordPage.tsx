@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "@/auth/context";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
+import { PRODUCT_LOOK } from "@/lib/look";
 import { PasswordHelp } from "@/pages/AuthPage";
 
 /** "Esqueci a senha"'s link: a new password, in the sign-in screen's calm style. No token = the link expired. */
@@ -45,7 +46,13 @@ export function ResetPasswordPage({ token }: { token?: string }) {
     <AuthShell>
       <form className="auth__form" onSubmit={submit} noValidate>
         <header className="auth__ask">
-          <AgentAvatar name="agentes.chat" size="lg" state={pending ? "writing" : undefined} expression={expression} />
+          <AgentAvatar
+            name="AULACBOT"
+            size="lg"
+            appearance={PRODUCT_LOOK}
+            state={pending ? "writing" : undefined}
+            expression={expression}
+          />
           <div className="auth__bubble" key={`${expired}-${done}`} aria-live="polite">
             <h1 className="auth__title">{title}</h1>
             {lead && <p className="auth__lead">{lead}</p>}

@@ -192,7 +192,7 @@ export function oauthScope(meta: AuthServerMetadata, scopes: string[]): string |
 }
 
 /**
- * The client agentes.chat registered with this issuer for this org, or a new
+ * The client AULACBOT registered with this issuer for this org, or a new
  * one (Dynamic Client Registration). A registration is reused only while an
  * active connection uses it: once every connection to that server is gone,
  * the server may have dropped the client (Supabase answered "Unrecognized

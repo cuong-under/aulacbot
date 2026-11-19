@@ -709,10 +709,7 @@ export class RunnerDaemon implements RequestObserver {
   async openBrowser(agent: AgentScope, installing: () => void): Promise<void> {
     const session = this.session;
     if (!session) {
-      throw new RunnerError(
-        "internal",
-        "This computer isn't connected to agentes.chat right now. Try again in a minute.",
-      );
+      throw new RunnerError("internal", "This computer isn't connected to AULACBOT right now. Try again in a minute.");
     }
     const { tools } = this.access();
     if (tools.browser !== true || tools.desktop !== true) {
@@ -2662,7 +2659,7 @@ export class RunnerDaemon implements RequestObserver {
       const byName = (typeof req.byName === "string" ? req.byName : "").slice(0, 80);
       this.emit({ kind: "access.allowed", tool, byName });
       this.opts.print?.(
-        `${byName || "Its owner"} turned on ${tool} from agentes.chat. To turn it off: agentes-runner tools disable ${tool}`,
+        `${byName || "Its owner"} turned on ${tool} from AULACBOT. To turn it off: agentes-runner tools disable ${tool}`,
       );
     }
     return { access: this.access() };
@@ -2961,7 +2958,7 @@ export class RunnerDaemon implements RequestObserver {
     const ex = this.executors();
     const bun = (process.versions as { bun?: string }).bun;
     const lines = [
-      `agentes runner ${RUNNER_VERSION} (machine protocol ${MACHINE_PROTOCOL_VERSION}, control ${CONTROL_PROTOCOL_VERSION})`,
+      `AULACBOT runner ${RUNNER_VERSION} (machine protocol ${MACHINE_PROTOCOL_VERSION}, control ${CONTROL_PROTOCOL_VERSION})`,
       `Runtime: ${bun ? `bun ${bun}` : `node ${process.version}`}${this.self.compiled ? " (compiled)" : ""}`,
       `OS: ${os.type()} ${os.release()} (${process.platform} ${os.arch()})`,
       `Home: ${this.opts.home}`,

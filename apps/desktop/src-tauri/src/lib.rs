@@ -787,7 +787,7 @@ pub fn run() {
     });
     let app = builder
         .build(tauri::generate_context!())
-        .expect("error while building agentes.chat");
+        .expect("error while building AULACBOT");
 
     app.run(|app, event| match event {
         RunEvent::ExitRequested { api, .. } => {

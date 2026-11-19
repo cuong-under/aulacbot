@@ -47,13 +47,13 @@ const agent = (id: string, name: string, color: string, eyes: string, accessory:
 });
 
 export const ACME_AGENTS = [
-  agent("ag_dev", "Dev", "indigo", "wide", "headphones"),
-  agent("ag_bento", "Bento", "amber", "round", "cap"),
-  agent("ag_ada", "Ada", "green", "happy", "none"),
+  agent("ag_dev", "Dev", "#0f6a59", "happy", "headset"),
+  agent("ag_bento", "Bento", "#f2bf61", "round", "crown"),
+  agent("ag_ada", "Ada", "#2fd3b2", "dots", "antenna"),
 ];
 export const HORIZONTE_AGENTS = [
-  agent("ag_lia", "Lia", "rose", "round", "flower"),
-  agent("ag_nino", "Nino", "teal", "dots", "beanie"),
+  agent("ag_lia", "Lia", "green", "wide", "cap"),
+  agent("ag_nino", "Nino", "graphite", "round", "headphones"),
 ];
 
 const who = (a: ControlAgent | undefined) => (a ? { id: a.id, name: a.name } : undefined);
@@ -69,8 +69,8 @@ export function acmeSeed(): FakeOrgSeed {
         id: "j1",
         agent: who(dev),
         kind: "exec",
-        summary: "Rodando os testes",
-        where: "loja-v5",
+        summary: "Đang chạy kiểm thử",
+        where: "cua-hang-v5",
         command: "bun test",
         startedAt: minutesAgo(2),
       },
@@ -78,15 +78,15 @@ export function acmeSeed(): FakeOrgSeed {
         id: "j2",
         agent: who(bento),
         kind: "write",
-        summary: "Escrevendo o roteiro",
-        where: "Roteiros",
+        summary: "Đang viết kịch bản",
+        where: "Kịch bản",
         startedAt: minutesAgo(0),
       },
     ],
     access: {
       folders: [
-        { path: "/Users/voce/Projects/Personal/loja-v5", agents: ["ag_dev"] },
-        { path: "/Users/voce/Documents/Roteiros", agents: ["ag_bento"] },
+        { path: "/Users/voce/Projects/Personal/cua-hang-v5", agents: ["ag_dev"] },
+        { path: "/Users/voce/Documents/Kich-ban", agents: ["ag_bento"] },
       ],
       tools: { claude: true, codex: false, commands: true },
     },
@@ -97,40 +97,40 @@ export function acmeSeed(): FakeOrgSeed {
         kind: "command",
         summary: "bun test",
         command: "bun test",
-        where: "loja-v5",
+        where: "cua-hang-v5",
         result: "running",
       },
       {
         at: minutesAgo(4),
         agent: who(bento),
         kind: "file",
-        summary: "write roteiro-curitiba.md",
-        where: "Roteiros",
+        summary: "Đang viết kich-ban-gioi-thieu.md",
+        where: "Kịch bản",
         result: "running",
       },
-      { at: minutesAgo(43), kind: "access", summary: "Roteiros allowed for Bento", result: "ok" },
+      { at: minutesAgo(43), kind: "access", summary: "Đã cấp quyền Kịch bản cho Bento", result: "ok" },
       {
         at: minutesAgo(82),
         agent: who(ada),
         kind: "command",
         summary: "git diff main…feat/checkout",
         command: "git diff main…feat/checkout",
-        where: "loja-v5",
+        where: "cua-hang-v5",
         result: "ok",
       },
       {
         at: minutesAgo(60 * 22),
         agent: who(bento),
         kind: "access",
-        summary: "asked for Notas: refused",
+        summary: "Yêu cầu truy cập Ghi chú: bị từ chối",
         result: "refused",
       },
       ...Array.from({ length: 40 }, (_, i) => ({
         at: minutesAgo(60 * 26 + i * 37),
         agent: who(i % 2 ? dev : ada),
         kind: "file" as const,
-        summary: `read src/file-${i}.ts`,
-        where: "loja-v5",
+        summary: `Đang đọc src/file-${i}.ts`,
+        where: "cua-hang-v5",
         result: "ok" as const,
       })),
     ],
@@ -138,8 +138,8 @@ export function acmeSeed(): FakeOrgSeed {
       {
         requestId: "req_1",
         agent: { id: "ag_bento", name: "Bento" },
-        path: "/Users/voce/Projects/Personal/loja-v5/roteiros",
-        reason: "Preciso dos roteiros que estão no loja-v5 para montar o vídeo de Curitiba.",
+        path: "/Users/voce/Projects/Personal/cua-hang-v5/kich-ban",
+        reason: "Cần tài liệu kịch bản trong cua-hang-v5 để dựng video giới thiệu.",
         at: minutesAgo(1),
         expiresAt: new Date(Date.now() + 24 * 3600_000).toISOString(),
       },
@@ -147,23 +147,18 @@ export function acmeSeed(): FakeOrgSeed {
   };
 }
 
-/** A 24×24 PNG: a white "H" on coral. */
-const HORIZONTE_LOGO =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAALElEQVR42mP4n+1FFcQwatDAGgQHpEiNGkShQXjAABk0Gmu0N2i0PBrsBgEAgBRBMV74eN0AAAAASUVORK5CYII=";
-
 export function horizonteSeed(): FakeOrgSeed {
   const [lia, nino] = HORIZONTE_AGENTS;
   return {
     org: { id: "org_horizonte", name: "Horizonte" },
     slug: "horizonte",
-    logo: HORIZONTE_LOGO,
     agents: HORIZONTE_AGENTS,
     jobs: [
       {
         id: "j3",
         agent: who(lia),
         kind: "task",
-        summary: "Build do site",
+        summary: "Đang build website",
         where: "site",
         command: "bun run build",
         startedAt: minutesAgo(12),
@@ -188,12 +183,12 @@ export function horizonteSeed(): FakeOrgSeed {
         at: minutesAgo(60 * 20),
         agent: who(nino),
         kind: "command",
-        summary: "bun test: 2 of 148 failed",
+        summary: "bun test: 2/148 lỗi",
         command: "bun test",
         where: "site",
         result: "failed",
       },
-      { at: minutesAgo(60 * 23), kind: "pair", summary: "connected to Horizonte", result: "ok" },
+      { at: minutesAgo(60 * 23), kind: "pair", summary: "Đã kết nối tới Horizonte", result: "ok" },
     ],
     requests: [],
   };
@@ -203,7 +198,7 @@ export function horizonteSeed(): FakeOrgSeed {
 const joinedSeed = (org: { id: string; name: string }): FakeOrgSeed => ({
   org,
   slug: org.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-  agents: [agent("ag_iris", "Íris", "violet", "round", "bow")],
+  agents: [agent("ag_iris", "Íris", "rose", "dots", "scarf")],
   jobs: [],
   access: { folders: [], tools: { claude: false, codex: false, commands: false } },
   activity: [],
@@ -231,14 +226,14 @@ export class FakeRunner {
   private timers: ReturnType<typeof setTimeout>[] = [];
   private pairTimers: ReturnType<typeof setTimeout>[] = [];
   private tick: ReturnType<typeof setInterval> | null = null;
-  private machineName = "MacBook de Você";
+  private machineName = "MacBook cá nhân";
   /** Added Claude/Codex accounts (ADR 0041) and sign-ins in progress: done ~6 s after `account.begin`. */
   private accounts: RunnerAccountInfo[] = [
     {
       id: "4b1f2c3d-0000-4000-8000-000000000001",
       kind: "claude_code",
       loggedIn: true,
-      email: "voce@acme.com",
+      email: "ban@acme.com",
       plan: "team",
     },
   ];
@@ -262,7 +257,7 @@ export class FakeRunner {
         runId: "run_1",
         agentId: "ag_ada",
         userId: "u_rui",
-        label: "Recording a test video",
+        label: "Đang quay video thử",
         since: minutesAgo(10),
       },
     },
@@ -334,8 +329,8 @@ export class FakeRunner {
     const request: ControlAccessRequest = {
       requestId: `req_${rid()}`,
       agent: { id: a.id, name: a.name },
-      path: "/Users/voce/Documents/Notas",
-      reason: "Quero ler as notas da reunião de ontem para escrever o resumo.",
+      path: "/Users/voce/Documents/Ghi-chu",
+      reason: "Cần đọc ghi chú cuộc họp hôm qua để tóm tắt lại nội dung.",
       at: new Date().toISOString(),
       expiresAt: new Date(Date.now() + 24 * 3600_000).toISOString(),
     };
@@ -434,7 +429,7 @@ export class FakeRunner {
         return reply({ logo: s?.logo ?? null });
       case "diagnostics":
         return reply({
-          text: `agentes ${VERSION}\nmacOS 15.1 arm64\nhome ${this.homeId}\nconnection ${this.connection}\n(no secrets)`,
+          text: `AULACBOT runner ${VERSION}\nmacOS 15.1 arm64\nhome ${this.homeId}\nconnection ${this.connection}\n(no secrets)`,
         });
       case "access.get":
         return s ? reply(s.access) : fail("not_paired", "not paired");
@@ -508,7 +503,7 @@ export class FakeRunner {
           id: msg.loginId,
           kind: login.kind,
           loggedIn: true,
-          email: login.kind === "codex" ? "voce@exemplo.com" : "voce.freela@exemplo.com",
+          email: login.kind === "codex" ? "ban@example.com" : "ban.freelance@example.com",
           plan: login.kind === "codex" ? "plus" : "pro",
         };
         this.accounts.push(account);
@@ -644,9 +639,9 @@ export class FakeRunner {
     if (!a) return;
     const folder = s.access.folders[0]?.path.split("/").pop() ?? s.slug;
     const options = [
-      { kind: "read" as const, summary: "Lendo o README", command: undefined },
-      { kind: "exec" as const, summary: "Rodando os testes", command: "bun test" },
-      { kind: "write" as const, summary: "Escrevendo notas.md", command: undefined },
+      { kind: "read" as const, summary: "Đang đọc README", command: undefined },
+      { kind: "exec" as const, summary: "Đang chạy kiểm thử", command: "bun test" },
+      { kind: "write" as const, summary: "Đang viết ghi chú vào Ghi-chu", command: undefined },
     ];
     const o = options[Math.floor(Math.random() * options.length)] ?? options[0];
     if (!o) return;

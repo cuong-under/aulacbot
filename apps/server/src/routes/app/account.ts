@@ -176,7 +176,7 @@ const Me = z
       }),
       canCreateWorkspace: z.boolean().openapi({
         description:
-          "`POST /organizations` would make a workspace for them. False on agentes.chat Cloud while sign-up is by invitation, unless early access allowed their account and its address is confirmed (ADR 0078). `org.create_refused` and `org.create_unpaid` (ADR 0079) can still refuse it.",
+          "`POST /organizations` would make a workspace for them. False on AULACBOT Cloud while sign-up is by invitation, unless early access allowed their account and its address is confirmed (ADR 0078). `org.create_refused` and `org.create_unpaid` (ADR 0079) can still refuse it.",
       }),
       deletion: z
         .object({
@@ -361,7 +361,7 @@ export function accountRoutes(deps: AppDeps) {
             }),
             feedbackRelay: z.boolean().openapi({
               description:
-                "Feedback goes to the agentes.chat team rather than to whoever runs this server (no FEEDBACK_EMAIL): the form says so and takes pictures only.",
+                "Feedback goes to the AULACBOT team rather than to whoever runs this server (no FEEDBACK_EMAIL): the form says so and takes pictures only.",
             }),
             workspaceComputer: z.boolean().openapi({
               description:
@@ -373,7 +373,7 @@ export function accountRoutes(deps: AppDeps) {
             }),
             cloud: z.boolean().openapi({
               description:
-                "One of agentes.chat's own servers (`cloud` in `GET /api/instance`): the apps show no About screen there, which every other server shows.",
+                "One of AULACBOT's own servers (`cloud` in `GET /api/instance`): the apps show no About screen there, which every other server shows.",
             }),
             turnstileSiteKey: z.string().nullable().openapi({
               description:

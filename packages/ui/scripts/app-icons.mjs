@@ -57,15 +57,18 @@ for (const id of APP_ICON_IDS) {
     { size: 32, png: fav32 },
     { size: 48, png: png(resize(tile, 48)) },
   ]);
+  // A scene may draw Android's layers apart (`android()`): a mark that fills the tile would be cut by a round launcher
+  // mask, where the sky's small agents are drawn inside it already.
+  const androidScene = scene.android?.() ?? scene.light();
 
   const phone = `apps/mobile/assets/app-icons/${id}`;
   write(`${phone}/ios.png`, png(light, { opaque: true }));
   write(`${phone}/ios-dark.png`, png(dark, { opaque: true }));
   write(`${phone}/ios-tinted.png`, png(gray(dark), { opaque: true }));
   const AN = shipped ? 1024 : 432;
-  write(`${phone}/android-foreground.png`, png(render(AN, frontLayers(scene.light()), android(AN))));
-  write(`${phone}/android-background.png`, png(render(AN, backLayers(scene.light()), android(AN)), { opaque: true }));
-  write(`${phone}/android-monochrome.png`, png(render(AN, monoLayers(scene.light()), android(AN))));
+  write(`${phone}/android-foreground.png`, png(render(AN, frontLayers(androidScene), android(AN))));
+  write(`${phone}/android-background.png`, png(render(AN, backLayers(androidScene), android(AN)), { opaque: true }));
+  write(`${phone}/android-monochrome.png`, png(render(AN, monoLayers(androidScene), android(AN))));
   if (!shipped) write(`${phone}/android-legacy.png`, png(resize(tile, 192)));
   write(`${phone}/preview.png`, png(resize(light, 180), { opaque: true }));
   write(`${phone}/preview-dark.png`, png(resize(dark, 180), { opaque: true }));
@@ -74,14 +77,18 @@ for (const id of APP_ICON_IDS) {
   write(`apps/web/public/app-icons/${id}.png`, png(resize(light, 160), { opaque: true }));
 
   if (shipped) {
-    // The Night's sky without its agent: the web draws a workspace's agent on it (apps/web/src/lib/agent-app-icon.ts).
-    const sky = scene.light().filter((l) => l.part !== "agent" && l.part !== "eyes");
-    write("apps/web/public/app-icons/night-sky.png", png(render(512, sky, { k: 2 }), { opaque: true }));
     write("apps/web/public/favicon.ico", favicon);
     write("apps/web/public/apple-touch-icon.png", png(resize(light, 180), { opaque: true }));
     write("apps/web/public/icon-512.png", png(resize(light, 512), { opaque: true }));
+    // The phone's splash picture: the shipped icon on its own rounded shape (expo-splash-screen shows it at 120 px).
+    write("apps/mobile/assets/images/splash-icon.png", png(resize(tile, 512)));
   }
 }
+
+// The Night's sky without its agent, whichever icon ships: the web draws a workspace's agent on it
+// (apps/web/src/lib/agent-app-icon.ts).
+const nightSky = SCENES.night.light().filter((l) => l.part !== "agent" && l.part !== "eyes");
+write("apps/web/public/app-icons/night-sky.png", png(render(512, nightSky, { k: 2 }), { opaque: true }));
 
 for (const pose of MADE_POSES)
   for (const sky of MADE_SKIES) {

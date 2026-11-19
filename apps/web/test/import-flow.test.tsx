@@ -174,7 +174,7 @@ describe("Configurações → Importar e exportar", () => {
     await click(within(card).getByRole("button", { name: "Baixar o arquivo" }));
     expect(saved).toHaveLength(1);
     expect(saved[0]?.[0]).toBe(`/api/app/organizations/${ORG_ID}/export`);
-    expect(saved[0]?.[1]).toMatch(/^agentes-chat-\d{4}-\d{2}-\d{2}\.json$/);
+    expect(saved[0]?.[1]).toMatch(/^aulacbot-\d{4}-\d{2}-\d{2}\.json$/);
   });
 
   test("members don't see it", async () => {
@@ -206,7 +206,7 @@ describe("Configurações → Importar e exportar", () => {
         ["Hermes Agent", "/brands/hermes.svg"],
         ["OpenClaw", "/brands/openclaw.svg"],
         ["Paperclip", "/brands/paperclip.svg"],
-        ["agentes.chat", "/favicon.svg"],
+        ["AULACBOT", "/favicon.svg"],
         // It names many apps: no one maker's logo fits.
         ["Outro app", null],
       ]);
@@ -222,7 +222,7 @@ describe("Configurações → Importar e exportar", () => {
         ["Hermes Agent", "/brands/hermes-dark.svg"],
         ["OpenClaw", "/brands/openclaw.svg"],
         ["Paperclip", "/brands/paperclip-dark.svg"],
-        ["agentes.chat", "/favicon.svg"],
+        ["AULACBOT", "/favicon.svg"],
         ["Outro app", null],
       ]);
     } finally {
@@ -278,14 +278,14 @@ describe("Configurações → Importar e exportar", () => {
     expect(steps.map((li) => (li.querySelector(".apps-step > span") ?? li).textContent)).toEqual([
       "Na conversa com o seu bot, mande:",
       "Clique em Add it e depois em Authorize.",
-      "Entre com sua conta do agentes.chat na página que abrir e escolha Criar e editar agentes, rotinas e skills.",
+      "Entre com sua conta do AULACBOT na página que abrir e escolha Criar e editar agentes, rotinas e skills.",
       "Na conversa, digite @ e escolha agentes.",
       "Cole este pedido no app:",
     ]);
     expect([...mcp.querySelectorAll(".machine-command__code")].map((c) => c.textContent)).toEqual([
       `Add a custom MCP server called agentes at ${SERVER_URL}`,
     ]);
-    const prompt = `Use o servidor MCP do agentes.chat que você acabou de conectar (${SERVER_URL}) para trazer o que você tem para o agentes.chat. Primeiro chame import_summary para ver o que já existe lá e não duplicar nada. Depois, para cada agente, instrução, skill e rotina que você tem, crie o equivalente com create_agent, create_skill e create_routine, e guarde o que cada agente deve lembrar com add_memory.`;
+    const prompt = `Use o servidor MCP do AULACBOT que você acabou de conectar (${SERVER_URL}) para trazer o que você tem para o AULACBOT. Primeiro chame import_summary para ver o que já existe lá e não duplicar nada. Depois, para cada agente, instrução, skill e rotina que você tem, crie o equivalente com create_agent, create_skill e create_routine, e guarde o que cada agente deve lembrar com add_memory.`;
     expect((within(mcp).getByLabelText("Pedido para o seu app de IA") as HTMLTextAreaElement).value).toBe(prompt);
     await click(within(mcp).getByRole("button", { name: "Copiar o pedido" }), 2);
     expect(writes).toEqual([prompt]);
@@ -325,7 +325,7 @@ describe("Configurações → Importar e exportar", () => {
     expect(within(mcp).getByText(SERVER_URL)).toBeTruthy();
     expect(mcp.textContent).toContain("Não dá para adicionar pelo app do celular.");
     expect(mcp.textContent).toContain(
-      "Entre com sua conta do agentes.chat na página que abrir e escolha Criar e editar agentes, rotinas e skills.",
+      "Entre com sua conta do AULACBOT na página que abrir e escolha Criar e editar agentes, rotinas e skills.",
     );
   });
 
@@ -341,7 +341,7 @@ describe("Configurações → Importar e exportar", () => {
     expect(words()).toEqual([
       "Cole em ~/.hermes/config.yaml:",
       "Para entrar, rode hermes mcp login agentes.",
-      "Entre com sua conta do agentes.chat na página que abrir e escolha Criar e editar agentes, rotinas e skills.",
+      "Entre com sua conta do AULACBOT na página que abrir e escolha Criar e editar agentes, rotinas e skills.",
       "Depois digite /reload-mcp na conversa.",
       "Cole este pedido no app:",
     ]);
@@ -371,7 +371,7 @@ describe("Configurações → Importar e exportar", () => {
     ]);
 
     // Paperclip and our own export take no MCP server: their tip alone.
-    for (const name of [/^Paperclip$/, /^agentes\.chat$/]) {
+    for (const name of [/^Paperclip$/, /^AULACBOT$/]) {
       await click(button(name), 2);
       expect(screen().queryByRole("radiogroup", { name: "Como trazer" })).toBeNull();
       expect(document.querySelector(".imp-tip")).toBeTruthy();
@@ -552,7 +552,7 @@ describe("Configurações → Importar e exportar", () => {
     const state = seedState();
     state.me?.organizations.push({ id: "org-north", name: "Estúdio Norte", role: "owner", showActivity: true });
     await go(state);
-    await click(button(/^agentes\.chat$/), 1);
+    await click(button(/^AULACBOT$/), 1);
     const tip = document.querySelector(".imp-tip") as HTMLElement;
     expect(tip.textContent).toBe("Baixe o arquivo do outro workspace e solte o .json aqui.Baixar de Estúdio Norte");
     const link = within(tip).getByRole("link", { name: "Baixar de Estúdio Norte" });
@@ -571,7 +571,7 @@ describe("Configurações → Importar e exportar", () => {
     await click(button(/^OpenBot\.run$/), 1);
     await click(radio("Por arquivo"), 1);
     expect(text()).toContain("Solte o openbot-import.json");
-    await click(button(/^agentes\.chat$/), 1);
+    await click(button(/^AULACBOT$/), 1);
     expect(text()).toContain("Configurações → Importar e exportar → Baixar o arquivo");
 
     await pick("Pasta para importar", folder("paperclip-company"));

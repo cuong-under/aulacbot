@@ -10,9 +10,9 @@ export type PurposeKind = "personal" | "team";
 export const SCENE_W = 240;
 export const SCENE_H = 172;
 
-/** A look as the agent engine draws it. */
+/** A look as the agent engine draws it: a preset, or AULACBOT's own jade, mint and gold. */
 export interface SceneLook {
-  color: "sky" | "indigo" | "violet" | "rose" | "amber" | "green" | "teal" | "graphite";
+  color: "sky" | "indigo" | "violet" | "rose" | "amber" | "green" | "teal" | "graphite" | `#${string}`;
   eyes: "round" | "dots" | "wide" | "happy" | "sleepy";
   accessory: string;
 }
@@ -24,25 +24,25 @@ export type SceneFace = { x: number; y: number; size: number } & (
   | { teammate: true }
 );
 
-/** For me: you in the middle and six agents around you. */
+/** For me: you in the middle and six Cyber Lạc agents around you (gold, jade and mint, the identity's three). */
 const ME: SceneFace[] = [
   { x: 120, y: 86, size: 60, you: true },
-  { x: 30, y: 86, size: 36, look: { color: "green", eyes: "round", accessory: "cap" } },
-  { x: 70, y: 30, size: 36, look: { color: "amber", eyes: "wide", accessory: "headphones" } },
-  { x: 170, y: 30, size: 36, look: { color: "rose", eyes: "happy", accessory: "flower" } },
-  { x: 210, y: 86, size: 36, look: { color: "teal", eyes: "happy", accessory: "bow" } },
-  { x: 170, y: 142, size: 36, look: { color: "sky", eyes: "dots", accessory: "beanie" } },
-  { x: 70, y: 142, size: 36, look: { color: "violet", eyes: "round", accessory: "antenna" } },
+  { x: 30, y: 86, size: 36, look: { color: "#0f6a59", eyes: "round", accessory: "cap" } },
+  { x: 70, y: 30, size: 36, look: { color: "#f2bf61", eyes: "wide", accessory: "headphones" } },
+  { x: 170, y: 30, size: 36, look: { color: "#2fd3b2", eyes: "happy", accessory: "flower" } },
+  { x: 210, y: 86, size: 36, look: { color: "#8f5c2c", eyes: "happy", accessory: "bow" } },
+  { x: 170, y: 142, size: 36, look: { color: "#6af2d2", eyes: "dots", accessory: "beanie" } },
+  { x: 70, y: 142, size: 36, look: { color: "#0c2c25", eyes: "round", accessory: "antenna" } },
 ];
 
 /** For a team: you on top; an agent, someone on the team and an agent under you; two agents under that person. */
 const TEAM: SceneFace[] = [
   { x: 120, y: 28, size: 40, you: true },
-  { x: 46, y: 89, size: 34, look: { color: "amber", eyes: "round", accessory: "headset" } },
+  { x: 46, y: 89, size: 34, look: { color: "#f2bf61", eyes: "round", accessory: "headset" } },
   { x: 120, y: 89, size: 34, teammate: true },
-  { x: 194, y: 89, size: 34, look: { color: "green", eyes: "wide", accessory: "antenna" } },
-  { x: 88, y: 145, size: 30, look: { color: "rose", eyes: "happy", accessory: "scarf" } },
-  { x: 152, y: 145, size: 30, look: { color: "teal", eyes: "dots", accessory: "cap" } },
+  { x: 194, y: 89, size: 34, look: { color: "#2fd3b2", eyes: "wide", accessory: "antenna" } },
+  { x: 88, y: 145, size: 30, look: { color: "#0f6a59", eyes: "happy", accessory: "scarf" } },
+  { x: 152, y: 145, size: 30, look: { color: "#6af2d2", eyes: "dots", accessory: "cap" } },
 ];
 
 export const SCENE_FACES: Record<PurposeKind, readonly SceneFace[]> = { personal: ME, team: TEAM };
@@ -72,8 +72,8 @@ export const SCENE_LINES: Record<PurposeKind, readonly string[]> = {
   })(),
 };
 
-/** Each answer's color: its horizon. */
-export const SCENE_COLOR: Record<PurposeKind, "violet" | "sky"> = { personal: "violet", team: "sky" };
+/** Each answer's color: its horizon, jade for one person and mint for a team. */
+export const SCENE_COLOR: Record<PurposeKind, `#${string}`> = { personal: "#0f6a59", team: "#2fd3b2" };
 
 /** What a card's agents do, as the cluster of pills under its line (ADR 0162). */
 export type PurposeActivity =

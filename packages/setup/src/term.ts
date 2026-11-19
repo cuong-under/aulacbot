@@ -1,5 +1,5 @@
 /**
- * The look every agentes.chat command line shares: the logo, a line down the left with a mark per step,
+ * The look every AULACBOT command line shares: the logo, a line down the left with a mark per step,
  * spinners and questions. The setup uses it, and so does the runner (`@agenteschat/setup/src/term`); the
  * installers draw the same marks in POSIX sh (term-sh.ts).
  *
@@ -107,65 +107,75 @@ const MARKS = {
 };
 
 /**
- * The sky blue of links, commands and the active marks: SKY_TONES[2] (#2b74e6) in 24-bit, about 4.4:1 on a
- * white terminal and 4.7:1 on a black one; xterm 32 (#0087d7) in 256 colors; the theme's bright blue in 16.
+ * The jade of links, commands and the active marks: Cyber Lạc's deep jade (#0F7A66) in 24-bit, 5.3:1 on a
+ * white terminal and 4.0:1 on a black one; xterm 29 in 256 colors; the theme's bright green in 16.
  */
-const ACCENT: Record<Depth, string> = { 24: "38;2;43;116;230", 8: "38;5;32", 4: "94", 1: "" };
-/** The badge: white on the agent blue (#0063d1, 5.7:1), whatever the terminal's background. */
-const BADGE: Record<Depth, string> = { 24: "48;2;0;99;209;97", 8: "48;5;26;38;5;231", 4: "44;97", 1: "" };
+const ACCENT: Record<Depth, string> = { 24: "38;2;15;122;102", 8: "38;5;29", 4: "92", 1: "" };
+/** The badge: white on the Lạc mint's deep edge (#0F6A59, 6.5:1), whatever the terminal's background. */
+const BADGE: Record<Depth, string> = { 24: "48;2;15;106;89;97", 8: "48;5;23;97", 4: "42;97", 1: "" };
 
 /**
- * The logo's mark: the agent of packages/ui/src/agent/engine.js on the 12×12 grid the web's LogoMark dithers
- * (`ditherUrl("sky", 12)`): 0–4 its body tones (bodyTones("sky"), deep to light), w its eyes, . outside it.
- * A literal, since this package is MIT and the engine isn't: packages/ui/test/logo-mark.test.ts rebuilds it
- * from the engine (inBody, toneAt, eyeShapes) and compares.
+ * The logo's mark: the Cyber Lạc head of packages/ui/src/components/Logo.tsx, front on and with no neck, on the
+ * same 12×12 grid the web draws its own mark on: 3 the mint head, 4 its lighter fin tips, 6 the gold crest and
+ * bill, 7 the bill's deep shade, 0 the jade visor and edge, w the eyes, . outside it. A literal, because this
+ * package draws for a terminal's half-blocks, not the icon's 1024 scene.
  */
 export const LOGO_MARK = [
-  "..43434343..",
-  ".3333333332.",
-  "333333333233",
-  "232323232223",
-  "3232w23w3222",
-  "2222w22w2212",
-  "2222w22w2122",
-  "121212121112",
-  "212121212111",
-  "111111111101",
-  "11111111101.",
-  "0101010100..",
+  "..4..66..4..",
+  "..44.66.44..",
+  "...446644...",
+  "..33333333..",
+  "..33333333..",
+  ".3333333333.",
+  ".3000000003.",
+  ".300w00w003.",
+  ".300w00w003.",
+  ".3333333333.",
+  "..33666633..",
+  "....3663....",
 ];
 
-/** The wordmark: "agentes" in pixels after Funnel Display Light at about 12 px (x-height 6, one-pixel strokes). */
+/** The wordmark: "aulacbot" in pixels, one-pixel strokes on the cap height the mark's twelve rows give. */
 const GLYPHS: Record<string, string[]> = {
-  a: ["", "", "", ".###.", "....#", ".####", "#...#", "#...#", ".####", "", "", ""],
-  g: ["", "", "", ".####", "#...#", "#...#", "#...#", "#...#", ".####", "....#", ".###.", ""],
-  e: ["", "", "", ".###.", "#...#", "#####", "#....", "#....", ".####", "", "", ""],
-  n: ["", "", "", "#.##.", "##..#", "#...#", "#...#", "#...#", "#...#", "", "", ""],
-  t: ["", ".#..", ".#..", "####", ".#..", ".#..", ".#..", ".#..", "..##", "", "", ""],
-  s: ["", "", "", ".####", "#....", ".###.", "....#", "....#", "####.", "", "", ""],
+  a: ["", "", "", ".###.", "#...#", "#...#", "#####", "#...#", "#...#", "#...#", "", ""],
+  u: ["", "", "", "#...#", "#...#", "#...#", "#...#", "#...#", "#...#", ".###.", "", ""],
+  l: ["", "", "", "#....", "#....", "#....", "#....", "#....", "#....", "#####", "", ""],
+  c: ["", "", "", ".####", "#....", "#....", "#....", "#....", "#....", ".####", "", ""],
+  b: ["", "", "", "####.", "#...#", "#...#", "####.", "#...#", "#...#", "####.", "", ""],
+  o: ["", "", "", ".###.", "#...#", "#...#", "#...#", "#...#", "#...#", ".###.", "", ""],
+  t: ["", "", "", "#####", "..#..", "..#..", "..#..", "..#..", "..#..", "..#..", "", ""],
 };
 
-const TONE_RGB = ["0;61;130", "0;99;209", "70;147;232", "140;195;255", "198;225;255", "255;255;255"];
-const TONE_256 = [25, 26, 68, 111, 189, 231];
-/** 16 colors: blue for the deep tones, bright blue for the light ones, bright white for the eyes. */
-const TONE_16 = [4, 4, 12, 12, 12, 15];
+/** The jade visor (0), the deeper jade (1), the mint's shade (2), the head (3), its tips (4), the gold (6, 7), the eyes (8). */
+const TONE_RGB: Record<number, string> = {
+  0: "4;17;13",
+  1: "10;61;51",
+  2: "15;106;89",
+  3: "47;211;178",
+  4: "106;242;210",
+  6: "242;191;97",
+  7: "176;116;44",
+  8: "255;255;255",
+};
+const TONE_256: Record<number, number> = { 0: 16, 1: 22, 2: 29, 3: 43, 4: 86, 6: 221, 7: 172, 8: 231 };
+/** 16 colors: two greens for the head, bright cyan for its tips, yellow for the gold, bright white for the eyes. */
+const TONE_16: Record<number, number> = { 0: 30, 1: 32, 2: 36, 3: 96, 4: 96, 6: 93, 7: 33, 8: 97 };
 
-/** The SGR parameter for tone `t` (0–4, 5 the eyes) as foreground (38) or background (48). */
+/** The SGR parameter for tone `t` (0–4, 6, 7, 8 the eyes) as foreground (38) or background (48). */
 function toneSgr(depth: Depth, t: number, layer: 38 | 48): string {
   if (depth === 24) return `${layer};2;${TONE_RGB[t]}`;
   if (depth === 8) return `${layer};5;${TONE_256[t]}`;
-  const n = TONE_16[t] ?? 4;
-  return String((layer === 38 ? 30 : 40) + (n >= 8 ? 60 + n - 8 : n));
+  return String((TONE_16[t] ?? 30) + (layer === 38 ? 0 : 10));
 }
 
-const toneOf = (pixel: string) => (pixel === "w" ? 5 : pixel === "." ? -1 : Number(pixel));
+const toneOf = (pixel: string) => (pixel === "w" ? 8 : pixel === "." ? -1 : Number(pixel));
 
 /** Two pixels in one character: ▀ with the top as its color and the bottom as its background. */
 function halfBlock(depth: Depth, top: number, bottom: number): string {
   if (depth === 1) {
     // One color: the body, with its eyes left out (the mono logo).
-    const t = top >= 0 && top < 5;
-    const b = bottom >= 0 && bottom < 5;
+    const t = top >= 0 && top < 8;
+    const b = bottom >= 0 && bottom < 8;
     return t && b ? "█" : t ? "▀" : b ? "▄" : " ";
   }
   if (top < 0 && bottom < 0) return " ";
@@ -185,9 +195,9 @@ function wordRows(word: string): string[] {
   return rows;
 }
 
-/** The logo's lines (63 columns): the mark in the sky's dither beside "agentes", ".chat" muted on the baseline. */
+/** The logo's lines: the mark in the jade beside "AULACBOT", ".app" muted on the baseline. */
 export function logoLines(depth: Depth): string[] {
-  const word = wordRows("agentes");
+  const word = wordRows("aulacbot");
   const lines: string[] = [];
   for (let y = 0; y < 12; y += 2) {
     const top = LOGO_MARK[y] as string;
@@ -200,13 +210,14 @@ export function logoLines(depth: Depth): string[] {
     let letters = "";
     for (let x = 0; x < wt.length; x++) letters += halfBlock(1, wt[x] === "#" ? 0 : -1, wb[x] === "#" ? 0 : -1);
     const reset = depth === 1 ? "" : "\x1b[0m";
-    const tld = y === 8 ? (depth === 1 ? " .chat" : " \x1b[2m.chat\x1b[0m") : "";
-    lines.push(`  ${mark}${reset}   ${letters.trimEnd()}${tld}`.trimEnd());
+    const tld = y === 8 ? (depth === 1 ? " .app" : " \x1b[2m.app\x1b[0m") : "";
+    // The mark's own blank columns at the end are not ink: the gap to the word is always the same three columns.
+    lines.push(`  ${mark.replace(/ +$/, "")}${reset}   ${letters.trimEnd()}${tld}`.trimEnd());
   }
   return lines;
 }
 
-export const LOGO_WIDTH = 63;
+export const LOGO_WIDTH = 66;
 
 // biome-ignore lint/suspicious/noControlCharactersInRegex: the colors' escapes are what it leaves out
 const SGR = /\x1b\[[0-9;]*m/g;
@@ -495,9 +506,9 @@ export function createTerm(o: TermOptions = {}) {
     /** The logo where it fits, then ┌ and the badge; nothing when the frame is the parent's. */
     intro(title: string, logo = true) {
       if (inherited) return;
-      if (!tty) return say([`agentes.chat ${title}`]);
+      if (!tty) return say([`AULACBOT ${title}`]);
       if (logo && unicode && width >= LOGO_WIDTH + 1) say(["", ...logoLines(depth), ""]);
-      const badge = depth > 1 ? `\x1b[${BADGE[depth]}m agentes.chat \x1b[0m` : "agentes.chat";
+      const badge = depth > 1 ? `\x1b[${BADGE[depth]}m AULACBOT \x1b[0m` : "AULACBOT";
       say([...wrap(`${badge} ${title}`, width - 3).map((l, i) => lineOf(i === 0 ? dim(S.start) : bar(), l)), bar()]);
       gapped = true;
     },

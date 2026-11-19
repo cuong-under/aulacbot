@@ -81,8 +81,9 @@ describe("app icons on the phone (ADR 0179)", () => {
       filter(["action", "android.intent.action.VIEW"], ["category", "android.intent.category.BROWSABLE"]),
     ]);
     const aliases = app?.["activity-alias"] ?? [];
-    expect(aliases.slice(0, 6).map((a) => a.$?.["android:name"])).toEqual([
+    expect(aliases.slice(0, 7).map((a) => a.$?.["android:name"])).toEqual([
       ".SomethingElse",
+      ".AppIconLac",
       ".AppIconNight",
       ".AppIconMoon",
       ".AppIconSky",
@@ -93,9 +94,9 @@ describe("app icons on the phone (ADR 0179)", () => {
     // The ready ones, then every icon a person can make, as the app lists them for the module.
     expect(ours.map((a) => a.$?.["android:name"])).toEqual(phoneIcons().map((i) => `.${nativeIconName(i, "android")}`));
     expect(ours.map((a) => a.$?.["android:enabled"])).toEqual(["true", ...ours.slice(1).map(() => "false")]);
-    expect(ours[5]?.$?.["android:icon"]).toBe("@mipmap/ic_launcher_made_night_sky_round");
+    expect(ours[6]?.$?.["android:icon"]).toBe("@mipmap/ic_launcher_made_night_sky_round");
     expect(ours[0]?.$?.["android:icon"]).toBe("@mipmap/ic_launcher");
-    expect(ours[3]?.$?.["android:icon"]).toBe("@mipmap/ic_launcher_peek_night");
+    expect(ours[4]?.$?.["android:icon"]).toBe("@mipmap/ic_launcher_peek_night");
     for (const alias of ours) {
       expect(alias.$?.["android:targetActivity"]).toBe(".MainActivity");
       expect(alias["intent-filter"]).toEqual([

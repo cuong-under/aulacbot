@@ -132,8 +132,9 @@ token whose audience is the bundle id `chat.agentes.app` (the server's Apple pro
 
 ## Fonts
 
-`assets/fonts` holds static instances from Google Fonts (all SIL Open Font License, texts in `OFL-*.txt`):
-Funnel Display Light (large titles) and Doto at ROND 100, weight 600 (every count). Body and UI text use the
+`assets/fonts` holds static instances (all SIL Open Font License, texts in `OFL-*.txt`): Funnel Display Light
+for large titles and Doto at ROND 100, weight 600 for every count, both from Google Fonts, and Onest Bold 700
+copied from `packages/engine/assets/fonts` for the `AULACBOT` wordmark. Body and UI text use the
 system font (SF Pro / Roboto) at the platform's sizes and follow the person's text size setting: the scale is
 `src/ui/type-scale.ts` (HIG text styles on iOS, Material 3 on Android), used through `Text` variants and
 `systemText` in `src/ui/Text.tsx`.

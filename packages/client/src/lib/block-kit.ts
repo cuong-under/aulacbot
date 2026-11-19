@@ -172,7 +172,7 @@ var agentes=window.agentes={get state(){return view()},set:function(k,v){var j=j
   send:function(text,label,ready){post({type:"draft",text:text,label:label||L.send,ready:ready!==false})},
   draw:function(name,options){post({type:"draw",name:String(name),options:Array.prototype.slice.call(options||[]),used:used})},
   who:function(name){var c=who[name];return c?{name:c.name,at:c.at,drawn:!!c.drawn}:null}};
-var ramp=function(){return R.ramp||["#cfe2ff","#9ec5ff","#5aa8ff","#3d8bff","#0063d1","#00408a"]};
+var ramp=function(){return R.ramp||["#e8fcf7","#b2f8e7","#6af2d2","#2fd3b2","#0f6a59","#06231c"]};
 function theme(t,live){var d=document.documentElement,r=ramp();if(live){d.setAttribute("data-theme-switching","");requestAnimationFrame(function(){requestAnimationFrame(function(){d.removeAttribute("data-theme-switching")})})}d.dataset.theme=t;(t==="dark"?[r[3],r[5],r[4],r[2],r[1],r[0]]:[r[4],r[3],r[5],r[2],r[1],r[0]]).forEach(function(c,i){if(c)d.style.setProperty("--s"+(i+1),c)})}
 theme(R.theme||"light");
 if(R.ramp)document.documentElement.style.setProperty("--c",R.ramp[4]);

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>AULACBOT stamp</title>
+  <desc>One-colour Lac bird stamp with a cut-out eye.</desc>
+  <defs>
+    <mask id="eye-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="#fff"/>
+      <circle cx="572" cy="268" r="16" fill="#000"/>
+    </mask>
+  </defs>
+  <g mask="url(#eye-cutout)" fill="#08251C" stroke="#08251C">
+    <path d="M294 850h436v14H294Z" stroke="none"/>
+    <path d="M500 344L572 358L414 802L310 802ZM558 364L630 338L772 802L662 802Z" stroke="none"/>
+    <path d="M584 370L598 330L588 298L566 278" fill="none" stroke-width="116" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M530 214C490 185 420 162 366 172C395 189 462 238 498 248Z" stroke="none"/>
+    <path d="M506 230C462 196 390 214 338 236C372 266 446 286 476 260Z" stroke="none"/>
+    <path d="M490 256C444 226 396 264 350 286C386 304 446 302 468 282Z" stroke="none"/>
+    <circle cx="552" cy="274" r="84" stroke="none"/>
+    <path d="M620 252C700 242 786 256 850 282C790 306 704 306 622 292Z" stroke="none"/>
+    <path d="M330 640L452 591L636 551L700 496L684 558L778 520L750 586L862 554L810 622L728 646L566 672L430 684L354 666Z" stroke="none"/>
+  </g>
+</svg>

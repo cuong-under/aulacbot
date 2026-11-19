@@ -8,9 +8,11 @@ export interface SceneLayer extends Layer {
 export interface Scene {
   light: () => SceneLayer[];
   dark: () => SceneLayer[];
+  /** Android's layers, when the launcher's mask needs the scene drawn apart (else `light()`). */
+  android?: () => SceneLayer[];
   favicon: (N: 16 | 32) => Layer[];
 }
-export type AppIconId = "night" | "moon" | "sky" | "peekNight" | "peekSky";
+export type AppIconId = "lac" | "night" | "moon" | "sky" | "peekNight" | "peekSky";
 export const APP_ICON_IDS: AppIconId[];
 export const SCENES: Record<AppIconId, Scene>;
 export interface MadeIconSpec {

@@ -1,18 +1,20 @@
-// The agent's mark as an SVG, from the agent engine: `node packages/ui/scripts/favicon.mjs`. It is the boot screen's
-// picture and the app's logo for connectors; the tab's icon is favicon.ico, from app-icons.mjs (ADR 0179).
+// The Cyber Lạc mark as an SVG: `node packages/ui/scripts/favicon.mjs`. It is the boot screen's picture and the
+// connector's logo; the tab's icon is favicon.ico, from app-icons.mjs (ADR 0179). The shapes are the app icon's
+// (packages/ui/scripts/app-icons/cyber-lac.mjs), flat rather than dithered: a jade tile, the mint head, the crest's
+// three fins, the visor with its two eyes and the gold bill (docs/branding/cyber-lac).
 import { writeFileSync } from "node:fs";
-import { bodyPath, bodySvg, eyeShapes } from "../src/agent/engine.js";
 
-const n = 10;
-const inner = bodySvg("sky", n)
-  .replace(/^<svg[^>]*>/, "")
-  .replace(/<\/svg>$/, "");
-const eyes = eyeShapes("round")
-  .map(
-    (e) =>
-      `<rect x="${(2 + e.x * 28).toFixed(2)}" y="${(2 + e.y * 28).toFixed(2)}" width="${(e.w * 28).toFixed(2)}" height="${(e.h * 28).toFixed(2)}" rx="${((e.w * 28) / 2).toFixed(2)}"/>`,
-  )
-  .join("");
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><title>agentes</title><defs><clipPath id="b"><path d="${bodyPath(2, 2, 28)}"/></clipPath></defs><g clip-path="url(#b)" shape-rendering="crispEdges"><g transform="translate(2 2) scale(${28 / n})">${inner}</g></g><g fill="#ffffff">${eyes}</g></svg>\n`;
+const HEAD = [
+  "M9.88 11.4C12.04 9.06 19.96 9.06 22.12 11.4C23.74 13.92 24.28 17.52 24.1 21.12",
+  "C23.92 24.72 22.84 26.88 20.32 27.6C18.16 28.14 13.84 28.14 11.68 27.6",
+  "C9.16 26.88 8.08 24.72 7.9 21.12C7.72 17.52 8.26 13.92 9.88 11.4Z",
+].join("");
+const CREST_MID = "16,3.54 17.56,6.85 16,11.23 14.44,6.85";
+const CREST_LEFT = "14.25,6.29 9.38,3.29 11,6.91 14,10.22";
+const CREST_RIGHT = "17.75,6.29 22.62,3.29 21,6.91 18,10.22";
+const BILL = "14.69,21.41 17.31,21.41 18.81,23.22 17.19,25.53 16,27.22 14.81,25.53 13.19,23.22";
+const BILL_LOW = "13.81,24.1 18.19,24.1 17.19,25.53 16,27.22 14.81,25.53";
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><title>AULACBOT</title><rect width="32" height="32" rx="8" fill="#04110d"/><polygon points="${CREST_LEFT}" fill="#6af2d2"/><polygon points="${CREST_RIGHT}" fill="#6af2d2"/><polygon points="${CREST_MID}" fill="#f2bf61"/><path d="${HEAD}" fill="#2fd3b2"/><rect x="10.5" y="14.4" width="11" height="7.46" rx="2.06" fill="#04110d"/><rect x="12.78" y="15.41" width="1.94" height="5.19" rx="0.97" fill="#ffffff"/><rect x="17.28" y="15.41" width="1.94" height="5.19" rx="0.97" fill="#ffffff"/><polygon points="${BILL}" fill="#f2bf61"/><polygon points="${BILL_LOW}" fill="#b0742c"/><rect x="13.85" y="23.55" width="4.3" height="0.55" fill="#2e1a0a"/></svg>\n`;
 writeFileSync(new URL("../../../apps/web/public/favicon.svg", import.meta.url), svg);
 console.log(svg.length);

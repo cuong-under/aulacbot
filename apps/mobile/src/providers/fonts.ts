@@ -9,6 +9,7 @@ import { fonts } from "@/ui/theme";
 export function useAppFonts(): boolean {
   const [loaded, error] = useFonts({
     [fonts.display]: require("../../assets/fonts/FunnelDisplay-Light.ttf"),
+    [fonts.brand]: require("../../assets/fonts/Onest-Bold.ttf"),
     [fonts.dot]: require("../../assets/fonts/Doto-Rond100-SemiBold.ttf"),
   });
   // A font that fails to load falls back to the system font: never block the app on it.

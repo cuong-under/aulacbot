@@ -33,6 +33,7 @@ import {
   Message,
   MessageText,
   Meter,
+  PlaceScene,
   RunMark,
   Steps,
   StepTrack,
@@ -847,16 +848,17 @@ describe("Menu", () => {
 });
 
 describe("Logo, Icon, Meter", () => {
-  test("logo has an accessible name; the mark uses the agent token classes", () => {
+  test("logo has an accessible name and renders the pixel brand mark", () => {
     const { container } = render(
       <>
         <Logo />
         <Logo variant="expanded" />
       </>,
     );
-    expect(body().getByRole("img", { name: "agentes" })).toBeTruthy();
-    expect(body().getByRole("img", { name: "agentes.chat" }).textContent).toBe("agentes.chat");
-    expect(container.querySelector(".ac-logo__body")).not.toBeNull();
+    expect(body().getByRole("img", { name: "AULACBOT" })).toBeTruthy();
+    expect(body().getByRole("img", { name: "AULACBOT.app" }).textContent).toBe("AULACBOT.app");
+    expect(container.querySelector(".ac-logo__word")).not.toBeNull();
+    expect(container.querySelector(".ac-logo__tone-3")).not.toBeNull();
   });
 
   test("every icon renders a stroke-only 20px glyph, decorative unless labelled", () => {
@@ -982,6 +984,15 @@ describe("Logo, Icon, Meter", () => {
     expect(bars(1)).toEqual(["now", "", "", ""]);
     expect(bars(2)).toEqual(["done", "now", "", ""]);
     expect(bars(4)).toEqual(["done", "done", "done", "now"]);
+  });
+});
+
+describe("PlaceScene", () => {
+  test("the cloud carries AULACBOT's mark, separate from the agent avatars", () => {
+    const { container } = render(<PlaceScene place="cloud" computer="windows" />);
+    expect(container.querySelector(".ac-place__mark.ac-logo__mark")).not.toBeNull();
+    expect(container.querySelector(".ac-place__brand .ac-avatar")).toBeNull();
+    expect(container.querySelectorAll(".ac-hosting__agent .ac-avatar")).toHaveLength(3);
   });
 });
 

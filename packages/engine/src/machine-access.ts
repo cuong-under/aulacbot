@@ -353,7 +353,7 @@ export async function requestFolderAccess(
   }
   if (machine.protocol < ACCESS_PROTOCOL) {
     throw new ValidationError(
-      `The computer ${machine.name} can't grant folders yet: its owner should install the agentes app (or update the runner).`,
+      `The computer ${machine.name} can't grant folders yet: its owner should install the AULACBOT app (or update the runner).`,
     );
   }
   const status = await deps.hub.status(machine.id);

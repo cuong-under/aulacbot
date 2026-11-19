@@ -131,7 +131,7 @@ export function createDeviceToolSource(deps: DeviceToolDeps): ToolSource {
       return refusal(pausedMessage(host.name, status.paused.until, status.paused.timezone), "device.paused");
     if (status.protocol < PHONES_PROTOCOL)
       return refusal(
-        `The agentes app on ${host.name} is too old to reach phones. ${runnerUpdateWay(status)}`,
+        `The AULACBOT app on ${host.name} is too old to reach phones. ${runnerUpdateWay(status)}`,
         "device.runner_outdated",
       );
     const stopped = await phoneStoppedBy(ctx.db, ctx.orgId, phone.id, ctx.runId);

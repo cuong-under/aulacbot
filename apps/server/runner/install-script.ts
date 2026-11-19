@@ -810,7 +810,7 @@ forget_testing_chrome() { rm -rf "$BROWSER_DIR"/chrome-* "$BROWSER_DIR"/.chrome-
 # or the launchd agent's label), which would leave that connection's server without this computer.
 not_connected_for_host() {
   if [ -n "$HOST_TOKEN_FILE" ] && [ -f "$RUNNER_HOME/config.json" ] && grep -q '"token"' "$RUNNER_HOME/config.json" 2>/dev/null; then
-    die "this computer is already connected to agentes.chat as a computer, so it can't also be this server's own"
+    die "this computer is already connected to AULACBOT as a computer, so it can't also be this server's own"
   fi
 }
 
@@ -871,7 +871,7 @@ install_user() {
   BUNDLE="$RUNNER_HOME/agentes-runner.mjs"
   LAUNCHER="$RUNNER_HOME/bin/agentes-runner"
   if [ -f "$RUNNER_HOME/config.json" ] && grep -q '"managedBy": *"desktop"' "$RUNNER_HOME/config.json" 2>/dev/null; then
-    die "this computer is connected by the agentes app, so manage it there (or set AGENTES_RUNNER_HOME to another folder)"
+    die "this computer is connected by the AULACBOT app, so manage it there (or set AGENTES_RUNNER_HOME to another folder)"
   fi
   not_connected_for_host
   start_frame
@@ -1143,10 +1143,10 @@ function Install-AgentesRunner {
   $RunnerHome = if ($env:AGENTES_RUNNER_HOME) { $env:AGENTES_RUNNER_HOME } else { Join-Path $env:USERPROFILE '.agentes-runner' }
   $Config = Join-Path $RunnerHome 'config.json'
   if ((Test-Path $Config) -and ((Get-Content -Raw $Config) -match '"managedBy":\\s*"desktop"')) {
-    throw 'This computer is connected by the agentes app, so manage it there.'
+    throw 'This computer is connected by the AULACBOT app, so manage it there.'
   }
   Write-Host ''
-  Write-Host "$([char]0x250C)  agentes.chat: connect this computer" -ForegroundColor White
+  Write-Host "$([char]0x250C)  AULACBOT: connect this computer" -ForegroundColor White
   Gap
   $Runtime = Join-Path $RunnerHome 'runtime'
   $Bin = Join-Path $RunnerHome 'bin'

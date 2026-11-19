@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import Animated, { Easing, FadeIn, FadeInUp, FadeOut } from "react-native-reanimated";
 import { AgentAvatar } from "@/agent/AgentAvatar";
+import { CyberLacAvatar } from "@/agent/CyberLacAvatar";
 import { useOrgMaybe } from "@/providers/org";
 import { WorkspaceSky } from "@/sky/Sky";
 import { Text, useTheme } from "@/ui";
@@ -48,16 +49,12 @@ export function Entering({ org }: { org: string | null }) {
       style={[StyleSheet.absoluteFill, { backgroundColor: c.bg }]}
       accessibilityLiveRegion="polite"
     >
-      {/* This workspace's own sky (its server's: day on agentes.chat, dusk on a team's own), low on the screen: the
+      {/* This workspace's own sky (its server's: day on AULACBOT, dusk on a team's own), low on the screen: the
           horizon the team stands on. It sits on the screen's bottom edge, so it comes in from nothing over its top
           half instead of starting on a hard line, and stays whole down to the edge. */}
       <WorkspaceSky fadeTop={0.55} fade={2} style={styles.sky} />
       <View style={styles.center}>
-        {org ? (
-          <OrgAvatar logo={state?.org?.logo} size={72} />
-        ) : (
-          <AgentAvatar agent={{ color: "sky", eyes: "round", id: "agentes" }} size={88} expression="happy" />
-        )}
+        {org ? <OrgAvatar logo={state?.org?.logo} size={72} /> : <CyberLacAvatar index={1} size={88} />}
         <Text variant="display" style={styles.text}>
           {org ? t("mobile.entering.title", { org }) : t("mobile.entering.titleNew")}
         </Text>

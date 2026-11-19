@@ -16,6 +16,7 @@ would conflict on every sync and is not ours to make.
 | `architecture/` | Repository structure and monorepo architecture, as audited |
 | `development/` | Windows setup, environment variables |
 | `decisions/` | AULACBOT ADRs (ADR-001 architecture, ADR-002 upstream sync) |
+| `branding/` | AULACBOT mark, palette, app icons, social cards and lockups |
 | `upstream/` | Baseline, ownership map, sync procedure, conflict resolution, customization registry, sync history, impact reports |
 
 Start with `project/PROJECT_OVERVIEW.md`, then `upstream/OWNERSHIP_MAP.md`.

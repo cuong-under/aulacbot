@@ -1,6 +1,6 @@
 /*
  * The welcome on a small sky: the onboarding's last step and a newcomer's first #general (ADR 0090). The sky is the
- * same blue in both themes, so its ink is the deep sky ink; buttons on it are the sky's glass.
+ * same jade in both themes, so its ink is the deep sky ink; buttons on it are the sky's glass.
  */
 .welcome-card {
   position: relative;
@@ -8,7 +8,7 @@
   padding: 24px;
   border-radius: 24px;
   overflow: hidden;
-  background: #2b74e6;
+  background: #146353;
   color: var(--sky-ink);
   isolation: isolate;
 }

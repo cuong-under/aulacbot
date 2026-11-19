@@ -43,7 +43,7 @@ test("the start page is one self-contained file: no network, no other file, the 
   // fades into that band's tone (desktop-look.ts's backdrop, 0.81 0.90 1.00).
   expect(html).not.toContain("agentes<b>.chat");
   expect(html).not.toContain("wallpaper.png");
-  expect(html).toContain("linear-gradient(transparent,#cfe6ff)");
+  expect(html).toContain("linear-gradient(transparent,#2fd3b2)");
   // The same details: the file isn't written again. New ones: it is.
   const before = statSync(file).mtimeMs;
   prepareStartPage(dir, evil, data);

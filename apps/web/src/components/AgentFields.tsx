@@ -214,6 +214,19 @@ export function keyOptions(
 
 type LookPatch = Partial<Required<AgentAppearance>>;
 
+/**
+ * AULACBOT's own looks, offered beside the parts: a whole face picked at once, then still editable part by part.
+ * Two name the brand (the jade prime and the gold line), the rest continue it (mint, lotus, forest, silver).
+ */
+export const AULAC_LOOK_PRESETS: readonly { name: string; appearance: Required<AgentAppearance> }[] = [
+  { name: "Âu Lạc Cyber", appearance: { color: "#0f6a59", eyes: "happy", accessory: "headset" } },
+  { name: "Hoàng Kim Lạc", appearance: { color: "#f2bf61", eyes: "round", accessory: "crown" } },
+  { name: "Thạch Anh Xanh", appearance: { color: "#2fd3b2", eyes: "dots", accessory: "antenna" } },
+  { name: "Sen Hồng", appearance: { color: "rose", eyes: "happy", accessory: "flower" } },
+  { name: "Đại Ngàn", appearance: { color: "green", eyes: "wide", accessory: "cap" } },
+  { name: "Bạch Hổ", appearance: { color: "graphite", eyes: "round", accessory: "headphones" } },
+];
+
 type LookPickProps = {
   look: Required<AgentAppearance>;
   onPick: (patch: LookPatch) => void;
@@ -254,11 +267,45 @@ function ChoiceRow({
   );
 }
 
+/**
+ * The whole-face presets: a tap sets every part at once; the part rows below still take over. Their names are
+ * AULACBOT's own (a brand), so they read the same in every language.
+ */
+function PresetChoices({ look, onPick, onPreview, carousel }: LookPickProps & { carousel?: boolean }) {
+  return (
+    <ChoiceRow label="Âu Lạc" carousel={carousel}>
+      {AULAC_LOOK_PRESETS.map((preset) => (
+        <button
+          key={preset.name}
+          type="button"
+          className="newag__opt"
+          aria-pressed={
+            look.color === preset.appearance.color &&
+            look.eyes === preset.appearance.eyes &&
+            look.accessory === preset.appearance.accessory
+          }
+          onClick={() => onPick(preset.appearance)}
+          {...tryOn(onPreview, preset.appearance)}
+        >
+          <span className="newag__stage">
+            <AgentAvatar framed={false} name={preset.name} appearance={preset.appearance} />
+          </span>
+          {preset.name}
+        </button>
+      ))}
+    </ChoiceRow>
+  );
+}
+
 /** Color swatches, eyes and an accessory, each a live symbol. `onPick` gets what changed. */
 export function LookPicker({ look, onPick, onPreview }: LookPickProps) {
   const { t } = useTranslation();
   return (
     <>
+      <div className="newag__look-row">
+        <span className="newag__label">Âu Lạc</span>
+        <PresetChoices look={look} onPick={onPick} onPreview={onPreview} />
+      </div>
       <div className="newag__look-row">
         <span className="newag__label">
           {t("look.color")} <span className="newag__opt-label">{t(`look.colors.${colorKey(look.color)}`)}</span>
@@ -412,6 +459,10 @@ export function LookRows({
   const pick = (patch: LookPatch) => onChange({ ...look, ...patch });
   return (
     <div className="agp-look">
+      <div className="agp-look__row">
+        <span className="newag__label">Âu Lạc</span>
+        <PresetChoices look={look} onPick={pick} carousel />
+      </div>
       <div className="agp-look__row">
         <span className="newag__label">{t("look.color")}</span>
         <ColorChoices look={look} onPick={pick} />

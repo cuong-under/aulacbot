@@ -52,7 +52,7 @@ export interface WorkspaceRow {
 export interface WorkspaceGroup {
   /** The server's origin. */
   server: string;
-  /** "agentes.chat" for the Cloud, its host otherwise (the app's own server is named by what it is instead). */
+  /** "AULACBOT" for the Cloud, its host otherwise (the app's own server is named by what it is instead). */
   name: string;
   cloud: boolean;
   /** The server this page is on, as the account the browser is on: its workspaces open in place. */
@@ -79,13 +79,13 @@ export interface WorkspaceGroup {
   rows: WorkspaceRow[];
 }
 
-/** How a server reads in the menu: agentes.chat for the Cloud, its host otherwise. */
-export const serverLabel = (server: string) => (server === CLOUD_SERVER ? "agentes.chat" : serverHost(server));
+/** How a server reads in the menu: AULACBOT for the Cloud, its host otherwise. */
+export const serverLabel = (server: string) => (server === CLOUD_SERVER ? "AULACBOT" : serverHost(server));
 
 /**
  * Whether the workspace menus offer New workspace, made on the server open now: when the person may make one there (on
- * agentes.chat Cloud, while sign-up is by invitation, only an invitation does, ADR 0078). In the desktop app (`groups`)
- * on agentes.chat, Add workspace makes one instead; its window can't make one on a server of one's own.
+ * AULACBOT Cloud, while sign-up is by invitation, only an invitation does, ADR 0078). In the desktop app (`groups`)
+ * on AULACBOT, Add workspace makes one instead; its window can't make one on a server of one's own.
  */
 export const offersNewWorkspace = (canCreateWorkspace: boolean | undefined, groups: WorkspaceGroup[] | null) =>
   canCreateWorkspace !== false && !groups?.some((g) => g.here && g.cloud && g.desktop);

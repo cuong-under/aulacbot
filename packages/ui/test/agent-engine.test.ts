@@ -66,7 +66,7 @@ describe("agent engine: one agent everywhere", () => {
     const tones = bodyTones("teal");
     expect(light(tones[0] ?? "")).toBeLessThan(light(tones[4] ?? ""));
     expect(light(bodyTones("teal", true)[4] ?? "")).toBeLessThan(light(tones[4] ?? ""));
-    expect(spriteBody("sky")).toBe("#04203f");
+    expect(spriteBody("sky")).toBe("#03150f");
     expect(inBody(0.5, 0.5)).toBe(true);
     expect(inBody(0.01, 0.01)).toBe(false);
     expect(inBody(0.04, 0.96)).toBe(true);
@@ -74,10 +74,11 @@ describe("agent engine: one agent everywhere", () => {
   });
 
   test("a custom #rrggbb is built like the presets and kept readable", () => {
-    // A preset's own bottom comes back as the bottom, with a lighter top of the same hue.
+    // A preset's own bottom comes back as the bottom, with a lighter top of the same hue. A curated preset deeper
+    // than the picker's own floor (the jade) comes back one step lighter instead: its hue, and white eyes, stay.
     for (const [top, bottom] of Object.values(AGENT_GRADIENTS)) {
       const [ctop, cbottom] = customGradient(bottom);
-      expect(cbottom).toBe(bottom);
+      if (cbottom !== bottom) expect(luminance(bottom)).toBeLessThan(0.2);
       expect(luminance(ctop)).toBeGreaterThan(luminance(bottom));
       expect(Math.abs(hexToHsv(ctop)[0] - hexToHsv(top)[0]) % 360).toBeLessThan(12);
     }

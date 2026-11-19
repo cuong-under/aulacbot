@@ -1763,7 +1763,7 @@ export class AccountManager {
       const missing = login.spawnError === "ENOENT";
       const message = missing
         ? `${LABEL[kind]} is not installed on this computer.`
-        : `${LABEL[kind]} didn't show a sign-in link. Update it, or add the account from the agentes app on this computer.`;
+        : `${LABEL[kind]} didn't show a sign-in link. Update it, or add the account from the AULACBOT app on this computer.`;
       this.log(`account sign-in ${loginId.slice(0, 8)} (${kind}) didn't start`);
       // Nobody polls a sign-in that never started.
       this.settle(login, "failed", message);

@@ -713,11 +713,24 @@ body[data-window="popover"] {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
+  background: #04110d;
+  color: #eafff9;
 }
 .dk-choose__sky {
   position: relative;
   min-height: 0;
+  background: #04110d;
+  box-shadow: inset -1px 0 rgba(106, 242, 210, 0.18);
+}
+.dk-choose__sky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(4, 17, 13, 0) 42%, rgba(4, 17, 13, 0.72) 100%),
+    repeating-linear-gradient(0deg, rgba(106, 242, 210, 0.05) 0 1px, transparent 1px 4px);
 }
 .dk-choose__brand {
   position: absolute;
@@ -726,29 +739,90 @@ body[data-window="popover"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 15px;
-  color: #fff;
+  letter-spacing: 0.08em;
+  color: #eafff9;
+  text-shadow: 0 2px 12px rgba(4, 17, 13, 0.8);
+}
+.dk-choose__brand .dk-brandmark {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 10px rgba(106, 242, 210, 0.35));
+}
+.dk-brandmark {
+  display: block;
+  flex: none;
 }
 .dk-choose__main {
+  position: relative;
   min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 32px;
+  padding: 36px 40px;
+  background:
+    linear-gradient(90deg, rgba(106, 242, 210, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(rgba(106, 242, 210, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(120% 90% at 100% 0%, rgba(47, 211, 178, 0.13), transparent 58%),
+    #04110d;
+  color: #eafff9;
+}
+.dk-choose[data-place="here"] .dk-choose__main {
+  background:
+    linear-gradient(90deg, rgba(106, 242, 210, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(rgba(106, 242, 210, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(120% 90% at 100% 0%, rgba(242, 191, 97, 0.11), transparent 58%),
+    #04110d;
+}
+.dk-choose[data-place="box"] .dk-choose__main {
+  background:
+    linear-gradient(90deg, rgba(106, 242, 210, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(rgba(106, 242, 210, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(120% 90% at 100% 0%, rgba(15, 106, 89, 0.42), transparent 58%),
+    #04110d;
+}
+.dk-choose__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #f2bf61;
+}
+.dk-choose__eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: linear-gradient(90deg, #f2bf61, rgba(242, 191, 97, 0));
 }
 /* One line at the window's fixed 720 wide (376 px of text): every language's hosting.title stays under ~355 px. */
 .dk-fr__body .dk-choose__main h1 {
-  font-size: 24px;
-  max-width: none;
+  max-width: 22ch;
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: #eafff9;
+  text-wrap: balance;
 }
 .dk-choose__main .dk-lead {
-  margin-top: 6px;
+  margin-top: 8px;
+  max-width: 46ch;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: rgba(234, 255, 249, 0.62);
 }
 .dk-choose__list {
-  margin-top: 20px;
+  margin-top: 22px;
 }
 .dk-choose__list .ac-optrow__title {
   flex-wrap: wrap;
@@ -756,19 +830,91 @@ body[data-window="popover"] {
 /* "Recomendado" after the Cloud's name: words in the brand's blue, never a pill. */
 .dk-choose__rec {
   margin-left: 8px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--agent);
+  padding: 1px 8px;
+  border: 1px solid rgba(242, 191, 97, 0.38);
+  border-radius: 999px;
+  background: rgba(242, 191, 97, 0.12);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #f2bf61;
+  white-space: nowrap;
+}
+.dk-choose .ac-optrow {
+  min-height: 70px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(10, 61, 51, 0.6), rgba(4, 17, 13, 0.76));
+  box-shadow: inset 0 0 0 1px rgba(106, 242, 210, 0.14);
+  color: #eafff9;
+  backdrop-filter: blur(8px);
+}
+.dk-choose .ac-optrow:hover {
+  background: linear-gradient(135deg, rgba(15, 106, 89, 0.68), rgba(4, 17, 13, 0.84));
+  box-shadow:
+    inset 0 0 0 1px rgba(106, 242, 210, 0.42),
+    0 10px 28px rgba(47, 211, 178, 0.08);
+}
+.dk-choose .ac-optrow[data-state="checked"] {
+  --optrow-chosen: inset 0 0 0 1.5px #6af2d2, 0 0 0 1px rgba(106, 242, 210, 0.16), 0 16px 38px rgba(47, 211, 178, 0.15);
+  background: linear-gradient(135deg, rgba(15, 106, 89, 0.82), rgba(10, 61, 51, 0.58));
+  transform: none;
+}
+html:not([data-pointer]) .dk-choose .ac-optrow:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px rgba(106, 242, 210, 0.5),
+    0 0 0 3px rgba(106, 242, 210, 0.18);
+}
+.dk-choose .ac-optrow__title {
+  font-size: 14.5px;
+  font-weight: 650;
+  color: #eafff9;
+}
+.dk-choose .ac-optrow__desc {
+  margin-top: 3px;
+  font-size: 12.8px;
+  line-height: 1.45;
+  color: rgba(234, 255, 249, 0.58);
 }
 .dk-choose__go {
   width: 100%;
-  height: 48px;
-  margin-top: 20px;
+  height: 50px;
+  margin-top: 22px;
   justify-content: center;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0f6a59 0%, #2fd3b2 58%, #6af2d2 100%);
+  box-shadow:
+    0 12px 32px rgba(47, 211, 178, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  color: #04110d;
+  font-size: 14.5px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  transition:
+    filter 0.16s var(--out),
+    box-shadow 0.16s var(--out),
+    translate 0.16s var(--out);
+}
+.dk-choose__go:hover {
+  background: linear-gradient(135deg, #0f6a59 0%, #2fd3b2 58%, #6af2d2 100%);
+  filter: brightness(1.06);
+  box-shadow:
+    0 14px 38px rgba(47, 211, 178, 0.33),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+.dk-choose__go:active {
+  translate: 0 1px;
+}
+.dk-choose .ac-link {
+  color: #6af2d2;
 }
 .dk-choose__more {
   margin-top: 12px;
   text-align: center;
+  font-size: 12.5px;
+  color: rgba(234, 255, 249, 0.52);
 }
 
 .dk-fr__back {

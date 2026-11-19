@@ -1,4 +1,4 @@
-import { idlePose, mixHex, type Pose } from "@agenteschat/ui/agent/engine";
+import { mixHex } from "@agenteschat/ui/agent/engine";
 
 /**
  * The launch splash: pure pieces the screen and the tests share. No React
@@ -27,12 +27,10 @@ export const LAUNCH = {
   waitingSky: 0.56,
 } as const;
 
-/** The native launch image (assets/images/splash-icon.png, 512 px with the body at 56–456) is 120 pt wide. */
+/** The native launch image (assets/images/splash-icon.png, 512 px with the mark at 56–456) is 120 pt wide. */
 export const NATIVE_IMAGE = 120;
-/** So the agent's body there is this wide, centered on the screen: the splash starts exactly on it. */
+/** So the mark there is this wide, centered on the screen: the splash starts exactly on it. */
 export const LOGO = (NATIVE_IMAGE * 400) / 512;
-/** The agent in the logo (the same as the app icon). */
-export const LOGO_LOOK = { color: "sky", eyes: "round" } as const;
 
 /** The line under the name while it waits: none at first, then why (no network, or just slow). */
 export function waitLine(late: boolean, offline: boolean): "offline" | "slow" | null {
@@ -40,36 +38,11 @@ export function waitLine(late: boolean, offline: boolean): "offline" | "slow" | 
   return offline ? "offline" : "slow";
 }
 
-const ease = (x: number) => {
-  const k = Math.min(1, Math.max(0, x));
-  return k * k * (3 - 2 * k);
-};
-
-/**
- * The logo agent `a` seconds in: it looks down at the sky coming up, back up, smiles, then idles. Without a
- * network, after a while, it closes its eyes; leaving, it smiles.
- */
-export function launchPose(a: number, opts: { offline?: boolean; leaving?: boolean } = {}): Pose {
-  let pose: Pose;
-  if (a < 0.5) pose = { turn: [0, 0.75 * ease(a / 0.3)], blink: a > 0.08 && a < 0.16 };
-  else if (a < 0.9) pose = { turn: [0, 0.75 - 0.95 * ease((a - 0.5) / 0.4)] };
-  else {
-    pose = { ...idlePose(a, 1.4, { every: 4.5, expressions: ["happy"] }), turn: [Math.sin(a * 0.9) * 0.35, -0.2] };
-    if (a < 1.5) pose.expression = "happy";
-  }
-  if (opts.leaving) return { ...pose, expression: "happy", blink: false };
-  if (opts.offline && a > LAUNCH.lineAfter) return { ...pose, expression: "closed" };
-  return pose;
-}
-
-/** The little pixel agents going up through the sky: a column each, their own pace and start. */
+/** The Cyber Lạc squad going up through the sky: one member a column, their own pace and start. */
 export const SPRITES = [
-  { x: 0.08, speed: 0.05, phase: 0.1, blink: 0.4 },
-  { x: 0.25, speed: 0.072, phase: 0.55, blink: 2.1 },
-  { x: 0.41, speed: 0.04, phase: 0.3, blink: 1.2 },
-  { x: 0.58, speed: 0.065, phase: 0.8, blink: 3.0 },
-  { x: 0.74, speed: 0.045, phase: 0.05, blink: 0.9 },
-  { x: 0.9, speed: 0.06, phase: 0.62, blink: 2.6 },
+  { x: 0.02, speed: 0.05, phase: 0.1, blink: 0.4, lac: 0 },
+  { x: 0.36, speed: 0.072, phase: 0.55, blink: 2.1, lac: 1 },
+  { x: 0.7, speed: 0.055, phase: 0.3, blink: 1.2, lac: 2 },
 ] as const;
 
 /**
@@ -91,9 +64,6 @@ export function spriteBlinks(sprite: (typeof SPRITES)[number], t: number): boole
   return (t + sprite.blink) % 3.6 < 0.12;
 }
 
-/** The sprites' body color (deep navy, white eyes: the sky's agents). */
-export const SPRITE_BODY = "#04203f";
-
 /**
  * The sky's tones, deep to light from the screen's background. `dusk`: the sky of a team's own server (lilac, as
  * the workspace's sky at dusk), so the splash that waits on that server says which one fell silent.
@@ -108,17 +78,17 @@ export function launchSkyTones(bg: string, dark: boolean, dusk = false): string[
   if (dark)
     return [
       bg,
-      mixHex(bg, "#2b74e6", 0.14),
-      mixHex(bg, "#2b74e6", 0.3),
-      mixHex(bg, "#2b74e6", 0.48),
-      mixHex(bg, "#4b93ff", 0.66),
+      mixHex(bg, "#0f6a59", 0.14),
+      mixHex(bg, "#0f6a59", 0.3),
+      mixHex(bg, "#14806c", 0.48),
+      mixHex(bg, "#2fd3b2", 0.66),
     ];
   return [
     bg,
-    mixHex(bg, "#a6cfff", 0.22),
-    mixHex(bg, "#a6cfff", 0.48),
-    mixHex(bg, "#a6cfff", 0.78),
-    "#a6cfff",
-    "#78b4ff",
+    mixHex(bg, "#b2f8e7", 0.22),
+    mixHex(bg, "#b2f8e7", 0.48),
+    mixHex(bg, "#b2f8e7", 0.78),
+    "#b2f8e7",
+    "#2fd3b2",
   ];
 }

@@ -237,7 +237,7 @@ export function systemdUnit(launch: Launch, args?: readonly string[]): string {
   return systemdUnitText(
     runnerService(launch, {
       // `host …`: the server's own computer in simple mode (ADR 0153 §5).
-      description: `agentes.chat runner (${args?.[0] === "host" ? "this server's computer" : "connected computer"})`,
+      description: `AULACBOT runner (${args?.[0] === "host" ? "this server's computer" : "connected computer"})`,
       path: launch.path ?? process.env.PATH ?? "/usr/local/bin:/usr/bin:/bin",
       manager: "systemd",
       ...(args ? { args } : {}),
@@ -250,7 +250,7 @@ export function systemdUnit(launch: Launch, args?: readonly string[]): string {
 export function systemdSystemUnit(launch: Launch, args?: readonly string[]): string {
   return systemdUnitText(
     runnerService(launch, {
-      description: "agentes.chat runner (each agent as its own user)",
+      description: "AULACBOT runner (each agent as its own user)",
       path: SYSTEM_PATH,
       manager: "systemd",
       ...(args ? { args } : {}),
@@ -263,7 +263,7 @@ export function systemdSystemUnit(launch: Launch, args?: readonly string[]): str
 export function launchdPlist(launch: Launch, args: readonly string[] = ["start"]): string {
   return launchdPlistText(
     runnerService(launch, {
-      description: "agentes.chat runner (connected computer)",
+      description: "AULACBOT runner (connected computer)",
       path: process.env.PATH || "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
       manager: "launchd",
       args,
@@ -460,7 +460,7 @@ export function installService(io: ServiceIo): number {
   if (process.platform === "darwin") {
     mkdirSync(launch.home, { recursive: true, mode: 0o700 });
     const agent = runnerService(launch, {
-      description: "agentes.chat runner (connected computer)",
+      description: "AULACBOT runner (connected computer)",
       path: process.env.PATH || "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
       manager: "launchd",
       ...(io.args ? { args: io.args } : {}),

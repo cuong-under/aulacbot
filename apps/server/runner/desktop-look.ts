@@ -34,7 +34,7 @@ import { xmlEscape, xmlUnescape } from "./xml";
  */
 
 /** Bumped whenever what `lookFiles` writes changes. */
-export const LOOK_VERSION = 7;
+export const LOOK_VERSION = 8;
 
 /** Orchis's light theme (GTK and xfwm4), else GTK's Adwaita and xfwm4's Default. */
 export type LookTheme = "orchis" | "stock";
@@ -391,9 +391,9 @@ const terminal = (home: string, bash: string | null) => `<?xml version="1.0" enc
   <property name="color-background" type="string" value="#1c1c1b"/>
   <property name="color-foreground" type="string" value="#efefec"/>
   <property name="color-cursor-use-default" type="bool" value="false"/>
-  <property name="color-cursor" type="string" value="#5aa8ff"/>
+  <property name="color-cursor" type="string" value="#6af2d2"/>
   <property name="color-bold-use-default" type="bool" value="true"/>
-  <property name="color-palette" type="string" value="#242423;#f08a80;#5fc48a;#e0a84a;#5aa8ff;#c9a2f5;#6cc7d6;#d6d6d2;#71716c;#f5a69e;#7fd3a2;#ebbd6a;#8cc3ff;#d9bdfa;#92d8e3;#efefec"/>
+  <property name="color-palette" type="string" value="#242423;#f08a80;#5fc48a;#e0a84a;#6af2d2;#c9a2f5;#6cc7d6;#d6d6d2;#71716c;#f5a69e;#7fd3a2;#ebbd6a;#2fd3b2;#d9bdfa;#92d8e3;#efefec"/>
 ${
   bash
     ? `  <property name="run-custom-command" type="bool" value="true"/>

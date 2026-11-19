@@ -108,7 +108,7 @@ const ConnectStart = z.union([
   z.object({
     status: z.literal("needs_key"),
     reason: z.literal("not_approved").optional().openapi({
-      description: "It has OAuth but only lets in apps it approved, and agentes.chat isn't one yet.",
+      description: "It has OAuth but only lets in apps it approved, and AULACBOT isn't one yet.",
     }),
     detail: z.string().optional().openapi({
       description:
@@ -214,7 +214,7 @@ export function customConnectorRoutes(deps: AppDeps) {
       description: z.string(),
       icon: z.string(),
       serverUrl: z.string(),
-      soon: z.boolean().openapi({ description: "The vendor hasn't approved agentes.chat yet: it can't be connected." }),
+      soon: z.boolean().openapi({ description: "The vendor hasn't approved AULACBOT yet: it can't be connected." }),
     })
     .openapi("McpPreset");
   app.openapi(
@@ -262,7 +262,7 @@ export function customConnectorRoutes(deps: AppDeps) {
       if (!preset) throw new NotFoundError("Unknown connector");
       const way = connectorListing({ oauthApps: custom.oauthApps ?? {}, composio }).find((e) => e.id === preset.id);
       if (way?.soon) {
-        throw new ValidationError(`${preset.label} hasn't approved agentes.chat yet`, "connector.not_approved", {
+        throw new ValidationError(`${preset.label} hasn't approved AULACBOT yet`, "connector.not_approved", {
           connector: preset.id,
         });
       }

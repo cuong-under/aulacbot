@@ -1,0 +1,11 @@
+{
+  "usageViews": {
+    "models": {
+      "exhausted": "Hết hạn mức · đặt lại {{when}}",
+      "exhaustedUnknown": "Hết hạn mức",
+      "off": "Đã tắt",
+      "region": "Cần khu vực Global",
+      "inactive": "Không có gói đang hoạt động"
+    }
+  }
+}

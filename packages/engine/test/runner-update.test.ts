@@ -43,7 +43,7 @@ describe("a computer too old for something says how it gets its update", () => {
 
   test("a connected computer: its owner runs the update command", () => {
     expect(said(claudeCodeAvailability(status({ kind: "connected" })))).toContain(
-      "Its owner updates the agentes app there, or runs `agentes-runner update`.",
+      "Its owner updates the AULACBOT app there, or runs `agentes-runner update`.",
     );
     expect(new RunnerOutdatedError("MacBook", false, null).message).toContain("`agentes-runner update`");
   });

@@ -1,13 +1,16 @@
 import type { SkyFrame, SkyOptions } from "./engine";
 
-/** Where a workspace lives: on agentes.chat Cloud, or on a server of one's own. */
+/** Where a workspace lives: on AULACBOT Cloud, or on a server of one's own. */
 export type Hosting = "cloud" | "own";
 
-/** The team drawn over the choice of where a workspace lives: three looks, fixed, any workspace's, not the person's. */
+/**
+ * The team drawn over the choice of where a workspace lives: three looks, fixed, any workspace's, not the person's.
+ * AULACBOT's own cast, in the Cyber Lạc tones: gold for the royal line, jade for the prime, mint for the signal.
+ */
 export const HOSTING_CAST = [
-  { name: "a", look: { color: "amber", eyes: "round" } },
-  { name: "b", look: { color: "sky", eyes: "round" } },
-  { name: "c", look: { color: "green", eyes: "round" } },
+  { name: "a", look: { color: "#f2bf61", eyes: "round", accessory: "crown" } },
+  { name: "b", look: { color: "#0f6a59", eyes: "happy", accessory: "headset" } },
+  { name: "c", look: { color: "#2fd3b2", eyes: "dots", accessory: "antenna" } },
 ] as const;
 
 import { mix, parseColor, pixelOf, TEAM_NIGHT } from "./math";
@@ -18,9 +21,9 @@ import { mix, parseColor, pixelOf, TEAM_NIGHT } from "./math";
  * screen paint it.
  */
 
-const DAY = ["#2468dc", "#2b74e6", "#3f88f5", "#5a9dff", "#78b4ff", "#a6cfff", "#cfe6ff", "#eef7ff"];
-/** The day on a dark page: the same blues, deeper, so the sky doesn't glare beside dark surfaces. */
-const DAY_DARK = ["#0b2459", "#0e2d6c", "#123881", "#174496", "#1d51aa", "#2660bd", "#3170cd", "#4183dc"];
+const DAY = ["#0a3d33", "#0f6a59", "#14806c", "#1a9a83", "#2fd3b2", "#6af2d2", "#b2f8e7", "#e8fcf7"];
+/** The day on a dark page: the same jades, deeper, so the sky doesn't glare beside dark surfaces. */
+const DAY_DARK = ["#031410", "#06231c", "#0a332b", "#0f4a3e", "#146353", "#1d806c", "#27a087", "#2fd3b2"];
 
 const STAR = pixelOf("#eaf1ff");
 const MOON = pixelOf("#f3f6ff");
@@ -92,7 +95,7 @@ const isDark = (surface: string) => {
   return (r + g + b) / 3 < 110;
 };
 
-/** The team sky's tones at `day` (0 night, 1 day) over `surface` (deeper day blues on a dark one). DOM-free. */
+/** The team sky's tones at `day` (0 night, 1 day) over `surface` (deeper day tones on a dark one). DOM-free. */
 export const teamTones = (day: number, surface: string) =>
   TEAM_NIGHT.map((n, i) => mix(n, (isDark(surface) ? DAY_DARK : DAY)[i] ?? n, day));
 

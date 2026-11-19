@@ -10,11 +10,11 @@ export const runnerUpdateWay = (
     ? "It updates by itself, so try again later."
     : computer?.kind === "host" || computer?.executors?.mode === "system"
       ? "Its owner updates it by running the install command again, as root."
-      : "Its owner updates the agentes app there, or runs `agentes-runner update`.";
+      : "Its owner updates the AULACBOT app there, or runs `agentes-runner update`.";
 
 /**
  * Where the person at a computer changes what agents may use there, said to the agent that tells them: the
- * agentes.chat app's Preferences (`pane`) on a Mac or a PC, else the runner's `commands` (a server may have no app).
+ * AULACBOT app's Preferences (`pane`) on a Mac or a PC, else the runner's `commands` (a server may have no app).
  */
 export const personAtComputerWay = (
   computer: { os: string; executors?: { mode?: string } | null },
@@ -22,5 +22,5 @@ export const personAtComputerWay = (
   commands: string[],
 ) =>
   computer.os === "darwin" || computer.os === "windows"
-    ? `in the agentes.chat app there (Preferences › ${pane})`
+    ? `in the AULACBOT app there (Preferences › ${pane})`
     : `with ${commands.map((c) => `\`${computer.executors?.mode === "system" ? "sudo " : ""}agentes-runner ${c}\``).join(" and ")} there`;

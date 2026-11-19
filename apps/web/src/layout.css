@@ -7741,13 +7741,13 @@ html:not([data-pointer]) .run-continue:focus-visible {
 }
 
 /* ---------- The pixel sky in the app ----------
- * The sky is the agents' world: the same blue in both themes, ink on it is
- * the deep sky ink. It shows only where the subject is the agents. */
+ * The sky is the agents' world: the same jade in both themes, ink on it is
+ * the deep jade ink. It shows only where the subject is the agents. */
 :root {
-  --sky-ink: #04203f;
-  --sky-ink2: rgba(4, 32, 63, 0.78);
-  --sky-glass: rgba(241, 248, 255, 0.74);
-  --sky-line: rgba(4, 32, 63, 0.12);
+  --sky-ink: #04110d;
+  --sky-ink2: rgba(4, 17, 13, 0.78);
+  --sky-glass: rgba(234, 255, 249, 0.74);
+  --sky-line: rgba(4, 17, 13, 0.12);
 }
 /* A label on a sky (a name, a state): the kit's chip in the sky's glass and ink, readable on every tone of the sky's
    dither in both themes. */
@@ -7767,7 +7767,7 @@ html:not([data-pointer]) .run-continue:focus-visible {
   margin: 12px 16px 0;
   border-radius: 20px;
   overflow: hidden;
-  background: #2b74e6;
+  background: #146353;
   color: var(--sky-ink);
 }
 .sky-welcome__text {
@@ -7877,7 +7877,7 @@ html:not([data-pointer]) .sky-welcome__close:focus-visible {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: #0a3f9c;
+  background: #04110d;
 }
 .sky-boot__in {
   position: absolute;

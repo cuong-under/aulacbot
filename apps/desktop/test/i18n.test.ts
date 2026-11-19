@@ -214,7 +214,9 @@ describe("desktop strings", () => {
 
   test("picks the Mac's language", () => {
     expect(pickLocale(["pt-PT"])).toBe("pt-BR");
-    expect(pickLocale(["en-GB", "pt-BR"])).toBe("en");
-    expect(pickLocale(["xx-XX"])).toBe("en");
+    expect(pickLocale(["en-GB", "pt-BR"])).toBe("pt-BR");
+    expect(pickLocale(["en-GB"])).toBe("vi");
+    expect(pickLocale(["xx-XX"])).toBe("vi");
+    expect(pickLocale([])).toBe("vi");
   });
 });

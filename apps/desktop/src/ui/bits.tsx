@@ -71,7 +71,7 @@ export function CommandCopy({ command, inline = false }: { command: string; inli
 }
 
 /**
- * A help page on agentes.chat, in the app's language, as a help line's link: the browser opens it with only the
+ * A help page on AULACBOT, in the app's language, as a help line's link: the browser opens it with only the
  * page, the language and the section, so the site never learns which server this app opens.
  */
 export function HelpLink({ slug, section, children }: { slug: HelpSlug; section?: string; children: ReactNode }) {
@@ -136,9 +136,10 @@ export function AgentFace({
   );
 }
 
-/** The app's own mark (the sky agent). */
-export function BrandFace({ size = "sm", state }: { size?: "xs" | "sm" | "md" | "lg" | "xl"; state?: AgentState }) {
-  return <Avatar kind="agent" name="agentes" size={size} appearance={{ color: "sky" }} state={state} />;
+/** The app's own mark. */
+export function BrandFace({ size = "sm" }: { size?: "xs" | "sm" | "md" | "lg" | "xl" }) {
+  const sizes = { xs: 18, sm: 24, md: 36, lg: 56, xl: 112 } as const;
+  return <LogoMark size={sizes[size]} className="dk-brandmark" />;
 }
 
 /** This Mac's portrait: the screen lit, dimmed (paused) or dark (offline). */

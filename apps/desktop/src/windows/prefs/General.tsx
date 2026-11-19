@@ -94,7 +94,7 @@ export function General() {
     }
   };
 
-  // Open at login has an ⓘ only where it changes something: agentes.chat running here, or agents working here.
+  // Open at login has an ⓘ only where it changes something: AULACBOT running here, or agents working here.
   const launchHint = local.run || works;
   const launchRow = (
     <PrefRow

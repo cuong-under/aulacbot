@@ -69,7 +69,7 @@ export function machineGitUnavailable(status: MachineStatus | null, orgId: strin
   if (status.paused) return new MachinePausedError(status.name, status.paused.until, status.paused.timezone);
   if (status.protocol < GIT_PROTOCOL) {
     return new Error(
-      `The agentes app (runner) on the computer ${status.name} is too old to clone repositories. ${runnerUpdateWay(status)}`,
+      `The AULACBOT app (runner) on the computer ${status.name} is too old to clone repositories. ${runnerUpdateWay(status)}`,
     );
   }
   return null;
@@ -117,7 +117,7 @@ export async function machineGitSetup(
   return {
     proxy: { base: gitProxyBase(deps.git.publicUrl, orgId, connection.id), token },
     author: bot
-      ? { name: `${agent.name} (agentes.chat)`, email: bot.email }
+      ? { name: `${agent.name} (AULACBOT)`, email: bot.email }
       : { name: `${agent.name} (agentes)`, email: agentCommitEmail(deps.git.publicUrl, agent.handle) },
     agent: scope ?? { id: agent.id, handle: agent.handle, name: agent.name },
   };

@@ -4,15 +4,15 @@ import type { HelpDocument } from "./types";
 /** The help pages in nl: a page not here shows in English. */
 export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
   "run-on-your-computer": {
-    title: "agentes.chat op je eigen computer draaien",
+    title: "AULACBOT op je eigen computer draaien",
     summary:
-      "De agentes.chat-app kan ook agentes.chat zelf draaien, op een Mac, een pc of een Linux-computer, voor jou of een klein team.",
+      "De AULACBOT-app kan ook AULACBOT zelf draaien, op een Mac, een pc of een Linux-computer, voor jou of een klein team.",
     sections: [
       {
         id: "download",
         heading: "Download de app",
         blocks: [
-          "[Download de agentes.chat-app](/download) voor je Mac, pc of Linux-computer en open hem. Kies **Op je eigen server**, druk op **Verder met mijn server** en dan op **agentes.chat draaien op deze computer**.",
+          "[Download de AULACBOT-app](/download) voor je Mac, pc of Linux-computer en open hem. Kies **Op je eigen server**, druk op **Verder met mijn server** en dan op **AULACBOT draaien op deze computer**.",
         ],
       },
       {
@@ -20,14 +20,14 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         heading: "Hoe het draait",
         blocks: [
           "Het draait in de app, met een eigen ingebouwde database, en bewaart alles in één map op deze computer: `.agentes` in je thuismap. Verder hoef je niets te installeren: geen Docker, geen database om in te richten.",
-          "Het start met de app en stopt als je de app afsluit. Afsluiten vraagt eerst om bevestiging, want niemand kan agentes.chat gebruiken tot de app weer opent. Wil je het even stoppen zonder de app af te sluiten, klik dan op het agentes.chat-icoon bij de klok en kies **Stoppen** in het **⋯**-menu van de kaart.",
+          "Het start met de app en stopt als je de app afsluit. Afsluiten vraagt eerst om bevestiging, want niemand kan AULACBOT gebruiken tot de app weer opent. Wil je het even stoppen zonder de app af te sluiten, klik dan op het AULACBOT-icoon bij de klok en kies **Stoppen** in het **⋯**-menu van de kaart.",
         ],
       },
       {
         id: "who",
         heading: "Voor wie het is",
         blocks: [
-          "Voor jou of een klein team. Een Mac mini, een reserve-pc of een laptop die aan blijft, is een goed thuis: stel hem in zoals in [Aan laten staan](#keep-on). Op een Mac of een pc draai je agentes.chat met de app, zonder Docker.",
+          "Voor jou of een klein team. Een Mac mini, een reserve-pc of een laptop die aan blijft, is een goed thuis: stel hem in zoals in [Aan laten staan](#keep-on). Op een Mac of een pc draai je AULACBOT met de app, zonder Docker.",
           "Voor een groter team, zie [Welke opzet je kiest](/help/install-on-a-server#choose). Je gegevens kunnen later naar een server verhuizen.",
         ],
       },
@@ -58,7 +58,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "another-workspace",
         heading: "Leen hem ook uit aan een andere werkruimte",
         blocks: [
-          "De werkruimtes van de server die je hier draait, gebruiken deze computer vanzelf. Wil je dat een werkruimte ergens anders hem ook gebruikt, zoals een op agentes.chat Cloud, druk dan op **Werkruimte toevoegen…** onderaan de eerste kaart in **Voorkeuren\u00a0›\u00a0Algemeen**, of op **Een server toevoegen…** in **Voorkeuren\u00a0›\u00a0Servers**. Meld je aan bij die werkruimte en druk op **Toestaan** als de app het vraagt.",
+          "De werkruimtes van de server die je hier draait, gebruiken deze computer vanzelf. Wil je dat een werkruimte ergens anders hem ook gebruikt, zoals een op AULACBOT Cloud, druk dan op **Werkruimte toevoegen…** onderaan de eerste kaart in **Voorkeuren\u00a0›\u00a0Algemeen**, of op **Een server toevoegen…** in **Voorkeuren\u00a0›\u00a0Servers**. Meld je aan bij die werkruimte en druk op **Toestaan** als de app het vraagt.",
           "Elke werkruimte krijgt hier eigen agents en mappen. Ook daar staan **Opdrachten** standaard aan. Zet ze uit in de vraag van de app voordat je op **Toestaan** drukt, of later in **Voorkeuren\u00a0›\u00a0Tools**, waar elke werkruimte een eigen schakelaar heeft en de app het eerst vraagt voordat er een weer aangaat.",
         ],
       },
@@ -66,8 +66,8 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "reach",
         heading: "Vanaf je telefoon en voor je team",
         blocks: [
-          "**Bereik het vanaf je telefoon en je teamgenoten** zet agentes.chat op Tailscale, een privénetwerk voor je apparaten: je telefoon en de mensen die je uitnodigt doen mee, en verder kan niemand agentes.chat bereiken. Tailscale is gratis: https://tailscale.com/download. Staat het uit, dan werkt agentes.chat alleen op deze computer.",
-          "Deelt deze computer al iets anders op poort 443 van Tailscale, dan neemt agentes.chat 8443, en eindigt het adres op `:8443`.",
+          "**Bereik het vanaf je telefoon en je teamgenoten** zet AULACBOT op Tailscale, een privénetwerk voor je apparaten: je telefoon en de mensen die je uitnodigt doen mee, en verder kan niemand AULACBOT bereiken. Tailscale is gratis: https://tailscale.com/download. Staat het uit, dan werkt AULACBOT alleen op deze computer.",
+          "Deelt deze computer al iets anders op poort 443 van Tailscale, dan neemt AULACBOT 8443, en eindigt het adres op `:8443`.",
         ],
       },
       {
@@ -89,7 +89,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         heading: "Back-ups",
         blocks: [
           "Met **Elke nacht een back-up maken** aan (app 0.8.1 en nieuwer), in **Voorkeuren\u00a0›\u00a0Servers**, bewaart de app elke nacht om 3:00 de database, de bestanden en `.env` in `.agentes/backups`, in je thuismap. Een computer die toen sliep, maakt de back-up zodra hij wakker is. **Nu een back-up maken** doet hetzelfde meteen. Elke back-up stopt de server even, en de twee nieuwste blijven bewaard.",
-          "**Kopiëren naar** zet elke nieuwe back-up ook in een map die je kiest, zoals een USB-stick of iCloud Drive, waar de twee nieuwste blijven. Ze bevatten je sleutels: houd ze privé. **Terugzetten…** zet agentes.chat terug naar een back-up: berichten, bestanden en instellingen. Het stopt een minuut, en wat er eerst stond, blijft bewaard in de back-upmap.",
+          "**Kopiëren naar** zet elke nieuwe back-up ook in een map die je kiest, zoals een USB-stick of iCloud Drive, waar de twee nieuwste blijven. Ze bevatten je sleutels: houd ze privé. **Terugzetten…** zet AULACBOT terug naar een back-up: berichten, bestanden en instellingen. Het stopt een minuut, en wat er eerst stond, blijft bewaard in de back-upmap.",
         ],
       },
       {
@@ -109,11 +109,11 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
             ],
           },
           {
-            code: "BUN_BE_BUN=1 /Applications/agentes.chat.app/Contents/MacOS/agentes-runner \\\n  ~/.agentes/app/current/server/native.js db dump --data ~/.agentes --out agentes.sql",
+            code: "BUN_BE_BUN=1 /Applications/AULACBOT.app/Contents/MacOS/agentes-runner \\\n  ~/.agentes/app/current/server/native.js db dump --data ~/.agentes --out agentes.sql",
           },
           {
             list: [
-              "[Installeer agentes.chat op een server](/help/install-on-a-server), maar start het nog niet. Zet in de `.env` ervan het `AGENTES_SECRET` uit `~/.agentes/.env` en start dan alleen de database: `docker compose up -d postgres`.",
+              "[Installeer AULACBOT op een server](/help/install-on-a-server), maar start het nog niet. Zet in de `.env` ervan het `AGENTES_SECRET` uit `~/.agentes/.env` en start dan alleen de database: `docker compose up -d postgres`.",
               "Laad de dump: `docker compose exec -T postgres psql -U agentes -d agentes -v ON_ERROR_STOP=1 < agentes.sql`.",
               "Start het met `docker compose up -d`, kopieer `~/.agentes/files` erin zoals de volledige gids laat zien, en log in zoals eerst.",
             ],
@@ -137,14 +137,14 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "own",
         heading: "Je eigen computers en telefoons",
         blocks: [
-          "Agents kunnen ook werken op computers en telefoons die je zelf meebrengt: een Mac of een pc met de agentes.chat-app, een server, een Android-telefoon of een iPhone. Zie [Je computers en telefoons](/help/computers).",
+          "Agents kunnen ook werken op computers en telefoons die je zelf meebrengt: een Mac of een pc met de AULACBOT-app, een server, een Android-telefoon of een iPhone. Zie [Je computers en telefoons](/help/computers).",
         ],
       },
       {
         id: "plans",
         heading: "Je AI-abonnementen",
         blocks: [
-          "Je agents kunnen denken met je eigen AI-abonnement, zoals Claude, ChatGPT, GLM of Kimi, ingelogd op deze computer: geen API-sleutel nodig. Het account blijft op deze computer, en agentes.chat ziet nooit het wachtwoord of de toegang.",
+          "Je agents kunnen denken met je eigen AI-abonnement, zoals Claude, ChatGPT, GLM of Kimi, ingelogd op deze computer: geen API-sleutel nodig. Het account blijft op deze computer, en AULACBOT ziet nooit het wachtwoord of de toegang.",
           "De abonnementen AI Pro en Ultra van Google werken hier niet: de voorwaarden van Google staan ze niet toe in andere producten. Een Gemini-API-sleutel wel.",
         ],
       },
@@ -163,11 +163,11 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
   computers: {
     title: "Je computers en telefoons",
     summary:
-      "Breng een Mac, een pc, een Linux-computer, een server of een telefoon mee, en je agents werken erop. Op agentes.chat Cloud net zo goed als op een eigen server.",
+      "Breng een Mac, een pc, een Linux-computer, een server of een telefoon mee, en je agents werken erop. Op AULACBOT Cloud net zo goed als op een eigen server.",
     sections: [
       {
         id: "app",
-        heading: "Vanuit de agentes.chat-app",
+        heading: "Vanuit de AULACBOT-app",
         blocks: [
           "Installeer de app op de computer, open hem en meld je aan bij je werkruimte. Hij vraagt **Agents van <workspace> deze Mac laten gebruiken?** (deze pc op Windows, deze computer op Linux). Kies wie hem mag gebruiken en druk op **Toestaan**. Dat is alles.",
           "Al aangemeld? Open **Voorkeuren\u00a0›\u00a0Algemeen** en druk op **Toestaan** in de rij van de werkruimte, in de eerste kaart. Staat hij er niet? Druk op **Werkruimte toevoegen…** onderaan die kaart en meld je aan.",
@@ -206,14 +206,14 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "open",
         heading: "Zolang de app open is",
         blocks: [
-          "Agents werken alleen op een computer zolang de app daar draait en de computer wakker is. Als de app het vraagt, laat **Klaar houden: agentes.chat openen bij inloggen** aangevinkt. Een computer die uit staat of slaapt, toont **Offline**, en agents wachten tot hij terug is.",
+          "Agents werken alleen op een computer zolang de app daar draait en de computer wakker is. Als de app het vraagt, laat **Klaar houden: AULACBOT openen bij inloggen** aangevinkt. Een computer die uit staat of slaapt, toont **Offline**, en agents wachten tot hij terug is.",
         ],
       },
       {
         id: "pausing",
         heading: "Pauzeren en loskoppelen",
         blocks: [
-          "Op de computer pauzeert het agentes.chat-icoon bij de klok de agents van alle werkruimtes, of van één. In **Voorkeuren\u00a0›\u00a0Algemeen** pauzeert de schakelaar van elke werkruimte alleen die ene, en **Verlaten**, in het **⋯**-menu ervan, koppelt hem los. Tijdens een pauze start er niets nieuws, en wat al liep, maakt het af. Na het loskoppelen blijven de mappen van de agents op de schijf staan.",
+          "Op de computer pauzeert het AULACBOT-icoon bij de klok de agents van alle werkruimtes, of van één. In **Voorkeuren\u00a0›\u00a0Algemeen** pauzeert de schakelaar van elke werkruimte alleen die ene, en **Verlaten**, in het **⋯**-menu ervan, koppelt hem los. Tijdens een pauze start er niets nieuws, en wat al liep, maakt het af. Na het loskoppelen blijven de mappen van de agents op de schijf staan.",
           "Op de website koppel je een apparaat los met **Verwijderen** op de pagina ervan.",
         ],
       },
@@ -221,7 +221,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "organizations",
         heading: "Meerdere werkruimtes, één computer",
         blocks: [
-          "Meld je in dezelfde app aan bij elke werkruimte en druk voor elk op **Toestaan**. Werkruimtes op agentes.chat Cloud en op je eigen servers kunnen een computer delen (app 0.6.1 en nieuwer). Elk heeft er eigen agents en mappen, en als je er een loskoppelt, blijven de andere ongemoeid.",
+          "Meld je in dezelfde app aan bij elke werkruimte en druk voor elk op **Toestaan**. Werkruimtes op AULACBOT Cloud en op je eigen servers kunnen een computer delen (app 0.6.1 en nieuwer). Elk heeft er eigen agents en mappen, en als je er een loskoppelt, blijven de andere ongemoeid.",
           "Een server die de app op deze computer draait, is al gekoppeld en heeft niets nodig. Om die computer ook uit te lenen aan een werkruimte ergens anders, zie [Leen hem ook uit aan een andere werkruimte](/help/run-on-your-computer#another-workspace).",
           "Gebruik je de app op een laptop alleen als venster op je werkruimte? Als hij vraagt of agents de laptop mogen gebruiken, houdt **Niet nu** het bij een gewoon venster.",
           "Een server die met de terminalregel is verbonden, werkt voor één workspace. Verbind je hem vanuit een andere workspace, dan gaat de server naar die workspace en bereikt de eerste hem niet meer. Gebruik de app voor meerdere workspaces op één computer.",
@@ -252,10 +252,10 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
               "je bestanden en logins",
               "de mappen van andere agents, ook die van andere werkruimtes, en de logins die hun browsers bewaren",
               "het token dat deze computer koppelt",
-              "op een computer die ook agentes.chat draait, de database en sleutels ervan in `.agentes`",
+              "op een computer die ook AULACBOT draait, de database en sleutels ervan in `.agentes`",
             ],
           },
-          "agentes.chat weigert opdrachten die zijn sleutels, tokens en aanmeldingen noemen, maar dat is een regel, geen muur. **Opdrachten** staan standaard aan. Zet ze uit in de vraag van de app voordat je op **Toestaan** drukt, of later in **Voorkeuren\u00a0›\u00a0Tools**, waar elke werkruimte een eigen schakelaar heeft (app 0.8.1 en nieuwer) en de app het eerst vraagt voordat er een weer aangaat. Claude Code en Codex voeren hun eigen opdrachten uit in de map van de agent, volgens hun eigen regels, ook als Opdrachten uit staan.",
+          "AULACBOT weigert opdrachten die zijn sleutels, tokens en aanmeldingen noemen, maar dat is een regel, geen muur. **Opdrachten** staan standaard aan. Zet ze uit in de vraag van de app voordat je op **Toestaan** drukt, of later in **Voorkeuren\u00a0›\u00a0Tools**, waar elke werkruimte een eigen schakelaar heeft (app 0.8.1 en nieuwer) en de app het eerst vraagt voordat er een weer aangaat. Claude Code en Codex voeren hun eigen opdrachten uit in de map van de agent, volgens hun eigen regels, ook als Opdrachten uit staan.",
           "Voor een echte muur gebruik je een Linux-server. Op Debian 13, geïnstalleerd met `--system`, is elke agent een eigen gebruiker. Op Ubuntu delen agents één gebruiker, `agentes`: ze zien elkaars mappen, niet die van jou of van de server. Of geef de agents een eigen computer.",
         ],
       },
@@ -264,7 +264,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
   import: {
     title: "Je agents meenemen",
     summary:
-      "Neem agents mee uit een andere app, of uit een andere agentes.chat-werkruimte, met hun instructies, skills, routines en geheugen.",
+      "Neem agents mee uit een andere app, of uit een andere AULACBOT-werkruimte, met hun instructies, skills, routines en geheugen.",
     sections: [
       {
         id: "comes",
@@ -450,7 +450,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
   },
   "who-answers": {
     title: "Wie een bericht beantwoordt",
-    summary: "Een vermelding kiest de agent. Zonder vermelding kiest agentes.chat voor je, in deze volgorde.",
+    summary: "Een vermelding kiest de agent. Zonder vermelding kiest AULACBOT voor je, in deze volgorde.",
     sections: [
       {
         id: "order",
@@ -472,7 +472,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "jev",
         heading: "Jev",
         blocks: [
-          "Als agentes.chat je werkruimte host, zit Jev erbij inbegrepen. Op een server die je zelf beheert, gebruikt hij de TypeSafe-sleutel van de eigenaar, ongeveer US$ 0,0001 per bericht: [Jev instellen](/help/jev#setup).",
+          "Als AULACBOT je werkruimte host, zit Jev erbij inbegrepen. Op een server die je zelf beheert, gebruikt hij de TypeSafe-sleutel van de eigenaar, ongeveer US$ 0,0001 per bericht: [Jev instellen](/help/jev#setup).",
         ],
       },
       {
@@ -531,7 +531,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
               "Open https://console.typesafe.ai en log in met Google of je e-mailadres. Een nieuw account maak je op dezelfde manier.",
               "Zet tegoed in de console. Jev is prepaid.",
               "Open https://console.typesafe.ai/keys, maak een sleutel aan en kopieer hem meteen.",
-              "Open in agentes.chat **Instellingen › AI en gebruik** en plak hem onder **Jev**. Alleen degene die deze server heeft ingericht, ziet hem.",
+              "Open in AULACBOT **Instellingen › AI en gebruik** en plak hem onder **Jev**. Alleen degene die deze server heeft ingericht, ziet hem.",
             ],
           },
           "Op een server die je met Docker draait, kun je de sleutel ook in `.env` zetten als `TYPESAFE_API_KEY`. Die gaat voor op de sleutel in Instellingen.",
@@ -589,14 +589,14 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
   "apps-de-ia": {
     title: "AI-apps",
     summary:
-      "Vraag de agents van agentes.chat om taken vanuit Claude, Cursor of een andere MCP-app, zonder die te verlaten, en krijg het antwoord daar.",
+      "Vraag de agents van AULACBOT om taken vanuit Claude, Cursor of een andere MCP-app, zonder die te verlaten, en krijg het antwoord daar.",
     sections: [
       {
         id: "what",
         heading: "Hoe het werkt",
         blocks: [
-          "agentes.chat is een MCP-server. Je plakt het adres in je AI-app, logt in met je account en kiest een werkruimte. Vanaf dan kan de app agents en kanalen tonen, namens jou een taak naar een agent sturen, op het antwoord wachten en recente taken lezen.",
-          "Bijvoorbeeld midden in een scène in Unity of Blender vraag je Claude: ‘Vraag de marketingagent om een tekstje voor de lancering’. Het bericht verschijnt in agentes.chat als het jouwe, gemarkeerd met **via Claude**, en het antwoord van de agent komt terug in Claude.",
+          "AULACBOT is een MCP-server. Je plakt het adres in je AI-app, logt in met je account en kiest een werkruimte. Vanaf dan kan de app agents en kanalen tonen, namens jou een taak naar een agent sturen, op het antwoord wachten en recente taken lezen.",
+          "Bijvoorbeeld midden in een scène in Unity of Blender vraag je Claude: ‘Vraag de marketingagent om een tekstje voor de lancering’. Het bericht verschijnt in AULACBOT als het jouwe, gemarkeerd met **via Claude**, en het antwoord van de agent komt terug in Claude.",
           "Het adres staat in **Instellingen › AI-apps**. Het eindigt op `/mcp`.",
         ],
       },
@@ -606,14 +606,14 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         blocks: [
           {
             list: [
-              "**Claude** (claude.ai, Claude Desktop en telefoon): klik in **Customize › Connectors** op **+ Add** en dan op **Add custom connector**, noem hem agentes.chat, plak het adres en klik op **Continue**. Kies **Sign in now**, klik op **Add** en geef toestemming. In de abonnementen Team en Enterprise voegt de Owner van de Claude-organisatie de connector toe in Organization settings › Connectors, en klikt elke persoon op **Connect** in Customize › Connectors. Het gratis abonnement van Claude heeft ruimte voor één eigen connector.",
+              "**Claude** (claude.ai, Claude Desktop en telefoon): klik in **Customize › Connectors** op **+ Add** en dan op **Add custom connector**, noem hem AULACBOT, plak het adres en klik op **Continue**. Kies **Sign in now**, klik op **Add** en geef toestemming. In de abonnementen Team en Enterprise voegt de Owner van de Claude-organisatie de connector toe in Organization settings › Connectors, en klikt elke persoon op **Connect** in Customize › Connectors. Het gratis abonnement van Claude heeft ruimte voor één eigen connector.",
               "**Claude Code:** voer `claude mcp add --transport http --scope user agentes <address>` uit, typ dan `/mcp`, kies agentes en **Authenticate**. Alleen voor de huidige map laat je `--scope user` weg.",
               "**Cursor:** **Toevoegen aan Cursor** in **Instellingen › AI-apps**, of het adres in `~/.cursor/mcp.json`. Cursor vraagt je in te loggen als je hem voor het eerst gebruikt.",
               '**VS Code:** **Toevoegen aan VS Code**, of het adres in `.vscode/mcp.json` met `"type": "http"`.',
               "**Andere apps:** ChatGPT, Gemini, Grok, Perplexity, Codex, Zed, JetBrains en meer hebben elk hun eigen stappen in **App koppelen**, met je adres al ingevuld.",
             ],
           },
-          "Bij het inloggen laat agentes.chat zien welke app om toegang vroeg en waar hij naar terugkeert. Ga alleen verder als je de koppeling net zelf bent gestart.",
+          "Bij het inloggen laat AULACBOT zien welke app om toegang vroeg en waar hij naar terugkeert. Ga alleen verder als je de koppeling net zelf bent gestart.",
         ],
       },
       {
@@ -630,7 +630,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
               "`list_recent_tasks`: de taken die je vanuit apps stuurde en waar agents nu mee bezig zijn.",
             ],
           },
-          "De app handelt namens jou en ziet alleen wat jij ziet. Hij keurt nooit acties van agents goed: als een agent stopt om goedkeuring te vragen, zegt het antwoord dat met een link, en beslist een mens in agentes.chat. Hij verandert ook geen instellingen, leden of rechten.",
+          "De app handelt namens jou en ziet alleen wat jij ziet. Hij keurt nooit acties van agents goed: als een agent stopt om goedkeuring te vragen, zegt het antwoord dat met een link, en beslist een mens in AULACBOT. Hij verandert ook geen instellingen, leden of rechten.",
         ],
       },
       {
@@ -666,7 +666,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "safety",
         heading: "Tekst van anderen",
         blocks: [
-          "Antwoorden bevatten tekst die agents en mensen in agentes.chat hebben geschreven. De app krijgt die tekst gemarkeerd als inhoud, niet als instructies, maar een tekst kan toch proberen de app iets anders te laten doen. Controleer wat je app gaat doen voordat je bevestigt.",
+          "Antwoorden bevatten tekst die agents en mensen in AULACBOT hebben geschreven. De app krijgt die tekst gemarkeerd als inhoud, niet als instructies, maar een tekst kan toch proberen de app iets anders te laten doen. Controleer wat je app gaat doen voordat je bevestigt.",
         ],
       },
       {
@@ -685,8 +685,8 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
     ],
   },
   "install-on-a-server": {
-    title: "agentes.chat op een server installeren",
-    summary: "Draai agentes.chat op je eigen server, gratis, voor je hele team. Eén opdracht zet alles klaar.",
+    title: "AULACBOT op een server installeren",
+    summary: "Draai AULACBOT op je eigen server, gratis, voor je hele team. Eén opdracht zet alles klaar.",
     sections: [
       {
         id: "choose",
@@ -694,7 +694,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         blocks: [
           {
             list: [
-              "**agentes.chat Cloud**: voor elk team, overal bereikbaar. Wij draaien het, werken het bij en maken back-ups. Elke werkruimte krijgt een eigen computer, waarop elke agent een eigen gebruiker is.",
+              "**AULACBOT Cloud**: voor elk team, overal bereikbaar. Wij draaien het, werken het bij en maken back-ups. Elke werkruimte krijgt een eigen computer, waarop elke agent een eigen gebruiker is.",
               "**Je computer, met de app**: voor jou of een klein team, bereikbaar zolang die computer aanstaat. Een Mac mini die aan blijft, werkt goed. Je werkt het bij met één klik en maakt zelf back-ups. Agents draaien als jij op die computer.",
               "**Een server**: voor een groter team, altijd bereikbaar. Je werkt het bij met drie opdrachten, en het kan elke dag vanzelf een back-up maken. Op Debian 13 is elke agent een eigen gebruiker.",
             ],
@@ -708,7 +708,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         blocks: [
           {
             list: [
-              "Een server of VPS met 64-bit Linux, op x64 of arm64. Voor een klein team zijn 2 CPU's, 4 GB geheugen en 20 GB schijf een goed begin. Op een Mac of een pc [draait de app agentes.chat](/help/run-on-your-computer) zonder Docker.",
+              "Een server of VPS met 64-bit Linux, op x64 of arm64. Voor een klein team zijn 2 CPU's, 4 GB geheugen en 20 GB schijf een goed begin. Op een Mac of een pc [draait de app AULACBOT](/help/run-on-your-computer) zonder Docker.",
               "Docker met Compose. Op Linux zet het installatieprogramma ze erop als ze ontbreken, nadat het heeft gevraagd.",
               "Een manier om erbij te komen: een gratis Tailscale-account (de standaard, privé, zonder domein en zonder open poort), of een domein dat naar de server wijst, met poort 80 en 443 open.",
             ],
@@ -751,14 +751,14 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         heading: "Je account",
         blocks: [
           "Open het adres van je server en meld je aan: het eerste account wordt de eigenaar. Daarna gaat aanmelden dicht, en mensen komen erbij via een uitnodiging, vanuit **Instellingen\u00a0›\u00a0Leden en uitnodigingen**.",
-          "Bij Tailscale hebben de mensen die je uitnodigt ook je tailnet nodig. Nodig ze eerst uit op https://console.tailscale.com/admin/users en daarna in agentes.chat.",
+          "Bij Tailscale hebben de mensen die je uitnodigt ook je tailnet nodig. Nodig ze eerst uit op https://console.tailscale.com/admin/users en daarna in AULACBOT.",
         ],
       },
       {
         id: "email",
         heading: "E-mail",
         blocks: [
-          "Zonder e-mail schrijft agentes.chat elke e-mail in zijn log in plaats van hem te versturen, dus een uitnodigingslink kun je daar nog kopiëren. Wachtwoord herstellen blijft uit, en een nieuw e-mailadres voor een account geldt meteen, zonder code of link.",
+          "Zonder e-mail schrijft AULACBOT elke e-mail in zijn log in plaats van hem te versturen, dus een uitnodigingslink kun je daar nog kopiëren. Wachtwoord herstellen blijft uit, en een nieuw e-mailadres voor een account geldt meteen, zonder code of link.",
           {
             code: "docker compose logs agentes | grep 'email (not sent'",
           },
@@ -772,7 +772,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
           {
             list: [
               "Bij Tailscale installeer je de Tailscale-app op je telefoon en log je in op dezelfde tailnet.",
-              "Installeer de agentes.chat-app.",
+              "Installeer de AULACBOT-app.",
               "Scan de QR-code die de installatie toonde, of die in **Instellingen\u00a0›\u00a0Je account\u00a0›\u00a0Openen op je telefoon**, die je ook meteen inlogt.",
             ],
           },
@@ -786,7 +786,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
           {
             code: "curl -fsSL https://agentes.chat/install | sh -s -- --computer yes",
           },
-          "Meer computers, zoals een Mac met de agentes.chat-app of een andere server, koppel je via **Instellingen\u00a0›\u00a0Apparaten**, zoals in [Je computers en telefoons](/help/computers). Bij Tailscale komen ze eerst in je tailnet.",
+          "Meer computers, zoals een Mac met de AULACBOT-app of een andere server, koppel je via **Instellingen\u00a0›\u00a0Apparaten**, zoals in [Je computers en telefoons](/help/computers). Bij Tailscale komen ze eerst in je tailnet.",
         ],
       },
       {
@@ -821,7 +821,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "data",
         heading: "Wat het verstuurt",
         blocks: [
-          "Eén keer per dag stuurt de server agentes.chat anonieme gebruiksstatistieken: aantallen zoals mensen, agents, grootte van de machines, gebruikte AI-tokens en hoeveel data de browsers van de agents versturen en ontvangen. Nooit berichten, bestanden, namen of sites. `docker compose run --rm agentes telemetry` toont precies wat er verstuurd zou worden. De eigenaar zet het uit in **Instellingen\u00a0›\u00a0Algemeen**, of met `TELEMETRY=off` in `.env`.",
+          "Eén keer per dag stuurt de server AULACBOT anonieme gebruiksstatistieken: aantallen zoals mensen, agents, grootte van de machines, gebruikte AI-tokens en hoeveel data de browsers van de agents versturen en ontvangen. Nooit berichten, bestanden, namen of sites. `docker compose run --rm agentes telemetry` toont precies wat er verstuurd zou worden. De eigenaar zet het uit in **Instellingen\u00a0›\u00a0Algemeen**, of met `TELEMETRY=off` in `.env`.",
           "Foutrapporten gaan nergens heen, tenzij je `SENTRY_DSN` instelt op een Sentry-compatibele server die je zelf kiest. Een rapport bevat de fout en waar die gebeurde, nooit berichten, e-mails, IP-adressen, cookies of tokens.",
         ],
       },
@@ -829,7 +829,7 @@ export const helpNl: Partial<Record<HelpSlug, HelpDocument>> = {
         id: "reference",
         heading: "De volledige handleiding",
         blocks: [
-          "Alle instellingen, een eigen proxy zoals nginx, draaien zonder Docker, een draaiboek voor AI-agents die het zelf installeren en wat je doet als iets misgaat staan in `SELF_HOSTING.md`, in de repository van agentes.chat.",
+          "Alle instellingen, een eigen proxy zoals nginx, draaien zonder Docker, een draaiboek voor AI-agents die het zelf installeren en wat je doet als iets misgaat staan in `SELF_HOSTING.md`, in de repository van AULACBOT.",
         ],
       },
     ],

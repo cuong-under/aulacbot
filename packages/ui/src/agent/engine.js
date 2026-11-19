@@ -10,9 +10,9 @@
  * the eyes are the logo's: two narrow white pills.
  */
 
-/** Top and bottom of each agent color. Sky is the landing's blue, the same in both themes. */
+/** Top and bottom of each agent color. Sky is AULACBOT's jade, the same in both themes. */
 export const AGENT_GRADIENTS = {
-  sky: ["#8cc3ff", "#0063d1"],
+  sky: ["#2fd3b2", "#0f6a59"],
   indigo: ["#7d8bff", "#3f4fd6"],
   violet: ["#ae8cf7", "#6e45d1"],
   rose: ["#f58aa6", "#c9406a"],
@@ -197,9 +197,9 @@ export function bodyTones(color, deep = false) {
   return [mixHex(bottom, "#000000", 0.38), bottom, mixHex(bottom, top, 0.5), top, mixHex(top, "#ffffff", 0.5)];
 }
 
-/** The small pixel agents' body: deep enough for white eyes (navy on the sky). */
+/** The small pixel agents' body: deep enough for white eyes (deep jade on the sky). */
 export function spriteBody(color) {
-  return !color || color === "sky" ? "#04203f" : mixHex(gradientOf(color)[1], "#000000", 0.45);
+  return !color || color === "sky" ? "#03150f" : mixHex(gradientOf(color)[1], "#000000", 0.45);
 }
 
 /** Dither cells per side for a body of `px` pixels: about 2.5–15 screen pixels per cell. */
@@ -541,7 +541,7 @@ export function drawAgent(ctx, x, y, s, opts = {}) {
         const order = 0.55 * noise(cx, cy) + 0.45 * ((1 - v) * 0.6 + u * 0.4);
         const show = progress * 1.15 - order;
         if (show <= 0) continue;
-        ctx.fillStyle = show < 0.08 ? "#eef7ff" : tone;
+        ctx.fillStyle = show < 0.08 ? "#e8fcf7" : tone;
       } else ctx.fillStyle = tone;
       const x0 = Math.round(cx * p);
       const y0 = Math.round(cy * p);

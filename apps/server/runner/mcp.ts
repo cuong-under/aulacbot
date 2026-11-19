@@ -268,7 +268,7 @@ export const MCP_CALL_TIMEOUT_MS = 6 * 60_000;
 
 /** A call sent before the connection dropped whose answer never came: the server may have run it, in part. */
 export const MCP_CUT_OFF =
-  "The connection to agentes.chat dropped while this ran and no answer came: it may have run in part. Check before doing it again.";
+  "The connection to AULACBOT dropped while this ran and no answer came: it may have run in part. Check before doing it again.";
 
 /**
  * The daemon's half: a local endpoint for the MCP processes of this
@@ -394,7 +394,7 @@ export class McpBridge {
       clearTimeout(p.timer);
       p.resolve({
         ok: false,
-        error: "The computer lost its connection to agentes.chat. Try again in a minute.",
+        error: "The computer lost its connection to AULACBOT. Try again in a minute.",
         transient: true,
       });
       this.pending.delete(callId);
@@ -535,10 +535,10 @@ export class McpBridge {
             : waited
               ? {
                   ok: false,
-                  error: "The computer is not connected to agentes.chat right now. Try again in a minute.",
+                  error: "The computer is not connected to AULACBOT right now. Try again in a minute.",
                   transient: true,
                 }
-              : { ok: false, error: "agentes.chat did not answer in time." },
+              : { ok: false, error: "AULACBOT did not answer in time." },
         );
       }, this.opts.callTimeoutMs ?? MCP_CALL_TIMEOUT_MS);
       timer.unref?.();
@@ -663,7 +663,7 @@ export function ipcCall(socketPath: string, req: IpcRequest, timeoutMs = MCP_CAL
     socket.on("error", () =>
       finish({
         ok: false,
-        error: "The agentes runner is not running on this computer (start it: agentes-runner start).",
+        error: "The AULACBOT runner is not running on this computer (start it: agentes-runner start).",
         transient: true,
       }),
     );
@@ -838,11 +838,11 @@ export async function handleMcpMessage(
           serverInfo: { name: "agentes", version: RUNNER_VERSION },
           instructions: context.local
             ? delegated
-              ? "Claude Code's tools, on this computer. There are no tools of agentes.chat to call here."
-              : "Only the permission prompt Claude Code asks by itself: there are no tools of agentes.chat to call here."
+              ? "Claude Code's tools, on this computer. There are no tools of AULACBOT to call here."
+              : "Only the permission prompt Claude Code asks by itself: there are no tools of AULACBOT to call here."
             : list
-              ? "Tools of agentes.chat for this agent: its connectors, context, Drive and, in a mission, the mission tools (keep the plan with update_plan, report milestones, ask decisions with ask_decision, ask approval before any merge, deploy or rollback). When a tool says to stop and wait, end your turn."
-              : "Tools of agentes.chat for this mission: keep the plan with update_plan, report milestones, ask decisions with ask_decision, ask for a review when you have something to show, and ask approval before any merge, deploy or rollback.",
+              ? "Tools of AULACBOT for this agent: its connectors, context, Drive and, in a mission, the mission tools (keep the plan with update_plan, report milestones, ask decisions with ask_decision, ask approval before any merge, deploy or rollback). When a tool says to stop and wait, end your turn."
+              : "Tools of AULACBOT for this mission: keep the plan with update_plan, report milestones, ask decisions with ask_decision, ask for a review when you have something to show, and ask approval before any merge, deploy or rollback.",
         },
       };
     case "ping":
@@ -1003,7 +1003,7 @@ export async function permissionPrompt(
     try {
       return JSON.parse(reply.text) as { behavior?: string; message?: string; status?: string; request_id?: string };
     } catch {
-      return { error: "agentes.chat answered something unexpected." };
+      return { error: "AULACBOT answered something unexpected." };
     }
   };
   let out = await ask({

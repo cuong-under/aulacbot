@@ -93,7 +93,7 @@ import { runnerTerminalUser, systemTerminalUser, Terminals, type TerminalsOption
 import { probeToolchains, TOOLCHAINS_FILE } from "./toolchains";
 import { runWorker } from "./worker";
 
-const HELP = `agentes-runner ${RUNNER_VERSION}: connects this computer to agentes.chat
+const HELP = `agentes-runner ${RUNNER_VERSION}: connects this computer to AULACBOT
 
 Usage:
   agentes-runner pair --server <url> [--dir <workspace>] [--name <name>] [--no-exec] [--new]
@@ -123,7 +123,7 @@ Usage:
       --state    where it keeps each organization's connection (default: the home, or <home>/host on a Mac)
       --no-exec  agents can't run commands here (Claude Code, Codex and the browser stay on)
   agentes-runner host --once --server <url> --token-file <path> [--state <dir>] [--name <name>] [--rotate <orgId>]...
-      One sync for a program that runs the organizations' connections itself (the agentes.chat app):
+      One sync for a program that runs the organizations' connections itself (the AULACBOT app):
       writes them, every tool off, as this computer's user (Linux included), starts nothing, and prints
       one JSON line: {"status", "homes": [{"orgId", "orgName", "machineId", "home", "new"}], "gone": [orgId]}.
       --state    where it writes them (default: the home, on a Mac too, where the app keeps its own)
@@ -240,7 +240,7 @@ const flagString = (p: Parsed, key: string) => {
 };
 
 const DESKTOP_MANAGED =
-  "This computer's connection is managed by the agentes app. Use the app (it ships the runner and keeps it running).";
+  "This computer's connection is managed by the AULACBOT app. Use the app (it ships the runner and keeps it running).";
 const HOST_MANAGED =
   "This connection is one organization's on this server's own computer: agentes-runner host keeps it (and its service). Turn it off for the organization on the site, in Settings > Computers.";
 

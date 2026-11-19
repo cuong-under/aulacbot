@@ -7,5 +7,6 @@ test("every term has all 13 other languages, and some names stay as they are", (
   for (const term of glossary.terms as Record<string, string>[])
     expect({ term: term.en, missing: others.filter((c) => !term[c]?.trim()) }).toEqual({ term: term.en, missing: [] });
   expect(glossary.keep).toContain("agentes.chat");
+  expect(glossary.keep).toContain("AULACBOT");
   expect(Object.keys(glossary.tone).sort()).toEqual([...LOCALE_CODES].sort());
 });

@@ -43,6 +43,13 @@ Comparing directions, more than one was liked, which raised the question of lett
    corner; their 16 and 32 px favicons keep it upright, as a lean there is a blur) are the others. `APP_ICONS` is the list; the generator, the phone's plugin and the desktop app list the same ids and
    a test keeps them equal.
 
+   **2026-11-17 — the shipped icon changed.** The brand identity pass added a sixth id, `lac` (the Cyber Lạc head,
+   `packages/ui/scripts/app-icons/cyber-lac.mjs`), first in `APP_ICONS`; it is what the apps ship now, and Night and
+   the four agent icons are choices. It keeps this ADR's technique — a rounded block on the 32-cell grid filled with
+   the engine's dither, a visor and the two white pill eyes — but the bird is front on and has no neck, in jade, mint
+   and gold instead of the agent's navy. Its Android layers are drawn apart (`Scene.android()`) so a round launcher
+   mask never cuts the crest. See `docs/branding/cyber-lac/REPLACEMENT-MAP.md`.
+
 4. **The pick is the device's, not the account's.** Like the theme, it is set where it shows, and never synced: iOS
    confirms each change with an alert of its own, which a sync would show on a phone nobody touched.
    - **iPhone**: the others are alternate icons, `AppIcon-<id>` sets in the asset catalog (each in light, dark and

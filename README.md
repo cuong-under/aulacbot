@@ -2,6 +2,11 @@
 
 **Personal AI Assistant & Team AI Workspace.**
 
+![AULACBOT — Âu Lạc Bot](docs/branding/cyber-lac/assets/cyber-lac-og-1200x630.png)
+
+AULACBOT is a community edition for [aulac.app](https://aulac.app): free to self-host, with its own
+Lạc bird identity. The mark and the rules for using it are in [`docs/branding/`](docs/branding/).
+
 AULACBOT is built on [agentes.chat](https://github.com/agentes-chat/agentes-chat), the open-source,
 self-hosted workspace where a team and its AI agents work together in the same channels and DMs.
 This repository is the AULACBOT fork: a Slack-style workspace where agents are members with a role,

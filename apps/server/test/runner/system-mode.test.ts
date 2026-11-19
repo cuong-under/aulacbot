@@ -743,7 +743,7 @@ test.if(posix)(
 
     // --system alone, on Debian 12: the names as they are.
     // Without a terminal: the title, then each wait once and its line, whole.
-    const head = "agentes.chat connect this computer\n";
+    const head = "AULACBOT connect this computer\n";
     r = step(false);
     expect(r.status).toBe(0);
     expect(r.out).toBe(

@@ -42,6 +42,7 @@ import { DeleteAccountEntry } from "@/components/DeleteAccount";
 import { useOrg } from "@/components/org-context";
 import { useDirectory } from "@/hooks/useDirectory";
 import { useSignOut } from "@/hooks/useSignOut";
+import { PRODUCT_LOOK } from "@/lib/look";
 import { usePaidReturn } from "@/lib/paid-return";
 import { useToast } from "@/lib/toast";
 
@@ -254,7 +255,7 @@ function ClosedScreen({
     <AuthShell languages={false}>
       <div className="auth__form">
         <header className="auth__ask">
-          <AgentAvatar name="agentes.chat" size="lg" />
+          <AgentAvatar name="AULACBOT" size="lg" appearance={PRODUCT_LOOK} />
           <div className="auth__bubble">
             <h1 className="auth__title">{title}</h1>
             <p className="auth__lead">

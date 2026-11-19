@@ -80,7 +80,7 @@ export function createFakeSite(
             agentName: "Ada",
             userId: "u_rui",
             userName: "Rui Tanaka",
-            label: "Recording a test video",
+            label: "Đang quay video thử",
             since: minutesAgo(10),
           },
         }),
@@ -103,13 +103,13 @@ export function createFakeSite(
     answer(method, path, body) {
       const parsed = body ? (JSON.parse(body) as Record<string, unknown>) : undefined;
       site.calls.push({ method, path, ...(parsed ? { body: parsed } : {}) });
-      if (site.signedOut) return json(401, { error: { code: "auth.unauthorized", message: "Sign in" } });
+      if (site.signedOut) return json(401, { error: { code: "auth.unauthorized", message: "Đăng nhập" } });
       const [, , , , orgId = "", ...rest] = path.split("/");
       if (method === "POST" && rest[0] === "machines" && rest[3] === "confirm") {
         const joined = confirm(orgId, rest[2] ?? "");
         return joined
           ? json(201, { id: joined.machineId, name: joined.name })
-          : json(404, { error: { code: "machine.code_invalid", message: "This code expired." } });
+          : json(404, { error: { code: "machine.code_invalid", message: "Mã này đã hết hạn." } });
       }
       const mine = computer(orgId);
       const route = `${method} ${rest.join("/")}`;
@@ -125,14 +125,14 @@ export function createFakeSite(
       if (route === "GET roles")
         return json(200, {
           roles: [
-            { id: "r_mobile", kind: "custom", name: "Mobile team", icon: "phone", color: "teal", position: 0 },
-            { id: "r_all", kind: "everyone", name: "Everyone", icon: "people", color: "indigo", position: 1 },
+            { id: "r_mobile", kind: "custom", name: "Nhóm di động", icon: "phone", color: "teal", position: 0 },
+            { id: "r_all", kind: "everyone", name: "Mọi người", icon: "people", color: "indigo", position: 1 },
           ],
           areas: [],
           colors: [],
           icons: [],
         });
-      if (!mine) return json(404, { error: { code: "not_found", message: "Not found" } });
+      if (!mine) return json(404, { error: { code: "not_found", message: "Không tìm thấy" } });
       const [kind, id, action, serial] = rest.slice(1);
       if (kind === "computers" && id === mine.id && action === "wifi-iphones") {
         const picked = nearby.find((p) => p.serial === serial);
@@ -174,7 +174,7 @@ export function createFakeSite(
         phone.status = { kind: "ready" };
         return { status: 204, body: "" };
       }
-      return json(404, { error: { code: "not_found", message: "Not found" } });
+      return json(404, { error: { code: "not_found", message: "Không tìm thấy" } });
     },
   };
   return site;

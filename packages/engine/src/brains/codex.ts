@@ -319,7 +319,7 @@ export class CodexBrain implements Brain {
         ? {
             type: "error",
             code: "tool_off",
-            message: `${name} is turned off on the computer (its owner can turn it on in the agentes app).`,
+            message: `${name} is turned off on the computer (its owner can turn it on in the AULACBOT app).`,
             retryable: true,
           }
         : {

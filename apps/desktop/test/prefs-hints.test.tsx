@@ -131,23 +131,23 @@ describe("Preferences: a setting's explanation behind its ⓘ", () => {
       },
     ));
 
-  test("Servers: what the usage switch sends and that changing it restarts agentes.chat sit behind its ⓘ", () =>
+  test("Servers: what the usage switch sends and that changing it restarts AULACBOT sit behind its ⓘ", () =>
     pane(
       "here",
       <Servers />,
       (el) =>
-        row(el, "Send anonymous usage statistics to agentes.chat") &&
+        row(el, "Send anonymous usage statistics to AULACBOT") &&
         row(el, "Reach it from your phone and teammates")?.line === null,
       (el) => {
-        expect(row(el, "Send anonymous usage statistics to agentes.chat")).toEqual({
-          title: "Send anonymous usage statistics to agentes.chat",
-          hint: "Counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites. Changing it restarts agentes.chat for a moment.",
+        expect(row(el, "Send anonymous usage statistics to AULACBOT")).toEqual({
+          title: "Send anonymous usage statistics to AULACBOT",
+          hint: "Counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites. Changing it restarts AULACBOT for a moment.",
           switch:
-            "Counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites. Changing it restarts agentes.chat for a moment.",
+            "Counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites. Changing it restarts AULACBOT for a moment.",
           line: null,
         });
         expect(el.textContent).not.toContain("nothing is sent");
-        expect(el.querySelector(".dk-phead .dk-lead")?.textContent).toBe("Where this app opens agentes.chat.");
+        expect(el.querySelector(".dk-phead .dk-lead")?.textContent).toBe("Where this app opens AULACBOT.");
       },
     ));
 
@@ -229,7 +229,7 @@ describe("Preferences: a setting's explanation behind its ⓘ", () => {
           },
           {
             title: "Commands",
-            hint: "Tests, builds and other Terminal commands. Each one shows in Activity. Commands run as you. They can read anything you can on this Mac, agentes.chat's database and keys included. Turn them on only for workspaces you trust with all of it.",
+            hint: "Tests, builds and other Terminal commands. Each one shows in Activity. Commands run as you. They can read anything you can on this Mac, AULACBOT's database and keys included. Turn them on only for workspaces you trust with all of it.",
           },
           {
             title: "Browser",
@@ -293,7 +293,7 @@ describe("Preferences: a setting's explanation behind its ⓘ", () => {
         await until(() => document.querySelector('[role="dialog"]'));
         const dialog = document.querySelector('[role="dialog"]') as HTMLElement;
         expect(dialog.textContent).toContain("Turn on Commands for Horizonte?");
-        expect(dialog.textContent).toContain("agentes.chat's database and keys included");
+        expect(dialog.textContent).toContain("AULACBOT's database and keys included");
         const turnOn = [...dialog.querySelectorAll("button")].find((b) => b.textContent === "Turn on");
         await act(async () => turnOn?.click());
         await until(() => switchOf("Horizonte").getAttribute("aria-checked") === "true");

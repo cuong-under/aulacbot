@@ -1,10 +1,11 @@
 import { CLOUD_SERVER, HOSTING_FOOT, HOSTING_POINTS, helpUrl } from "@agenteschat/client/lib/server";
 import { DOWNLOAD_URL } from "@agenteschat/i18n/docs";
-import { HOSTING_CAST, type Hosting, teamTones } from "@agenteschat/ui/sky/team";
+import { CYBER_LAC_SQUAD } from "@agenteschat/ui/brand/cyber-lac";
+import { type Hosting, teamTones } from "@agenteschat/ui/sky/team";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, View } from "react-native";
-import { AgentAvatar } from "@/agent/AgentAvatar";
+import { CyberLacAvatar } from "@/agent/CyberLacAvatar";
 import { ComputerPortrait } from "@/computer/ComputerPortrait";
 import { setServer } from "@/lib/server";
 import { Dither } from "@/sky/Dither";
@@ -35,14 +36,12 @@ function Scene({ hosting }: { hosting: Hosting }) {
       <Dither kind="sky" tones={teamTones(cloud ? 1 : 0, colors.raised)} pixel={4} style={StyleSheet.absoluteFill} />
       <View style={styles.row}>
         <View style={styles.cast}>
-          {HOSTING_CAST.map((a) => (
-            <AgentAvatar
-              key={a.name}
-              agent={{ ...a.look, id: a.name }}
-              size={a.name === "b" ? 52 : 40}
-              mode={cloud ? "idle" : "sleep"}
-              framed={false}
-              expression={cloud ? "happy" : undefined}
+          {CYBER_LAC_SQUAD.map((member, index) => (
+            <CyberLacAvatar
+              key={member.label}
+              index={index as 0 | 1 | 2}
+              size={index === 1 ? 52 : 40}
+              state={cloud ? "idle" : "sleeping"}
             />
           ))}
         </View>

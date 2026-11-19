@@ -309,9 +309,9 @@ pub fn servers_menu(
     let file = crate::servers::get(app);
     let mut menu = SubmenuBuilder::new(app, l("servers"));
     for (n, server) in file.servers.iter().enumerate() {
-        // Named as everywhere else in the app: agentes.chat, the server here by what it is, any other by its host.
+        // Named as everywhere else in the app: AULACBOT, the server here by what it is, any other by its host.
         let here = crate::local_server::is_here(app, server).then(|| l("serverTitle"));
-        let name = crate::workspaces::server_name(server, "agentes.chat", here.as_deref());
+        let name = crate::workspaces::server_name(server, "AULACBOT", here.as_deref());
         let current = file.current.as_deref() == Some(server.as_str());
         if here.is_some() {
             menu = menu.item(&here_menu(app, l, &name, n, current)?);

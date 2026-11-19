@@ -8,11 +8,11 @@ import { type AgentColorName, EYE_COLOR, gradientOf, spriteBody, spriteGrid } fr
 
 /* ---------- tones ---------- */
 
-/** The landing's sky, deep blue to almost white. */
-export const SKY_TONES = ["#0a3f9c", "#0f56c4", "#2b74e6", "#4b93ff", "#78b4ff", "#a6cfff", "#cfe6ff", "#eef7ff"];
+/** The landing's sky, deep jade to almost white (Cyber Lạc's Lạc sky). */
+export const SKY_TONES = ["#04110d", "#06231c", "#0a332b", "#0f4a3e", "#146353", "#1d806c", "#26c3a6", "#e8fcf7"];
 
-/** The night over the team while it has no AI (the connect scenes on the web and the phone): deep first. */
-export const TEAM_NIGHT = ["#050814", "#070c1e", "#0a122e", "#0e1a43", "#13245a", "#182f73", "#203f8f", "#2b53ad"];
+/** The night over the team while it has no AI (the connect scenes on the web and the phone): deep jade first. */
+export const TEAM_NIGHT = ["#030b09", "#051410", "#081d18", "#0b2a22", "#0f3a30", "#134d40", "#186352", "#1e7d68"];
 
 /** "#rgb", "#rrggbb" or "rgb(r, g, b)" → [r, g, b]; anything else is mid gray. */
 export function parseColor(color: string): [number, number, number] {

@@ -164,5 +164,5 @@ export function acquireLock(
 
 /** The message a second runner prints. */
 export function lockedMessage(home: string, holder: LockInfo) {
-  return `Another agentes runner is already running with this home (${home}, pid ${holder.pid}${holder.mode ? `, ${holder.mode}` : ""}). Stop it first, or use another home (--home or AGENTES_RUNNER_HOME).`;
+  return `Another AULACBOT runner is already running with this home (${home}, pid ${holder.pid}${holder.mode ? `, ${holder.mode}` : ""}). Stop it first, or use another home (--home or AGENTES_RUNNER_HOME).`;
 }

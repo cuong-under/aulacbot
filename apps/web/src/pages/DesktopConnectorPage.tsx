@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
 import { DESKTOP_MAIL_STATE } from "@/lib/desktop";
+import { PRODUCT_LOOK } from "@/lib/look";
 import { useToast } from "@/lib/toast";
 
 /**
@@ -74,7 +75,7 @@ export function DesktopConnectorPage({
     <AuthShell>
       <div className="auth__form">
         <header className="auth__ask">
-          <AgentAvatar name="agentes.chat" size="lg" state="writing" />
+          <AgentAvatar name="AULACBOT" size="lg" appearance={PRODUCT_LOOK} state="writing" />
           <div className="auth__bubble" aria-live="polite">
             <h1 className="auth__title">{t("auth.desktop.connecting")}</h1>
           </div>

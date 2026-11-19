@@ -32,7 +32,14 @@ macro_rules! icon {
 }
 
 /// In the site's order; the first is the bundle's own.
-pub const ICONS: &[Icon] = &[icon!("night"), icon!("moon"), icon!("sky"), icon!("peekNight"), icon!("peekSky")];
+pub const ICONS: &[Icon] = &[
+    icon!("lac"),
+    icon!("night"),
+    icon!("moon"),
+    icon!("sky"),
+    icon!("peekNight"),
+    icon!("peekSky"),
+];
 
 pub fn find(id: &str) -> Option<&'static Icon> {
     ICONS.iter().find(|icon| icon.id == id)

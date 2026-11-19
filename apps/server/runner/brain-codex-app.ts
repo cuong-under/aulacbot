@@ -241,7 +241,7 @@ function serverRequestAnswer(method: string): ServerRequestAnswer {
     case "applyPatchApproval":
       return { result: { decision: { denied: { rejection: "Not allowed on this computer." } } } };
     default:
-      return { error: { code: -32601, message: `The agentes runner doesn't answer ${method}` } };
+      return { error: { code: -32601, message: `The AULACBOT runner doesn't answer ${method}` } };
   }
 }
 
@@ -1416,7 +1416,7 @@ export class CodexAppServers implements CodexAppRunner {
     return (tool: string, args: Record<string, unknown>): Promise<IpcReply> =>
       socketPath
         ? ipcCall(socketPath, { taskId: live.id, token, tool, args })
-        : Promise.resolve({ ok: false, error: "This computer can't ask agentes.chat (no local endpoint)." });
+        : Promise.resolve({ ok: false, error: "This computer can't ask AULACBOT (no local endpoint)." });
   }
 
   private armIdle(live: AppLive) {

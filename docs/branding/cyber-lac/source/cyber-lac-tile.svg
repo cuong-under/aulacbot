@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Cyber Lac - AULACBOT</title>
+  <defs>
+    <radialGradient id="bg" cx=".4" cy=".3" r=".86">
+      <stop offset="0" stop-color="#0C2C25"/>
+      <stop offset=".52" stop-color="#061712"/>
+      <stop offset=".85" stop-color="#030C09"/>
+      <stop offset="1" stop-color="#010504"/>
+    </radialGradient>
+    <linearGradient id="head" x1=".1" y1=".05" x2=".9" y2=".95">
+      <stop offset="0" stop-color="#D2FFF2"/>
+      <stop offset=".2" stop-color="#8DF8DD"/>
+      <stop offset=".48" stop-color="#3EDDBD"/>
+      <stop offset=".76" stop-color="#129B86"/>
+      <stop offset="1" stop-color="#075F53"/>
+    </linearGradient>
+    <linearGradient id="headMid" x1=".1" y1=".05" x2=".9" y2=".95">
+      <stop offset="0" stop-color="#6DF4D3"/>
+      <stop offset=".5" stop-color="#26C5A8"/>
+      <stop offset="1" stop-color="#0A6E5F"/>
+    </linearGradient>
+    <linearGradient id="headDark" x1=".1" y1=".05" x2=".9" y2=".95">
+      <stop offset="0" stop-color="#0F8C79"/>
+      <stop offset=".55" stop-color="#0A5D51"/>
+      <stop offset="1" stop-color="#04362F"/>
+    </linearGradient>
+    <linearGradient id="gold" x1=".2" y1=".05" x2=".8" y2=".95">
+      <stop offset="0" stop-color="#FFF0C9"/>
+      <stop offset=".24" stop-color="#FFD894"/>
+      <stop offset=".52" stop-color="#F2BF61"/>
+      <stop offset=".8" stop-color="#C88734"/>
+      <stop offset="1" stop-color="#9B6126"/>
+    </linearGradient>
+    <linearGradient id="goldDeep" x1=".2" y1=".1" x2=".8" y2=".95">
+      <stop offset="0" stop-color="#D69B48"/>
+      <stop offset=".55" stop-color="#AF732C"/>
+      <stop offset="1" stop-color="#7D4A1C"/>
+    </linearGradient>
+    <linearGradient id="mint" x1=".1" y1=".1" x2=".9" y2=".9">
+      <stop offset="0" stop-color="#EAFFF9"/>
+      <stop offset=".35" stop-color="#8AF7DA"/>
+      <stop offset=".72" stop-color="#27CDB0"/>
+      <stop offset="1" stop-color="#0C7A6A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#45FFD4" stop-opacity=".22"/>
+      <stop offset=".55" stop-color="#20BA9B" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#20BA9B" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#A7F3DD" stroke-width=".7" opacity=".045"/>
+    </pattern>
+    <clipPath id="tile">
+      <rect width="1024" height="1024" rx="220"/>
+    </clipPath>
+    <clipPath id="headClip">
+      <path d="M 360 330 L 445 288 L 520 300 L 575 340 L 610 410 L 606 490 L 570 570 L 510 615 L 440 614 L 380 580 L 336 510 L 322 430 Z"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <rect width="1024" height="1024" fill="url(#grid)"/>
+    <ellipse cx="540" cy="470" rx="400" ry="350" fill="url(#glow)"/>
+    <circle cx="512" cy="512" r="438" fill="none" stroke="#F2C96B" stroke-opacity=".09" stroke-width="2"/>
+    <g stroke="#F2C96B" stroke-opacity=".16" stroke-width="3" stroke-linecap="round">
+      <path d="M512 74 V100"/>
+      <path d="M512 924 V950"/>
+      <path d="M74 512 H100"/>
+      <path d="M924 512 H950"/>
+      <path d="M202 202 L220 220"/>
+      <path d="M804 220 L822 202"/>
+      <path d="M202 822 L220 804"/>
+      <path d="M804 804 L822 822"/>
+    </g>
+    <g fill="none" stroke="#6AF2D2" stroke-linecap="square">
+      <path d="M86 194 V120 H160" stroke-opacity=".3" stroke-width="3"/>
+      <path d="M864 120 H938 V194" stroke-opacity=".14" stroke-width="3"/>
+      <path d="M938 830 V904 H864" stroke-opacity=".3" stroke-width="3"/>
+      <path d="M160 904 H86 V830" stroke-opacity=".14" stroke-width="3"/>
+    </g>
+  </g>
+
+  <!-- neck -->
+  <path d="M 400 590 C 458 632 534 638 592 606 L 646 824 C 574 856 438 856 370 820 Z"
+        fill="url(#headDark)" stroke="#04110D" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M 400 726 C 472 762 556 764 630 728" fill="none" stroke="url(#gold)" stroke-width="17" stroke-linecap="round"/>
+  <path d="M 398 756 C 476 792 560 794 638 758" fill="none" stroke="#04110D" stroke-width="6" opacity=".65" stroke-linecap="round"/>
+
+  <!-- crest fins -->
+  <path d="M 430 312
+           C 390 280 340 230 300 180
+           C 330 184 360 196 388 214
+           C 420 238 448 268 466 296 Z"
+        fill="url(#gold)" stroke="#04110D" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M 410 326
+           C 360 310 300 270 250 226
+           C 286 226 320 236 350 250
+           C 388 268 426 294 454 312 Z"
+        fill="url(#mint)" stroke="#04110D" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M 394 342
+           C 350 338 300 322 250 296
+           C 284 292 318 296 350 304
+           C 390 314 430 326 458 334 Z"
+        fill="url(#goldDeep)" stroke="#04110D" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M 318 192 C 354 216 390 250 428 290" fill="none" stroke="#FFF6D9" stroke-width="4" opacity=".55" stroke-linecap="round"/>
+  <path d="M 276 236 C 322 254 370 282 414 310" fill="none" stroke="#EAFFF9" stroke-width="3" opacity=".35" stroke-linecap="round"/>
+  <path d="M 274 302 C 322 306 374 318 426 332" fill="none" stroke="#FFF6D9" stroke-width="3" opacity=".3" stroke-linecap="round"/>
+
+  <!-- head -->
+  <path d="M 360 330 L 445 288 L 520 300 L 575 340 L 610 410 L 606 490 L 570 570 L 510 615 L 440 614 L 380 580 L 336 510 L 322 430 Z"
+        fill="url(#head)" stroke="#04110D" stroke-width="12" stroke-linejoin="round"/>
+  <g clip-path="url(#headClip)">
+    <path d="M 360 330 L 445 288 L 520 300 L 575 340 L 520 368 L 446 352 Z"
+          fill="#EAFFF9" opacity=".24"/>
+    <path d="M 575 340 L 610 410 L 606 490 L 570 570 L 542 520 L 556 430 Z"
+          fill="url(#headDark)" opacity=".5"/>
+    <path d="M 570 570 L 510 615 L 440 614 L 380 580 L 430 552 L 516 556 Z"
+          fill="#04362F" opacity=".22"/>
+    <path d="M 360 330 L 446 352 L 420 430 L 336 510 L 322 430 Z"
+          fill="url(#headMid)" opacity=".35"/>
+    <path d="M 400 350 C 456 330 520 330 570 354" fill="none" stroke="#EAFFF9" stroke-width="8" opacity=".25" stroke-linecap="round"/>
+  </g>
+
+  <!-- beak -->
+  <path d="M 582 420 C 670 426 760 442 840 462 C 864 468 882 478 892 490 C 898 500 894 512 884 520 C 874 526 862 524 852 518 C 844 512 834 510 822 508 C 748 494 674 492 610 500 L 580 490 Z"
+        fill="url(#gold)" stroke="#04110D" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M 590 500 C 670 504 746 516 812 534 C 790 554 764 564 736 564 C 684 562 630 548 588 532 Z"
+        fill="url(#goldDeep)" stroke="#04110D" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M 590 500 C 670 504 748 518 812 536" fill="none" stroke="#04110D" stroke-width="7" stroke-linecap="round"/>
+  <path d="M 600 438 C 690 450 780 466 860 486" fill="none" stroke="#FFF6D9" stroke-width="5" opacity=".55" stroke-linecap="round"/>
+  <path d="M 868 478 C 882 486 890 494 894 502" fill="none" stroke="#04110D" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="690" cy="474" rx="11" ry="7" fill="#6E431B" opacity=".65"/>
+
+  <!-- visor -->
+  <path d="M 398 402 L 536 416 L 548 478 L 408 470 Z"
+        fill="#04110D" stroke="url(#gold)" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M 414 414 L 524 426 L 534 466 L 420 460 Z"
+        fill="#071A16" stroke="#0C4B40" stroke-width="3"/>
+  <circle cx="470" cy="440" r="42" fill="#04110D"/>
+  <circle cx="470" cy="440" r="33" fill="#061713" stroke="url(#gold)" stroke-width="5"/>
+  <circle cx="470" cy="440" r="23" fill="#0A2C26" stroke="#7CFFDD" stroke-width="7"/>
+  <circle cx="470" cy="440" r="11" fill="#7CFFDD"/>
+  <circle cx="470" cy="440" r="5" fill="#EAFFF9"/>
+  <circle cx="459" cy="427" r="6" fill="#FFFFFF" opacity=".8"/>
+  <path d="M 410 388 L 544 402" fill="none" stroke="url(#gold)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 528 446 L 538 450" stroke="#7CFFDD" stroke-width="4" opacity=".8" stroke-linecap="round"/>
+
+  <!-- cheek drum -->
+  <path d="M 438 536 C 418 540 408 526 416 512 C 426 496 448 502 450 520 C 452 538 432 548 418 540 C 404 532 408 512 424 506"
+        fill="none" stroke="#F2C96B" stroke-width="3" opacity=".55" stroke-linecap="round"/>
+
+  <!-- circuit -->
+  <path d="M 546 500 L 574 544 L 566 598" fill="none" stroke="#7CFFDD" stroke-width="3" opacity=".45" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="566" cy="598" r="5" fill="#7CFFDD" opacity=".8"/>
+
+  <!-- neck drum module -->
+  <circle cx="510" cy="796" r="22" fill="#04110D" stroke="url(#gold)" stroke-width="5"/>
+  <circle cx="510" cy="796" r="8" fill="#7CFFDD"/>
+
+  <rect x="1.5" y="1.5" width="1021" height="1021" rx="219" fill="none" stroke="#F4D08A" stroke-opacity=".16" stroke-width="3"/>
+</svg>

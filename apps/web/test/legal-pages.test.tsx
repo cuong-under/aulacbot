@@ -29,11 +29,11 @@ const cloud = () =>
   );
 
 test("the tab reads a legal page's title while it shows, and what it read before once it's left", async () => {
-  document.title = "agentes.chat";
+  document.title = "AULACBOT";
   await renderPage(<LegalPage kind="terms" />, { api: signedOut() });
-  expect(document.title).toBe(`${legalDocument("terms", "en").title} · agentes.chat`);
+  expect(document.title).toBe(`${legalDocument("terms", "en").title} · AULACBOT`);
   cleanup();
-  expect(document.title).toBe("agentes.chat");
+  expect(document.title).toBe("AULACBOT");
 });
 
 describe("the Terms and the Privacy Policy", () => {

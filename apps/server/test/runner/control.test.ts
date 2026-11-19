@@ -712,7 +712,7 @@ test("folders, tools and settings from the app: system folders refused, everythi
   expect(stored(home)).toMatchObject({ name: "Notebook", maxConcurrentTasks: 5, token: TOKEN });
 
   const diag = await c.data<{ text: string }>({ type: "diagnostics" });
-  expect(diag.text).toContain(`agentes runner ${RUNNER_VERSION}`);
+  expect(diag.text).toContain(`AULACBOT runner ${RUNNER_VERSION}`);
   expect(diag.text).not.toContain(TOKEN);
 });
 

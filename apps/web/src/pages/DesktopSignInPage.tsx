@@ -7,6 +7,7 @@ import { useAuth } from "@/auth/context";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { AuthShell } from "@/components/AuthLayout";
 import { BROWSER_SIGN_IN_PATH } from "@/lib/desktop";
+import { PRODUCT_LOOK } from "@/lib/look";
 
 /**
  * In the browser, for the Mac app's window (ADR 0036): goes to the provider, and
@@ -91,8 +92,9 @@ export function DesktopSignInPage({
       <div className="auth__form">
         <header className="auth__ask">
           <AgentAvatar
-            name="agentes.chat"
+            name="AULACBOT"
             size="lg"
+            appearance={PRODUCT_LOOK}
             state={state === "opening" || working ? "writing" : undefined}
             expression={state === "done" ? "happy" : undefined}
           />

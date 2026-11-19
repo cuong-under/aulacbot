@@ -1,8 +1,9 @@
 /**
- * Draws the desktop app's icons from the agent engine (packages/ui/src/agent/engine.js), so the
- * tray and the app icon are the same symbol as everywhere else: the body with the cut corner and
- * two pill eyes. Run by CI before `tauri build` (`bun apps/desktop/scripts/icons.ts`), then
- * `tauri icon app-icon.png` makes the .icns and the PNG sizes from the 1024 px master.
+ * Draws the desktop app's icons from the app icons' own generator (packages/ui/scripts/app-icons),
+ * so the tray and the app icon are the same symbol as everywhere else: the Cyber Lạc head, front
+ * on, with the two pill eyes cut out. Run by CI before `tauri build`
+ * (`bun apps/desktop/scripts/icons.ts`), then `tauri icon app-icon.png` makes the .icns and the
+ * PNG sizes from the 1024 px master.
  *
  * Outputs (all ignored by git):
  *   src-tauri/icons/tray/{idle,working,paused,offline,update,browsing,needs}.png  36×36 template images (18 pt @2x)
@@ -15,9 +16,9 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { deflateSync } from "node:zlib";
+import { LAC_MARKS } from "../../../packages/ui/scripts/app-icons/cyber-lac.mjs";
 import { png, render, resize } from "../../../packages/ui/scripts/app-icons/raster.mjs";
 import { APP_ICON_IDS, macLayers, SCENES, tiled } from "../../../packages/ui/scripts/app-icons/scenes.mjs";
-import { eyeShapes, inBody } from "../../../packages/ui/src/agent/engine.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -77,32 +78,7 @@ export function encodePng(width: number, height: number, rgba: Uint8Array): Uint
   return out;
 }
 
-/* ---------- Shapes (unit body coordinates: u, v in 0..1 over the body's square) ---------- */
-
-interface Box {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-}
-
-/** A pill (rounded on its short side). */
-function inPill(u: number, v: number, b: Box): boolean {
-  if (u < b.x || u > b.x + b.w || v < b.y || v > b.y + b.h) return false;
-  const r = Math.min(b.w, b.h) / 2;
-  const cx = Math.min(Math.max(u, b.x + r), b.x + b.w - r);
-  const cy = Math.min(Math.max(v, b.y + r), b.y + b.h - r);
-  return (u - cx) ** 2 + (v - cy) ** 2 <= r * r;
-}
-
-const ROUND_EYES: Box[] = eyeShapes("round").map((e: Box) => ({ x: e.x, y: e.y, w: e.w, h: e.h }));
-
-function shifted(eyes: Box[], dx: number): Box[] {
-  return eyes.map((e) => ({ ...e, x: e.x + dx }));
-}
-
-/** Paused: the eyes are short dashes. */
-const DASH_EYES: Box[] = [0.375, 0.625].map((cx) => ({ x: cx - 0.085, y: 0.47, w: 0.17, h: 0.085 }));
+/* ---------- Shapes (the mark's own scene coordinates, from cyber-lac.mjs) ---------- */
 
 function distToSegment(px: number, py: number, ax: number, ay: number, bx: number, by: number): number {
   const dx = bx - ax;
@@ -115,41 +91,38 @@ function distToSegment(px: number, py: number, ax: number, ay: number, bx: numbe
 
 type TrayState = "idle" | "working" | "paused" | "offline" | "update" | "browsing" | "needs";
 const TRAY_PX = 36;
-/** The body's square inside the 36 px canvas. */
-const TB = { x: 4, y: 4, s: 28 };
+/** The mark inside the 36 px canvas: as tall as it goes, centred across. */
+const TB = 22;
+const [MARK_X0, MARK_Y0, MARK_X1, MARK_Y1] = LAC_MARKS.box;
+const MARK_SCALE = TB / (MARK_Y1 - MARK_Y0);
+const MARK_LEFT = (TRAY_PX - (MARK_X1 - MARK_X0) * MARK_SCALE) / 2;
 const SS = 4; // supersampling per axis
 
+/** The head, its crest and its bill as one shape (scene coordinates). */
+function inMark(x: number, y: number): boolean {
+  return LAC_MARKS.head(x, y) || LAC_MARKS.bill(x, y) || LAC_MARKS.crest.some((fin) => fin(x, y));
+}
+
 function trayCoverage(state: TrayState, px: number, py: number): boolean {
-  const u = (px - TB.x) / TB.s;
-  const v = (py - TB.y) / TB.s;
-  const eyes = state === "paused" ? DASH_EYES : state === "working" ? shifted(ROUND_EYES, 0.05) : ROUND_EYES;
-  const inEye = eyes.some((e) => inPill(u, v, e));
-  if (state === "offline") {
-    // Outline only, eyes filled.
-    if (inEye) return true;
-    const stroke = 2.6 / TB.s;
-    const inner = (uu: number, vv: number) =>
-      inBody((uu - stroke) / (1 - 2 * stroke), (vv - stroke) / (1 - 2 * stroke));
-    return inBody(u, v) && !inner(u, v);
-  }
+  // The badges first: they sit beside the head, in the canvas's own pixels.
   if (state === "browsing" || state === "needs") {
     // A badge cut out of the bottom-right corner: a ring while an agent is in its browser, a
     // filled dot when one needs a person. Same place and gap as the update badge.
-    const bx = 28;
-    const by = 28;
+    const bx = 28.5;
+    const by = 28.5;
     const d = Math.hypot(px - bx, py - by);
-    if (d <= 8) {
-      if (d > 6.4) return false; // the gap around the badge
-      return state === "needs" ? true : d >= 3.6;
+    if (d <= 6.6) {
+      if (d > 5.6) return false; // the gap around the badge
+      return state === "needs" ? true : d >= 3;
     }
   }
   if (state === "update") {
     // A round badge cut out of the bottom-right corner, with a down arrow in it.
-    const bx = 27;
-    const by = 27;
+    const bx = 28.5;
+    const by = 28.5;
     const d = Math.hypot(px - bx, py - by);
-    if (d <= 8.6) {
-      if (d > 7.2) return false; // the gap around the badge
+    if (d <= 7) {
+      if (d > 6) return false; // the gap around the badge
       const half = 1.15;
       return (
         distToSegment(px, py, bx, by - 4, bx, by + 3.2) <= half ||
@@ -158,7 +131,17 @@ function trayCoverage(state: TrayState, px: number, py: number): boolean {
       );
     }
   }
-  return inBody(u, v) && !inEye;
+  const x = MARK_X0 + (px - MARK_LEFT) / MARK_SCALE;
+  const y = MARK_Y0 + (py - 2) / MARK_SCALE;
+  if (!inMark(x, y)) return false;
+  // The visor is a slot through the head, its two eyes the only solid part of it (the icon's dark visor and white
+  // eyes, seen as one color).
+  if (LAC_MARKS.visor(x, y)) {
+    if (state === "paused")
+      return (x >= 409 && x <= 471 && y >= 574 && y <= 604) || (x >= 553 && x <= 615 && y >= 574 && y <= 604);
+    return LAC_MARKS.eyes(state === "working" ? x - 26 : x, y);
+  }
+  return true;
 }
 
 function trayPng(state: TrayState): Uint8Array {
@@ -172,7 +155,8 @@ function trayPng(state: TrayState): Uint8Array {
       rgba[i] = 0;
       rgba[i + 1] = 0;
       rgba[i + 2] = 0;
-      rgba[i + 3] = Math.round((hits / (SS * SS)) * 255);
+      // Offline is the same head, dimmed.
+      rgba[i + 3] = Math.round((hits / (SS * SS)) * 255 * (state === "offline" ? 0.45 : 1));
     }
   return encodePng(TRAY_PX, TRAY_PX, rgba);
 }

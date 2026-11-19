@@ -4,16 +4,16 @@
  * a time; `showWindow` switches it (the dev bar does too) and keeps the fake state.
  *
  * Scenarios (`?scenario=`): `first` (a Mac, nothing chosen yet), `windows` and `linux` (the same there),
- * `cloud` (agentes.chat, nothing on this computer), `selfhost` (the default: a server on Tailscale with two
- * organizations whose agents work here), `link` (a claim link waiting) and `here` (agentes.chat runs on this
+ * `cloud` (AULACBOT, nothing on this computer), `selfhost` (the default: a server on Tailscale with two
+ * organizations whose agents work here), `link` (a claim link waiting) and `here` (AULACBOT runs on this
  * computer, its organization's agents too); `?link=` makes any scenario start with that link waiting. A pair link
  * (`agenteschat://pair?server=…&link=ABCDEFGH`) joins Estúdio Norte once its maker lets it in, `HGFEDCBA`'s maker
  * says no, and any other code expired.
  * `?mac=ready`: Screen Recording and Full Disk Access allowed already (with Local Network asked, Prepare this Mac
  * is skipped).
- * Servers answer by host: agentes.tail1234.ts.net, agentes.chat and http://127.0.0.1:4310 are servers;
+ * Servers answer by host: agentes.tail1234.ts.net, AULACBOT and http://127.0.0.1:4310 are servers;
  * noowner.tail1234.ts.net waits for its owner; old.example.com is too old; chat.example.com doesn't answer;
- * anything else isn't agentes.chat. `?found=0` makes discovery find nothing.
+ * anything else isn't AULACBOT. `?found=0` makes discovery find nothing.
  * The server here: `?phase=` (starting, updating, stopped, failing), `?reach=1`, `?back=<version>` (an update
  * went back), `?run=0` (it stopped running here, its data kept), `?owner=0` (it runs with no account left, and the
  * welcome window opens on Run here's form), `?usage=0` (usage statistics off),
@@ -407,7 +407,7 @@ export function createFakeHost(
       console.info("[fake] show in Finder:", path);
     },
     pickFolder: async () => {
-      const picks = ["/Users/voce/Documents/Notas", "/Users/voce/Projects/Personal/site", "/Users/voce/Desktop/Fotos"];
+      const picks = ["/Users/voce/Documents/Ghi-chu", "/Users/voce/Projects/Personal/site", "/Users/voce/Desktop/Anh"];
       return picks[Math.floor(Math.random() * picks.length)] ?? null;
     },
     setTrayState: async (state) => {
@@ -618,7 +618,7 @@ export function createFakeHost(
     openSystemSettings: async (page) => {
       console.info("[fake] open System Settings:", page);
     },
-    localDiagnostics: async () => `agentes.chat app ${version} (macos aarch64)\nserver here: ${local.phase}`,
+    localDiagnostics: async () => `AULACBOT app ${version} (macos aarch64)\nserver here: ${local.phase}`,
     syncLocalHomes: async () => {},
     onLocalReach: (cb) => {
       reachListeners.add(cb);

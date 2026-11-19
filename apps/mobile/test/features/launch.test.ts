@@ -2,7 +2,6 @@ import { describe, expect, test } from "bun:test";
 import {
   LAUNCH,
   LOGO,
-  launchPose,
   launchSkyTones,
   SPRITES,
   spriteBlinks,
@@ -11,7 +10,7 @@ import {
 } from "../../src/features/launch/logic";
 
 describe("launch splash", () => {
-  test("starts on the native image: the body is 400 of its 512 px at 120 pt", () => {
+  test("starts on the native image: the mark is 400 of its 512 px at 120 pt", () => {
     expect(LOGO).toBeCloseTo(93.75, 5);
   });
 
@@ -19,17 +18,6 @@ describe("launch splash", () => {
     expect(waitLine(false, true)).toBeNull();
     expect(waitLine(true, false)).toBe("slow");
     expect(waitLine(true, true)).toBe("offline");
-  });
-
-  test("the agent looks down at the sky, back up, smiles; closes its eyes offline; smiles leaving", () => {
-    // Native frame: facing ahead, eyes open, like the launch image.
-    expect(launchPose(0)).toEqual({ turn: [0, 0], blink: false });
-    expect(launchPose(0.4).turn?.[1]).toBeGreaterThan(0.5);
-    expect(launchPose(0.89).turn?.[1]).toBeLessThan(0);
-    expect(launchPose(1.2).expression).toBe("happy");
-    expect(launchPose(LAUNCH.lineAfter + 0.1, { offline: true }).expression).toBe("closed");
-    expect(launchPose(1, { offline: true }).expression).not.toBe("closed");
-    expect(launchPose(3, { offline: true, leaving: true }).expression).toBe("happy");
   });
 
   test("the sprites stay inside the sky as they rise, and wait while it is low", () => {

@@ -49,6 +49,7 @@ import {
   thisMac,
 } from "@/lib/desktop";
 import { useHumanCheck } from "@/lib/human-check";
+import { PRODUCT_LOOK } from "@/lib/look";
 import { STORAGE_KEYS, sessionStore, storage } from "@/lib/storage";
 
 /**
@@ -587,8 +588,9 @@ export function AuthPage({
       <form className="auth__form" onSubmit={submit} noValidate>
         <header className="auth__ask" ref={header} data-burst>
           <AgentAvatar
-            name="agentes.chat"
+            name="AULACBOT"
             size="lg"
+            appearance={PRODUCT_LOOK}
             state={pending || step === "browser" ? "writing" : undefined}
             expression={expression}
           />

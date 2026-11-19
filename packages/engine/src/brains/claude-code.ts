@@ -288,7 +288,7 @@ export function toolOff(
       ? null
       : {
           code: "tool_off",
-          message: `${name} is turned off on ${status.name} (its owner can turn it on in the agentes app).`,
+          message: `${name} is turned off on ${status.name} (its owner can turn it on in the AULACBOT app).`,
         };
   }
   return status.execAllowed ? null : { code: "exec_disabled", message: `Commands are turned off on ${status.name}.` };

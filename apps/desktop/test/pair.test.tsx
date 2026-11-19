@@ -167,7 +167,7 @@ describe("pairing from the app", () => {
         "Only if you want this Mac to do agents' work too. With Not now you still use Estúdio Norte here as usual.",
       );
       expect(rowOf(el, "Who can use it")?.querySelector('[role="combobox"]')?.textContent).toBe("Only me");
-      expect(rowOf(el, "Keep it ready: open agentes.chat at login")?.querySelector('[role="checkbox"]')).toBeTruthy();
+      expect(rowOf(el, "Keep it ready: open AULACBOT at login")?.querySelector('[role="checkbox"]')).toBeTruthy();
       expect(el.textContent).toContain("What agents can do here");
       expect(el.textContent).toContain("No folders of yours yet. Add them later in Preferences\u00a0›\u00a0Folders.");
       // Commands on; Claude Code, Codex and the browser as the other workspaces here have them.
@@ -220,7 +220,7 @@ describe("pairing from the app", () => {
       // No prompt asks for Full Disk Access: its button is always System Settings, and the row says what to do there.
       expect(end("Full Disk Access")).toBe("Open Settings");
       expect(rowOf(el, "Full Disk Access")?.textContent).toContain(
-        "In Settings, turn on agentes.chat in the list, or add it with +.",
+        "In Settings, turn on AULACBOT in the list, or add it with +.",
       );
       const network = "Local network (phones over Wi-Fi)";
       expect(end(network)).toBe("Allow");
@@ -230,9 +230,7 @@ describe("pairing from the app", () => {
       // Screen Recording applies once the app opens again: asked, it says what macOS will ask, and its way out.
       await act(async () => button(rowOf(el, "Screen Recording"), "Allow")?.click());
       await until(() => end("Screen Recording") === "Open Settings");
-      expect(el.textContent).toContain(
-        "When macOS asks to Quit & Reopen, choose it. agentes.chat opens again right here.",
-      );
+      expect(el.textContent).toContain("When macOS asks to Quit & Reopen, choose it. AULACBOT opens again right here.");
       await act(async () => button(rowOf(el, "Screen Recording"), "Open Settings")?.click());
       expect(host.mac.panes).toEqual(["screen"]);
 
@@ -266,7 +264,7 @@ describe("pairing from the app", () => {
         await until(() => el.querySelector("h1")?.textContent === "Get this Mac ready");
         expect(el.textContent).toContain("Connected to Estúdio Norte.");
         await until(() => rowOf(el, "Screen Recording")?.querySelector(".ac-chip")?.textContent === "On");
-        expect(el.textContent).toContain("agentes.chat opened again with your changes.");
+        expect(el.textContent).toContain("AULACBOT opened again with your changes.");
         expect(el.textContent).not.toContain("When macOS asks to Quit & Reopen");
         await act(async () => button(el, "Continue")?.click());
         expect(host.mac.setup).toBeNull();
@@ -385,7 +383,7 @@ describe("pairing from the app", () => {
       await until(
         () => el.textContent?.includes("Permissions") && rowOf(el, "Screen Recording")?.querySelector("button"),
       );
-      expect(el.textContent).not.toContain("agentes.chat opened again");
+      expect(el.textContent).not.toContain("AULACBOT opened again");
       // In Preferences what each one does sits behind its ⓘ.
       expect(rowOf(el, "Screen Recording")?.querySelector("small")).toBeNull();
       expect(rowOf(el, "Screen Recording")?.querySelector(".dk-help")).toBeNull();
@@ -399,7 +397,7 @@ describe("pairing from the app", () => {
       "prefs",
       <General />,
       async (el, host) => {
-        await until(() => el.textContent?.includes("agentes.chat opened again with your changes."));
+        await until(() => el.textContent?.includes("AULACBOT opened again with your changes."));
         expect(host.mac.setup).toBeNull();
       },
       {
@@ -443,10 +441,10 @@ describe("pairing from the app", () => {
         expect(rowOf(el, norte)?.querySelector("small")?.textContent).toBe(
           "agentes.tail1234.ts.net · Its agents don't use this Mac",
         );
-        // agentes.chat's workspace too.
+        // AULACBOT's workspace too.
         expect(button(rowOf(el, "Oficina"), "Allow")).toBeTruthy();
         expect(rowOf(el, "Oficina")?.querySelector("small")?.textContent).toBe(
-          "agentes.chat Cloud · Its agents don't use this Mac",
+          "AULACBOT Cloud · Its agents don't use this Mac",
         );
         // Open at login, then Another workspace, close the card.
         const card = rowOf(el, norte)?.closest(".dk-card");

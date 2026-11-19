@@ -11,8 +11,8 @@ import { enqueue, PermanentJobError } from "./outbox";
  * pictures, a video) and what the app knows of where they were. Nothing is stored beyond the outbox job and the
  * files, which expire.
  *
- * A server whose operator set no address sends it to the agentes.chat team instead (ADR 0160 §13): the same job posts
- * it to that team's inbox (`FEEDBACK_URL`), pictures included, and the inbox (on agentes.chat's own servers
+ * A server whose operator set no address sends it to the AULACBOT team instead (ADR 0160 §13): the same job posts
+ * it to that team's inbox (`FEEDBACK_URL`), pictures included, and the inbox (on AULACBOT's own servers
  * only) mails it to its own address without keeping anything.
  */
 
@@ -53,7 +53,7 @@ export const FEEDBACK_INBOX_ALL_PER_HOUR = { limit: 60, windowMs: 60 * 60_000 } 
 const RELAY_TIMEOUT_MS = 60_000;
 
 /**
- * Where this server's feedback goes, or undefined when it takes none: its operator's address, else the agentes.chat
+ * Where this server's feedback goes, or undefined when it takes none: its operator's address, else the AULACBOT
  * team's inbox unless the operator turned that off.
  */
 export function feedbackDestination(config: {
@@ -92,7 +92,7 @@ export interface FeedbackAbout {
 }
 
 export interface Feedback {
-  /** Whoever runs the server (`FEEDBACK_EMAIL`), or the agentes.chat team's inbox (a URL, `isFeedbackRelay`). */
+  /** Whoever runs the server (`FEEDBACK_EMAIL`), or the AULACBOT team's inbox (a URL, `isFeedbackRelay`). */
   to: string;
   /** Who wrote it: the reply goes to their address. */
   name: string;
@@ -247,7 +247,7 @@ export async function sendQueuedFeedback(sender: EmailSender, payload: Record<st
     .catch(rethrowEmailError);
 }
 
-/* ---------- to the agentes.chat team, from a server someone else runs ---------- */
+/* ---------- to the AULACBOT team, from a server someone else runs ---------- */
 
 /** What a server posts to the inbox: the feedback without an address, and its pictures as base64. */
 export interface RelayedFeedback {
@@ -270,7 +270,7 @@ function relayedFiles(files: readonly FeedbackFileRef[]) {
 }
 
 /**
- * Job `feedback.send` on a server whose feedback goes to the agentes.chat team: one POST to the inbox (`to`). A
+ * Job `feedback.send` on a server whose feedback goes to the AULACBOT team: one POST to the inbox (`to`). A
  * refusal of what was sent fails the job; anything else (no network, the inbox busy or down) runs it again.
  */
 export async function relayQueuedFeedback(post: typeof fetch, payload: Record<string, unknown>, blobs?: BlobStore) {
