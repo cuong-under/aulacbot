@@ -144,7 +144,7 @@ Also: `apps/mobile/src/features/me/app-icon-names.ts`, `apps/mobile/src/features
 
 | File | Now |
 | --- | --- |
-| `apps/desktop/src-tauri/tauri.conf.json` | `productName` and `shortDescription` `AULACBOT`; the three window titles `AULACBOT`; identifier, scheme, updater endpoint and copyright **KEEP** |
+| `apps/desktop/src-tauri/tauri.conf.json` | `productName` and `shortDescription` `AULACBOT`; the three window titles `AULACBOT`; the updater endpoint `https://aulac.app/api/desktop/update` (CUSTOM-015 — upstream's endpoint would install agentes.chat over AULACBOT); identifier, scheme and copyright **KEEP** |
 | `apps/desktop/src-tauri/Cargo.toml`, `src/main.rs` | Package `aulacbot-desktop`, lib `aulacbot_desktop_lib`, so the process and About name match |
 | `apps/desktop/scripts/icons.ts` | The master and the seven tray templates come from Cyber Lạc: the head plus crest as one silhouette, the visor a slot, the eyes the only solid part (paused = dashes, working = shifted right), offline dimmed, update/browsing/needs badges beside the head |
 | `apps/desktop/src-tauri/src/{main_window,cover,tray,notch,menus,local_server,lib,servers}.rs` | Window titles, cover details, tray tooltips, `window_title`, `window_details`, `.env` header, capability warning and the Cloud name are `AULACBOT`; URLs and the About attribution are **KEEP** |
