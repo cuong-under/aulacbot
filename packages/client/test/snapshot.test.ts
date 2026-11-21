@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { QueryClient } from "@tanstack/react-query";
+import { MutationObserver, onlineManager, QueryClient } from "@tanstack/react-query";
 import type { Me, Message, SnapshotStorage } from "../src/index";
 import { createSnapshot, keys, MISSIONS_WAITING_COUNT, SNAPSHOT_MAX_AGE_MS, SNAPSHOT_VERSION } from "../src/index";
 import { recentConversations } from "../src/lib/recent";
@@ -67,6 +67,24 @@ test("keeps the lists and the latest messages of a chat, without anything off th
   expect(kept).toHaveLength(50);
   expect(kept[0]?.id).toBe("m10");
   expect(kept.at(-1)?.id).toBe("m59");
+});
+
+test("a request that waits for the network isn't kept: what it carries stays in memory", async () => {
+  const qc = new QueryClient();
+  const store = memory();
+  qc.setQueryData(keys.me, me("u1"));
+  onlineManager.setOnline(false);
+  try {
+    const connect = new MutationObserver(qc, { mutationFn: async (_typed: { apiKey: string }) => null });
+    void connect.mutate({ apiKey: "fake-typed-key" }).catch(() => {});
+    await tick();
+    expect(connect.getCurrentResult().isPaused).toBe(true);
+    await createSnapshot(qc, store).flush();
+    expect(store.value()).toContain("u1");
+    expect(store.value()).not.toContain("fake-typed-key");
+  } finally {
+    onlineManager.setOnline(true);
+  }
 });
 
 test("only the most recently updated chats are kept, with their roster", async () => {
@@ -189,4 +207,26 @@ test("recent conversations: unread first, then the latest activity, channels I'm
     3,
   );
   expect(ids).toEqual(["unread", "new", "dm"]);
+});
+
+test("a chat's agents' questions and thread links are kept with its messages: opened from the snapshot, its rows are whole", async () => {
+  const qc = new QueryClient();
+  const store = memory();
+  qc.setQueryData(keys.me, me("u1"));
+  qc.setQueryData(keys.messages("o1", "c1"), [msg("m1")]);
+  qc.setQueryData(keys.consultations("o1", "c1"), [{ id: "q1" }]);
+  qc.setQueryData(keys.channelThreads("o1", "c1", "all"), { threads: [{ id: "m1", replyCount: 2 }] });
+  // Archived threads, and a chat whose messages aren't kept, are not.
+  qc.setQueryData(keys.channelThreads("o1", "c1", "archived"), { threads: [] });
+  qc.setQueryData(keys.consultations("o1", "c2"), [{ id: "q2" }]);
+  await createSnapshot(qc, store).flush();
+
+  const next = new QueryClient();
+  expect(await createSnapshot(next, store).restore()).toBe(true);
+  expect(next.getQueryData(keys.consultations("o1", "c1"))).toEqual([{ id: "q1" }]);
+  expect(next.getQueryData(keys.channelThreads("o1", "c1", "all"))).toEqual({ threads: [{ id: "m1", replyCount: 2 }] });
+  // Counted as fetched: the conversation doesn't wait on them to show.
+  expect(next.getQueryState(keys.consultations("o1", "c1"))?.dataUpdateCount ?? 0).toBeGreaterThan(0);
+  expect(next.getQueryData(keys.channelThreads("o1", "c1", "archived"))).toBeUndefined();
+  expect(next.getQueryData(keys.consultations("o1", "c2"))).toBeUndefined();
 });

@@ -2,6 +2,7 @@ import { mkdirSync, realpathSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { GROK_ACCOUNT_HOMES } from "@agenteschat/adapters/command-policy";
+import { type KnownLabel, scrubLogLine } from "@agenteschat/adapters/error-scrub";
 import {
   cgroupCounters,
   diskFigures,
@@ -24,10 +25,12 @@ import {
   type MachineReplies,
   type MachineRequest,
   OWN_USAGE_ID,
+  REPORT_LOG_LINES,
   type RunnerAccess,
   type RunnerFrame,
   type RunnerInfo,
   type RunnerPause,
+  type RunnerReportParts,
   type RunnerToolchains,
   type RunnerTools,
 } from "@agenteschat/adapters/machine-protocol";
@@ -135,6 +138,7 @@ import {
 } from "./network-state";
 import { type CachedLogo, logoDataUrl, readCachedLogo, removeCachedLogo, syncOrgLogo } from "./org-logo";
 import { type DeviceGrant, devicePair, type FetchFn, LINK_CODE, PairingError, uniqueWorkspace } from "./pairing";
+import { ackPark, takePark } from "./park";
 import { agentId8, agentWorkspace } from "./paths";
 import { iphonesWifiFileOf, PhoneManager, type PhoneManagerOptions } from "./phones";
 import { agentSecrets, dropStoredSiteSecrets, secretValue } from "./secrets";
@@ -503,6 +507,8 @@ export class RunnerDaemon implements RequestObserver {
   private standby = false;
   /** The last standby ask answered (`standby-ack.json`). */
   private standbyAsk: string | null = null;
+  /** A park (`park.ts`) under way: the next ask waits for it. */
+  private parking = false;
   /** A fix of the Mac's own Xcode (`xcode.fix`, the desktop app's iPhone window), made on its first request. */
   private fixer: XcodeFixer | null = null;
   /** An install of a coding CLI (`cli.install`), made on its first request. */
@@ -818,7 +824,10 @@ export class RunnerDaemon implements RequestObserver {
     this.timers.push(sizes);
     // System mode: for an operator's network guard, at most once a minute.
     this.checkStandby();
-    const standby = setInterval(() => this.checkStandby(), STANDBY_POLL_MS);
+    const standby = setInterval(() => {
+      this.checkStandby();
+      this.checkPark();
+    }, STANDBY_POLL_MS);
     standby.unref?.();
     this.timers.push(standby);
     const relayed = setInterval(() => {
@@ -1406,6 +1415,7 @@ export class RunnerDaemon implements RequestObserver {
             ? this.accounts.noteCodexRateLimits(accountId, info)
             : this.accounts.noteRateLimit(accountId, info),
         codexAuth: (accountId, auth) => this.accounts.keepCodexAuth(accountId, auth),
+        grokAuth: (accountId, auth) => this.accounts.keepGrokAuth(accountId, auth),
         desktop: (agent, use) => this.workerDesktop(agent, use),
         desktopViewers: (agentId) => this.desktops.status({ id: agentId }).streams,
         browserKept: (agentId) => this.holds?.kept(agentId) ?? false,
@@ -1539,6 +1549,7 @@ export class RunnerDaemon implements RequestObserver {
       },
       cliInstall: (req) => this.cliInstaller().handle(req),
       xcodeOpen: () => this.iphoneSetup().open("xcode"),
+      reportParts: () => this.reportParts(),
     };
     // `hello` lists the accounts it already knows; a fresh look (each runs its CLI) never delays connecting:
     // it lands in `hello` if it finishes first, else comes after as `accounts.changed`. Nothing reaches the
@@ -1688,6 +1699,26 @@ export class RunnerDaemon implements RequestObserver {
         this.opts.log(`standby: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
+  }
+
+  /** An operator's park (`park.ts`): idle desktops parked, idle browsers eased, then the answer with how many. */
+  private checkPark() {
+    if (this.parking) return;
+    const ask = takePark(this.opts.home);
+    if (!ask) return;
+    this.parking = true;
+    void (async () => {
+      const desktops = await this.desktops.parkIdle();
+      const browsers = (await this.session?.browser.easeIdle()) ?? 0;
+      this.opts.log(`park: ${desktops} idle desktops parked, ${browsers} idle browsers eased`);
+      ackPark(this.opts.home, { id: ask.id, desktops, browsers });
+    })()
+      .catch((err: unknown) => {
+        this.opts.log(`park: ${err instanceof Error ? err.message : String(err)}`);
+      })
+      .finally(() => {
+        this.parking = false;
+      });
   }
 
   private networkScopesBusy(agentId: string): boolean {
@@ -2263,6 +2294,12 @@ export class RunnerDaemon implements RequestObserver {
   /** The desktop app's iPhone setup asking to look at the iPhone again now (`phone.look`). */
   async iphoneLook(): Promise<{ looking: boolean }> {
     return { looking: (await this.phones?.look()) ?? false };
+  }
+
+  /** The desktop app's iPhone setup repairing an iPhone's test helper (`phone.repair`). */
+  async iphoneRepair(serial: string): Promise<{ repairing: boolean }> {
+    if (!this.phones) throw new RunnerError("phone_missing", "This computer doesn't reach phones.");
+    return this.phones.repair({ serial });
   }
 
   /** The desktop app's iPhone setup: what the Mac has, a download of the iOS platform, Xcode opened. */
@@ -2984,6 +3021,56 @@ export class RunnerDaemon implements RequestObserver {
     let text = lines.join("\n");
     if (c?.token) text = text.split(c.token).join("agm_***");
     return redactCommon(text);
+  }
+
+  /**
+   * What a problem report someone sends adds from this computer (`report.collect`, and the desktop app's `report`):
+   * facts and the end of the log, scrubbed here. Never the home, config or workspace paths, the computer's name, the
+   * organization's name or the server's address.
+   */
+  reportParts(): RunnerReportParts {
+    const c = this.config;
+    const access = this.access();
+    const ex = this.executors();
+    const bun = (process.versions as { bun?: string }).bun;
+    const server = (() => {
+      try {
+        return this.stored?.server ? new URL(this.stored.server).host : "";
+      } catch {
+        return "";
+      }
+    })();
+    const known: [string, KnownLabel][] = [
+      [this.opts.home, "computer"],
+      [os.homedir(), "computer"],
+      [os.hostname(), "computer"],
+      ...(c?.name ? ([[c.name, "computer"]] as [string, KnownLabel][]) : []),
+      ...(c?.orgName ? ([[c.orgName, "workspace"]] as [string, KnownLabel][]) : []),
+      ...(server ? ([[server, "server"]] as [string, KnownLabel][]) : []),
+    ];
+    const tail = this.opts.logFile ? tailLines(this.opts.logFile, REPORT_LOG_LINES) : [];
+    const logTail = tail.map((line) => scrubLogLine(c?.token ? line.split(c.token).join("agm_***") : line, known));
+    return {
+      runner: RUNNER_VERSION,
+      protocol: MACHINE_PROTOCOL_VERSION,
+      runtime: bun ? `bun ${bun}` : `node ${process.version}`,
+      os: `${process.platform} ${os.release()}`,
+      arch: os.arch(),
+      compiled: !!this.self.compiled,
+      managedBy: c?.managedBy ?? "terminal",
+      connection: c ? this.connState : "unpaired",
+      paused: this.pauseState().paused,
+      tools: Object.fromEntries(TOOL_NAMES.map((t) => [t, !!access.tools[t]])),
+      executors: {
+        ...(ex.claude ? { claude: ex.claude.version } : {}),
+        ...(ex.codex ? { codex: ex.codex.version } : {}),
+        ...(ex.claude?.loggedIn !== undefined ? { claudeLoggedIn: ex.claude.loggedIn } : {}),
+      },
+      agents: this.agents.length,
+      runningNow: this.jobList().length,
+      browser: { state: (this.session?.browser.states().length ?? 0) > 0 ? "open" : "closed" },
+      logTail,
+    };
   }
 }
 

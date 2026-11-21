@@ -158,7 +158,10 @@ export function Tools() {
     const said = executors.broken?.[cli];
     const name = t(`desktop.tools.${cli}Name`);
     const installable = isInstallableCli(cli) && !(cli === "codex" && host.platform === "windows") && installHome;
-    const command = !installable && cli in CLI_INSTALL ? CLI_INSTALL[cli as keyof typeof CLI_INSTALL] : undefined;
+    const command =
+      !installable && cli in CLI_INSTALL && !(cli === "antigravity" && host.platform === "windows")
+        ? CLI_INSTALL[cli as keyof typeof CLI_INSTALL]
+        : undefined;
     const ran = installs[cli];
     const gitMissing =
       (ran?.state === "failed" && ran.cause === "git_missing") || (said === CLI_GIT_MISSING && ran?.state !== "failed");
@@ -208,9 +211,9 @@ export function Tools() {
           />
         }
         under={
-          !info && (
+          (!info || cli === "codex") && (
             <>
-              {command && <CommandCopy command={command} />}
+              {!info && command && <CommandCopy command={command} />}
               {note && (
                 <p className="dk-help" role="status">
                   {note}
@@ -227,7 +230,7 @@ export function Tools() {
                     {t("desktop.tools.getGit")}
                   </Button>
                 )}
-                {installable && !said && (
+                {!info && installable && !said && (
                   <Button
                     variant={gitMissing ? "default" : "primary"}
                     size="sm"
@@ -243,8 +246,8 @@ export function Tools() {
                   size="sm"
                   icon="refresh"
                   loading={pending === `check:${cli}`}
-                  disabled={pending !== null}
-                  onClick={() => void checkAgain(cli, name, Boolean(command))}
+                  disabled={homes.length === 0 || pending !== null}
+                  onClick={() => void checkAgain(cli, name, !info && Boolean(command))}
                 >
                   {checkLabel}
                 </Button>

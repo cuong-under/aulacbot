@@ -1,16 +1,20 @@
 import { AGENT_ACCESSORIES, AGENT_COLORS, AGENT_EYES } from "@agenteschat/tokens/look";
 
 /**
- * The app icons a person can pick on their device (ADR 0179), in the pickers' order: the first is the icon the apps
- * ship with. Their files come from `packages/ui/scripts/app-icons.mjs` (the same ids, a test keeps them equal); the
- * phone's native side and the desktop app list the same ids too.
+ * The app icons a person can pick on their device (ADR 0179), in the pickers' order: the first is the icon the web and
+ * desktop apps ship with; the phone ships with `PHONE_APP_ICON`. Their files come from
+ * `packages/ui/scripts/app-icons.mjs` (the same ids, a test keeps them equal); the phone's native side and the desktop
+ * app list the same ids too.
  */
 export const APP_ICONS = ["lac", "night", "moon", "sky", "peekNight", "peekSky"] as const;
 
 export type AppIconId = (typeof APP_ICONS)[number];
 
-/** The icon the apps ship with. */
+/** The icon the web and desktop apps ship with. */
 export const DEFAULT_APP_ICON: AppIconId = APP_ICONS[0];
+
+/** The icon the phone app ships with. */
+export const PHONE_APP_ICON: AppIconId = "lac";
 
 export const isAppIcon = (value: unknown): value is AppIconId =>
   typeof value === "string" && (APP_ICONS as readonly string[]).includes(value);

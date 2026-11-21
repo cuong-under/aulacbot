@@ -1,6 +1,7 @@
 import type { PubSub } from "@agenteschat/adapters";
 import { and, type Database, type Executor, eq, inArray, isNull, lt, schema, sql } from "@agenteschat/db";
 import { routineBriefOfRun, routineOfRun } from "./background";
+import { confidentialThreadSql } from "./confidential";
 import { widgetRoutineEnded } from "./dashboards/refresh-ledger";
 import { publishDelivery } from "./delivery";
 import { publishRoutineRuns } from "./events";
@@ -212,11 +213,18 @@ export async function closeRoutineRun(
   if (!routine?.routineRunId) return null;
   const ref = { orgId: run.orgId, routineId: routine.routineId, routineRunId: routine.routineRunId };
   const [agentRun] = await deps.db
-    .select({ agentId: agentRuns.agentId, brain: agentRuns.brain })
+    .select({
+      agentId: agentRuns.agentId,
+      brain: agentRuns.brain,
+      confidential: sql<boolean>`${confidentialThreadSql(sql`${agentRuns.orgId}`, sql`${agentRuns.threadRootId}`)}`,
+    })
     .from(agentRuns)
     .where(and(eq(agentRuns.id, run.id), eq(agentRuns.orgId, run.orgId)));
-  let final: RoutineRunEnd = end;
-  if (end.status === "done" && agentRun) {
+  // A run of a confidential thread (ADR 0190) leaves no record and delivers no report: the record is handed to the
+  // routine's next run and the report is read where the routine reports, both outside that thread.
+  const sealed = agentRun?.confidential === true;
+  let final: RoutineRunEnd = sealed && end.status === "done" ? { status: "done", text: "" } : end;
+  if (end.status === "done" && agentRun && !sealed) {
     const reported = await reportEveryTime(deps, run, agentRun.agentId, ref, recordOf(end.text));
     if (reported === "no_report") final = { status: "failed", code: "no_report" };
     else if (reported) {
@@ -491,6 +499,10 @@ export async function reapRoutineRuns(deps: LedgerDeps, now = new Date()): Promi
   for (const r of lost) {
     if (await finishRoutineRow(deps, r, { status: "failed", code: "lost" }, null)) closed++;
   }
+  // A run left working with nothing moving for `ROUTINE_STALL_MS` is let go, its slot with it (§6.3):
+  // loaded here, since the firing rules import this file.
+  const { releaseStalledRoutineRuns } = await import("./routine-firing");
+  closed += await releaseStalledRoutineRuns(deps, now).catch(() => 0);
   const gathered = await db
     .selectDistinct({ routineId: routineRuns.routineId })
     .from(routineRuns)

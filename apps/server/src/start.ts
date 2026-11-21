@@ -62,6 +62,7 @@ import {
   enableAccountContacts,
   enableCaches,
   enableOperatorEvents,
+  enableSvgRasterizer,
   ensureRightHands,
   type GifKey,
   isAgentesCloud,
@@ -76,10 +77,13 @@ import {
   resolveHostDns,
   retireHostTokens,
   retireMillionSendMailboxes,
+  SURFACE_PREFIX,
   setMessageLinkBase,
   setRestrictionNotices,
+  setSurface,
   setWorkspaceComputers,
   shareCacheInvalidations,
+  surfaceFromConfig,
   surfaceRoomFiles,
   vapidKeys,
   vapidSubject,
@@ -95,9 +99,11 @@ import { checkHumanCheckAtBoot, createHumanCheck } from "./http/human-check";
 import { createLogger, type Logger } from "./logger";
 import { OPERATOR_API_PREFIX, serveOperatorApi } from "./operator/app";
 import { apnsKeyGaps, directPushSenders, phonePushMode, relayServeSender } from "./push-senders";
+import { createLiveSockets } from "./realtime/live";
 import { createMachineSockets } from "./realtime/machines";
 import { createStreamSockets } from "./realtime/streams";
 import { createRealtime, type SocketData } from "./realtime/ws";
+import type { AppDeps } from "./routes/app/context";
 import { workerHealth } from "./routes/health";
 import { startTelemetry } from "./telemetry";
 import { releaseOf, version } from "./version";
@@ -136,6 +142,7 @@ export function applyBootSwitches(config: Config) {
   setMessageLinkBase(config.PUBLIC_URL);
   // The operator API's events feed records only while that API is on (ADR 0056).
   enableOperatorEvents(Boolean(config.OPERATOR_API_TOKEN));
+  setSurface(surfaceFromConfig(config));
   // Where each workspace gets its own computer, the computers people bring are targets, never agents' homes.
   setWorkspaceComputers(config.MACHINE_PROVISIONING === "external");
 }
@@ -165,13 +172,14 @@ export async function startServer(options: StartOptions) {
     release,
     runtime: { name: "bun", version: Bun.version },
   });
-  const log = createLogger(config.LOG_LEVEL, errors);
+  const log = createLogger(config.LOG_LEVEL, errors, config.LOG_FORMAT);
   try {
     const started = await boot(options, config, log, release, errors);
     // Once it serves: a boot's own long steps (migrations, the built-in database's start) aren't what it is for.
     startFreezeWatch(
       {
         logLevel: config.LOG_LEVEL,
+        logFormat: config.LOG_FORMAT,
         ...(config.SENTRY_DSN
           ? { reports: { dsn: config.SENTRY_DSN, environment: config.SENTRY_ENVIRONMENT, release } }
           : {}),
@@ -201,7 +209,11 @@ async function boot(
       ? { to: new URL(config.SENTRY_DSN).host, environment: config.SENTRY_ENVIRONMENT, release }
       : { reports: "off" },
   );
-  if (config.NODE_ENV === "production" && config.PUBLIC_URL === "http://localhost:3000") {
+  if (
+    config.NODE_ENV === "production" &&
+    config.PUBLIC_URL === "http://localhost:3000" &&
+    !config.EXTRA_TRUSTED_ORIGINS?.length
+  ) {
     log.warn(
       "PUBLIC_URL is http://localhost:3000 (the default): only a browser on this machine, at exactly that address, can sign in and save. Set PUBLIC_URL to the address people open (e.g. https://chat.example.com): sign-in cookies, the browser origin allowed to make changes (CSRF) and the links in emails all come from it, so from any other address sign-in and saving fail with bad_origin.",
     );
@@ -254,6 +266,10 @@ async function boot(
     email: emailSender(config, log),
     platformCredentials: envPlatformCredentials({
       anthropic: { apiKey: config.PLATFORM_ANTHROPIC_API_KEY, workspaceId: config.PLATFORM_ANTHROPIC_WORKSPACE_ID },
+      // Image generation's providers (ADR 0197), which serve their chat models to workspaces without a key too.
+      openai: { apiKey: config.PLATFORM_OPENAI_API_KEY },
+      gemini: { apiKey: config.PLATFORM_GEMINI_API_KEY },
+      openrouter: { apiKey: config.PLATFORM_OPENROUTER_API_KEY },
     }),
     platformBlobs: platformBlobStore(config, database.db),
     // Phone app push (ADR 0035, ADR 0152, ADR 0178): only devices that registered get anything. Android straight
@@ -485,6 +501,8 @@ async function boot(
     }),
   };
   log.info("job slots", { start: slots, upTo: outbox.limits ?? "fixed", memoryBytes, role: config.SERVER_ROLE });
+  // SVG pictures drawn as PNGs for exports and models (ADR 0196 §8); without it they are left out of those.
+  if (!(await enableSvgRasterizer())) log.warn("svg pictures", { drawn: false, because: "resvg didn't load" });
   const workers = startWorkers({
     db: database.db,
     handlers: engine.handlers,
@@ -518,43 +536,59 @@ async function boot(
     pubsub: adapters.pubsub,
   });
   let stopping = false;
+  const services: AppDeps = {
+    db: database.db,
+    auth,
+    config,
+    adapters,
+    wakeWorkers: workers.wakeAll,
+    extras: {
+      embed: engine.gateway.embed,
+      storage: engine.storage,
+      artifacts: engine.artifacts,
+      context: engine.context,
+      sandbox: engine.sandbox,
+      browserLive: engine.browserLive,
+      streams: engine.streams,
+      talker: engine.talker,
+      router: engine.router,
+      jevKey: engine.jevKey,
+      gifKey: gifKey ?? undefined,
+      githubApp: engine.githubApp,
+      speech: engine.speech,
+      voice: engine.voice,
+      gitProxy: engine.gitProxy,
+      pushRelaySender: relayServeSender(direct),
+      live: engine.live,
+      liveDeps: engine.liveDeps,
+      images: engine.images,
+    },
+    log,
+  };
   const app = createApp({
     edition,
     version,
     modules,
     draining: () => stopping,
     moduleContext: ctx,
-    services: {
-      db: database.db,
-      auth,
-      config,
-      adapters,
-      wakeWorkers: workers.wakeAll,
-      extras: {
-        embed: engine.gateway.embed,
-        storage: engine.storage,
-        artifacts: engine.artifacts,
-        context: engine.context,
-        sandbox: engine.sandbox,
-        browserLive: engine.browserLive,
-        streams: engine.streams,
-        talker: engine.talker,
-        router: engine.router,
-        jevKey: engine.jevKey,
-        gifKey: gifKey ?? undefined,
-        githubApp: engine.githubApp,
-        speech: engine.speech,
-        voice: engine.voice,
-        gitProxy: engine.gitProxy,
-        pushRelaySender: relayServeSender(direct),
-      },
-    },
+    services,
     log,
     pingDatabase: database.ping,
     webDir: existsSync(webDir) ? webDir : undefined,
   });
   if (!worker && !existsSync(webDir)) log.warn("web app not found; serving API only", { webDir });
 
+  // Live files' sockets (ADR 0196 §3): one per open spreadsheet, presentation or canvas.
+  const liveSockets = createLiveSockets({
+    db: database.db,
+    auth,
+    config,
+    pubsub: adapters.pubsub,
+    rateLimiter: adapters.rateLimiter,
+    docs: engine.live,
+    artifacts: engine.artifacts,
+    log,
+  });
   const realtime = createRealtime({
     db: database.db,
     auth,
@@ -564,6 +598,7 @@ async function boot(
     machines: createMachineSockets(engine.machineHub),
     browserLive: engine.browserLive,
     streams: createStreamSockets({ db: database.db, auth, config, broker: engine.streams }),
+    live: liveSockets,
   });
   const publicUrl = new URL(config.PUBLIC_URL);
   const ownHosts = ownHostsOnly
@@ -619,13 +654,19 @@ async function boot(
         version: release,
         log,
         pubsub: adapters.pubsub,
+        blobs: adapters.platformBlobs,
         hub: engine.machineHub,
         emails: adapters.email.delivers,
         humanCheck: adapters.humanCheck,
+        rateLimiter: adapters.rateLimiter,
         sessions: engine.sessions,
+        surface: services,
       });
-  if (operator) {
+  if (operator && config.OPERATOR_API_TOKEN) {
     log.info("operator API listening", { url: `http://${config.HOST}:${operator.port}${OPERATOR_API_PREFIX}` });
+  }
+  if (operator && config.SURFACE_BRIDGE_TOKEN) {
+    log.info("chat surface bridge listening", { url: `http://${config.HOST}:${operator.port}${SURFACE_PREFIX}` });
   }
   if (engine.sessions) log.info("session screening on: screens are read while people are in control (ADR 0076)");
 
@@ -650,6 +691,9 @@ async function boot(
     // Runners reconnect to the next instance, and people's desktops and terminals open again there.
     await engine.machineHub.stop();
     engine.streams.stop();
+    // People's live files open again on the next instance; what their apps sent that isn't stored yet goes again from
+    // their state vectors there. The documents stay here for the agents' tools in the runs still finishing.
+    liveSockets.stop();
     // Runs in progress get up to 20 s to finish; the rest are checkpointed and resume on the next instance. The other
     // jobs running here get as long, 5 s at least, then go back to the queue, due at once, instead of waiting out
     // their lease. A task's call cut by the stop is sent again to the next instance, which answers it from what is
@@ -668,6 +712,8 @@ async function boot(
     ]);
     if (interrupted.length > 0) log.info("runs handed back for the next instance", { runs: interrupted });
     if (handed > 0) log.info("jobs handed back for the next instance", { jobs: handed });
+    // What live files hold that isn't stored yet is stored, now that no run here changes them (ADR 0196 §4).
+    await engine.live.stop().catch((error: unknown) => log.warn("live files' last changes failed", { error }));
     // Browser tabs, left open so they saw those runs finish, reconnect to the next instance.
     await server?.stop(true);
     for (const module of modules) await module.onStop?.();

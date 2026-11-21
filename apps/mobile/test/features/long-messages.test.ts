@@ -7,7 +7,7 @@ const src = (file: string) => readFileSync(join(import.meta.dir, "../../src", fi
 describe("long messages on the phone", () => {
   test("a tall message clips by the rule the web uses, and Ver mais opens it in place for good, kept by the screen", () => {
     const clip = src("features/chat/ClippedMessage.tsx");
-    expect(clip).toContain('import { clippedHeight } from "@agenteschat/client/lib/message-length"');
+    expect(clip).toContain('import { clippedHeight, LONG_MESSAGE } from "@agenteschat/client/lib/message-length"');
     expect(clip).toContain("const cut = clippedHeight(height);");
     // In place: no sheet, no copy of its own (Copiar stays in the message's menu), and nothing folds it back.
     expect(clip).not.toContain("useSheetIfAny");
@@ -15,7 +15,7 @@ describe("long messages on the phone", () => {
     expect(clip).not.toMatch(/setTapped\((false|!)/);
     expect(src("features/chat/sheets.tsx")).toContain('label: t("mobile.chat.copy")');
     // The screen keeps which are open (its list unmounts rows off screen), and opening one stops it following the end.
-    expect(clip).toContain("const open = tapped || Boolean(screen?.has(id));");
+    expect(clip).toContain("const open = fullMessages || tapped || Boolean(screen?.has(id));");
     expect(clip).toContain("screen?.open(id);");
     const screen = src("features/chat/ChatScreen.tsx");
     expect(screen).toContain("<OpenedMessagesContext.Provider value={openedMessages}>");

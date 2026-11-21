@@ -7,7 +7,7 @@ import type { MergeDone } from "./command-policy";
  */
 
 /** Bumped on breaking changes; the server refuses runners older than `MIN_RUNNER_PROTOCOL`. */
-export const MACHINE_PROTOCOL_VERSION = 66;
+export const MACHINE_PROTOCOL_VERSION = 73;
 export const MIN_RUNNER_PROTOCOL = 1;
 /** From this protocol on, requests carry `agent` and each agent works in its own folder. */
 export const AGENT_FOLDERS_PROTOCOL = 2;
@@ -669,6 +669,30 @@ export const ACCESS_ALLOW_PROTOCOL = 62;
  * switch on a plugged iPhone that hides it. Older runners answer `phone.look` at once and `xcode.open` `bad_request`.
  */
 export const IPHONE_DEV_MODE_PROTOCOL = 65;
+/**
+ * From this protocol on, in system mode a Grok Build sign-in is made for all of its owner's agents there too
+ * (`begin`'s `shared` for `grok`): root's `GROK_HOME` keeps the sign-in (`auth.json`, never lent) and each agent's
+ * turn gets a copy in its own folder for the account (`grok_auth` grant), a copy its Grok refreshed going back to
+ * root (`grok.auth`). An older runner lends the account's folder to one agent, so the server reads it as one login
+ * per agent, as before.
+ */
+export const SHARED_GROK_PROTOCOL = 67;
+/**
+ * From this protocol on, Gemini accounts sign in and think on macOS too, each in a keychain of its own inside its
+ * folder (ADR 0143). An older Mac runner refuses them, so the server reads it as too old for the Antigravity CLI.
+ */
+export const ANTIGRAVITY_MAC_PROTOCOL = 68;
+/**
+ * `phone.repair`: a Mac repairs a real iPhone's test helper (stops it and its leftovers, builds it again with the Xcode
+ * installed now, checks it on the phone). Older runners answer `bad_request`: the server asks none of them.
+ */
+export const PHONE_REPAIR_PROTOCOL = 73;
+/**
+ * From this protocol on, the runner sends `room.freed` once there is room again after it refused a turn (`no_slot`): a
+ * turn ended there, or its memory came back over the agents' floor. The server asks its line again at once; an older
+ * runner's line asks again on its timer.
+ */
+export const ROOM_FREED_PROTOCOL = 69;
 
 /**
  * `clis.check`: the coding CLIs looked up again now, the PATH read again first (the apps' "I installed it, check again").
@@ -677,6 +701,33 @@ export const IPHONE_DEV_MODE_PROTOCOL = 65;
  * runner holds the installers. Older runners answer `bad_request`: the server asks none of them.
  */
 export const CLI_INSTALL_PROTOCOL = 66;
+/**
+ * `report.collect`: the facts and the scrubbed end of its log a computer adds to a problem report someone chose to
+ * send. The server asks no older runner, and says in the report that its log is missing.
+ */
+export const PROBLEM_REPORT_PROTOCOL = 72;
+/** Lines of the runner's log `report.collect` gives, at most. */
+export const REPORT_LOG_LINES = 300;
+
+/** What `report.collect` answers: no paths, names or addresses (the log tail is scrubbed on the computer). */
+export interface RunnerReportParts {
+  runner: string;
+  protocol: number;
+  runtime: string;
+  os: string;
+  arch: string;
+  compiled: boolean;
+  managedBy: string;
+  connection: string;
+  paused: boolean;
+  tools: Record<string, boolean>;
+  executors: { claude?: string; codex?: string; claudeLoggedIn?: boolean };
+  agents: number;
+  runningNow: number;
+  browser?: { state: string; chrome?: string; lastError?: string };
+  logTail: string[];
+}
+
 /** The coding CLIs `cli.install` installs: Claude Code and Codex. */
 export const INSTALLABLE_CLIS = ["claude", "codex"] as const;
 export type InstallableCli = (typeof INSTALLABLE_CLIS)[number];
@@ -717,6 +768,8 @@ export type PhoneReason =
   /** iPhone: no Xcode on the Mac, or its iPhone SDK is older than the phone's iOS (`xcode_too_old`). */
   | "xcode_missing"
   | "xcode_too_old"
+  /** iPhone: its iOS is older than the Mac's iPhone SDK and the test helper is stuck: the iPhone needs an update. */
+  | "ios_behind_xcode"
   /** iPhone: the Mac is preparing the phone (device support download, needs internet). */
   | "device_support"
   /** iPhone: the test helper isn't built yet, or its free signature ran out (`helper_expired`). */
@@ -1159,6 +1212,11 @@ export interface PlanWindow {
   label?: string;
   usedPercent: number;
   resetsAt?: string;
+  /**
+   * When this window was last read, where that is before its snapshot's `at`: a turn's event that didn't name it
+   * kept the older reading. Absent: the snapshot's `at`.
+   */
+  at?: string;
 }
 export type PlanWindowKind = "five_hour" | "seven_day" | "seven_day_opus" | "seven_day_sonnet" | "monthly" | "other";
 export const PLAN_WINDOW_KINDS: readonly PlanWindowKind[] = [
@@ -1321,16 +1379,16 @@ export const isLoginEmail = (v: unknown): v is string =>
   /^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}@[A-Za-z0-9][A-Za-z0-9-]*(\.[A-Za-z0-9][A-Za-z0-9-]*)+$/.test(v);
 
 /** The `agent-browser` release the runner and the desktop app ship (ADR 0040 §2). */
-export const AGENT_BROWSER_VERSION = "0.39.1";
+export const AGENT_BROWSER_VERSION = "0.42.0";
 /** Targets of `agent-browser`'s release assets (`agent-browser-<target>`, `.exe` on Windows). */
 export type AgentBrowserTarget = "darwin-arm64" | "darwin-x64" | "linux-arm64" | "linux-x64" | "win32-x64";
 /** SHA-256 (hex) of each release asset of `AGENT_BROWSER_VERSION`, checked before the binary is used. */
 export const AGENT_BROWSER_SHA256: Record<AgentBrowserTarget, string> = {
-  "darwin-arm64": "cc18fac41d9dc9821918340a136e643286ea05544c4dd35671b796f1a874cdef",
-  "darwin-x64": "339cb9aa6dfd404856cf938df34cd3b4779c61dfd57fc257be11b14fd1a885f9",
-  "linux-arm64": "9d8fdc586056df65747927ae166157c83af91b52cea287175e5544afd2591d33",
-  "linux-x64": "6906d3a2a67b05809932a93d99e53d1132373f0a52a617b2d6032dbb954df6fc",
-  "win32-x64": "af1ff5f2afd5c187fb50ac3bbc1e7114baadc180d67cef63f644af9031be5049",
+  "darwin-arm64": "b1b2946c95d218b035262483f2c6193e0f216c155c903bcc532ce47e29d8e72d",
+  "darwin-x64": "802883bc38519e550525f74bb3e7ca692029082bdd2b7c235c26167b130c8d66",
+  "linux-arm64": "a219b10251ecd85e5787d1126dc969d926ac8d2dea325f9d94413907a8856f40",
+  "linux-x64": "b69e0f5ea76dcb51f8f75da6bcb87c7f4d81f79b5738f1f08bd121b51cb3dc57",
+  "win32-x64": "8209f42e604d012f789caa14ae73a57200925608409fa09427b0fd6e4f3adf15",
 };
 /** `darwin-arm64` → `agent-browser-darwin-arm64`; `win32-x64` → `agent-browser-win32-x64.exe`. */
 export const agentBrowserAsset = (target: AgentBrowserTarget) =>
@@ -1438,6 +1496,40 @@ export const CHROME_FAILURES = {
 } as const;
 
 export type ChromeFailure = "missing" | "start" | "profile" | "outdated";
+/** The way out of a Chrome that closed as it started for no cause we know. */
+const UPDATE_CHROME =
+  "Update Google Chrome on it (open Chrome, then Settings › About Chrome, and Relaunch), then try again.";
+
+/**
+ * How a Chrome that closed while starting exited, for logs and people: its exit code (in hex too on Windows, whose
+ * codes are often NTSTATUS values) or the signal that ended it.
+ */
+export function chromeExitText(code: number | null, signal: string | null, platform: string = process.platform) {
+  if (code === null) return signal ? `signal ${signal}` : "no exit code";
+  const n = platform === "win32" ? code >>> 0 : code;
+  return platform === "win32" ? `exit 0x${n.toString(16).toUpperCase()}/${n}` : `exit ${n}`;
+}
+
+/**
+ * What follows `CHROME_FAILURES.start` when Chrome closed while starting: the cause, when its exit code is one we
+ * know, and one way out. 21 (a profile in use) is `CHROME_FAILURES.profile` instead.
+ */
+export function chromeExitCause(code: number | null, signal: string | null, platform: string = process.platform) {
+  const exit = chromeExitText(code, signal, platform);
+  switch (code === null ? null : code >>> 0) {
+    // chrome_result_codes.h: RESULT_CODE_NORMAL_EXIT_PROCESS_NOTIFIED, handed to a Chrome already on the profile.
+    case 24:
+      return `Another Google Chrome already running with the agent's profile took over its start (${exit}). Try again in a minute.`;
+    // NTSTATUS STATUS_DLL_NOT_FOUND.
+    case 0xc0000135:
+      return `A file Google Chrome needs is missing (${exit}). Reinstall Google Chrome from google.com/chrome, then try again.`;
+    // NTSTATUS STATUS_ACCESS_VIOLATION.
+    case 0xc0000005:
+      return `Google Chrome crashed as it started (${exit}). ${UPDATE_CHROME}`;
+    default:
+      return `Google Chrome closed as it started (${exit}). ${UPDATE_CHROME}`;
+  }
+}
 
 /** Which of `CHROME_FAILURES` a runner's message is, or null for another one (an older runner's, a busy computer). */
 export function chromeFailureKind(message: string): ChromeFailure | null {
@@ -1819,6 +1911,17 @@ export interface GitSyncRepo {
 export const HELLO_TIMEOUT_MS = 10_000;
 /** The server pings this often; the runner reconnects after two missed pings. */
 export const HEARTBEAT_MS = 25_000;
+/** Close codes the server sends the runner. */
+export const MACHINE_CLOSE = {
+  badFrame: 4400,
+  invalidToken: 4401,
+  revoked: 4403,
+  timeout: 4408,
+  replaced: 4409,
+  outdated: 4426,
+} as const;
+/** The close code a runner sends when it stops for good (its service stopped, the app quit), not a lost link. */
+export const RUNNER_STOPPED_CLOSE = 4000;
 /** Largest text frame either side accepts (a `write` of 5 MB is about 6.7 MB in base64). */
 export const MAX_FRAME_BYTES = 8 * 1024 * 1024;
 /** `read`/`write` bodies (base64 in JSON); larger files go through `push` and `pull`. */
@@ -1956,8 +2059,10 @@ export type CliName = (typeof CLI_NAMES)[number];
 
 /** A coding CLI on the machine, as `hello` reports it (protocol 7). */
 export interface RunnerExecutorInfo {
-  /** The first line of `<cli> --version`. */
+  /** The line of `<cli> --version` that holds its version (else its first line, or `unknown`). */
   version: string;
+  /** `codex` only: the copy the runner starts, the newest of those it found. */
+  path?: string;
   /** Protocol 8, `claude` only: `claude auth status` says it is logged in (absent: unknown). */
   loggedIn?: boolean;
   /** Protocol 8, `claude` only: how it is logged in (`claude.ai`, `api_key`…) and the plan (`pro`, `max`, `ultra`…). */
@@ -2044,6 +2149,11 @@ export type WireBrainEvent =
     }
   /** Protocol 15: messages handed with `brain.steer` that the turn read (their `uuid`s). */
   | { type: "steer_read"; uuids: string[] }
+  /**
+   * An answer the turn finished before it went on (`BrainTurnRequest.answers`): the server posts it as a message of its
+   * own now; `done` holds only what came after it. Sent only to a request that asked for it.
+   */
+  | { type: "answer"; text: string }
   /** Protocol 46: Fast failed (`message`: the provider's words) and this turn answered at standard speed. */
   | { type: "speed_fallback"; message: string }
   /** A call the brain starts on its own (Claude Code's Read, Bash, Task): its `tool_call` follows once it ended. */
@@ -2151,6 +2261,12 @@ export interface BrainTurnRequest {
    * (`PERSON_TURN_MIN_FREE_BYTES`). No protocol step: a runner that doesn't read it admits the turn like any other.
    */
   personWaiting?: boolean;
+  /**
+   * `each` (ADR 0112): an answer the turn finished before it went on (a message handed to it mid-turn was read after
+   * it, work moved to the background, a background task's notice) goes out at once as an `answer` event, and `done`
+   * holds only what came after it. No protocol step: a runner that doesn't read it joins them into `done`, as before.
+   */
+  answers?: "each";
 }
 
 /**
@@ -2564,6 +2680,12 @@ export type MachineRequest = (
        * may start Chrome, never while someone watches it or a person's turn is open.
        */
       desktop?: boolean;
+      /**
+       * The person in control sent it (the live view's address field, a restart): it runs while they drive the
+       * browser. Anything else meanwhile never reaches the browser: a read of the address or title is answered from
+       * the live view, the rest is refused (a person's input waits behind whatever the browser is busy with).
+       */
+      person?: boolean;
     }
   /** Protocol 12: close the agent's browser session (Stop, idle). */
   | { op: "browser.stop" }
@@ -2680,6 +2802,10 @@ export type MachineRequest = (
   | { op: "cli.install"; action: "start" | "status" | "cancel"; tool?: InstallableCli }
   /** `IPHONE_DEV_MODE_PROTOCOL`: open Xcode on this Mac (it shows Developer Mode on a plugged iPhone). */
   | { op: "xcode.open" }
+  /** `PHONE_REPAIR_PROTOCOL`: repair the test helper of the iPhone `serial`; answers once its rebuild started. */
+  | { op: "phone.repair"; serial: string }
+  /** `PROBLEM_REPORT_PROTOCOL`: facts and the scrubbed log tail for a problem report. */
+  | { op: "report.collect" }
 ) & {
   agent?: AgentScope;
   /** Protocol 34: a `browser.*` op in this browser profile's session instead of the agent's (ADR 0110). */
@@ -2760,6 +2886,8 @@ export const MACHINE_OPS: readonly MachineOp[] = [
   "clis.check",
   "cli.install",
   "xcode.open",
+  "phone.repair",
+  "report.collect",
 ];
 
 /** What each op answers with `ok: true`. */
@@ -2931,6 +3059,8 @@ export interface MachineReplies {
   "clis.check": { executors: NonNullable<RunnerInfo["executors"]> };
   "cli.install": { install: CliInstall | null };
   "xcode.open": { opened: boolean };
+  "phone.repair": { repairing: boolean };
+  "report.collect": RunnerReportParts;
 }
 
 /** An element numbered on a `browser.capture` image: its ref and box (CSS pixels). */
@@ -3155,7 +3285,9 @@ export type RunnerFrame =
   /** The same on the agent's desktop (ADR 0062), in the screen's pixels: desktop use, and its browser's window there. */
   | ({ type: "desktop.pointer"; agentId: string } & AgentPointer)
   /** `KEEP_RUNNING_PROTOCOL`: a hold ended on the computer by itself (the next `hello` says so again). */
-  | { type: "keep.ended"; holdId: string; reason: HoldEnd };
+  | { type: "keep.ended"; holdId: string; reason: HoldEnd }
+  /** `ROOM_FREED_PROTOCOL`: room again after a `no_slot`. */
+  | { type: "room.freed" };
 
 /** A tool as `mcp.tools` lists it (what MCP `tools/list` returns). */
 export interface McpToolInfo {
@@ -3365,8 +3497,10 @@ export function parseExecutors(v: Record<string, unknown>): NonNullable<RunnerIn
     if (!isObject(e) || !isString(e.version)) continue;
     const authMethod = word(e.authMethod);
     const plan = word(e.plan);
+    const path = name === "codex" && isString(e.path) && /^[^\0\r\n]{1,500}$/.test(e.path) ? e.path : undefined;
     out[name] = {
       version: e.version.replace(/\s+/g, " ").trim().slice(0, 80),
+      ...(path ? { path } : {}),
       ...(typeof e.loggedIn === "boolean" ? { loggedIn: e.loggedIn } : {}),
       ...(authMethod ? { authMethod } : {}),
       ...(plan ? { plan } : {}),
@@ -3442,11 +3576,13 @@ export function parsePlanUsage(v: unknown): PlanUsage | undefined {
           .slice(0, PLAN_USAGE_LIMITS.label)
       : "";
     const resetsAt = isoOf(w.resetsAt);
+    const read = isoOf(w.at);
     windows.push({
       kind,
       ...(label ? { label } : {}),
       usedPercent: Math.round(Math.min(100, Math.max(0, used))),
       ...(resetsAt ? { resetsAt } : {}),
+      ...(read && read < at ? { at: read } : {}),
     });
   }
   return {
@@ -3520,7 +3656,10 @@ export function parseBrainEvent(v: unknown): WireBrainEvent | null {
     case "done": {
       if (!isString(v.text)) return null;
       const session = isObject(v.session) && isString(v.session.id) ? { id: v.session.id.slice(0, 64) } : undefined;
-      const ms = (x: unknown) => (finite(x) !== undefined && (x as number) >= 0 ? Math.round(x as number) : undefined);
+      // A runner reports these itself: past a day it is a wrong clock, not a slow start, and would skew the percentiles.
+      const DAY_MS = 86_400_000;
+      const ms = (x: unknown) =>
+        finite(x) !== undefined && (x as number) >= 0 && (x as number) <= DAY_MS ? Math.round(x as number) : undefined;
       const t = isObject(v.timings) && typeof v.timings.warm === "boolean" ? v.timings : null;
       const initMs = ms(t?.initMs);
       const firstEventMs = ms(t?.firstEventMs);
@@ -3560,6 +3699,10 @@ export function parseBrainEvent(v: unknown): WireBrainEvent | null {
         .map((u) => u.slice(0, 64));
       return uuids.length ? { type: "steer_read", uuids } : null;
     }
+    case "answer":
+      return isString(v.text) && v.text.trim() !== ""
+        ? { type: "answer", text: v.text.slice(0, BRAIN_LIMITS.doneText) }
+        : null;
     case "speed_fallback":
       return { type: "speed_fallback", message: (isString(v.message) ? v.message : "").slice(0, BRAIN_LIMITS.message) };
     case "tool_started":
@@ -3649,6 +3792,8 @@ export function parseRunnerFrame(raw: string): RunnerFrame | null {
         ...(isObject(f.holds) ? { holds: parseHolds(f.holds) } : {}),
       };
     }
+    case "room.freed":
+      return { type: "room.freed" };
     case "keep.ended": {
       const reason = HOLD_ENDS.find((r) => r === f.reason);
       return isUuid(f.holdId) && reason ? { type: "keep.ended", holdId: f.holdId, reason } : null;

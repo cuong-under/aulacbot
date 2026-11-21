@@ -1,8 +1,9 @@
 {
   "keep": [
     "agentes.chat",
+    "AGENTESCHAT, LLC",
     "AULACBOT",
-    "Codari Global, LLC",
+    "Cyber Lạc",
     "Claude",
     "ChatGPT",
     "OpenAI",
@@ -33,12 +34,14 @@
     "id": "kamu",
     "tr": "siz",
     "pl": "ty",
-    "ru": "вы, lowercase"
+    "ru": "вы, lowercase",
+    "vi": "bạn; tự nhiên, gần gũi và ngắn gọn"
   },
   "terms": [
     {
       "en": "agent",
       "note": "\"AI agent\" in running text. zh 智能体. de is masculine (der Agent, plural Agenten).",
+      "vi": "agent",
       "pt-BR": "agente",
       "es": "agente",
       "fr": "agent",
@@ -56,6 +59,7 @@
     {
       "en": "people",
       "note": "ja uses 人 or メンバー by context. zh 人 works in phrases like 人和智能体.",
+      "vi": "mọi người",
       "pt-BR": "pessoas",
       "es": "personas",
       "fr": "personnes",
@@ -72,6 +76,7 @@
     },
     {
       "en": "workspace",
+      "vi": "workspace",
       "pt-BR": "workspace",
       "es": "espacio de trabajo",
       "fr": "espace de travail",
@@ -88,6 +93,7 @@
     },
     {
       "en": "team",
+      "vi": "nhóm",
       "pt-BR": "equipe",
       "es": "equipo",
       "fr": "équipe",
@@ -104,6 +110,7 @@
     },
     {
       "en": "member",
+      "vi": "thành viên",
       "pt-BR": "membro",
       "es": "miembro",
       "fr": "membre",
@@ -121,6 +128,7 @@
     {
       "en": "Owner (role)",
       "note": "A role name: capitalized like the other role names.",
+      "vi": "Chủ sở hữu",
       "pt-BR": "Dono",
       "es": "Propietario",
       "fr": "Propriétaire",
@@ -138,6 +146,7 @@
     {
       "en": "Admin (role)",
       "note": "A role name: capitalized like the other role names.",
+      "vi": "Quản trị viên",
       "pt-BR": "Admin",
       "es": "Admin",
       "fr": "Admin",
@@ -155,6 +164,7 @@
     {
       "en": "role (workspace)",
       "note": "What a person may do in the workspace (Todos, Admin, Suporte). pt-BR says cargo, never papel: Criar cargo, Cargos de Ana. Agents hold no workspace role.",
+      "vi": "vai trò trong workspace",
       "pt-BR": "cargo",
       "es": "rol",
       "fr": "rôle",
@@ -172,6 +182,7 @@
     {
       "en": "role (agent's job)",
       "note": "An agent's job, free text like Dev or Atendimento. pt-BR says função, so cargo means only the workspace role. função is feminine: a função do Max. ja keeps 役割 apart from the workspace's ロール.",
+      "vi": "vai trò công việc của agent",
       "pt-BR": "função",
       "es": "rol",
       "fr": "rôle",
@@ -188,6 +199,7 @@
     },
     {
       "en": "channel",
+      "vi": "kênh",
       "pt-BR": "canal",
       "es": "canal",
       "fr": "canal",
@@ -204,6 +216,7 @@
     },
     {
       "en": "direct message",
+      "vi": "tin nhắn riêng",
       "pt-BR": "mensagem direta",
       "es": "mensaje directo",
       "fr": "message direct",
@@ -221,6 +234,7 @@
     {
       "en": "thread",
       "note": "pt-BR, de, it and nl keep \"thread\", as Slack does in those languages.",
+      "vi": "thread",
       "pt-BR": "thread",
       "es": "hilo",
       "fr": "fil",
@@ -237,6 +251,7 @@
     },
     {
       "en": "mention",
+      "vi": "lượt nhắc",
       "pt-BR": "menção",
       "es": "mención",
       "fr": "mention",
@@ -253,6 +268,7 @@
     },
     {
       "en": "task",
+      "vi": "tác vụ",
       "pt-BR": "tarefa",
       "es": "tarea",
       "fr": "tâche",
@@ -270,6 +286,7 @@
     {
       "en": "mission",
       "note": "zh 专项任务 is distinct from 任务 (task). tr misyon is distinct from görev (task).",
+      "vi": "nhiệm vụ",
       "pt-BR": "missão",
       "es": "misión",
       "fr": "mission",
@@ -287,6 +304,7 @@
     {
       "en": "routine",
       "note": "ru avoids «рутина» (reads as negative). zh avoids 任务, which is task.",
+      "vi": "lịch định kỳ",
       "pt-BR": "rotina",
       "es": "rutina",
       "fr": "routine",
@@ -303,6 +321,7 @@
     },
     {
       "en": "approval",
+      "vi": "phê duyệt",
       "pt-BR": "aprovação",
       "es": "aprobación",
       "fr": "approbation",
@@ -319,6 +338,7 @@
     },
     {
       "en": "approve / deny",
+      "vi": "cho phép / từ chối",
       "pt-BR": "aprovar / recusar",
       "es": "aprobar / rechazar",
       "fr": "approuver / refuser",
@@ -335,6 +355,7 @@
     },
     {
       "en": "Waiting for you",
+      "vi": "Đang chờ bạn",
       "pt-BR": "Esperando você",
       "es": "Esperándote",
       "fr": "Vous attend",
@@ -351,6 +372,7 @@
     },
     {
       "en": "connector",
+      "vi": "trình kết nối",
       "pt-BR": "conector",
       "es": "conector",
       "fr": "connecteur",
@@ -368,6 +390,7 @@
     {
       "en": "skill",
       "note": "Follow the Claude Skills naming in each language. de, it, nl and id keep \"Skill\".",
+      "vi": "skill",
       "pt-BR": "skill",
       "es": "habilidad",
       "fr": "compétence",
@@ -384,6 +407,7 @@
     },
     {
       "en": "memory",
+      "vi": "bộ nhớ",
       "pt-BR": "memória",
       "es": "memoria",
       "fr": "mémoire",
@@ -400,6 +424,7 @@
     },
     {
       "en": "instructions",
+      "vi": "hướng dẫn",
       "pt-BR": "instruções",
       "es": "instrucciones",
       "fr": "instructions",
@@ -416,6 +441,7 @@
     },
     {
       "en": "budget",
+      "vi": "ngân sách",
       "pt-BR": "orçamento",
       "es": "presupuesto",
       "fr": "budget",
@@ -433,6 +459,7 @@
     {
       "en": "computer (agent's)",
       "note": "The agent's own computer, in the cloud or one the workspace connects.",
+      "vi": "máy tính của agent",
       "pt-BR": "computador",
       "es": "computadora",
       "fr": "ordinateur",
@@ -449,6 +476,7 @@
     },
     {
       "en": "AI account",
+      "vi": "tài khoản AI",
       "pt-BR": "conta de IA",
       "es": "cuenta de IA",
       "fr": "compte IA",
@@ -465,6 +493,7 @@
     },
     {
       "en": "API key",
+      "vi": "API key",
       "pt-BR": "chave de API",
       "es": "clave de API",
       "fr": "clé API",
@@ -481,6 +510,7 @@
     },
     {
       "en": "improvement proposal",
+      "vi": "đề xuất cải tiến",
       "pt-BR": "proposta de melhoria",
       "es": "propuesta de mejora",
       "fr": "proposition d'amélioration",
@@ -498,6 +528,7 @@
     {
       "en": "Continue (a paused run)",
       "note": "The button that lets a paused agent go on.",
+      "vi": "Tiếp tục",
       "pt-BR": "Continuar",
       "es": "Continuar",
       "fr": "Continuer",
@@ -514,6 +545,7 @@
     },
     {
       "en": "notification",
+      "vi": "thông báo",
       "pt-BR": "notificação",
       "es": "notificación",
       "fr": "notification",
@@ -530,6 +562,7 @@
     },
     {
       "en": "Sign in / Sign out",
+      "vi": "Đăng nhập / Đăng xuất",
       "pt-BR": "Entrar / Sair",
       "es": "Iniciar sesión / Cerrar sesión",
       "fr": "Se connecter / Se déconnecter",
@@ -546,6 +579,7 @@
     },
     {
       "en": "Settings",
+      "vi": "Cài đặt",
       "pt-BR": "Configurações",
       "es": "Configuración",
       "fr": "Paramètres",
@@ -562,6 +596,7 @@
     },
     {
       "en": "Language",
+      "vi": "Ngôn ngữ",
       "pt-BR": "Idioma",
       "es": "Idioma",
       "fr": "Langue",
@@ -579,6 +614,7 @@
     {
       "en": "Automatic (language)",
       "note": "The first option of the language picker: follow this device's language.",
+      "vi": "Tự động",
       "pt-BR": "Automático",
       "es": "Automático",
       "fr": "Automatique",

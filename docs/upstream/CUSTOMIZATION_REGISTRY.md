@@ -34,7 +34,7 @@ in upstream remains as it arrived.
 | Field | Value |
 | --- | --- |
 | Owner | Upstream |
-| Upstream behavior | Shows "Based on agentes.chat by Codari Global, LLC" plus version and source link |
+| Upstream behavior | Shows "Based on agentes.chat by AGENTESCHAT, LLC" plus version and source link |
 | AULACBOT behavior | Identical. AULACBOT branding is added *next to* it, never replacing it |
 | Why | `NOTICE` §7(b) term of AGPL-3.0 |
 | Commit | n/a |
@@ -84,10 +84,12 @@ software. Everything a person sees as the product's identity now says `AULACBOT`
 | The mark, icons, palette and copy | `docs/branding/cyber-lac/REPLACEMENT-MAP.md` §1–§3; the entries `-006` to `-009` below |
 
 **Still upstream, and why:** `apps/server/src/routes/instance.ts:16,62` (`z.literal("agentes.chat")`
-and the route's `name`), `apps/server/src/auth.ts:153` (`appName`), `apps/server/src/oauth.ts:94`
-(`resource_name`), `apps/server/src/native.ts:401` (`description`) and
+and the route's `name`), `apps/server/src/oauth.ts:94` (`resource_name`),
+`apps/server/src/native.ts:401` (`description`) and
 `apps/server/src/routes/desktop.ts:162` (the user agent). A fork that renamed these would answer a
 name its own client rejects and would break sign-in against every workspace already running.
+The Better Auth `appName` is a user-facing label and is `AULACBOT` under AULACBOT-CUSTOM-014; it
+does not change the instance or OAuth identity.
 
 | Field | Value |
 | --- | --- |
@@ -118,7 +120,8 @@ name its own client rejects and would break sign-in against every workspace alre
 ### AULACBOT-CUSTOM-006 — Product name in UI copy (web, phone, desktop, engine, client, ui)
 
 **Files:** `packages/i18n/src/{en,pt-BR}.ts`, the 12 shared locale `.json`/`.source.json` pairs,
-`packages/i18n/src/help/pages.*.ts` (14 languages), `packages/engine/src/email/words/*.ts` and
+`packages/i18n/src/locales/vi.json`, `packages/i18n/src/help/pages.*.ts` (14 upstream languages, plus
+the AULACBOT-owned `pages.vi.ts`), `packages/engine/src/email/words/*.ts` and
 `packages/engine/src/push/messages/*.ts` (14 each), `apps/mobile/src/i18n/**` and
 `apps/mobile/src/features/i18n/**` (26 files each), and prose in `apps/web/src`, `apps/mobile/src`,
 `apps/desktop/src`, `packages/engine/src`, `packages/client/src` and `packages/ui/src`
@@ -260,13 +263,60 @@ name its own client rejects and would break sign-in against every workspace alre
 | --- | --- |
 | Owner | Shared — `scripts/**` and `.github/**` are upstream's; the additions are ours and nothing upstream imports them |
 | Upstream behavior | No such check exists. A rebrand is a one-off edit, and the next `git merge upstream/main` can quietly restore upstream's palette, wordmark or generated picture |
-| AULACBOT behavior | `check:brand` asserts the Cyber Lạc palette, the `--agent` tokens, Onest, the `AULACBOT` wordmark and the desktop's jade ink. `check:derived` asserts each `.b64` still decodes to its PNG. `rebrand:check` / `rebrand` re-apply `agentes.chat` → `AULACBOT` **only** to the 263 files where that substitution is the entire diff. `brand:drift` names the handcrafted files a merge touched. `brand:manifest` re-records the baseline |
+| AULACBOT behavior | `check:brand` asserts the Cyber Lạc palette, the `--agent` tokens, Onest, the `AULACBOT` wordmark and the desktop's jade ink. `check:derived` asserts each `.b64` still decodes to its PNG. `rebrand:check` / `rebrand` re-apply `agentes.chat` → `AULACBOT` **only** to the 263 files where that substitution is the entire diff. `brand:drift` names the handcrafted files a merge touched. `brand:manifest` re-records the baseline. Both `generate-manifest` and `rebrand` skip `manifest.json` itself: it stores the word it renames, so hashing or scanning it made the two checks fail forever (fixed 2026-11-21) |
 | Why | The identity pass is 726 changed files: 263 are pure renames a machine can redo, but 465 are hand-made, so a blanket search-and-replace would erase the look the owner approved. The `.b64` bug proved the reverse failure too — the picture was rebranded, the bytes the runner imports were not, and every agent desktop kept the old sky |
 | Commit | `pending` |
 | ADR | ADR-001 |
 | Sync risk | Low — nothing here is imported by application code; the steps run in `UPSTREAM_SYNC.md` §5 and in CI |
 | If upstream changes | `scripts/` and `.github/workflows/ci.yml` conflicts are resolved by keeping upstream's code and re-adding the `Brand identity` step. After the merge, `rebrand:check` names any file whose class changed; add new paths to `manifest.json` with `brand:manifest <upstream-sha>` |
 | Regression test | `bun test scripts/brand` (8 tests), `bun run check:brand`, `bun run rebrand:check`, `bun run brand:drift` |
+
+### AULACBOT-CUSTOM-014 — Product-facing labels and desktop diagnostics
+
+**Files:** `apps/web/index.html`, `apps/server/src/auth.ts`, `apps/desktop/src/i18n/keys.en.ts`,
+`apps/desktop/src/i18n/keys.pt-BR.ts`, `apps/desktop/src/i18n/keys.vi.ts`,
+`apps/desktop/src/i18n/locales/{de,es,fr,id,it,ja,ko,nl,pl,ru,tr,zh-Hans}.json`,
+`apps/desktop/src/host/fake.ts`, `apps/desktop/src-tauri/src/graphics.rs`,
+`apps/desktop/src-tauri/src/local_server.rs`, `packages/i18n/src/{en,pt-BR}.ts`,
+`packages/i18n/src/locales/*.json`, `packages/i18n/src/help/pages.*.ts`,
+`packages/engine/src/email/words/*.ts`, `packages/engine/src/office/*.ts`,
+`packages/engine/src/surfaces/turn.ts`, `packages/client/src/lib/import/computer.ts`,
+`apps/server/src/surface/app.ts`, `apps/server/runner/migrate/*`,
+`apps/server/runner/migrate-script.ts`, `packages/setup/src/lib.ts`, `docs/adr/README.md`
+
+`packages/i18n/src/help/pages.vi.ts` is a file upstream has no counterpart of: the Vietnamese edition
+of all 11 help pages, written 2026-11-21 and wired in `packages/i18n/src/help/index.ts`. It is ours,
+not a rename, so a sync never restores it — but a new upstream page or section must be carried into
+it by hand (`packages/i18n/test/help.test.ts` fails until the shape matches `pages.en.ts`).
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — upstream owns the app surfaces; AULACBOT owns the product name |
+| Upstream behavior | Auth and desktop product labels, the iOS home-screen shortcut, server erase/reopen prompts and copied desktop diagnostics identify the product as `agentes.chat`; desktop problem reports are sent to upstream's report service |
+| AULACBOT behavior | Product-facing labels identify the app as `AULACBOT`; report-recipient labels continue to identify `agentes.chat` where reports are sent upstream. URLs, instance identity, protocol, bundle id and legacy data-folder names remain upstream. Covers help pages, transactional email words (reset and chat-surface mail), Office document metadata, the import prompt, the migrate runner's copy (command text and the copy-paste scripts it serves), the `npx @agenteschat/setup` Jev line, the surface bridge's OpenAPI summary and ADR 0179's summary row |
+| Why | AULACBOT's own app surfaces must not present the fork as the upstream product |
+| Commit | pending |
+| ADR | ADR-001 |
+| Sync risk | Medium — web metadata, desktop strings and native diagnostics may be updated by upstream independently |
+| If upstream changes | Take upstream behavior and wording, then reapply only AULACBOT's product label; keep the explicit upstream report recipient and infrastructure unchanged |
+| Regression test | `bun test apps/web/test/home-screen-icon.test.ts apps/desktop/test/prefs-hints.test.tsx apps/desktop/test/i18n.test.ts apps/desktop/test/help-own-data.test.ts apps/server/test/email.test.ts packages/i18n/test/help.test.ts`; server auth tests; Rust `graphics::tests` |
+
+### AULACBOT-CUSTOM-015 — The updater feed is AULACBOT's own, never upstream's
+
+**Files:** `apps/desktop/src-tauri/tauri.conf.json`, `apps/desktop/src/control/version.ts`,
+`apps/desktop/test/version.test.ts`
+
+| Field | Value |
+| --- | --- |
+| Owner | AULACBOT |
+| Upstream behavior | `plugins.updater.endpoints` is `https://app.agentes.chat/api/desktop/update`, and `SITE_URL` (the update check and the download-link allowlist) is `https://app.agentes.chat` |
+| AULACBOT behavior | The Tauri updater endpoint is `https://aulac.app/api/desktop/update` and the check/allowlist constant is `UPDATES_SITE = "https://aulac.app"`. Until AULACBOT publishes its own signed releases there, the endpoint answers nothing and the app stays on its version |
+| Why | With upstream's endpoint an AULACBOT install would download upstream's signed `.app`/`.exe`/`.AppImage` and **replace itself with agentes.chat** — the one sync hazard that destroys the product rather than the branding. `SITE_URL` keeps its own meaning: the server the cover opens before one is chosen (AULACBOT Cloud) |
+| Commit | pending |
+| ADR | ADR-001, ADR 0036 §9 |
+| Sync risk | Medium — upstream edits this block whenever the release flow moves; a merge takes upstream's endpoint back |
+| If upstream changes | Keep upstream's query string and variable names, change only the host to `aulac.app`. `bun run brand:drift` names the file after a merge; `apps/desktop/test/version.test.ts` fails if `latestUrl` or `parseLatest` starts accepting upstream's host again |
+| Regression test | `bun test apps/desktop/test/version.test.ts` (the "refuses downloads off our site" case asserts upstream's own download URL is rejected) |
 
 ## Entry template
 

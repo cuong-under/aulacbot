@@ -15,11 +15,13 @@
  */
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import { TEXT } from "./files";
 
 const ROOT = resolve(import.meta.dir, "../..");
 const MANIFEST = join(import.meta.dir, "manifest.json");
+/** The manifest records the rename (`word` and `brand`), so it never counts as a file the rename missed. */
+const SELF = relative(ROOT, MANIFEST).split(sep).join("/");
 
 interface Manifest {
   word: string;
@@ -51,7 +53,7 @@ for (const path of manifest.mechanical) {
 const known = new Set([...manifest.mechanical, ...manifest.exempt]);
 const unclassified: string[] = [];
 for (const path of tracked()) {
-  if (known.has(path) || !TEXT.test(path)) continue;
+  if (path === SELF || known.has(path) || !TEXT.test(path)) continue;
   let text: string;
   try {
     text = readFileSync(join(ROOT, path), "utf8");

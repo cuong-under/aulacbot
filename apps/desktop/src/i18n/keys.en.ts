@@ -424,7 +424,8 @@ export const desktopEn = {
     /** It restarted by itself 3 times in a few minutes (a notification). */
     restartedBanner: "AULACBOT restarted 3 times on this {{device}}",
     restartedBody: "It comes back by itself. If it keeps happening, open the app to see why.",
-    version: "Version {{version}}, updated with the app",
+    installedVersion: "Installed package version",
+    internalVersion: "Internal server version",
     updatesWithApp: "Updating the app updates AULACBOT on this {{device}} too.",
     updateBack: "The update didn't start. AULACBOT is back on {{version}}.",
     updateBackBody: "The new version is tried again with the app's next update.",
@@ -453,6 +454,18 @@ export const desktopEn = {
     restored: "Restored the backup from {{time}}",
     restoreFailed: "That backup didn't start, so AULACBOT is back as it was. Try the other backup.",
     restoreUnreadable: "That backup can't be opened. Try the other one.",
+    /** Preferences › Servers: it stops, its folder moves whole to a dated folder in the home folder, its agents' homes here (browser profiles, sign-ins, machine tokens) are deleted, and a new setup starts. */
+    erase: "Erase and start over…",
+    eraseTitle: "Erase AULACBOT on this {{device}}?",
+    eraseBody:
+      "Its workspaces go for everyone who uses them, on every device. Its data moves to {{path}} and stays there. What its agents kept on this {{device}}, such as their browsers and sign-ins, is deleted. The agents' files in ~/agentes are yours and stay where they are. Then you set it up again with a new owner.",
+    eraseConfirm: "Erase it",
+    erased: "Erased. Its old data is in {{path}}.",
+    eraseMoveFailed:
+      "Its data couldn't be moved, so nothing was erased and it stays in {{path}}. It's stopped until you start it again.",
+    /** Another agentes-server, started outside the app, holds the folder's lock, so the folder can't move. */
+    eraseHeld:
+      "Another AULACBOT server is using its folder, so nothing was erased. Stop that server, then try again.",
     noPassword: "Add a password to sign in from your phone and other computers.",
     addPassword: "Add a password",
     keep: "Keep it running",
@@ -638,6 +651,22 @@ export const desktopEn = {
       menuBarTitle: "Show in the menu bar",
       notchTitle: "Show the agents in the notch",
       notchDesc: "On MacBooks with a notch: who is working shows around the camera.",
+      /** Linux: draw the window without the graphics card. */
+      compatTitle: "Compatibility mode",
+      compatDesc:
+        "Draws the window without the graphics card. It's slower but works on any computer. Use it if the window goes black, gets cut off or freezes.",
+      /** Toast after changing Compatibility mode: the drawing mode changes only when the app starts. */
+      compatReopen: "Takes effect when the app reopens.",
+      reopenNow: "Reopen now",
+      /** Toast once, after an opening with the graphics card never painted and the app fell back. */
+      compatFellBack: "The window didn't open with the graphics card, so it opened in compatibility mode.",
+      compatTryCard: "Try the graphics card again",
+      /** Behind the ⓘ while WEBKIT_DISABLE_DMABUF_RENDERER was set when the app started: the switch can't change it. */
+      compatOwn:
+        "WEBKIT_DISABLE_DMABUF_RENDERER decides this now. To choose here, quit the app and open it without that variable.",
+      /** Asked before Reopen now while agents work on this computer or agentes.chat runs here. */
+      reopenTitle: "Reopen AULACBOT?",
+      reopenBody: "Agents can't use this computer until the app opens again. What is already running finishes first.",
     },
     thisMac: {
       agents: "Agents",
@@ -767,7 +796,7 @@ export const desktopEn = {
       installerNote: "Open the downloaded file: it installs the new version over the old one.",
       keepNote: "Your servers and settings stay.",
       whatsNew: "What's new in {{version}}",
-      /** Linux: how this computer draws the app (system, graphics card, renderer), one line to copy. */
+      /** The app's and the system's versions (on Linux also how it draws the app), one line to copy. */
       systemDetails: "System details",
     },
     activity: {
@@ -901,6 +930,36 @@ export const desktopEn = {
     openOther: "Open {{server}}",
     onlyHereWorking: "Turning off access from your devices…",
     onlyHereFailed: "Couldn't turn off access from your devices.",
+  },
+  /** "Send a report" from the app (the cover over a server that won't start, Preferences › Activity). */
+  report: {
+    button: "Send a report",
+    title: "Send a report to agentes.chat",
+    noteLabel: "What happened? (optional)",
+    notePlaceholder: "What you were doing when it stopped",
+    emailLabel: "Email for a reply (optional)",
+    emailHelp: "Only if you want an answer.",
+    showAll: "See everything that's sent",
+    copy: "Copy report",
+    copied: "Copied",
+    send: "Send",
+    sending: "Sending…",
+    cancel: "Cancel",
+    sentTitle: "Report {{id}} sent",
+    sentText: "If you write to us, mention this code.",
+    sentTextReply: "We'll answer at {{email}}. Mention this code if you write to us.",
+    copyCode: "Copy code",
+    done: "Done",
+    errorRate: "Too many reports in a short time. Try again in {{minutes}} min, or copy the report.",
+    errorUnreachable: "agentes.chat didn't answer. Try again, or copy the report.",
+    errorRefused: "agentes.chat didn't accept this report (it may be from an older version). Copy the report instead.",
+    emailInvalid: "That email doesn't look right. Fix it or leave it empty.",
+    coverLead:
+      "The agentes.chat team gets this app's version, the server's setup steps and the last lines of its log. No names, addresses or keys.",
+    computerLead:
+      "The agentes.chat team gets this computer's app version, its state and the last lines of its log. No names, addresses or keys.",
+    oldApp: "This computer's agentes.chat app is too old to add its details. Update it, then try again.",
+    offApp: "Sending is off in this app (PROBLEM_REPORT_URL=off). Copy the report to share it.",
   },
   menu: {
     about: "About AULACBOT",

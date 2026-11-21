@@ -18,6 +18,7 @@ import {
 } from "../src/i18n";
 import { desktopEn } from "../src/i18n/keys.en";
 import { desktopPtBR } from "../src/i18n/keys.pt-BR";
+import { desktopVi } from "../src/i18n/keys.vi";
 
 /** Every leaf path of a strings tree. */
 function leaves(tree: object, prefix = ""): string[] {
@@ -38,6 +39,12 @@ describe("desktop strings", () => {
     }
     // A language with nothing yet reads English, its device names too.
     expect(desktopStrings("ja").device.windows).toBe(desktopEn.device.windows);
+  });
+
+  test("Vietnamese desktop strings have exactly the English key set", () => {
+    const keyBases = (tree: object) =>
+      [...new Set(leaves(tree).map((key) => key.replace(/_(zero|one|two|few|many|other)$/, "")))].sort();
+    expect(keyBases(desktopVi)).toEqual(keyBases(desktopEn));
   });
 
   test("no empty strings and no internal names in the UI", () => {

@@ -8,7 +8,7 @@ before touching any file.**
 ## What this repository is
 
 AULACBOT (`Âu Lạc Bot`) is a **downstream fork** of
-[agentes.chat](https://github.com/agentes-chat/agentes-chat) by Codari Global, LLC.
+[agentes.chat](https://github.com/agentes-chat/agentes-chat), maintained by AGENTESCHAT, LLC.
 
 - The upstream codebase is a Slack-style workspace where people and AI agents work together.
 - The git history is upstream's history. Do not rewrite it, squash it, or start over.
@@ -20,7 +20,7 @@ AULACBOT (`Âu Lạc Bot`) is a **downstream fork** of
 1. **Never rewrite history.** No `rebase` of published branches, no `push --force`, no deleting
    upstream tags. Upstream sync merges keep their merge commits.
 2. **Never remove the attribution.** Every interactive UI keeps, in its About screen, the notice
-   required by `NOTICE` §7(b): `Based on agentes.chat by Codari Global, LLC (https://agentes.chat)`.
+   required by `NOTICE` §7(b): `Based on agentes.chat by AGENTESCHAT, LLC (https://agentes.chat)`.
    AULACBOT branding may appear next to it — never instead of it.
 3. **Never remove license files.** `LICENSE`, `NOTICE`, `TRADEMARKS.md`, `COMMERCIAL.md`, `CLA.md`,
    and third-party license folders stay. Do not edit them without an explicit owner decision.

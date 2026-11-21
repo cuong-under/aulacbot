@@ -1,4 +1,35 @@
 {
+  "permissions": {
+    "mention_everyone": {
+      "title": "Nhắc mọi người",
+      "desc": "Dùng @everyone để báo cho mọi người trong kênh, cả người và agent.",
+      "short": "nhắc mọi người",
+      "say": "nhắc mọi người"
+    },
+    "approve_actions": {
+      "title": "Phê duyệt hành động của agent",
+      "desc": "Merge, triển khai, email gửi ra ngoài: mọi thứ hỏi trước.",
+      "short": "phê duyệt hành động",
+      "say": "phê duyệt hành động của agent"
+    }
+  },
+  "approval": {
+    "always": {
+      "button": "Luôn cho phép",
+      "routine": "Luôn cho phép trong lịch này"
+    }
+  },
+  "agentPage": {
+    "tabs": {
+      "access": "Công cụ và quyền truy cập"
+    }
+  },
+  "approvalCover": {
+    "title": "Ai phê duyệt thay tôi"
+  },
+  "accountDeleting": {
+    "restore": "Khôi phục tài khoản"
+  },
   "usageViews": {
     "models": {
       "exhausted": "Hết hạn mức · đặt lại {{when}}",

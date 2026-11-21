@@ -38,24 +38,28 @@ describe("latest release", () => {
     expect(targetParam("macos")).toBe("darwin");
     expect(targetParam("windows")).toBe("windows");
     expect(targetParam("linux")).toBe("linux");
-    expect(latestUrl("macos", "aarch64")).toBe("https://app.agentes.chat/api/desktop/latest?target=darwin&arch=arm64");
-    expect(latestUrl("windows", "x86_64")).toBe("https://app.agentes.chat/api/desktop/latest?target=windows&arch=x64");
-    expect(latestUrl("linux", "x86_64")).toBe("https://app.agentes.chat/api/desktop/latest?target=linux&arch=x64");
+    expect(latestUrl("macos", "aarch64")).toBe("https://aulac.app/api/desktop/latest?target=darwin&arch=arm64");
+    expect(latestUrl("windows", "x86_64")).toBe("https://aulac.app/api/desktop/latest?target=windows&arch=x64");
+    expect(latestUrl("linux", "x86_64")).toBe("https://aulac.app/api/desktop/latest?target=linux&arch=x64");
   });
   test("parses the endpoint and refuses downloads off our site", () => {
     const ok = parseLatest({
       version: "0.2.0",
-      url: "https://app.agentes.chat/api/desktop/download/0.2.0/agentes_0.2.0_universal.dmg",
+      url: "https://aulac.app/api/desktop/download/0.2.0/agentes_0.2.0_universal.dmg",
       sha256: "abc",
       notes: "- Pastas\n- Pedidos",
     });
     expect(ok?.version).toBe("0.2.0");
     expect(parseLatest({ version: "0.2.0", url: "https://evil.example/agentes.dmg" })).toBeNull();
-    expect(parseLatest({ version: "x", url: "https://app.agentes.chat/x" })).toBeNull();
+    // Upstream's own releases are not ours: an AULACBOT app never installs agentes.chat over itself.
+    expect(
+      parseLatest({ version: "0.2.0", url: "https://app.agentes.chat/api/desktop/download/0.2.0/a.dmg" }),
+    ).toBeNull();
+    expect(parseLatest({ version: "x", url: "https://aulac.app/x" })).toBeNull();
     expect(parseLatest(null)).toBeNull();
   });
   test("available and required", () => {
-    const latest = { version: "0.3.0", url: "https://app.agentes.chat/d", minVersion: "0.2.0" };
+    const latest = { version: "0.3.0", url: "https://aulac.app/d", minVersion: "0.2.0" };
     expect(updateStateOf("0.1.0", latest)).toMatchObject({ available: true, required: true });
     expect(updateStateOf("0.2.5", latest)).toMatchObject({ available: true, required: false });
     expect(updateStateOf("0.3.0", latest)).toMatchObject({ available: false, required: false });
@@ -77,10 +81,9 @@ describe("night install", () => {
     expect(installNight(new Date(2026, 10, 12, 4, 59))).toBe("2026-11-12");
     expect(installNight(new Date(2026, 10, 12, 5, 0))).toBeNull();
   });
-  test("unset follows the server here, a choice wins", () => {
-    expect(autoUpdateOn(null, true)).toBe(true);
-    expect(autoUpdateOn(null, false)).toBe(false);
-    expect(autoUpdateOn(false, true)).toBe(false);
-    expect(autoUpdateOn(true, false)).toBe(true);
+  test("unset is on, a choice wins", () => {
+    expect(autoUpdateOn(null)).toBe(true);
+    expect(autoUpdateOn(false)).toBe(false);
+    expect(autoUpdateOn(true)).toBe(true);
   });
 });

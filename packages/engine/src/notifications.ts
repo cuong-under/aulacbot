@@ -275,6 +275,14 @@ export const NOTIFICATION_KINDS = [
    */
   "device.cli_request",
   /**
+   * An agent waits for a folder on this person's computer (`request_folder_access`): its owner, waiting, one row per
+   * request (`device-folder:<requestId>`), the agent as actor, the computer in `source.machineId` with its name in
+   * `source.label`, the folder in `latest.title` and the agent's reason in `latest.text`. The person answers it on the
+   * computer itself (folders are never granted from the server), so the row has no button; done once the machine
+   * reports the decision (`access.decided`).
+   */
+  "device.folder_request",
+  /**
    * "Pedir a um admin" (`POST …/admin-asks`, `admin-asks.ts`): to whoever may do it, the asker as actor, what in
    * `latest.reason` (`channel_agent`, `create_agents`, `webhook` with the service in `latest.title`). `channel_agent`
    * names `source.channelId` (its name in `label`) and `agentId`, waits, and is done once the agent is added.
@@ -344,6 +352,8 @@ export interface NotificationSource {
   phoneId?: string;
   /** `device.in_use`, `device.waiting`, `device.access_request`: the agent's run on the device. */
   runId?: string;
+  /** A message in a live file's conversation (ADR 0199): the file, which the apps open with it at `messageId`. */
+  artifactId?: string;
   /** Channel name, thread title, issue title, topic title, mission or routine name, widget or board title. */
   label?: string;
 }
@@ -390,6 +400,8 @@ export interface NotificationLatest {
   names?: string[];
   /** `join_request` from a member's suggestion (ADR 0090): who suggested, so a row of one says so. */
   suggestedBy?: string;
+  /** `join_request` for an outside collaborator (ADR 0191): who they work for, so a row of one says so. */
+  outsideOf?: string;
   /** `composio_limit`: the calls a month allows. */
   calls?: number;
   /** `computer_disk_full`: the share of the disk in use (0 to 1) and the GB left. */

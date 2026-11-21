@@ -1,12 +1,19 @@
 import { CLOUD_SERVER } from "@agenteschat/client/lib/server";
 
 /**
- * The "new version" check (ADR 0036 §9): `GET https://app.agentes.chat/api/desktop/latest?target=…&arch=…`
+ * The "new version" check (ADR 0036 §9): `GET https://aulac.app/api/desktop/latest?target=…&arch=…`
  * at start and every 6 hours. A newer version shows the notes and "Update and reopen" (the Tauri
  * updater, `update_install`); the download link and the manual steps are the fallback.
  */
 
-/** Where the app's own updates come from, whichever server it opens. */
+/**
+ * AULACBOT's own releases, never upstream's: an AULACBOT app that took upstream's update would
+ * replace itself with agentes.chat. Until AULACBOT publishes releases here, the check answers
+ * nothing and the app stays on its version.
+ */
+export const UPDATES_SITE = "https://aulac.app";
+
+/** The server the app opens before one is chosen (the cover): AULACBOT Cloud. */
 export const SITE_URL = CLOUD_SERVER;
 export const CHECK_EVERY_MS = 6 * 60 * 60 * 1000;
 
@@ -32,7 +39,7 @@ export function archParam(rustArch: string): string {
   return rustArch;
 }
 
-export function latestUrl(os: string, rustArch: string, site: string = SITE_URL): string {
+export function latestUrl(os: string, rustArch: string, site: string = UPDATES_SITE): string {
   const query = new URLSearchParams({ target: targetParam(os), arch: archParam(rustArch) });
   return `${site}/api/desktop/latest?${query}`;
 }
@@ -83,7 +90,7 @@ export function parseLatest(json: unknown): LatestRelease | null {
   const o = json as Record<string, unknown>;
   if (typeof o.version !== "string" || !parse(o.version)) return null;
   // The download opens in the browser: only our site, over https.
-  if (typeof o.url !== "string" || !(o.url === SITE_URL || o.url.startsWith(`${SITE_URL}/`))) return null;
+  if (typeof o.url !== "string" || !(o.url === UPDATES_SITE || o.url.startsWith(`${UPDATES_SITE}/`))) return null;
   const str = (v: unknown) => (typeof v === "string" ? v : undefined);
   return {
     version: o.version,
@@ -118,10 +125,13 @@ export function noteLines(notes: string | undefined): string[] {
     .filter((l) => l.length > 0 && !l.startsWith("#"));
 }
 
-/** Preferences › Updates › "Install updates by itself, at night": unset, on while the server runs here. */
+/**
+ * Preferences › Updates › "Install updates by itself, at night": unset, on in every desktop app. Headless runners and
+ * servers (CLI, VPS) have no such setting: they update when their owner does.
+ */
 export const AUTO_UPDATE_PREF = "autoUpdate";
 
-export const autoUpdateOn = (pref: boolean | null, serverHere: boolean) => pref ?? serverHere;
+export const autoUpdateOn = (pref: boolean | null) => pref ?? true;
 
 /** The night's install window, local time: from 03:00 until 05:00. */
 const NIGHT_FROM = 3;

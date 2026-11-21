@@ -52,8 +52,8 @@ export const ACME_AGENTS = [
   agent("ag_ada", "Ada", "#2fd3b2", "dots", "antenna"),
 ];
 export const HORIZONTE_AGENTS = [
-  agent("ag_lia", "Lia", "green", "wide", "cap"),
-  agent("ag_nino", "Nino", "graphite", "round", "headphones"),
+  agent("ag_lia", "Lia", "#6af2d2", "wide", "cap"),
+  agent("ag_nino", "Nino", "#04110d", "round", "headphones"),
 ];
 
 const who = (a: ControlAgent | undefined) => (a ? { id: a.id, name: a.name } : undefined);
@@ -198,7 +198,7 @@ export function horizonteSeed(): FakeOrgSeed {
 const joinedSeed = (org: { id: string; name: string }): FakeOrgSeed => ({
   org,
   slug: org.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-  agents: [agent("ag_iris", "Íris", "rose", "dots", "scarf")],
+  agents: [agent("ag_iris", "Íris", "#f2bf61", "dots", "scarf")],
   jobs: [],
   access: { folders: [], tools: { claude: false, codex: false, commands: false } },
   activity: [],
@@ -276,6 +276,8 @@ export class FakeRunner {
   /** The Mac's side of an iPhone's setup; `iphone.download` fills the platform in about a second. */
   /** How many times the iPhone setup asked to look at the iPhone again (`iphone.look`). */
   looks = 0;
+  /** The iPhones whose test helper the window asked to repair. */
+  repairs: string[] = [];
   iphone: ControlIphoneSetup = {
     xcode: "27.0",
     platform: { state: "missing" },
@@ -536,6 +538,9 @@ export class FakeRunner {
       case "iphone.look":
         this.looks++;
         return reply({ looking: true });
+      case "iphone.repair":
+        this.repairs.push(msg.serial);
+        return reply({ repairing: true });
       case "shutdown":
         return reply({ stopping: true });
     }

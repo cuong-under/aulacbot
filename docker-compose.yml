@@ -47,6 +47,7 @@ services:
       S3_BACKUP_BUCKET: "${S3_BACKUP_BUCKET:-}"
       BACKUP_RETENTION_DAYS: "${BACKUP_RETENTION_DAYS:-}"
       BACKUP_INTERVAL_HOURS: "${BACKUP_INTERVAL_HOURS:-}"
+      BACKUP_AGE_RECIPIENT: "${BACKUP_AGE_RECIPIENT:-}"
     depends_on:
       postgres:
         condition: service_healthy
@@ -314,7 +315,7 @@ configs:
       <script>
       // Before the first paint, as index.html does. Mirrors the app's choices: STORAGE_KEYS.theme
       // (apps/web/src/lib/storage.ts), savedLocale (apps/web/src/i18n/index.ts) and appLocale
-      // (packages/i18n/src/locale.ts), plus the landing's agentes_locale cookie. index.html's boot box picks the same way, from the same 14 languages.
+      // (packages/i18n/src/locale.ts), plus the landing's agentes_locale cookie. index.html's boot box picks the same way, from the same 15 languages.
       (() => {
         const html = document.documentElement;
         const saved = (key) => {
@@ -382,6 +383,7 @@ configs:
           tr: ["AULACBOT birazdan geri dönecek", "Sunucu şu anda yanıt vermiyor. Bu sayfa, sunucu geri döner dönmez kendiliğinden açılır.", "Ödemeyi az önce yaptıysanız tekrar ödemenize gerek yok.", "Şimdi dene"],
           pl: ["AULACBOT zaraz wróci", "Serwer teraz nie odpowiada. Ta strona otworzy się sama, gdy tylko wróci.", "Jeśli płatność właśnie została zrealizowana, nie trzeba płacić ponownie.", "Spróbuj teraz"],
           ru: ["AULACBOT скоро вернётся", "Сервер сейчас не отвечает. Эта страница откроется сама, как только он вернётся.", "Если вы только что оплатили, платить ещё раз не нужно.", "Попробовать сейчас"],
+          vi: ["AULACBOT sẽ trở lại ngay", "Máy chủ đang không phản hồi. Trang này tự mở lại ngay khi máy chủ trở lại.", "Nếu bạn vừa thanh toán, không cần trả lại lần nữa.", "Thử lại ngay"],
         };
         const MISS = [502, 503, 504, 520, 521, 522, 523, 524, 525, 526, 527, 530];
         const byId = (id) => document.getElementById(id);

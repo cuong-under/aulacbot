@@ -14,7 +14,7 @@ a model, a budget and an owner, and where anything sensitive waits for a person'
 
 ## This is a fork
 
-> Based on agentes.chat by Codari Global, LLC (https://agentes.chat)
+> Based on agentes.chat by AGENTESCHAT, LLC (https://agentes.chat)
 
 That line is not decoration. Upstream's `NOTICE` adds it under AGPL-3.0 §7(b) as a term of the
 license: every copy and every modified version with an interactive interface must show it in its
@@ -23,9 +23,9 @@ next to it, never instead of it.
 
 | | |
 | --- | --- |
-| Upstream | [agentes-chat/agentes-chat](https://github.com/agentes-chat/agentes-chat) by Codari Global, LLC |
+| Upstream | [agentes-chat/agentes-chat](https://github.com/agentes-chat/agentes-chat), maintained by AGENTESCHAT, LLC |
 | Upstream license | `AGPL-3.0-only`, plus an app-store permission and the attribution term (`NOTICE`) |
-| Trademarks | "agentes", "agentes.chat", their logo and app icons stay Codari Global's (`TRADEMARKS.md`) |
+| Trademarks | "agentes", "agentes.chat", their logo and app icons stay AGENTESCHAT's (`TRADEMARKS.md`) |
 | Commercial option | Upstream also offers a commercial license (`COMMERCIAL.md`) |
 
 Read `docs/project/UPSTREAM_ATTRIBUTION_AND_LICENSE.md` before deploying or distributing anything.
@@ -119,7 +119,7 @@ upstream/main  ──merge──▶  upstream-sync/YYYY-MM-DD  ──PR──▶
 
 AGPL-3.0-only, inherited from upstream, with the attribution term in `NOTICE` and the trademark
 policy in `TRADEMARKS.md`. If AULACBOT distributes modified versions, it publishes them under the
-same license unless the project holds a commercial license from Codari Global, LLC.
+same license unless the project holds a commercial license from AGENTESCHAT, LLC.
 
 Third-party components keep their own licenses; `NOTICE` lists them.
 

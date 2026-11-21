@@ -417,7 +417,8 @@ export const desktopPtBR = {
     /** It restarted by itself 3 times in a few minutes (a notification). */
     restartedBanner: "O AULACBOT reiniciou 3 vezes neste {{device}}",
     restartedBody: "Ele volta sozinho. Se continuar, abra o app para ver o motivo.",
-    version: "Versão {{version}}, atualizada com o app",
+    installedVersion: "Versão do pacote instalado",
+    internalVersion: "Versão interna do servidor",
     updatesWithApp: "Atualizar o app atualiza também o AULACBOT neste {{device}}.",
     updateBack: "A atualização não iniciou. O AULACBOT voltou para a {{version}}.",
     updateBackBody: "A versão nova é tentada de novo na próxima atualização do app.",
@@ -446,6 +447,16 @@ export const desktopPtBR = {
     restored: "Backup de {{time}} restaurado",
     restoreFailed: "Esse backup não iniciou, então o AULACBOT voltou como estava. Tente o outro backup.",
     restoreUnreadable: "Esse backup não abre. Tente o outro.",
+    erase: "Apagar e começar de novo…",
+    eraseTitle: "Apagar o AULACBOT neste {{device}}?",
+    eraseBody:
+      "Os workspaces dele somem para todos que os usam, em qualquer aparelho. Os dados dele vão para {{path}} e ficam lá. O que os agentes dele guardavam neste {{device}}, como navegadores e logins, é apagado. Os arquivos dos agentes em ~/agentes são seus e ficam onde estão. Depois você configura de novo, com um novo dono.",
+    eraseConfirm: "Apagar",
+    erased: "Apagado. Os dados antigos estão em {{path}}.",
+    eraseMoveFailed:
+      "Não deu para mover os dados, então nada foi apagado e eles continuam em {{path}}. Ele fica parado até você iniciar de novo.",
+    eraseHeld:
+      "Outro servidor do AULACBOT está usando a pasta dele, então nada foi apagado. Pare esse servidor e tente de novo.",
     noPassword: "Crie uma senha para entrar pelo celular e por outros computadores.",
     addPassword: "Criar uma senha",
     keep: "Manter funcionando",
@@ -616,6 +627,18 @@ export const desktopPtBR = {
       menuBarTitle: "Mostrar na barra de menus",
       notchTitle: "Mostrar os agentes no notch",
       notchDesc: "Em MacBooks com notch: quem está trabalhando aparece em volta da câmera.",
+      compatTitle: "Modo compatível",
+      compatDesc:
+        "Desenha a janela sem a placa de vídeo. É mais lento, mas funciona em qualquer computador. Use se a janela ficar preta, cortada ou travada.",
+      compatReopen: "Vale ao reabrir o app.",
+      reopenNow: "Reabrir agora",
+      compatFellBack: "A janela não abriu com a placa de vídeo. Ela abriu no modo compatível.",
+      compatTryCard: "Tentar a placa de novo",
+      compatOwn:
+        "Quem decide agora é a variável WEBKIT_DISABLE_DMABUF_RENDERER. Para escolher aqui, saia do app e abra sem ela.",
+      reopenTitle: "Reabrir o AULACBOT?",
+      reopenBody:
+        "Os agentes não podem usar este computador até o app abrir de novo. O que já está rodando termina antes.",
     },
     thisMac: {
       agents: "Agentes",
@@ -880,6 +903,36 @@ export const desktopPtBR = {
     onlyHereFailed: "Não deu para desligar o acesso pelos aparelhos.",
   },
   /** The menu bar (menus.rs) and the tray's own menu on Windows and Linux (tray.rs): one label per item id. */
+  /** "Send a report" from the app (the cover over a server that won't start, Preferences › Activity). */
+  report: {
+    button: "Enviar um relatório",
+    title: "Enviar um relatório para o agentes.chat",
+    noteLabel: "O que aconteceu? (opcional)",
+    notePlaceholder: "O que você estava fazendo quando parou",
+    emailLabel: "E-mail para resposta (opcional)",
+    emailHelp: "Só se você quiser uma resposta.",
+    showAll: "Ver tudo o que é enviado",
+    copy: "Copiar relatório",
+    copied: "Copiado",
+    send: "Enviar",
+    sending: "Enviando…",
+    cancel: "Cancelar",
+    sentTitle: "Relatório {{id}} enviado",
+    sentText: "Se nos escrever, cite este código.",
+    sentTextReply: "Vamos responder em {{email}}. Cite este código se nos escrever.",
+    copyCode: "Copiar código",
+    done: "Pronto",
+    errorRate: "Relatórios demais em pouco tempo. Tente de novo em {{minutes}} min ou copie o relatório.",
+    errorUnreachable: "O agentes.chat não respondeu. Tente de novo ou copie o relatório.",
+    errorRefused: "O agentes.chat não aceitou este relatório (pode ser de uma versão antiga). Copie o relatório.",
+    emailInvalid: "Esse e-mail não parece certo. Corrija ou deixe vazio.",
+    coverLead:
+      "A equipe do agentes.chat recebe a versão deste app, as etapas de preparação do servidor e as últimas linhas do log dele. Sem nomes, endereços ou chaves.",
+    computerLead:
+      "A equipe do agentes.chat recebe a versão do app deste computador, o estado dele e as últimas linhas do log. Sem nomes, endereços ou chaves.",
+    oldApp: "O app agentes.chat deste computador é antigo demais para incluir os detalhes. Atualize-o e tente de novo.",
+    offApp: "O envio está desligado neste app (PROBLEM_REPORT_URL=off). Copie o relatório para compartilhar.",
+  },
   menu: {
     about: "Sobre o AULACBOT",
     updates: "Procurar atualizações…",

@@ -166,7 +166,7 @@ export const CODING_PLANS = {
       // models answer only once the OpenCode workspace allows the Global region, the ones that train on what
       // they're sent only once it allows that (paid and free are separate switches); none has an alias, so
       // "Automático" never picks one.
-      // The fallback for `modelsUrl` (31 on 2026-11-09, all of them here), and what only we know of each model:
+      // The fallback for `modelsUrl` (32 on 2026-11-17, all of them here), and what only we know of each model:
       // its alias and tag. Zen's own free models (`deepseek-v4.1-flash-free`, `glm-5.3-flash-free`, `big-pickle`…)
       // aren't Go's: OpenCode serves its free tier only to the OpenCode CLI ("Free-tier chat models require
       // OpenCode", opencode.ai/v2/docs/console/models, read 2026-11-06), so they can't answer through Claude Code.
@@ -180,6 +180,7 @@ export const CODING_PLANS = {
         { id: "kimi-k3.1-pro", label: "Kimi K3.1 Pro", tag: "smart", maker: "moonshot" },
         { id: "kimi-k3", label: "Kimi K3", maker: "moonshot" },
         { id: "kimi-k2.7-code", label: "Kimi K2.7 Code", maker: "moonshot" },
+        { id: "qwen4-max", label: "Qwen4 Max", maker: "Alibaba" },
         { id: "qwen3.8-max", label: "Qwen3.8 Max", tag: "smart", maker: "Alibaba" },
         { id: "qwen3.8-flash", label: "Qwen3.8 Flash", tag: "cheap", maker: "Alibaba" },
         { id: "qwen3.7-plus", label: "Qwen3.7 Plus", tag: "cheap", maker: "Alibaba" },
@@ -203,6 +204,7 @@ export const CODING_PLANS = {
         { id: "hy3", label: "Hy3", tag: "cheap", maker: "Tencent" },
         { id: "hy4", label: "Hy4", maker: "Tencent" },
         { id: "hy4-preview", label: "Hy4 Preview", maker: "Tencent" },
+        { id: "hy4-flash-free", label: "Hy4 Flash Free", free: true, maker: "Tencent" },
         { id: "step-5-preview", label: "Step 5 Preview", maker: "StepFun" },
         {
           id: "muse-spark-1.3-contributor",
@@ -217,7 +219,6 @@ export const CODING_PLANS = {
           maker: "Meta",
         },
         { id: "beam-free", label: "Beam Free", free: true, maker: "Reflection" },
-        { id: "crouton-alpha-free", label: "Crouton Alpha Free", free: true, maker: "OpenCode" },
         {
           id: "iceman-contributor-free",
           label: "Iceman Contributor Free",
@@ -239,9 +240,12 @@ export const CODING_PLANS = {
 
 /**
  * The models ChatGPT's Fast mode serves (developers.openai.com/api/docs/guides/fast-mode, ids as Codex lists them in
- * its `service_tiers`, codex-cli 0.166.0). Codex drops the tier without a word for any other model.
+ * its `service_tiers`, codex-cli 0.166.0; GPT-6.2 Sol and Astra from the guide and the pricing page's Fast table,
+ * 2026-11-17). Codex drops the tier without a word for any other model.
  */
 export const FAST_MODE_MODELS: readonly string[] = [
+  "gpt-6.2-sol",
+  "gpt-6.2-astra",
   "gpt-6.1-sol",
   "gpt-6.1-terra",
   "gpt-6-astra",
@@ -538,23 +542,33 @@ export const loginPerAgent = (kind: string, provider?: string | null) =>
  * owner on that computer (ADR 0059 §2, amended 2026-10-30, protocol 29): root keeps it and hands each turn what
  * its CLI needs. For Claude that is the token `claude setup-token` makes, which the runner then keeps; for ChatGPT
  * (protocol 38) a copy of the `auth.json` root signed in to, whose refreshed copies come back to root; for Gemini
- * (protocol 58) a copy of the Google sign-in root's Antigravity CLI keeps. Set a kind to false to go back to one
- * login per agent there. Where every agent is the runner's own user, any sign-in thinks for all of them, as the
- * computer's own always has. Accounts made for all agents keep thinking when a kind is switched off, until signed in
- * again or removed.
+ * (protocol 58) a copy of the Google sign-in root's Antigravity CLI keeps; for Grok Build (protocol 67, amended
+ * 2026-11-12) a copy of the `auth.json` in root's `GROK_HOME`, whose refreshed copies come back to root too (its
+ * sign-in is a grok.com session token with a refresh token, and `GROK_HOME` is its whole store). Set a kind to
+ * false to go back to one login per agent there. Where every agent is the runner's own user, any sign-in thinks
+ * for all of them, as the computer's own always has. Accounts made for all agents keep thinking when a kind is
+ * switched off, until signed in again or removed.
  */
-export const SHARED_SIGN_INS: Readonly<Record<"claude_code" | "codex" | "antigravity" | "key", boolean>> = {
+export const SHARED_SIGN_INS: Readonly<Record<"claude_code" | "codex" | "antigravity" | "grok" | "key", boolean>> = {
   claude_code: true,
   codex: true,
   antigravity: true,
+  grok: true,
   key: true,
 };
+
+/**
+ * The kinds whose subscriptions a run may go on with at a plan's limit, each within its own kind (ADR 0041 §6). Never
+ * Antigravity: Google forbids automating account rotation (ADR 0143). Not Grok, Cursor or OpenCode.
+ */
+export const NEXT_ACCOUNT_KINDS: readonly string[] = ["claude_code", "codex"];
 
 /** Whether a new sign-in of an account (its CLI's kind, and a coding plan's `provider`) is made for all agents. */
 export const sharedSignIn = (kind: string, provider?: string | null) =>
   isPlanId(provider)
     ? SHARED_SIGN_INS.key
-    : (kind === "claude_code" || kind === "codex" || kind === "antigravity") && SHARED_SIGN_INS[kind];
+    : (kind === "claude_code" || kind === "codex" || kind === "antigravity" || kind === "grok") &&
+      SHARED_SIGN_INS[kind];
 
 /**
  * OpenCode's free tier (ADR 0132): models OpenCode serves at no cost and only to its own CLI ("Free-tier chat models

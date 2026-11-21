@@ -24,7 +24,8 @@ const { IOSConfig, withAndroidManifest, withDangerousMod, withXcodeProject } = r
 
 const ICONS = ["lac", "night", "moon", "sky", "peekNight", "peekSky"];
 /** The shipped icon is the app's own (`AppIcon`, `ic_launcher`); these are the others. */
-const OTHERS = ICONS.slice(1);
+const SHIPPED = ICONS[0];
+const OTHERS = ICONS.filter((id) => id !== SHIPPED);
 const ASSETS = "assets/app-icons";
 
 /** What a made icon is made of, as packages/client's lists and the generator's (tests keep the three equal). */
@@ -164,14 +165,14 @@ function launcherAliases(manifest) {
   const others = (app["activity-alias"] ?? []).filter((a) => !String(a.$?.["android:name"]).startsWith(".AppIcon"));
   app["activity-alias"] = [
     ...others,
-    ...[...ICONS, ...MADE_IDS].map((id, i) => ({
+    ...[...ICONS, ...MADE_IDS].map((id) => ({
       $: {
         "android:name": `.${androidAlias(id)}`,
         "android:targetActivity": ".MainActivity",
-        "android:enabled": i === 0 ? "true" : "false",
+        "android:enabled": id === SHIPPED ? "true" : "false",
         "android:exported": "true",
-        "android:icon": i === 0 ? "@mipmap/ic_launcher" : `@mipmap/${androidRes(id)}`,
-        "android:roundIcon": i === 0 ? "@mipmap/ic_launcher_round" : `@mipmap/${androidRes(id)}`,
+        "android:icon": id === SHIPPED ? "@mipmap/ic_launcher" : `@mipmap/${androidRes(id)}`,
+        "android:roundIcon": id === SHIPPED ? "@mipmap/ic_launcher_round" : `@mipmap/${androidRes(id)}`,
       },
       "intent-filter": [
         {
@@ -260,6 +261,7 @@ const withAppIcons = (config) => withAndroidIcons(withIosIcons(config));
 
 module.exports = withAppIcons;
 module.exports.ICONS = ICONS;
+module.exports.SHIPPED = SHIPPED;
 module.exports.MADE = MADE;
 module.exports.MADE_IDS = MADE_IDS;
 module.exports.iosName = iosName;

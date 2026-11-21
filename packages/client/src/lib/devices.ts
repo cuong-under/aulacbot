@@ -6,6 +6,7 @@ import type {
   ConnectLinkState,
   DeviceAudience,
   DeviceStatus,
+  MachineOfflineCause,
   MachineTool,
   PhoneDevice,
   WifiPairing,
@@ -85,6 +86,7 @@ const REASONS = new Set([
   "ui_automation_off",
   "xcode_missing",
   "xcode_too_old",
+  "ios_behind_xcode",
   "device_support",
   "helper_missing",
   "helper_expired",
@@ -152,6 +154,7 @@ export function statusDetail(
       return s.until ? t("devices.detail.until", { time: clockAt(locale, s.until, now) }) : null;
     case "offline":
       if (s.withHost && options.host) return t("devices.detail.withHost", { host: options.host });
+      if (s.cause && s.lastSeenAt) return offlineCauseText(t, s.cause, clockAt(locale, s.lastSeenAt, now), "detail");
       return s.lastSeenAt ? t("devices.detail.lastSeen", { time: clockAt(locale, s.lastSeenAt, now) }) : null;
     case "unsupported":
       return s.reason === "os_too_old" && options.ios != null
@@ -162,7 +165,10 @@ export function statusDetail(
   }
 }
 
-/** The device page's status line, after the pill: the reason in words, never a bare code. */
+/**
+ * The device page's line under its chips: the reason in words, never a bare code. Null when the pill says it all (ready,
+ * busy with its count), so the page shows no line then.
+ */
 export function statusSentence(
   t: TFunction,
   locale: string,
@@ -175,13 +181,13 @@ export function statusSentence(
       return reasonText(t, s.reason, options.hostOs);
     case "offline":
       if (s.withHost && options.host) return t("devices.line.offlineWithHost", { host: options.host });
+      if (s.cause && s.lastSeenAt) return offlineCauseText(t, s.cause, clockAt(locale, s.lastSeenAt, now), "line");
       return s.lastSeenAt
         ? t("devices.line.offlineSeen", { time: clockAt(locale, s.lastSeenAt, now) })
         : t("devices.line.offline");
     case "busy":
-      return t("devices.line.busy", { count: s.running, max: s.max });
     case "ready":
-      return t("devices.line.ready");
+      return null;
     default:
       return statusDetail(t, locale, s, options);
   }
@@ -548,6 +554,7 @@ export type IphoneStep = (typeof IPHONE_STEPS)[number];
 const IPHONE_REASON: Record<string, IphoneStep> = {
   xcode_missing: "xcode",
   xcode_too_old: "xcode",
+  ios_behind_xcode: "helper",
   device_support: "tools",
   untrusted: "trust",
   locked: "trust",
@@ -605,6 +612,17 @@ export function xcodeBlockedOf(host: ComputerDevice | undefined): XcodeBlocked |
 
 /** What updates a runner installed from the Terminal (the app updates its own). */
 export const RUNNER_UPDATE_COMMAND = "agentes-runner update";
+/** What tells why a runner installed from the Terminal is down. */
+export const RUNNER_DOCTOR_COMMAND = "agentes-runner doctor";
+
+const CAUSE_KEY = { unresponsive: "Unresponsive", stopped: "Stopped", dropped: "Dropped" } as const;
+
+/**
+ * Why a computer someone brought went offline, at `time` (already in words): `detail`, the short words after a row's
+ * pill; `line`, the sentence on its page with the one way out.
+ */
+export const offlineCauseText = (t: TFunction, cause: MachineOfflineCause, time: string, form: "detail" | "line") =>
+  t(`devices.${form}.offline${CAUSE_KEY[cause]}`, { time, command: RUNNER_DOCTOR_COMMAND });
 
 /** How often the iPhone guide asks where a fix of the Mac's Xcode stands while it runs. */
 export const XCODE_FIX_POLL_MS = 1500;
@@ -1105,7 +1123,8 @@ export type DeviceNoticeKind =
   | "device.access_request"
   | "device.waiting"
   | "device.tool_request"
-  | "device.cli_request";
+  | "device.cli_request"
+  | "device.folder_request";
 const NOTICE_KINDS = new Set<string>([
   "device.join_request",
   "device.in_use",
@@ -1113,6 +1132,7 @@ const NOTICE_KINDS = new Set<string>([
   "device.waiting",
   "device.tool_request",
   "device.cli_request",
+  "device.folder_request",
 ]);
 
 /**
@@ -1140,6 +1160,8 @@ export interface DeviceNotice {
    * `device.cli_request`: the coding CLI to install, the same way.
    */
   tool: MachineTool | null;
+  /** `device.folder_request`: the folder an agent waits for on this computer (`latest.title`). */
+  path: string | null;
   askerId: string | null;
 }
 
@@ -1163,7 +1185,8 @@ export function deviceNoticeOf(
     device: str(s.label) ?? str(l.title) ?? "",
     agentId: actor?.id ?? str(s.agentId),
     userId: str(s.userId),
-    forName: join ? null : str(l.title),
+    // A folder request's `latest.title` is the folder itself, not a person: it reads in the line, not as a name.
+    forName: join || kind === "device.folder_request" ? null : str(l.title),
     text: str(l.text),
     join: join
       ? {
@@ -1174,6 +1197,7 @@ export function deviceNoticeOf(
         }
       : null,
     tool,
+    path: kind === "device.folder_request" ? str(l.title) : null,
     askerId: tool ? (n.actors?.find((a) => a.type === "user")?.id ?? null) : null,
   };
 }

@@ -14,6 +14,7 @@ export interface Scene {
 }
 export type AppIconId = "lac" | "night" | "moon" | "sky" | "peekNight" | "peekSky";
 export const APP_ICON_IDS: AppIconId[];
+export const PHONE_APP_ICON_ID: AppIconId;
 export const SCENES: Record<AppIconId, Scene>;
 export interface MadeIconSpec {
   sky: string;

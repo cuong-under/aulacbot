@@ -14,7 +14,7 @@ faithful summary of files in this repository so that nobody has to guess.
 
 `NOTICE` adds a term under AGPL-3.0 §7(b):
 
-    Based on agentes.chat by Codari Global, LLC (https://agentes.chat)
+    Based on agentes.chat by AGENTESCHAT, LLC (https://agentes.chat)
 
 It must appear in the **Appropriate Legal Notices** of every copy and every modified version that has
 an interactive user interface, where users — including remote network users — can find it from the
@@ -36,7 +36,8 @@ Corresponding Source is still offered under the AGPL at no charge outside those 
 ## The trademarks
 
 `TRADEMARKS.md` keeps "agentes", "agentes.chat", the agentes logo and the app icons as trademarks of
-Codari Global, LLC. The code licenses grant no rights to them.
+AGENTESCHAT, LLC. `CLA.md` states that AGENTESCHAT, LLC succeeded Codari Global, LLC. The code licenses
+grant no rights to those trademarks.
 
 For a public fork this means:
 
@@ -48,7 +49,7 @@ For a public fork this means:
 ## The commercial license
 
 `COMMERCIAL.md` states the code is dual-licensed: AGPL-3.0-only free of charge, or a commercial
-contract with Codari Global, LLC for those who want to distribute changes without publishing them,
+contract with AGENTESCHAT, LLC for those who want to distribute changes without publishing them,
 sell under their own brand without the attribution, build it into a closed product, or work where
 AGPL is not allowed. There is no license key; the code is identical.
 
@@ -79,13 +80,13 @@ the guard that no Cloud-only package is imported from the open-source tree.
 2. Keep the §7(b) attribution visible in the About screen of every shipped app.
 3. Point `SOURCE_URL` at AULACBOT's published source for any deployed instance.
 4. Publish AULACBOT's modifications under the AGPL **unless** the owner obtains a commercial
-   license from Codari Global, LLC.
+   license from AGENTESCHAT, LLC.
 5. Do not present AULACBOT as official or endorsed by agentes.chat.
 
 ## Open question for the owner
 
 Which licensing path AULACBOT takes — AGPL-only (publish modifications, keep the attribution) or a
-commercial contract with Codari Global, LLC (closed distribution, attribution removed under
+commercial contract with AGENTESCHAT, LLC (closed distribution, attribution removed under
 contract) — is a business decision. Until it is taken, assume the AGPL path and keep every
 obligation satisfied. See `docs/decisions/ADR-001-INITIAL-ARCHITECTURE.md`.
 

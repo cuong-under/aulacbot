@@ -10,6 +10,10 @@
  *   automatically; the hash is recorded so a merge that silently reverts one is reported.
  * - `exempt` — untouched upstream files that mention `agentes.chat` on purpose (tests, legal text,
  *   infrastructure URLs, the About attribution). Left alone.
+ * - `renames` — the actual line pairs the identity pass produced: an original line and the line
+ *   AULACBOT replaced it with. Upstream's new text is renamed by looking its lines up here, which is
+ *   how a sync re-applies the same edits instead of a blanket replacement that would also rewrite the
+ *   attribution, the install command and every host name.
  *
  * Run after an intentional branding change and commit the result:
  *
@@ -21,11 +25,13 @@
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import { contentHash, TEXT } from "./files";
 
 const ROOT = resolve(import.meta.dir, "../..");
 const MANIFEST = join(import.meta.dir, "manifest.json");
+/** The manifest itself is not branded content: hashing it would make `brand:drift` report it forever. */
+const SELF = relative(ROOT, MANIFEST).split(sep).join("/");
 const WORD = "agentes.chat";
 const BRAND = "AULACBOT";
 function git(...args: string[]): Buffer {
@@ -112,10 +118,12 @@ const content = blobs([...wanted]);
 
 const mechanical: string[] = [];
 const crafted: Record<string, string> = {};
+const renames = new Map<string, string>();
 let added = 0;
 let removed = 0;
 
 for (const [path, kind] of status) {
+  if (path === SELF) continue;
   if (kind === "D") {
     removed++;
     continue;
@@ -134,9 +142,39 @@ for (const [path, kind] of status) {
     before.toString("utf8").replaceAll(WORD, BRAND) === head.toString("utf8").replaceAll("\r\n", "\n")
   ) {
     mechanical.push(path);
+    // A mechanical file is the substitution end to end, so each changed line is a pair as well.
+    const beforeLines = before.toString("utf8").replaceAll("\r\n", "\n").split("\n");
+    const headLines = head.toString("utf8").replaceAll("\r\n", "\n").split("\n");
+    if (beforeLines.length === headLines.length) {
+      for (let i = 0; i < beforeLines.length; i++) {
+        const from = beforeLines[i] as string;
+        const to = headLines[i] as string;
+        if (from !== to && from.includes(WORD) && !to.includes(WORD)) renames.set(from, to);
+      }
+    }
     continue;
   }
   if (head) crafted[path] = contentHash(path, head);
+}
+
+/**
+ * Handcrafted files rename lines too, and those pairs matter most: they are the ones a sync collides
+ * with. Collected from a line diff against the base, so a pair exists only where AULACBOT really did
+ * replace something.
+ */
+for (const [path, kind] of status) {
+  if (kind !== "M" || !TEXT.test(path) || mechanical.includes(path)) continue;
+  const before = content.get(baseShas.get(path) as string);
+  const head = current.get(path);
+  if (!before || !head) continue;
+  const beforeLines = before.toString("utf8").replaceAll("\r\n", "\n").split("\n");
+  const headLines = head.toString("utf8").replaceAll("\r\n", "\n").split("\n");
+  const headSet = new Set(headLines);
+  for (const line of beforeLines) {
+    if (!line.includes(WORD) || headSet.has(line)) continue;
+    const renamed = line.replaceAll(WORD, BRAND);
+    if (headSet.has(renamed) && renamed !== line) renames.set(line, renamed);
+  }
 }
 
 /**
@@ -147,6 +185,7 @@ for (const [path, kind] of status) {
 const mechanicalSet = new Set(mechanical);
 const exempt: string[] = [];
 for (const [path, bytes] of current) {
+  if (path === SELF) continue;
   if (mechanicalSet.has(path) || !TEXT.test(path)) continue;
   if (bytes.includes(WORD)) exempt.push(path);
 }
@@ -158,10 +197,11 @@ const manifest = {
   mechanical: mechanical.sort(),
   crafted: Object.fromEntries(Object.entries(crafted).sort(([a], [b]) => a.localeCompare(b))),
   exempt: exempt.sort(),
+  renames: Object.fromEntries([...renames].sort(([a], [b]) => a.localeCompare(b))),
 };
 writeFileSync(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`);
 
 console.log(
   `manifest written: ${mechanical.length} mechanical, ${Object.keys(crafted).length} crafted ` +
-    `(${added} added, ${removed} removed), ${exempt.length} exempt`,
+    `(${added} added, ${removed} removed), ${exempt.length} exempt, ${renames.size} renamed line(s)`,
 );

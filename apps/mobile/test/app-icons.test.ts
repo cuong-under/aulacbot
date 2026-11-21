@@ -3,7 +3,6 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import {
   APP_ICONS,
-  DEFAULT_APP_ICON,
   MADE_ICON_COLORS,
   MADE_ICON_FACES,
   MADE_ICON_LOOKS,
@@ -12,6 +11,7 @@ import {
   madeIconId,
   madeIconOf,
   madeIcons,
+  PHONE_APP_ICON,
 } from "@agenteschat/client/lib/app-icons";
 import { iconOfNativeName, nativeIconName, phoneIcons } from "../src/features/me/app-icon-names";
 
@@ -26,6 +26,7 @@ interface Manifest {
 // The config plugin is plain CommonJS (expo prebuild loads it); its pure parts are tested here.
 const plugin = require("../plugins/with-app-icons") as {
   ICONS: string[];
+  SHIPPED: string;
   MADE: { skies: string[]; colors: string[]; faces: string[]; looks: string[]; poses: string[] };
   MADE_IDS: string[];
   iosName: (id: string) => string;
@@ -62,13 +63,15 @@ const manifest = (): Manifest => ({
 describe("app icons on the phone (ADR 0179)", () => {
   test("the plugin, the app and the shared list name the same icons", () => {
     expect(plugin.ICONS).toEqual([...APP_ICONS]);
+    expect(plugin.SHIPPED).toBe(PHONE_APP_ICON);
+    expect(PHONE_APP_ICON).toBe("lac");
     for (const id of APP_ICONS) {
-      expect(nativeIconName(id, "ios")).toBe(id === DEFAULT_APP_ICON ? null : plugin.iosName(id));
+      expect(nativeIconName(id, "ios")).toBe(id === PHONE_APP_ICON ? null : plugin.iosName(id));
       expect(nativeIconName(id, "android")).toBe(plugin.androidAlias(id));
       expect(iconOfNativeName(nativeIconName(id, "ios"), "ios")).toBe(id);
       expect(iconOfNativeName(nativeIconName(id, "android"), "android")).toBe(id);
     }
-    expect(iconOfNativeName("AppIcon-gone", "ios")).toBe(DEFAULT_APP_ICON);
+    expect(iconOfNativeName("AppIcon-gone", "ios")).toBe(PHONE_APP_ICON);
     expect(plugin.androidRes("peekNight")).toBe("ic_launcher_peek_night");
   });
 
@@ -161,7 +164,7 @@ describe("app icons on the phone (ADR 0179)", () => {
         "android-monochrome.png",
         "preview.png",
         "preview-dark.png",
-        ...(id === DEFAULT_APP_ICON ? [] : ["android-legacy.png"]),
+        ...(id === PHONE_APP_ICON ? [] : ["android-legacy.png"]),
       ];
       for (const file of files) if (!existsSync(join(ASSETS, id, file))) missing.push(`${id}/${file}`);
     }

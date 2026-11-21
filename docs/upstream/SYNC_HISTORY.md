@@ -4,6 +4,7 @@ One row per upstream sync. Newest first.
 
 | Date | Branch | From SHA | To SHA | Commits | Risk | Report | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-11-21 | `upstream-sync/2026-11-19` | `50ca784dd` | `df4b9610c` | 1385 | MEDIUM | `reports/2026-11-19-sync.md` | First real sync. No unmerged paths, no conflict markers in the tree. Rebrand pass applied on top: help pages (Vietnamese edition added), email words, migrate copy and scripts, Office metadata, `setup/lib.ts` Jev line, ADR 0179 summary, the two static HTML fallbacks; `Logo.tsx` union conflict resolved by hand. `brand:manifest` re-baselined on the new upstream tip (263 mechanical / 495 crafted / 539 exempt). Desktop updater pointed at `aulac.app` instead of upstream's release feed (CUSTOM-015). `check:brand`, `rebrand:check`, `brand:drift`, `check:boundaries`, `check:licenses`, `check:migrations`, `typecheck` and `build` pass. Desktop 267 pass / 13 fail (all Windows-path baseline); `packages/i18n` 115 pass / 0 fail. |
 | 2026-11-15 | `develop` (baseline) | — | `50ca784dd` | 9050 (history) | — | — | Baseline established. `upstream` remote set, `develop` created from `main`. No upstream code changed. |
 
 ## Baseline detail

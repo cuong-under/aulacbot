@@ -11,7 +11,7 @@
 | Domain | `aulac.app` (owned by the project; deployment follows the setup phase) |
 | Brand | Cyber Lạc: the Lạc head, front on and with no neck, in jade, mint and gold; `AULACBOT` in Onest 700; see `docs/branding/cyber-lac/` |
 | Upstream | [agentes-chat/agentes-chat](https://github.com/agentes-chat/agentes-chat) |
-| Upstream owner | Codari Global, LLC |
+| Upstream maintainer and current legal entity | AGENTESCHAT, LLC (successor to Codari Global, LLC; `CLA.md`) |
 | Upstream license | AGPL-3.0-only, with an attribution term (`NOTICE`) and a trademark policy (`TRADEMARKS.md`) |
 | Upstream default branch | `main` |
 | Upstream baseline merged at | see `docs/upstream/UPSTREAM_BASELINE.md` |
