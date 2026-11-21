@@ -7,14 +7,18 @@ import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { renderUnicodeCompact } from "uqr";
 
-/** The one-line installer (install.sh at the repository's root, which calls it INSTALL_URL too). */
-export const INSTALL_URL = "https://agentes.chat/install";
-/** Every instance serves its own build's compose file there; AULACBOT's follows main, so it can be ahead of `:latest`. */
-export const COMPOSE_URL = `${INSTALL_URL}/docker-compose.yml`;
-/** `INSTALL_DOCS_URL` in @agenteschat/i18n, as text: this MIT package bundles none of the AGPL workspace. */
-export const GUIDE_URL = "https://agentes.chat/docs/install-on-a-server";
-export const ISSUES_URL = "https://github.com/agentes-chat/agentes-chat/issues";
-export const IMAGE = "ghcr.io/agentes-chat/agentes:latest";
+/**
+ * The one-line installer: the copy attached to AULACBOT's newest release, which is also where this
+ * setup comes from (`setup.mjs`). The repository is public, so this needs no server of ours.
+ */
+export const INSTALL_URL = "https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh";
+/** The same release's compose file, which the installer and this setup fetch into a folder that has none. */
+export const COMPOSE_URL =
+  "https://github.com/cuong-under/aulacbot/releases/download/installer-latest/docker-compose.yml";
+/** `SELF_HOSTING.md` in the repository: this MIT package bundles none of the AGPL workspace. */
+export const GUIDE_URL = "https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md";
+export const ISSUES_URL = "https://github.com/cuong-under/aulacbot/issues";
+export const IMAGE = "ghcr.io/cuong-under/aulacbot:latest";
 /** The compose file's Tailscale serve config is inline (`configs.content`), which Compose reads from 2.23.1 on. */
 export const MIN_COMPOSE = "2.23.1";
 export const DEFAULT_HOSTNAME = "agentes";
@@ -913,7 +917,7 @@ export function computerOffer(
   if (image) {
     return no(
       "Inside the image, the setup can't make this machine the agents' computer.",
-      `Run the installer on the server for this folder instead, with --dir <folder> --computer yes: ${GUIDE_URL}#computers`,
+      `Run the installer on the server for this folder instead, with --dir <folder> --computer yes: ${GUIDE_URL}`,
     );
   }
   const conflict = hostTokenConflict(content);

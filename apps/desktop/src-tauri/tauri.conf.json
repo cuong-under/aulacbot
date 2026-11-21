@@ -69,9 +69,7 @@
     },
     "updater": {
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDVCREU5NDA5OTVGNEMwNUEKUldSYXdQU1ZDWlRlVzU1RVZjUno1Y1B3cS9UODJQcFd5WkJnbGNsYW5TcUc4OWpZbzRJeHU2K20K",
-      "endpoints": [
-        "https://aulac.app/api/desktop/update?target={{target}}&arch={{arch}}&current={{current_version}}&bundle={{bundle_type}}"
-      ]
+      "endpoints": ["https://github.com/cuong-under/aulacbot/releases/download/desktop-latest/latest.json"]
     }
   },
   "bundle": {
@@ -79,7 +77,7 @@
     "targets": ["app", "dmg"],
     "category": "Productivity",
     "shortDescription": "AULACBOT",
-    "copyright": "Copyright © 2026 AGENTESCHAT, LLC",
+    "copyright": "Copyright © 2026 AULACBOT. Based on agentes.chat by AGENTESCHAT, LLC",
     "license": "AGPL-3.0-only",
     "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.png"],
     "externalBin": ["binaries/agentes-runner", "binaries/agent-browser"],

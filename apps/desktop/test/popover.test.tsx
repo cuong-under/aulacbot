@@ -130,10 +130,22 @@ describe("the menu's banners say only what matters there", () => {
   async function withUpdate(run: () => Promise<void>) {
     const before = globalThis.fetch;
     globalThis.fetch = (async () =>
-      Response.json({
-        version: "9.9.9",
-        url: "https://aulac.app/api/desktop/download/9.9.9/agentes_9.9.9_universal.dmg",
-      })) as unknown as typeof fetch;
+      Response.json([
+        {
+          tag_name: "desktop-v9.9.9",
+          draft: false,
+          prerelease: false,
+          body: "- Pastas",
+          published_at: "2026-11-20T10:00:00Z",
+          assets: [
+            {
+              name: "agentes_9.9.9_universal.dmg",
+              browser_download_url:
+                "https://github.com/cuong-under/aulacbot/releases/download/desktop-v9.9.9/agentes_9.9.9_universal.dmg",
+            },
+          ],
+        },
+      ])) as unknown as typeof fetch;
     try {
       await run();
     } finally {

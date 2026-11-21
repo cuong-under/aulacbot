@@ -1,17 +1,24 @@
 import { CLOUD_SERVER } from "@agenteschat/client/lib/server";
 
 /**
- * The "new version" check (ADR 0036 §9): `GET https://aulac.app/api/desktop/latest?target=…&arch=…`
- * at start and every 6 hours. A newer version shows the notes and "Update and reopen" (the Tauri
- * updater, `update_install`); the download link and the manual steps are the fallback.
+ * The "new version" check (ADR 0036 §9): AULACBOT's own releases, read at start and every 6 hours.
+ * A newer version shows the notes and "Update and reopen" (the Tauri updater, `update_install`);
+ * the download link and the manual steps are the fallback.
  */
 
 /**
  * AULACBOT's own releases, never upstream's: an AULACBOT app that took upstream's update would
- * replace itself with agentes.chat. Until AULACBOT publishes releases here, the check answers
- * nothing and the app stays on its version.
+ * replace itself with agentes.chat.
+ *
+ * The check reads GitHub's REST API, the one GitHub address that answers a web view (release
+ * assets send no CORS header, so a `fetch` of them from the app would be refused). No domain and no
+ * server of our own are involved: the app is independent the day a `desktop-v*` release exists.
  */
-export const UPDATES_SITE = "https://aulac.app";
+export const RELEASES_REPO = "cuong-under/aulacbot";
+export const UPDATES_SITE = `https://github.com/${RELEASES_REPO}`;
+export const RELEASES_API = `https://api.github.com/repos/${RELEASES_REPO}/releases?per_page=30`;
+/** The desktop app's tags (the server's own `v*` releases carry the native packages). */
+export const DESKTOP_TAG = "desktop-v";
 
 /** The server the app opens before one is chosen (the cover): AULACBOT Cloud. */
 export const SITE_URL = CLOUD_SERVER;
@@ -39,9 +46,15 @@ export function archParam(rustArch: string): string {
   return rustArch;
 }
 
-export function latestUrl(os: string, rustArch: string, site: string = UPDATES_SITE): string {
-  const query = new URLSearchParams({ target: targetParam(os), arch: archParam(rustArch) });
-  return `${site}/api/desktop/latest?${query}`;
+export const latestUrl = (): string => RELEASES_API;
+
+/** This computer's download in a release, named as the desktop CI names it. */
+export function downloadName(version: string, os: string, rustArch: string): string {
+  const target = targetParam(os);
+  const arch = archParam(rustArch);
+  if (target === "darwin") return `agentes_${version}_universal.dmg`;
+  if (target === "windows") return `agentes_${version}_${arch === "arm64" ? "arm64" : "x64"}-setup.exe`;
+  return `agentes_${version}_${arch === "arm64" ? "arm64" : "amd64"}.deb`;
 }
 
 interface Parsed {
@@ -84,22 +97,75 @@ export function compareVersions(a: string, b: string): number {
 
 export const isNewer = (latest: string, current: string) => compareVersions(latest, current) > 0;
 
-/** The endpoint's JSON, checked; null when it isn't a release we can use. */
-export function parseLatest(json: unknown): LatestRelease | null {
-  if (!json || typeof json !== "object") return null;
-  const o = json as Record<string, unknown>;
-  if (typeof o.version !== "string" || !parse(o.version)) return null;
-  // The download opens in the browser: only our site, over https.
-  if (typeof o.url !== "string" || !(o.url === UPDATES_SITE || o.url.startsWith(`${UPDATES_SITE}/`))) return null;
-  const str = (v: unknown) => (typeof v === "string" ? v : undefined);
-  return {
-    version: o.version,
-    url: o.url,
-    sha256: str(o.sha256),
-    notes: str(o.notes),
-    publishedAt: str(o.publishedAt),
-    minVersion: str(o.minVersion),
-  };
+interface GitHubAsset {
+  name?: unknown;
+  browser_download_url?: unknown;
+}
+
+interface GitHubRelease {
+  tag_name?: unknown;
+  draft?: unknown;
+  prerelease?: unknown;
+  body?: unknown;
+  published_at?: unknown;
+  created_at?: unknown;
+  assets?: unknown;
+}
+
+const str = (v: unknown) => (typeof v === "string" ? v : undefined);
+
+/** The first 64-hex word of a `.sha256` file (`shasum -a 256` writes `<hash>  <file>`). */
+export function parseSha256(text: string): string | null {
+  return text.match(/\b([0-9a-f]{64})\b/i)?.[1]?.toLowerCase() ?? null;
+}
+
+/**
+ * The release notes the app shows, out of a release body: everything before the first-open steps
+ * (`.github/desktop-install.md`), without a `min-version:` line, which becomes the minimum instead.
+ */
+export function parseReleaseBody(body: string | undefined): { notes: string; minVersion?: string } {
+  let minVersion: string | undefined;
+  const text = body ?? "";
+  const cut = text.indexOf("<!-- install -->");
+  const lines = (cut < 0 ? text : text.slice(0, cut)).split(/\r?\n/).filter((line) => {
+    const m = line.match(/^\s*min-version:\s*v?(\S+)\s*$/i);
+    if (!m) return true;
+    if (m[1] && parse(m[1])) minVersion = m[1];
+    return false;
+  });
+  return { notes: lines.join("\n").trim(), ...(minVersion ? { minVersion } : {}) };
+}
+
+/**
+ * The newest desktop build for this computer out of GitHub's release list, or null when there is
+ * none (no release yet, or none with this computer's file). Only AULACBOT's own `desktop-v*`
+ * tags: upstream's releases are never read, so an AULACBOT app cannot be offered agentes.chat.
+ */
+export function latestFromReleases(json: unknown, os: string, rustArch: string): LatestRelease | null {
+  if (!Array.isArray(json)) return null;
+  let best: LatestRelease | null = null;
+  for (const item of json as GitHubRelease[]) {
+    if (!item || typeof item !== "object" || item.draft === true || item.prerelease === true) continue;
+    const tag = str(item.tag_name);
+    if (!tag?.startsWith(DESKTOP_TAG)) continue;
+    const version = tag.slice(DESKTOP_TAG.length);
+    if (!parse(version)) continue;
+    const assets = Array.isArray(item.assets) ? (item.assets as GitHubAsset[]) : [];
+    const want = downloadName(version, os, rustArch);
+    const file = assets.find((a) => a && str(a.name) === want);
+    const url = file ? str(file.browser_download_url) : undefined;
+    if (!url || !url.startsWith(`${UPDATES_SITE}/releases/download/`)) continue;
+    const { notes, minVersion } = parseReleaseBody(str(item.body));
+    const found: LatestRelease = {
+      version,
+      url,
+      notes,
+      publishedAt: str(item.published_at) ?? str(item.created_at) ?? "",
+      ...(minVersion ? { minVersion } : {}),
+    };
+    if (!best || compareVersions(found.version, best.version) > 0) best = found;
+  }
+  return best;
 }
 
 export interface UpdateState {

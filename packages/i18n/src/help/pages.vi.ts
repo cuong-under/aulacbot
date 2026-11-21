@@ -740,13 +740,13 @@ export const helpVi: Record<HelpSlug, HelpDocument> = {
         blocks: [
           "Trên server, chạy:",
           {
-            code: "curl -fsSL https://agentes.chat/install | sh",
+            code: "curl -fsSL https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh | sh",
           },
           "Nó cài những gì còn thiếu, rồi hỏi vài câu: mọi người vào bằng cách nào, email, server này có phải máy tính của agent không, và có gửi thống kê dùng ẩn danh không. Bấm Enter để nhận câu trả lời gợi ý. Nó cài vào `/opt/agentes` (`~/agentes` nếu người dùng đã dùng được Docker), và lần đầu tải khoảng 2 GB.",
           "Kết thúc bằng địa chỉ server của bạn và một mã QR cho điện thoại. Chạy lại vẫn an toàn: nó giữ cài đặt của bạn và chỉ điền phần còn thiếu.",
-          "Với Node.js 18 trở lên, `npx @agenteschat/setup` trong một thư mục trống là cùng bộ thiết lập đó. Không có Node, nó chạy từ ảnh của ứng dụng, trong thư mục hiện tại, và kết thúc bằng các lệnh khởi động phần còn lại:",
+          "Không dùng bộ cài, cùng bộ thiết lập đó chạy từ ảnh của ứng dụng, trong thư mục hiện tại, và kết thúc bằng các lệnh khởi động phần còn lại:",
           {
-            code: 'docker run --rm -it --user "$(id -u):$(id -g)" -v "$PWD":/work -w /work ghcr.io/agentes-chat/agentes:latest setup',
+            code: 'docker run --rm -it --user "$(id -u):$(id -g)" -v "$PWD":/work -w /work ghcr.io/cuong-under/aulacbot:latest setup',
           },
         ],
       },
@@ -803,7 +803,7 @@ export const helpVi: Record<HelpSlug, HelpDocument> = {
         blocks: [
           "Bộ thiết lập biến server này thành máy tính của agent được luôn, nơi chúng chạy lệnh, dùng trình duyệt và giữ tệp. Nó sẽ hỏi, và gợi ý có nếu server làm tốt việc đó. Trên Debian 13, mỗi agent có người dùng riêng, kèm màn hình. Trên Ubuntu, các agent dùng chung một người dùng, `agentes`. Nếu đã trả lời không, chạy lại bộ cài với `--computer yes`:",
           {
-            code: "curl -fsSL https://agentes.chat/install | sh -s -- --computer yes",
+            code: "curl -fsSL https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh | sh -s -- --computer yes",
           },
           "Thêm máy tính, như một máy Mac có ứng dụng AULACBOT hay một server khác, kết nối từ **Cài đặt\u00a0›\u00a0Thiết bị**, như ở [Máy tính và điện thoại của bạn](/help/computers). Trên Tailscale, chúng vào tailnet của bạn trước.",
         ],
@@ -831,7 +831,7 @@ export const helpVi: Record<HelpSlug, HelpDocument> = {
         blocks: [
           "Trong thư mục cài, chạy:",
           {
-            code: "curl -fsSLO https://agentes.chat/install/docker-compose.yml\ndocker compose pull\ndocker compose up -d",
+            code: "curl -fsSLO https://github.com/cuong-under/aulacbot/releases/download/installer-latest/docker-compose.yml\ndocker compose pull\ndocker compose up -d",
           },
           "Cơ sở dữ liệu tự cập nhật khi bản mới khởi động. Giữ cài đặt trong `.env` và đừng bao giờ sửa `docker-compose.yml`, vì mỗi lần nâng cấp là thay tệp đó. Sao lưu trước khi nhảy xa: cơ sở dữ liệu đã được bản mới cập nhật thì bản cũ không mở được.",
         ],

@@ -22,8 +22,9 @@ export type FirstScreen = "choose" | "install" | "connect" | "here" | "link" | "
 export const escapeAction = (screensBack: number, busy: boolean): "stay" | "back" | "close" =>
   busy ? "stay" : screensBack > 0 ? "back" : "close";
 
-/** The one-command setup, for a server without a screen. */
-export const INSTALL_COMMAND = "curl -fsSL https://agentes.chat/install | sh";
+/** The one-command setup, for a server without a screen: AULACBOT's own installer, never upstream's. */
+export const INSTALL_COMMAND =
+  "curl -fsSL https://github.com/cuong-under/aulacbot/releases/latest/download/install.sh | sh";
 
 /**
  * Discovery: how long the app may take to list the candidates (this computer's ports, and `tailscale status`, which

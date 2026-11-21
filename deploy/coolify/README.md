@@ -49,7 +49,7 @@ them by hand:
 | `PUBLIC_URL` | That address without the port. The exact address people open: sign-in, the only browser origin allowed to change anything, and every link the app sends. |
 | `AGENTES_SECRET` | Signs sessions and encrypts every key an organization stores (model providers, connectors, mailboxes, databases). Never change it on a running instance. |
 | `SERVICE_PASSWORD_POSTGRES` | The database password, used only inside `DATABASE_URL`. |
-| `AGENTES_IMAGE` | The image to run. Defaults to `ghcr.io/agentes-chat/agentes:latest`; a version tag or a digest holds a version. |
+| `AGENTES_IMAGE` | The image to run. Defaults to `ghcr.io/cuong-under/aulacbot:latest`; a version tag or a digest holds a version. |
 | `AGENTES_MEMORY` | The cap on the app's memory, swap included. Defaults to `8g`. |
 
 Coolify writes the resource's variables into `.env` in the deployment directory and passes that
@@ -145,7 +145,7 @@ telemetry` prints exactly what the report would contain.
 
 ## 8. Upgrade
 
-Change `AGENTES_IMAGE` to a version tag (`ghcr.io/agentes-chat/agentes:1.4.0`) or leave it on
+Change `AGENTES_IMAGE` to a version tag (`ghcr.io/cuong-under/aulacbot:1.4.0`) or leave it on
 `latest` and redeploy. Migrations run on boot; no separate step.
 
 Coolify's **Rollback** page deploys older images of applications it built itself, which is not

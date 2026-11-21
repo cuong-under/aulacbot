@@ -81,7 +81,7 @@ const DIR = "/home/ana/agentes";
 const notRoot = (dir: string) => ({
   check: "computer",
   error: "Making this machine your agents' computer needs root: the setup adds users and a service for them.",
-  fix: `Run it as root, in this folder (curl -fsSL https://agentes.chat/install | sudo sh -s -- --dir ${dir} --computer yes), or connect a computer later in Settings › Devices.`,
+  fix: `Run it as root, in this folder (curl -fsSL https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh | sudo sh -s -- --dir ${dir} --computer yes), or connect a computer later in Settings › Devices.`,
 });
 
 describe("options", () => {
@@ -670,25 +670,25 @@ describe("Docker", () => {
     // A refused image is the cause, not the "No such image" lines Compose adds about the others.
     const refused = diagnoseCompose(
       [
-        "Image ghcr.io/agentes-chat/agentes:latest Error Head",
-        '"https://ghcr.io/v2/agentes-chat/agentes/manifests/latest": denied',
+        "Image ghcr.io/cuong-under/aulacbot:latest Error Head",
+        '"https://ghcr.io/v2/cuong-under/aulacbot/manifests/latest": denied',
         "Error response from daemon: No such image: pgvector/pgvector:0.8.7-pg18",
       ].join("\n"),
       "darwin",
     );
     expect(refused).toMatchObject({
       check: "image",
-      error: "Docker couldn't download ghcr.io/agentes-chat/agentes:latest: the registry refused it.",
+      error: "Docker couldn't download ghcr.io/cuong-under/aulacbot:latest: the registry refused it.",
     });
     expect(refused?.fix).toContain("docker login ghcr.io");
     // Docker 29 says it on the image's line alone.
     expect(
       diagnoseCompose(
-        "Image ghcr.io/agentes-chat/agentes:latest Error error from registry: denied\ndenied\nError response from daemon: error from registry: denied",
+        "Image ghcr.io/cuong-under/aulacbot:latest Error error from registry: denied\ndenied\nError response from daemon: error from registry: denied",
         "linux",
       ),
     ).toMatchObject({
-      error: "Docker couldn't download ghcr.io/agentes-chat/agentes:latest: the registry refused it.",
+      error: "Docker couldn't download ghcr.io/cuong-under/aulacbot:latest: the registry refused it.",
     });
   });
 
@@ -772,7 +772,7 @@ describe("the agents' computer", () => {
     // Ubuntu's systemd can't keep each agent its own user: offered in simple mode instead (ADR 0153 §5).
     expect(why({ ...server, bpf: false })).toBeNull();
     expect(why(server, null, true)?.fix).toBe(
-      "Run the installer on the server for this folder instead, with --dir <folder> --computer yes: https://agentes.chat/docs/install-on-a-server#computers",
+      "Run the installer on the server for this folder instead, with --dir <folder> --computer yes: https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md",
     );
     expect(why({ ...server, platform: "win32" })?.error).toBe("The agents' computer runs on Linux or a Mac.");
     // Already a computer of some server: its service would be replaced.
@@ -1286,7 +1286,7 @@ describe("the plan", () => {
       "email: none for now (set SMTP_URL or MILLIONSEND_API_KEY later)",
       "agents' computer: this machine, each agent a user of its own with a screen (HOST_COMPUTER_TOKEN, also in host-computer-token)",
       "usage statistics: sent to AULACBOT (TELEMETRY=on)",
-      "compose: download docker-compose.yml from https://agentes.chat/install/docker-compose.yml",
+      "compose: download docker-compose.yml from https://github.com/cuong-under/aulacbot/releases/download/installer-latest/docker-compose.yml",
       "start: docker compose up -d tailscale, wait until it's on the tailnet with HTTPS",
       "PUBLIC_URL: write the address Tailscale gives it (https://<device>.<tailnet>.ts.net)",
       "start: docker compose up -d, wait for the HTTPS certificate and /api/health",

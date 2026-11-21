@@ -17,7 +17,7 @@
     "url": "git+https://github.com/agentes-chat/agentes-chat.git",
     "directory": "packages/setup"
   },
-  "homepage": "https://agentes.chat/docs/install-on-a-server",
+  "homepage": "https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md",
   "bugs": {
     "url": "https://github.com/agentes-chat/agentes-chat/issues"
   },

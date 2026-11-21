@@ -22,6 +22,14 @@ const REPO = join(import.meta.dir, "..", "..", "..");
 const SLUGS = Object.keys(HELP_PAGES) as HelpSlug[];
 const LOCALES = ["pt-BR", "en"] as const;
 
+/**
+ * AULACBOT's installer, as the files outside this package must name it. Spelled here rather than
+ * imported: `@agenteschat/setup` is MIT and this workspace is AGPL, so the dependency runs one way.
+ */
+const INSTALLER_URL = "https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh";
+/** `SELF_HOSTING.md` in AULACBOT's repository: the guide those same files send people to. */
+const GUIDE_URL = "https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md";
+
 const blockLines = (b: HelpBlock): string[] => (typeof b === "string" ? [b] : "list" in b ? b.list : [b.code]);
 /** Every line a page shows: title, summary, headings, paragraphs, list items and commands. */
 const linesOf = (doc: HelpDocument) => [
@@ -104,13 +112,16 @@ describe("help pages", () => {
     expect(deadHelpLinks([probe])).toEqual(["/help/nope", "/help/memory#nope"]);
   });
 
-  test("no page links the repository: it isn't public yet, so the install page names SELF_HOSTING.md instead", () => {
-    for (const { slug, locale, doc } of pages())
-      expect({ slug, locale, github: linesOf(doc).some((l) => l.includes("github.com")) }).toMatchObject({
-        github: false,
-      });
+  test("every install page ends at SELF_HOSTING.md, and names AULACBOT's installer, not upstream's", () => {
     for (const doc of Object.values(HELP).map((p) => p[INSTALL_PAGE]))
       expect(doc?.sections.at(-1)?.blocks.join(" ")).toContain("`SELF_HOSTING.md`");
+    // Upstream's installer would install agentes.chat over this fork: no page may send anyone there.
+    for (const { slug, locale, doc } of pages())
+      expect({
+        slug,
+        locale,
+        upstream: linesOf(doc).some((l) => l.includes("agentes.chat/install") || l.includes("agentes-chat/agentes")),
+      }).toMatchObject({ upstream: false });
   });
 });
 
@@ -212,7 +223,7 @@ describe("the install page", () => {
     expect(helpDocsUrl(INSTALL_PAGE, "pt-BR")).toBe("https://agentes.chat/pt/docs/install-on-a-server");
   });
 
-  test("every self-hosted pointer outside this package says its URL, and none points at the repository's file", () => {
+  test("every self-hosted pointer outside this package says where AULACBOT's installer and guide are", () => {
     const files = [
       "install.sh",
       "deploy/backup/backup.sh",
@@ -224,8 +235,16 @@ describe("the install page", () => {
     ];
     for (const file of files) {
       const text = readFileSync(join(REPO, file), "utf8");
-      expect({ file, url: text.includes(INSTALL_DOCS_URL) }).toEqual({ file, url: true });
-      expect({ file, github: text.includes("blob/main/SELF_HOSTING.md") }).toEqual({ file, github: false });
+      // AULACBOT's own guide and installer, never upstream's: agentes.chat is not where this fork's
+      // self-hosting is documented, and upstream's copy would install agentes.chat over it.
+      expect({ file, url: text.includes(GUIDE_URL) || text.includes(INSTALLER_URL) }).toEqual({
+        file,
+        url: true,
+      });
+      expect({ file, upstream: text.includes("agentes.chat/docs/install-on-a-server") }).toEqual({
+        file,
+        upstream: false,
+      });
     }
   });
 });

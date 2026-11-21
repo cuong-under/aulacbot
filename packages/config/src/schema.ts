@@ -130,9 +130,9 @@ export const envVars = {
   },
   // Mirror: PUBLIC_SOURCE_URL in packages/client/src/lib/about.ts.
   SOURCE_URL: {
-    schema: z.url().default("https://github.com/agentes-chat/agentes-chat"),
+    schema: z.url().default("https://github.com/cuong-under/aulacbot"),
     description:
-      "Where people get this server's source code, shown as \"Source code\" on the About screen of every app (AGPL-3.0 section 13). Running a modified version: point it at your modified source. Default: agentes.chat's public repository.",
+      "Where people get this server's source code, shown as \"Source code\" on the About screen of every app (AGPL-3.0 section 13). Running a modified version: point it at your modified source. Default: AULACBOT's public repository.",
     section: "Server",
     example: "https://github.com/your-org/your-fork",
   },
@@ -1089,7 +1089,7 @@ export const envVars = {
     schema: z
       .string()
       .regex(/^[\w.-]+\/[\w.-]+$/, "must be owner/repo")
-      .default("agentes-chat/agentes-chat"),
+      .default("cuong-under/aulacbot"),
     description:
       "GitHub repository (`owner/repo`) whose releases tagged `desktop-v<version>` hold the desktop app, and `v<version>` the packages without Docker.",
     section: "Sandbox",
@@ -1194,7 +1194,7 @@ export const envVars = {
   FEEDBACK_RELAY: {
     schema: z.stringbool().default(true),
     description:
-      "What a person writes in the feedback form goes to the AULACBOT team, who make the app (`FEEDBACK_URL`), and the form says so. Only when someone presses Send, and only that message: their text, their name and address to answer them, the workspace's name, the app's version and the pictures they added, never a conversation (https://agentes.chat/docs/install-on-a-server#data). `false`: the apps show no form.",
+      "What a person writes in the feedback form goes to the AULACBOT team, who make the app (`FEEDBACK_URL`), and the form says so. Only when someone presses Send, and only that message: their text, their name and address to answer them, the workspace's name, the app's version and the pictures they added, never a conversation (https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md). `false`: the apps show no form.",
     section: "Operator",
   },
   FEEDBACK_INBOX: {
@@ -1284,7 +1284,7 @@ export const envVars = {
       .transform((on) => (on ? "on" : "off") as "on" | "off")
       .default("on"),
     description:
-      "Send anonymous usage statistics to AULACBOT once a day: counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites. `off` stops it, whatever the switch in Settings → General says (the installation's owner can turn it off there too). `docker compose run --rm agentes telemetry` prints exactly what would be sent (https://agentes.chat/docs/install-on-a-server#data).",
+      "Send anonymous usage statistics to AULACBOT once a day: counts such as people, agents, machine sizes, AI tokens used and how much data the agents' browsers send and receive. Never messages, files, names or sites. `off` stops it, whatever the switch in Settings → General says (the installation's owner can turn it off there too). `docker compose run --rm agentes telemetry` prints exactly what would be sent (https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md).",
     section: "Usage report",
   },
   TELEMETRY_URL: {
@@ -1318,7 +1318,7 @@ export const envVars = {
   SENTRY_DSN: {
     schema: z.string().regex(DSN, DSN_MESSAGE).optional(),
     description:
-      "Error reports from this server to a Sentry-compatible server: the DSN of a project there. Each report holds the error, its stack, the release and internal ids, never message content, emails, IP addresses, cookies or tokens (https://agentes.chat/docs/install-on-a-server#data). Unset (default): no reports, and the reporting code isn't loaded.",
+      "Error reports from this server to a Sentry-compatible server: the DSN of a project there. Each report holds the error, its stack, the release and internal ids, never message content, emails, IP addresses, cookies or tokens (https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md). Unset (default): no reports, and the reporting code isn't loaded.",
     section: "Observability",
     example: "https://<key>@errors.example.com/1",
     secret: true,

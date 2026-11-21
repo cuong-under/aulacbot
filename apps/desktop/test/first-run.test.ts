@@ -43,7 +43,9 @@ describe("which screen", () => {
   });
 
   test("the setup's command", () => {
-    expect(INSTALL_COMMAND).toBe("curl -fsSL https://agentes.chat/install | sh");
+    expect(INSTALL_COMMAND).toBe(
+      "curl -fsSL https://github.com/cuong-under/aulacbot/releases/latest/download/install.sh | sh",
+    );
   });
 
   test("Esc: back a screen, or the window closes; never while AULACBOT is being set up here", () => {

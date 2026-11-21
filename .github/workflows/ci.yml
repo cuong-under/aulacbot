@@ -23,7 +23,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, develop]
     tags: ["v*"]
   workflow_dispatch:
     inputs:
@@ -37,9 +37,9 @@ permissions:
   contents: read
 
 env:
-  APP_IMAGE: ghcr.io/agentes-chat/agentes
-  BACKUP_IMAGE: ghcr.io/agentes-chat/backup
-  SPEECH_IMAGE: ghcr.io/agentes-chat/speech
+  APP_IMAGE: ghcr.io/cuong-under/aulacbot
+  BACKUP_IMAGE: ghcr.io/cuong-under/aulacbot-backup
+  SPEECH_IMAGE: ghcr.io/cuong-under/aulacbot-speech
 
 # A newer push supersedes a running check of the same branch or pull request (on main only the newest
 # commit's image matters); a release tag's run is never cancelled. A pull request's runs and a manual run
@@ -602,7 +602,7 @@ jobs:
     needs: [changes, check, test-backend, secrets, compose]
     if: >-
       github.event_name == 'push' && needs.changes.outputs.image == 'true' &&
-      (github.ref_type == 'tag' || !github.event.repository.private) &&
+      (github.ref_type == 'tag' || (github.ref_name == 'main' && !github.event.repository.private)) &&
       !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     strategy:
       fail-fast: false
@@ -740,10 +740,17 @@ jobs:
           fi
           docker buildx imagetools inspect "$(jq -r '.tags[0]' <<<"$META")"
 
-  # A version tag's GitHub release carries that version's install.sh, from a green run only, so
-  # `…/releases/download/v1.2.3/install.sh` is an installer the tests passed.
+  # A version tag's GitHub release carries that version's install.sh and the setup it runs
+  # (setup.mjs, the bundle of packages/setup), from a green run only, and it never falls back to
+  # upstream's `@agenteschat/setup` on npm.
+  #
+  # The same three files also go to the rolling `installer-latest` release, which is what every
+  # documented one-liner reads (`…/releases/download/installer-latest/install.sh`). It is a
+  # prerelease, so GitHub's `releases/latest` never points at it, and it is rewritten on every tag:
+  # a plain `releases/latest/download/install.sh` would break as soon as the desktop app published a
+  # `desktop-v*` release, which carries no installer.
   release-install:
-    name: Release install.sh
+    name: Release install.sh and the setup
     needs: [changes, check, test-backend, test-web, secrets, compose]
     if: >-
       github.ref_type == 'tag' && !cancelled() &&
@@ -754,14 +761,40 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Attach install.sh to the release
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+      - name: Build the setup the installer downloads
+        run: bun run --filter '@agenteschat/setup' build
+      # The bundle as the installer runs it: Bun, from any directory, touching nothing.
+      - name: The bundle runs under Bun
+        run: |
+          cd "$(mktemp -d)"
+          bun "$GITHUB_WORKSPACE/packages/setup/dist/index.js" --help > /dev/null
+          bun "$GITHUB_WORKSPACE/packages/setup/dist/index.js" --dry-run --json | jq -e '.ok and .dryRun'
+      - name: Attach install.sh and the setup to the release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
           gh release view "$TAG" > /dev/null 2>&1 ||
-            gh release create "$TAG" --verify-tag --title "agentes.chat ${TAG#v}" --generate-notes
-          gh release upload "$TAG" install.sh --clobber
+            gh release create "$TAG" --verify-tag --title "AULACBOT ${TAG#v}" --generate-notes
+          cp packages/setup/dist/index.js setup.mjs
+          gh release upload "$TAG" install.sh setup.mjs --clobber
+
+      # The rolling release the documented one-liners read. `--prerelease` keeps it out of
+      # `releases/latest`, which must stay the newest real release.
+      - name: Roll the installer release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROLLING: installer-latest
+        run: |
+          gh release view "$ROLLING" > /dev/null 2>&1 ||
+            gh release create "$ROLLING" --prerelease --latest=false \
+              --title "AULACBOT installer (rolling)" \
+              --notes "The newest installer, setup and compose file. Rewritten on every release; use a version tag to pin one."
+          gh release edit "$ROLLING" --prerelease --latest=false
+          gh release upload "$ROLLING" install.sh setup.mjs docker-compose.yml --clobber
 
   # A version tag's release also carries agentes.chat without Docker (ADR 0060 §2): one package per
   # computer (macOS and Linux, x64 and arm64), each with the Bun install.sh pins, and native.json, signed

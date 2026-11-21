@@ -590,7 +590,10 @@ describe("Preferences: a setting's explanation behind its ⓘ", () => {
     ));
 
   test("Updates: no lead; Update and reopen alone, and the manual way keeps what stays", async () => {
-    const latest = { version: "9.9.9", url: "https://aulac.app/api/desktop/download/9.9.9/agentes.dmg" };
+    const latest = {
+      version: "9.9.9",
+      url: "https://github.com/cuong-under/aulacbot/releases/download/desktop-v9.9.9/agentes_9.9.9_universal.dmg",
+    };
     const update: UpdateCheck = {
       state: { latest, available: true, required: false },
       checkedAt: null,
@@ -664,7 +667,10 @@ describe("Preferences: a setting's explanation behind its ⓘ", () => {
   });
 
   test("Updates: the download with its bar and Cancel, which drops it; once whole, Installing… with no Cancel", async () => {
-    const latest = { version: "9.9.9", url: "https://aulac.app/api/desktop/download/9.9.9/agentes.dmg" };
+    const latest = {
+      version: "9.9.9",
+      url: "https://github.com/cuong-under/aulacbot/releases/download/desktop-v9.9.9/agentes_9.9.9_universal.dmg",
+    };
     const update: UpdateCheck = {
       state: { latest, available: true, required: false },
       checkedAt: null,

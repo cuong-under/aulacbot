@@ -1,36 +1,40 @@
 #!/bin/sh
-# agentes.chat installer: a self-hosted agentes.chat on this computer, in one command.
+# AULACBOT installer: a self-hosted AULACBOT on this computer, in one command.
 #
-#   curl -fsSL https://agentes.chat/install | sh
-#   curl -fsSL https://agentes.chat/install | sh -s -- --plan      prints what it would do, does nothing
+#   curl -fsSL https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh | sh
+#   ... | sh -s -- --plan      prints what it would do, does nothing
 #
 # --plan (--dry-run too) is this installer's own plan: it runs nothing, the setup included. The setup
 # writes and starts nothing until its last question is answered: for its plan, stop it at its first
 # question (Ctrl-C), then run the setup command this printed again with --dry-run (with sudo if this
 # ran itself again with sudo).
 #
-# To read it before it runs: curl -fsSLo install.sh https://agentes.chat/install, then sh install.sh.
+# To read it before it runs: curl -fsSLo install.sh <the address above>, then sh install.sh.
 #
-# It gets this computer ready, then hands over to the setup (@agenteschat/setup), which asks its few
-# questions, writes .env and starts everything. On Linux it makes sure of Docker and its Compose
-# plugin, and starts the engine when it's stopped. On a Mac it starts the Docker it finds (Docker
-# Desktop, OrbStack or Colima), or installs Colima with Homebrew; each after asking (--yes doesn't
-# ask). On both it fetches a pinned Bun to run the setup with. Downloads are HTTPS only, and the pinned ones are checked
-# against the SHA-256 below before anything runs them.
+# It gets this computer ready, then hands over to the setup it downloads from AULACBOT's own release
+# (`setup.mjs`, next to this file), which asks its few questions, writes .env and starts everything.
+# On Linux it makes sure of Docker and its Compose plugin, and starts the engine when it's stopped. On
+# a Mac it starts the Docker it finds (Docker Desktop, OrbStack or Colima), or installs Colima with
+# Homebrew; each after asking (--yes doesn't ask). On both it fetches a pinned Bun to run the setup
+# with. Downloads are HTTPS only, and the pinned ones are checked against the SHA-256 below before
+# anything runs them.
 #
 # Everything is inside main, which the last line calls, so a download cut short runs nothing.
 
 main() {
   set -eu
 
-  # The setup this installer hands over to, the Bun it runs on, and the Compose plugin it installs
-  # when Docker has none (or one older than the 2.23.1 the compose file needs).
+  # The setup this installer hands over to (AULACBOT's own, from the release this file is attached
+  # to), the Bun it runs on, and the Compose plugin it installs when Docker has none (or one older
+  # than the 2.23.1 the compose file needs).
   SETUP_VERSION=0.1.1
+  RELEASE=https://github.com/cuong-under/aulacbot/releases/download/installer-latest
+  SETUP_URL=$RELEASE/setup.mjs
   BUN_VERSION=1.4.4
   COMPOSE_VERSION=5.5.1
   MIN_COMPOSE=2.23.1
-  INSTALL_URL=https://agentes.chat/install
-  GUIDE=https://agentes.chat/docs/install-on-a-server
+  INSTALL_URL=$RELEASE/install.sh
+  GUIDE=https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md
   DOCKER_DOCS=https://docs.docker.com/engine/install/
   BREW_INSTALL=https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 
@@ -50,8 +54,8 @@ main() {
       --plan | --dry-run) PLAN=1 ;;
       --yes | -y) YES=1 ;;
       --native)
-        die "This installer can't run agentes.chat without Docker yet (--native)." \
-          "On a Mac, the agentes.chat app runs it without Docker (Use your own server, then Run agentes.chat on this Mac). Or use Docker: Docker Desktop, OrbStack or Colima on a Mac. On Linux, this installer sets it up."
+        die "This installer can't run AULACBOT without Docker yet (--native)." \
+          "On a Mac, the AULACBOT app runs it without Docker (Use your own server, then Run AULACBOT on this Mac). Or use Docker: Docker Desktop, OrbStack or Colima on a Mac. On Linux, this installer sets it up."
         ;;
       --dir)
         [ "$n" -gt 0 ] || die "--dir needs a folder, like --dir /srv/agentes."
@@ -104,7 +108,7 @@ main() {
       BUN_SHA256=c240d7f0ccb90c263a849fcdb09b7ee62630d921348ed6aafda86b9d577bc510
       ;;
     *)
-      die "agentes.chat installs on macOS or Linux, on x64 or arm64, and this is $OS on $ARCH." \
+      die "AULACBOT installs on macOS or Linux, on x64 or arm64, and this is $OS on $ARCH." \
         "On Windows, run it in WSL 2. Elsewhere, the manual steps: $GUIDE"
       ;;
   esac
@@ -191,7 +195,6 @@ main() {
   fi
   case $DIR in /*) ;; *) DIR=$PWD/$DIR ;; esac
 
-  SETUP="@agenteschat/setup@$SETUP_VERSION"
   if [ -n "${AGENTES_INSTALL_SETUP:-}" ]; then
     case $AGENTES_INSTALL_SETUP in /*) ;; *) AGENTES_INSTALL_SETUP=$PWD/$AGENTES_INSTALL_SETUP ;; esac
     [ -f "$AGENTES_INSTALL_SETUP" ] ||
@@ -201,12 +204,9 @@ main() {
   fi
 
   get_bun
+  if [ -z "${AGENTES_INSTALL_SETUP:-}" ]; then get_setup; fi
 
-  if [ -n "${AGENTES_INSTALL_SETUP:-}" ]; then
-    set -- "$BUN" "$SETUP" "$@"
-  else
-    set -- "$BUN" x --bun "$SETUP" "$@"
-  fi
+  set -- "$BUN" "$SETUP" "$@"
   if [ "$PLAN" = 1 ]; then
     t_step "The setup, in $DIR:"
     t_shell "mkdir -p $DIR"
@@ -231,12 +231,12 @@ main() {
 }
 
 usage() {
-  printf '%s\n' "agentes.chat installer: a self-hosted agentes.chat on this computer, in one command.
+  printf '%s\n' "AULACBOT installer: a self-hosted AULACBOT on this computer, in one command.
 
-Usage: curl -fsSL https://agentes.chat/install | sh -s -- [options] [setup options]
+Usage: curl -fsSL $INSTALL_URL | sh -s -- [options] [setup options]
        sh install.sh [options] [setup options]
 
-  --dir <folder>      Where agentes.chat lives: /opt/agentes as root, ~/agentes otherwise.
+  --dir <folder>      Where AULACBOT lives: /opt/agentes as root, ~/agentes otherwise.
   --yes               Start or install Docker without asking first: on Linux with Docker's own
                       script; on a Mac the Docker Desktop, OrbStack or Colima it finds, or
                       Colima with Homebrew.
@@ -250,7 +250,7 @@ Every other option goes to the setup, like --network local or --email skip (the 
 --help lists them). On Linux, --computer yes (this machine as your agents' computer) needs root:
 without it, this runs itself again with sudo. The guide: $GUIDE
 
-AGENTES_INSTALL_SETUP=<file> runs that build of the setup instead of the published one."
+AGENTES_INSTALL_SETUP=<file> runs that build of the setup instead of the one from the release."
 }
 
 die() {
@@ -295,7 +295,7 @@ verify() {
   if [ "${sum%% *}" != "$2" ]; then
     rm -f "$1"
     die "The download of ${1##*/} isn't the file this installer expects (its SHA-256 differs), so it was deleted, not run." \
-      "Run this again. If it happens again, open an issue: https://github.com/agentes-chat/agentes-chat/issues"
+      "Run this again. If it happens again, open an issue: https://github.com/cuong-under/aulacbot/issues"
   fi
 }
 
@@ -356,7 +356,7 @@ linux_docker() {
   else
     t_gap
     t_ask "Docker isn't installed. Install it now with Docker's own script (get.docker.com)?" ||
-      die "agentes.chat runs on Docker here." "Install Docker yourself ($DOCKER_DOCS) and run this again."
+      die "AULACBOT runs on Docker here." "Install Docker yourself ($DOCKER_DOCS) and run this again."
   fi
   fetch https://get.docker.com "$WORK/get-docker.sh" "Downloading Docker's install script"
   if [ "$PLAN" = 1 ]; then
@@ -461,8 +461,8 @@ mac_start() {
 # No Docker at all: Colima, its docker command and Compose with Homebrew (Homebrew first), then Colima started.
 mac_colima() {
   agree "This Mac has no Docker. Install Colima (Docker's engine, open source, no window) with Homebrew and start it?" \
-    "This installer runs agentes.chat on Docker, and this Mac doesn't have it." \
-    "Install Docker Desktop, OrbStack or Colima, start it, and run this again (--yes installs Colima with Homebrew). Or, with no Docker, open the agentes.chat app: Use your own server, then Run agentes.chat on this Mac."
+    "This installer runs AULACBOT on Docker, and this Mac doesn't have it." \
+    "Install Docker Desktop, OrbStack or Colima, start it, and run this again (--yes installs Colima with Homebrew). Or, with no Docker, open the AULACBOT app: Use your own server, then Run AULACBOT on this Mac."
   BREW=$(command -v brew 2>/dev/null) || BREW=''
   for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do
     if [ -z "$BREW" ] && [ -x "$b" ]; then BREW=$b; fi
@@ -522,7 +522,7 @@ compose_plugin() {
     plugins=${DOCKER_CONFIG:-$HOME/.docker}/cli-plugins
   fi
   if [ "$PLAN" = 0 ]; then
-    if [ -n "$have" ]; then t_warn "Compose $have is older than the $MIN_COMPOSE agentes.chat needs"; fi
+    if [ -n "$have" ]; then t_warn "Compose $have is older than the $MIN_COMPOSE AULACBOT needs"; fi
   elif [ -n "$have" ]; then
     t_step "Compose $have is older than $MIN_COMPOSE: installing Compose $COMPOSE_VERSION (SHA-256 checked) in $plugins"
   else
@@ -577,7 +577,22 @@ as_root() {
 is_installer() {
   [ -f "$1" ] || return 1
   { IFS= read -r _ && IFS= read -r second; } <"$1" || return 1
-  [ "$second" = "# agentes.chat installer: a self-hosted agentes.chat on this computer, in one command." ]
+  [ "$second" = "# AULACBOT installer: a self-hosted AULACBOT on this computer, in one command." ]
+}
+
+# get_setup: AULACBOT's own setup, from the release this installer came with, so nobody runs upstream's.
+get_setup() {
+  # In $DIR/.runtime, next to the Bun it runs on: $WORK goes before the setup starts.
+  SETUP=$DIR/.runtime/setup.mjs
+  if [ "$PLAN" = 1 ]; then
+    t_step "The setup, downloaded from AULACBOT's release"
+    t_shell "mkdir -p $DIR/.runtime"
+    t_shell "curl -fsSL --proto =https --retry 3 -o $SETUP $SETUP_URL"
+    return 0
+  fi
+  run mkdir -p "$DIR/.runtime"
+  fetch "$SETUP_URL" "$SETUP" "Downloading the setup"
+  t_step "The setup, from AULACBOT's release"
 }
 
 get_bun() {

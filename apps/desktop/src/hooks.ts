@@ -10,8 +10,8 @@ import type { Home } from "./control/store";
 import {
   CHECK_EVERY_MS,
   type LatestRelease,
+  latestFromReleases,
   latestUrl,
-  parseLatest,
   type UpdateState,
   updateStateOf,
 } from "./control/version";
@@ -108,9 +108,13 @@ export function useUpdateCheck(auto: boolean): UpdateCheck {
     const quit = new AbortController();
     const timer = setTimeout(() => quit.abort(), 15_000);
     try {
-      const res = await fetch(latestUrl(os, arch), { headers: { accept: "application/json" }, signal: quit.signal });
-      // 404: no release published yet (or the server can't read them): nothing to offer.
-      const found = res.ok ? parseLatest(await res.json()) : null;
+      // GitHub's REST API, the one GitHub address a web view may read (release assets send no CORS).
+      const res = await fetch(latestUrl(), {
+        headers: { accept: "application/vnd.github+json" },
+        signal: quit.signal,
+      });
+      // No release yet (an empty list), or none with this computer's file: nothing to offer.
+      const found = res.ok ? latestFromReleases(await res.json(), os, arch) : null;
       if (!res.ok && res.status !== 404) throw new Error(String(res.status));
       setLatest(found);
       setCheckedAt(Date.now());

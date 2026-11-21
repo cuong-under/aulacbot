@@ -301,22 +301,56 @@ it by hand (`packages/i18n/test/help.test.ts` fails until the shape matches `pag
 | If upstream changes | Take upstream behavior and wording, then reapply only AULACBOT's product label; keep the explicit upstream report recipient and infrastructure unchanged |
 | Regression test | `bun test apps/web/test/home-screen-icon.test.ts apps/desktop/test/prefs-hints.test.tsx apps/desktop/test/i18n.test.ts apps/desktop/test/help-own-data.test.ts apps/server/test/email.test.ts packages/i18n/test/help.test.ts`; server auth tests; Rust `graphics::tests` |
 
-### AULACBOT-CUSTOM-015 — The updater feed is AULACBOT's own, never upstream's
+### AULACBOT-CUSTOM-015 — Updates come from AULACBOT's own releases, never upstream's
 
 **Files:** `apps/desktop/src-tauri/tauri.conf.json`, `apps/desktop/src/control/version.ts`,
-`apps/desktop/test/version.test.ts`
+`apps/desktop/src/hooks.ts`, `apps/desktop/src-tauri/src/lib.rs`, `apps/desktop/test/version.test.ts`,
+`scripts/desktop-channel.ts`, `scripts/desktop-channel.test.ts`, `.github/workflows/desktop.yml`
 
 | Field | Value |
 | --- | --- |
 | Owner | AULACBOT |
-| Upstream behavior | `plugins.updater.endpoints` is `https://app.agentes.chat/api/desktop/update`, and `SITE_URL` (the update check and the download-link allowlist) is `https://app.agentes.chat` |
-| AULACBOT behavior | The Tauri updater endpoint is `https://aulac.app/api/desktop/update` and the check/allowlist constant is `UPDATES_SITE = "https://aulac.app"`. Until AULACBOT publishes its own signed releases there, the endpoint answers nothing and the app stays on its version |
-| Why | With upstream's endpoint an AULACBOT install would download upstream's signed `.app`/`.exe`/`.AppImage` and **replace itself with agentes.chat** — the one sync hazard that destroys the product rather than the branding. `SITE_URL` keeps its own meaning: the server the cover opens before one is chosen (AULACBOT Cloud) |
+| Upstream behavior | `plugins.updater.endpoints` is `https://app.agentes.chat/api/desktop/update`, and the app's own "new version" check reads the same host |
+| AULACBOT behavior | Two paths, both on `github.com/cuong-under/aulacbot` (nothing on `aulac.app`, which does not resolve): the Tauri updater reads `releases/download/desktop-latest/latest.json`, rewritten on every desktop release by `scripts/desktop-channel.ts` into the rolling `desktop-latest` prerelease; the app's own check reads GitHub's REST API (`RELEASES_API`) and accepts a download only when its URL starts with `https://github.com/cuong-under/aulacbot/releases/download/`. `is_app_download` in `lib.rs` adds the same prefix so "Download version" opens the browser |
+| Why | With upstream's endpoint an AULACBOT install would download upstream's signed `.app`/`.exe`/`.AppImage` and **replace itself with agentes.chat** — the one sync hazard that destroys the product rather than the branding. The check reads GitHub's REST API and not the release page because a web view gets no CORS header on a release asset; the Rust updater has no such limit, so it can read `latest.json` directly. `desktop-latest` stays a prerelease so `releases/latest` remains the newest real release |
 | Commit | pending |
 | ADR | ADR-001, ADR 0036 §9 |
 | Sync risk | Medium — upstream edits this block whenever the release flow moves; a merge takes upstream's endpoint back |
-| If upstream changes | Keep upstream's query string and variable names, change only the host to `aulac.app`. `bun run brand:drift` names the file after a merge; `apps/desktop/test/version.test.ts` fails if `latestUrl` or `parseLatest` starts accepting upstream's host again |
-| Regression test | `bun test apps/desktop/test/version.test.ts` (the "refuses downloads off our site" case asserts upstream's own download URL is rejected) |
+| If upstream changes | Take upstream's structure and query string, then reapply `cuong-under/aulacbot`. `bun run brand:drift` names the file after a merge; `apps/desktop/test/version.test.ts` fails if the check starts accepting upstream's host or an asset off it |
+| Regression test | `bun test apps/desktop/test/version.test.ts` (the "refuses a download off our site" case asserts upstream's own download URL is rejected), `bun test scripts/desktop-channel.test.ts` |
+
+### AULACBOT-CUSTOM-016 — The installer is served from a rolling tag, not `releases/latest`
+
+**Files:** `install.sh`, `packages/setup/src/lib.ts`, `packages/setup/README.md`,
+`packages/i18n/src/help/pages.*.ts`, `SELF_HOSTING.md`, `.github/workflows/ci.yml`
+
+| Field | Value |
+| --- | --- |
+| Owner | AULACBOT |
+| Upstream behavior | `https://github.com/agentes-chat/agentes-chat/releases/latest/download/{install.sh,docker-compose.yml}` |
+| AULACBOT behavior | The same files under `releases/download/installer-latest/`, a prerelease the `release-install` job rolls on every `v*` tag (it also builds `setup.mjs` there) |
+| Why | `releases/latest` follows the newest non-prerelease release, and a `desktop-v*` release carries no installer: the first desktop release would break `curl … \\| sh` for every new self-hoster. A dedicated rolling tag keeps the URL stable whatever else ships |
+| Commit | pending |
+| ADR | ADR-001 |
+| Sync risk | Medium — upstream edits the install URL in 21 files whenever the release flow moves |
+| If upstream changes | Reapply `installer-latest` to the same files; `packages/i18n/test/help.test.ts` and `packages/setup/test/lib.test.ts` assert the URL |
+| Regression test | `bun test packages/i18n/test/help.test.ts packages/setup/test/lib.test.ts apps/server/test/install.test.ts` |
+
+### AULACBOT-CUSTOM-017 — CI runs on the fork's working branch; two upstream-only workflows are gone
+
+**Files:** `.github/workflows/ci.yml` (deleted: `.github/workflows/cla.yml`, `.github/workflows/release-setup.yml`)
+
+| Field | Value |
+| --- | --- |
+| Owner | Shared — `.github/**` is upstream's, but these two files act only inside upstream's repository |
+| Upstream behavior | `ci.yml` pushes run on `main` only; `cla.yml` asks every contributor to sign `agentes-chat/agentes-chat`'s CLA and records it on a `cla-signatures` branch; `release-setup.yml` publishes `@agenteschat/setup` to npm through upstream's Trusted Publisher |
+| AULACBOT behavior | `ci.yml` pushes run on `main` and `develop` (the fork's default branch is `develop`), and the image `build` job is narrowed to `main` and tags. `cla.yml` and `release-setup.yml` are deleted; `CLA.md` and ADR 0180 stay as upstream history |
+| Why | On the fork, `develop` was the branch every change went to and CI never ran there — a push showed green because nothing ran. The two workflows cannot work off upstream's repo: the CLA bot writes to a branch this repository does not have, and npm's Trusted Publisher is bound to `agentes-chat/agentes-chat`, so both would fail on every pull request and tag |
+| Commit | pending |
+| ADR | ADR 0180 (kept as history) |
+| Sync risk | Medium — upstream adds jobs to `ci.yml` and may rewrite either deleted file; a merge brings `cla.yml`/`release-setup.yml` back as new files |
+| If upstream changes | Keep `branches: [main, develop]` and the `build` job's `github.ref_name == 'main'` guard; delete the two files again if a merge restores them. `git status` after a merge is the check |
+| Regression test | `bun -e "require('yaml').parse(require('fs').readFileSync('.github/workflows/ci.yml','utf8'))"` parses; a push to `develop` shows a CI run |
 
 ## Entry template
 

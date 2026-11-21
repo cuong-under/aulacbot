@@ -7,6 +7,7 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { I18nextProvider } from "react-i18next";
 import { AppProvider } from "../src/app";
+import { INSTALL_COMMAND } from "../src/control/first-run";
 import type { Tailnet } from "../src/control/local-server";
 import { DesktopStore } from "../src/control/store";
 import { createFakeHost, type FakeHost, type HereOptions, type Scenario } from "../src/host/fake";
@@ -443,11 +444,11 @@ describe("Install on a computer that's always on", () => {
           "On the computer that stays on, open the Terminal and paste this",
           "At the end a link shows up. Open it here and that's it.",
         ]);
-        expect(el.querySelector(".dk-fr__ways code")?.textContent).toBe("curl -fsSL https://agentes.chat/install | sh");
+        expect(el.querySelector(".dk-fr__ways code")?.textContent).toBe(INSTALL_COMMAND);
         await press("Copy the instructions");
         await until(() => button("Instructions copied"));
         expect(copied).toHaveLength(1);
-        expect(copied[0]).toContain("curl -fsSL https://agentes.chat/install | sh");
+        expect(copied[0]).toContain(INSTALL_COMMAND);
         expect(copied[0]).toContain("At the end a link shows up.");
         await press("Sign in by its address");
         expect(el.querySelector("h1")?.textContent).toBe("Sign in to a workspace that already exists");

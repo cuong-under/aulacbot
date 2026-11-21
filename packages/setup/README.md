@@ -6,23 +6,21 @@ instance: by default on your Tailscale network, at `https://agentes.<your-tailne
 real certificate, no domain and no open port.
 
 ```sh
-npx @agenteschat/setup            # asks for what it needs
-npx @agenteschat/setup --dry-run  # prints the plan, changes nothing
-npx @agenteschat/setup --help     # every option
+curl -fsSL https://github.com/cuong-under/aulacbot/releases/download/installer-latest/install.sh | sh
 ```
 
-It needs Node.js 18 or newer, and Docker with Compose 2.23.1 or newer. Neither on the server?
-`curl -fsSL https://agentes.chat/install | sh` installs what's missing and runs this setup with
-Bun, no Node.js needed (a Bun of its own in the setup's folder, when the computer has none). The
-installer's `--plan` (`--dry-run` too) is its own plan and doesn't run the setup. The setup writes
-and starts nothing until its last question is answered: for its plan, stop it at its first question
-(Ctrl-C), then run the setup command the installer printed again with `--dry-run` (with `sudo` if
-the installer ran itself again with `sudo`).
+It needs Docker with Compose 2.23.1 or newer. The installer fetches what's missing and runs this
+setup with Bun, no Node.js needed (a Bun of its own in the setup's folder, when the computer has
+none). Every option is the setup's own, so `--help` lists them, and `--dry-run` prints the plan
+without changing anything. The installer's `--plan` (`--dry-run` too) is its own
+plan and doesn't run the setup. The setup writes and starts nothing until its last question is
+answered: for its plan, stop it at its first question (Ctrl-C), then run the setup command the
+installer printed again with `--dry-run` (with `sudo` if the installer ran itself again with `sudo`).
 
 The same setup also ships in the app's image:
 
 ```sh
-docker run --rm -it --user "$(id -u):$(id -g)" -v "$PWD":/work -w /work ghcr.io/agentes-chat/agentes:latest setup
+docker run --rm -it --user "$(id -u):$(id -g)" -v "$PWD":/work -w /work ghcr.io/cuong-under/aulacbot:latest setup
 ```
 
 ## What it does
@@ -73,7 +71,7 @@ AGENTES_SETUP_TAILSCALE_KEY='tskey-client-…' npx -y @agenteschat/setup --netwo
 
 Exit code 0: done; 1: a check failed; 2: a wrong option.
 
-The guide, with the phone app, backups and upgrades: https://agentes.chat/docs/install-on-a-server. The full reference, with a
+The guide, with the phone app, backups and upgrades: https://github.com/cuong-under/aulacbot/blob/main/SELF_HOSTING.md. The full reference, with a
 runbook for agents and troubleshooting, is `SELF_HOSTING.md` in the AULACBOT repository.
 
 ## License

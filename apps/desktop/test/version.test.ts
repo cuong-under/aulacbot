@@ -3,12 +3,17 @@ import {
   archParam,
   autoUpdateOn,
   compareVersions,
+  DESKTOP_TAG,
+  downloadName,
   installNight,
   isNewer,
+  latestFromReleases,
   latestUrl,
   noteLines,
-  parseLatest,
+  parseReleaseBody,
+  parseSha256,
   targetParam,
+  UPDATES_SITE,
   updateStateOf,
 } from "../src/control/version";
 
@@ -32,39 +37,88 @@ describe("compareVersions", () => {
 });
 
 describe("latest release", () => {
-  test("the URL names the platform and the architecture as the server reads them", () => {
+  test("the platform and the architecture are named as the builds are", () => {
     expect(archParam("aarch64")).toBe("arm64");
     expect(archParam("x86_64")).toBe("x64");
     expect(targetParam("macos")).toBe("darwin");
     expect(targetParam("windows")).toBe("windows");
     expect(targetParam("linux")).toBe("linux");
-    expect(latestUrl("macos", "aarch64")).toBe("https://aulac.app/api/desktop/latest?target=darwin&arch=arm64");
-    expect(latestUrl("windows", "x86_64")).toBe("https://aulac.app/api/desktop/latest?target=windows&arch=x64");
-    expect(latestUrl("linux", "x86_64")).toBe("https://aulac.app/api/desktop/latest?target=linux&arch=x64");
+    expect(downloadName("0.2.0", "macos", "aarch64")).toBe("agentes_0.2.0_universal.dmg");
+    expect(downloadName("0.2.0", "windows", "x86_64")).toBe("agentes_0.2.0_x64-setup.exe");
+    expect(downloadName("0.2.0", "windows", "aarch64")).toBe("agentes_0.2.0_arm64-setup.exe");
+    expect(downloadName("0.2.0", "linux", "x86_64")).toBe("agentes_0.2.0_amd64.deb");
+    expect(downloadName("0.2.0", "linux", "aarch64")).toBe("agentes_0.2.0_arm64.deb");
   });
-  test("parses the endpoint and refuses downloads off our site", () => {
-    const ok = parseLatest({
-      version: "0.2.0",
-      url: "https://aulac.app/api/desktop/download/0.2.0/agentes_0.2.0_universal.dmg",
-      sha256: "abc",
-      notes: "- Pastas\n- Pedidos",
+
+  test("the check reads GitHub's release list, the one GitHub address a web view may read", () => {
+    expect(latestUrl()).toBe("https://api.github.com/repos/cuong-under/aulacbot/releases?per_page=30");
+  });
+
+  const release = (version: string, extra: Record<string, unknown> = {}) => ({
+    tag_name: `${DESKTOP_TAG}${version}`,
+    draft: false,
+    prerelease: false,
+    body: `- Pastas\n- Pedidos\n\nmin-version: 0.1.0`,
+    published_at: "2026-11-20T10:00:00Z",
+    assets: [
+      {
+        name: `agentes_${version}_universal.dmg`,
+        browser_download_url: `${UPDATES_SITE}/releases/download/${DESKTOP_TAG}${version}/agentes_${version}_universal.dmg`,
+      },
+    ],
+    ...extra,
+  });
+
+  test("picks the newest desktop build this computer has a file for", () => {
+    const list = [release("0.2.0"), release("0.10.0"), release("0.9.0")];
+    expect(latestFromReleases(list, "macos", "aarch64")?.version).toBe("0.10.0");
+    expect(latestFromReleases(list, "macos", "x86_64")?.url).toContain("agentes_0.10.0_universal.dmg");
+    // A Windows build is not this Mac's, and there is none in the list.
+    expect(latestFromReleases(list, "windows", "x86_64")).toBeNull();
+  });
+
+  test("the notes come from the body, and min-version with them", () => {
+    const found = latestFromReleases([release("0.2.0")], "macos", "aarch64");
+    expect(found?.notes).toBe("- Pastas\n- Pedidos");
+    expect(found?.minVersion).toBe("0.1.0");
+    expect(parseReleaseBody("- A\n<!-- install -->\n## Installing\n- B")).toEqual({ notes: "- A" });
+    expect(parseReleaseBody(undefined)).toEqual({ notes: "" });
+  });
+
+  test("drafts, prereleases and the server's own tags are never offered", () => {
+    expect(latestFromReleases([release("0.2.0", { draft: true })], "macos", "aarch64")).toBeNull();
+    expect(latestFromReleases([release("0.2.0", { prerelease: true })], "macos", "aarch64")).toBeNull();
+    expect(latestFromReleases([{ ...release("0.2.0"), tag_name: "v0.2.0" }], "macos", "aarch64")).toBeNull();
+    expect(latestFromReleases([], "macos", "aarch64")).toBeNull();
+    expect(latestFromReleases(null, "macos", "aarch64")).toBeNull();
+  });
+
+  test("a download off our own releases is refused, so upstream can never replace the app", () => {
+    const elsewhere = release("0.2.0", {
+      assets: [
+        {
+          name: "agentes_0.2.0_universal.dmg",
+          browser_download_url: "https://app.agentes.chat/api/desktop/download/0.2.0/agentes_0.2.0_universal.dmg",
+        },
+      ],
     });
-    expect(ok?.version).toBe("0.2.0");
-    expect(parseLatest({ version: "0.2.0", url: "https://evil.example/agentes.dmg" })).toBeNull();
-    // Upstream's own releases are not ours: an AULACBOT app never installs agentes.chat over itself.
-    expect(
-      parseLatest({ version: "0.2.0", url: "https://app.agentes.chat/api/desktop/download/0.2.0/a.dmg" }),
-    ).toBeNull();
-    expect(parseLatest({ version: "x", url: "https://aulac.app/x" })).toBeNull();
-    expect(parseLatest(null)).toBeNull();
+    expect(latestFromReleases([elsewhere], "macos", "aarch64")).toBeNull();
   });
+
+  test("a .sha256 file's hash, and nothing else", () => {
+    const hash = "a".repeat(64);
+    expect(parseSha256(`${hash}  agentes_0.2.0_universal.dmg`)).toBe(hash);
+    expect(parseSha256("no hash here")).toBeNull();
+  });
+
   test("available and required", () => {
-    const latest = { version: "0.3.0", url: "https://aulac.app/d", minVersion: "0.2.0" };
+    const latest = { version: "0.3.0", url: `${UPDATES_SITE}/x`, minVersion: "0.2.0" };
     expect(updateStateOf("0.1.0", latest)).toMatchObject({ available: true, required: true });
     expect(updateStateOf("0.2.5", latest)).toMatchObject({ available: true, required: false });
     expect(updateStateOf("0.3.0", latest)).toMatchObject({ available: false, required: false });
     expect(updateStateOf("0.1.0", null)).toMatchObject({ available: false, required: false });
   });
+
   test("notes become list lines", () => {
     expect(noteLines("## 0.2.0\n- Pastas\n* Pedidos\n\nTarefas longas")).toEqual([
       "Pastas",
@@ -73,7 +127,6 @@ describe("latest release", () => {
     ]);
   });
 });
-
 describe("night install", () => {
   test("only from 03:00 until 05:00, one key per night", () => {
     expect(installNight(new Date(2026, 10, 12, 2, 59))).toBeNull();
